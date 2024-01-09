@@ -1,55 +1,55 @@
 ![NetBox](netbox_logo.svg "NetBox logo"){style="height: 100px; margin-bottom: 3em"}
 
-# The Premier Network Source of Truth
+# 真实网络真相的首选来源
 
-NetBox is the leading solution for modeling and documenting modern networks. By combining the traditional disciplines of IP address management (IPAM) and datacenter infrastructure management (DCIM) with powerful APIs and extensions, NetBox provides the ideal "source of truth" to power network automation. Read on to discover why thousands of organizations worldwide put NetBox at the heart of their infrastructure.
+NetBox 是建模和记录现代网络的领先解决方案。通过将传统的 IP 地址管理（IPAM）和数据中心基础设施管理（DCIM）学科与强大的 API 和扩展相结合，NetBox 提供了理想的“真相源”，支持网络自动化。继续阅读，了解为什么全球数千家组织将 NetBox 置于其基础设施的核心。
 
 [![NetBox UI](./media/screenshots/netbox-ui.png)](./media/screenshots/netbox-ui.png)
 
-## :material-server-network: Built for Networks
+## :material-server-network: 专为网络而建
 
-Unlike general-purpose CMDBs, NetBox has curated a data model which caters specifically to the needs of network engineers and operators. It delivers a wide assortment of object types carefully crafted to best serve the needs of infrastructure design and documentation. These cover all facets of network technology, from IP address managements to cabling to overlays and more:
+与通用的配置项管理数据库（CMDB）不同，NetBox 拥有专门满足网络工程师和运营商需求的数据模型。它提供了各种经过精心制作的对象类型，以最好地满足基础设施设计和文档编制的需求。这些涵盖了网络技术的各个方面，从 IP 地址管理到布线到覆盖等等：
 
-* Hierarchical regions, sites, and locations
-* Racks, devices, and device components
-* Cables and wireless connections
-* Power distribution tracking
-* Data circuits and providers
-* Virtual machines and clusters
-* IP prefixes, ranges, and addresses
-* VRFs and route targets
-* FHRP groups (VRRP, HSRP, etc.)
-* AS numbers
-* VLANs and scoped VLAN groups
-* L2VPN overlays
-* Tenancy assignments
-* Contact management
+* 分层的区域、站点和位置
+* 机架、设备和设备组件
+* 电缆和无线连接
+* 电力分配跟踪
+* 数据电路和提供商
+* 虚拟机和集群
+* IP 前缀、范围和地址
+* VRF 和路由目标
+* FHRP 组（VRRP、HSRP 等）
+* AS 号
+* VLAN 和范围 VLAN 组
+* L2VPN 覆盖
+* 租赁分配
+* 联系管理
 
-## :material-hammer-wrench: Customizable & Extensible
+## :material-hammer-wrench: 可定制和可扩展
 
-In addition to its expansive and robust data model, NetBox offers myriad mechanisms through which it can be customized and extended. Its powerful plugins architecture enables users to extend the application to meet their needs with minimal development effort.
+除了其广泛而强大的数据模型之外，NetBox 通过各种机制提供了可定制和可扩展的功能。其强大的插件架构使用户能够通过最小的开发工作量扩展应用程序。
 
-* Custom fields
-* Custom model validation
-* Export templates
-* Event rules
-* Plugins
-* REST & GraphQL APIs
+* 自定义字段
+* 自定义模型验证
+* 导出模板
+* 事件规则
+* 插件
+* REST 和 GraphQL API
 
-## :material-lock-open: Always Open
+## :material-lock-open: 永远开源
 
-Because NetBox is an open source application licensed under [Apache 2](https://www.apache.org/licenses/LICENSE-2.0.html), its entire code base is completely accessible to the end user, and there's never a risk of vendor lock-in. Additionally, NetBox development is an entirely public, community-driven process to which everyone can provide input.
+由于 NetBox 是一个在 [Apache 2](https://www.apache.org/licenses/LICENSE-2.0.html) 下许可的开源应用程序，其整个代码库对终端用户完全可访问，永远不会有供应商封锁的风险。此外，NetBox 的开发是一个完全公开的、社区驱动的过程，每个人都可以提供意见。
 
-!!! tip "NetBox Development"
-    Interested in contributing to NetBox? Check out our [GitHub repository](https://github.com/netbox-community/netbox) to get started!
+!!! tip "NetBox 开发"
+    想要为 NetBox 做贡献吗？查看我们的 [GitHub 存储库](https://github.com/netbox-community/netbox) 以开始！
 
-## :material-language-python: Powered by Python
+## :material-language-python: 由 Python 驱动
 
-NetBox is built on the enormously popular [Django](http://www.djangoproject.com/) framework for the Python programming language, already a favorite among network engineers. Users can leverage their existing skills coding Python tools to extend NetBox's already vast functionality via custom scripts and plugins.
+NetBox 建立在极其流行的 [Python 编程语言](http://www.djangoproject.com/) 的 [Django](http://www.djangoproject.com/) 框架上，这已经是网络工程师中的最爱。用户可以利用他们已有的编写 Python 工具的技能，通过自定义脚本和插件扩展 NetBox 的已经广泛的功能。
 
-## :material-flag: Getting Started
+## :material-flag: 入门指南
 
-* Try out our [public demo](https://demo.netbox.dev/) if you want to jump right in
-* The [installation guide](./installation/index.md) will help you get your own deployment up and running
-* Or try the community [Docker image](https://github.com/netbox-community/netbox-docker) for a low-touch approach
-* [NetBox Cloud](https://netboxlabs.com/netbox-cloud) is a managed solution offered by [NetBox Labs](https://netboxlabs.com/)
+* 如果您想要立即开始，请尝试我们的 [公共演示](https://demo.netbox.dev/)
+* [安装指南](./installation/index.md) 将帮助您启动并运行自己的部署
+* 或尝试社区 [Docker 镜像](https://github.com/netbox-community/netbox-docker) 以实现低干扰
+* [NetBox Cloud](https://netboxlabs.com/netbox-cloud) 是由 [NetBox Labs](https://netboxlabs.com/) 提供的托管解决方案

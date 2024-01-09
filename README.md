@@ -1,6 +1,6 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/netbox-community/netbox/develop/docs/netbox_logo.svg" width="400" alt="NetBox logo" />
-  <p>驱动网络自动化的真相之源</p>
+  <p>真实网络自动化的首选来源</p>
   <img src="https://github.com/netbox-community/netbox/workflows/CI/badge.svg?branch=master" alt="CI 状态" />
   <p></p>
 </div>
