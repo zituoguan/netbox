@@ -63,7 +63,7 @@ markdown_extensions:
     - pymdownx.tabbed:
         alternate_style: true
 nav:
-    - 介绍: 'Introduction.md'
+    - 介绍: 'introduction.md'
     - 特性:
         - 设施: 'features/facilities.md'
         - 设备与布线: 'features/devices-cabling.md'
@@ -274,7 +274,7 @@ nav:
         - 条件: 'reference/conditions.md'
         - Markdown: 'reference/markdown.md'
     - 开发:
-        - 介绍: 'Introduction.md'
+        - 介绍: 'development/index.md'
         - 入门指南: 'development/getting-started.md'
         - 样式指南: 'development/style-guide.md'
         - 模型: 'development/models.md'
