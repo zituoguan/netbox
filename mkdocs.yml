@@ -1,4 +1,4 @@
-site_name: NetBox文档
+site_name: NetBox 文档
 site_dir: netbox/project-static/docs
 site_url: https://docs.netbox.dev/
 repo_name: netbox-community/netbox
@@ -69,12 +69,12 @@ nav:
         - 设备与布线: 'features/devices-cabling.md'
         - 电源跟踪: 'features/power-tracking.md'
         - IPAM: 'features/ipam.md'
-        - VLAN管理: 'features/vlan-management.md'
-        - L2VPN与覆盖: 'features/l2vpn-overlay.md'
+        - VLAN 管理: 'features/vlan-management.md'
+        - L2VPN 和 Overlay: 'features/l2vpn-overlay.md'
         - 电路: 'features/circuits.md'
         - 无线: 'features/wireless.md'
         - 虚拟化: 'features/virtualization.md'
-        - VPN隧道: 'features/vpn-tunnels.md'
+        - VPN 隧道: 'features/vpn-tunnels.md'
         - 租户: 'features/tenancy.md'
         - 联系人: 'features/contacts.md'
         - 搜索: 'features/search.md'
@@ -86,22 +86,22 @@ nav:
         - 事件规则: 'features/event-rules.md'
         - 后台作业: 'features/background-jobs.md'
         - 认证与权限: 'features/authentication-permissions.md'
-        - API与集成: 'features/api-integration.md'
+        - API 与集成: 'features/api-integration.md'
         - 定制: 'features/customization.md'
     - 安装与升级:
-        - 安装NetBox: 'installation/index.md'
+        - 安装 NetBox: 'installation/index.md'
         - 1. PostgreSQL: 'installation/1-postgresql.md'
         - 2. Redis: 'installation/2-redis.md'
         - 3. NetBox: 'installation/3-netbox.md'
         - 4. Gunicorn: 'installation/4-gunicorn.md'
-        - 5. HTTP服务器: 'installation/5-http-server.md'
+        - 5. HTTP 服务器: 'installation/5-http-server.md'
         - 6. LDAP（可选）: 'installation/6-ldap.md'
-        - 升级NetBox: 'installation/upgrading.md'
+        - 升级 NetBox: 'installation/upgrading.md'
     - 入门指南:
         - 计划: 'getting-started/planning.md'
         - 填充数据: 'getting-started/populating-data.md'
     - 配置:
-        - 配置NetBox: 'configuration/index.md'
+        - 配置 NetBox: 'configuration/index.md'
         - 必需参数: 'configuration/required-parameters.md'
         - 系统: 'configuration/system.md'
         - 安全性: 'configuration/security.md'
@@ -125,7 +125,7 @@ nav:
         - GraphQL API: 'integrations/graphql-api.md'
         - Webhooks: 'integrations/webhooks.md'
         - 同步数据: 'integrations/synchronized-data.md'
-        - Prometheus指标: 'integrations/prometheus-metrics.md'
+        - Prometheus 指标: 'integrations/prometheus-metrics.md'
     - 插件:
         - 使用插件: 'plugins/index.md'
         - 开发插件:
@@ -153,7 +153,7 @@ nav:
         - 权限: 'administration/permissions.md'
         - 错误报告: 'administration/error-reporting.md'
         - 清理: 'administration/housekeeping.md'
-        - 复制NetBox: 'administration/replicating-netbox.md'
+        - 复制 NetBox: 'administration/replicating-netbox.md'
         - NetBox Shell: 'administration/netbox-shell.md'
     - 数据模型:
         - 电路:
@@ -226,7 +226,7 @@ nav:
             - Webhook: 'models/extras/webhook.md'
         - IPAM:
             - ASN: 'models/ipam/asn.md'
-            - ASN范围: 'models/ipam/asnrange.md'
+            - ASN 范围: 'models/ipam/asnrange.md'
             - 聚合: 'models/ipam/aggregate.md'
             - FHRP组: 'models/ipam/fhrpgroup.md'
             - FHRP组分配: 'models/ipam/fhrpgroupassignment.md'
@@ -239,7 +239,7 @@ nav:
             - 服务: 'models/ipam/service.md'
             - 服务模板: 'models/ipam/servicetemplate.md'
             - VLAN: 'models/ipam/vlan.md'
-            - VLAN组: 'models/ipam/vlangroup.md'
+            - VLAN 组: 'models/ipam/vlangroup.md'
             - VRF: 'models/ipam/vrf.md'
         - 租户:
             - 联系人: 'models/tenancy/contact.md'
@@ -251,17 +251,17 @@ nav:
             - 群集: 'models/virtualization/cluster.md'
             - 群集组: 'models/virtualization/clustergroup.md'
             - 群集类型: 'models/virtualization/clustertype.md'
-            - VM接口: 'models/virtualization/vminterface.md'
+            - VM 网卡: 'models/virtualization/vminterface.md'
             - 虚拟磁盘: 'models/virtualization/virtualdisk.md'
             - 虚拟机: 'models/virtualization/virtualmachine.md'
         - VPN:
-            - IKE策略: 'models/vpn/ikepolicy.md'
-            - IKE提案: 'models/vpn/ikeproposal.md'
-            - IPSec策略: 'models/vpn/ipsecpolicy.md'
-            - IPSec配置文件: 'models/vpn/ipsecprofile.md'
-            - IPSec提案: 'models/vpn/ipsecproposal.md'
+            - IKE 策略: 'models/vpn/ikepolicy.md'
+            - IKE 提案: 'models/vpn/ikeproposal.md'
+            - IPSec 策略: 'models/vpn/ipsecpolicy.md'
+            - IPSec 配置文件: 'models/vpn/ipsecprofile.md'
+            - IPSec 提案: 'models/vpn/ipsecproposal.md'
             - L2VPN: 'models/vpn/l2vpn.md'
-            - L2VPN终止: 'models/vpn/l2vpntermination.md'
+            - L2VPN 终止: 'models/vpn/l2vpntermination.md'
             - 隧道: 'models/vpn/tunnel.md'
             - 隧道组: 'models/vpn/tunnelgroup.md'
             - 隧道终止: 'models/vpn/tunneltermination.md'
@@ -284,7 +284,7 @@ nav:
         - 搜索: 'development/search.md'
         - 应用注册表: 'development/application-registry.md'
         - 用户首选项: 'development/user-preferences.md'
-        - Web界面: 'development/web-ui.md'
+        - Web 界面: 'development/web-ui.md'
         - 国际化: 'development/internationalization.md'
         - 发布检查列表: 'development/release-checklist.md'
         - git Cheat Sheet: 'development/git-cheat-sheet.md'

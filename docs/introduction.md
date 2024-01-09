@@ -1,83 +1,83 @@
-# Introduction to NetBox
+# NetBox 介绍
 
-## Origin Story
+## 起源故事
 
-NetBox was originally developed by its lead maintainer, [Jeremy Stretch](https://github.com/jeremystretch), while he was working as a network engineer at [DigitalOcean](https://www.digitalocean.com/) in 2015 as part of an effort to automate their network provisioning. Recognizing the new tool's potential, DigitalOcean agreed to release it as an open source project in June 2016.
+NetBox 最初由其首席维护者 [Jeremy Stretch](https://github.com/jeremystretch) 在 2015 年在 [DigitalOcean](https://www.digitalocean.com/) 担任网络工程师时开发，作为其自动化网络配置的一部分。认识到这个新工具的潜力后，DigitalOcean 同意在 2016 年 6 月将其作为开源项目发布。
 
-Since then, thousands of organizations around the world have embraced NetBox as their central network source of truth to empower both network operators and automation. Today, the open source project is stewarded by [NetBox Labs](https://netboxlabs.com/) and a team of volunteer maintainers. Beyond the core product, myriad [plugins](https://netbox.dev/plugins/) have been developed by the NetBox community to enhance and expand its feature set.
+从那时起，全球数千家组织都将 NetBox 作为他们的中心网络真实来源，以赋能网络运营商和自动化。如今，这个开源项目由 [NetBox Labs](https://netboxlabs.com/) 和一群志愿者维护者共同管理。除了核心产品外，NetBox 社区还开发了众多 [插件](https://netbox.dev/plugins/) 来增强和扩展其功能集。
 
-## Key Features
+## 主要特性
 
-NetBox was built specifically to serve the needs of network engineers and operators. Below is a very brief overview of the core features it provides.
+NetBox 是专为网络工程师和运营商的需求而构建的。以下是其提供的核心特性的简要概述。
 
-* IP address management (IPAM) with full IPv4/IPv6 parity
-* Automatic provisioning of next available prefix/IP
-* VRFs with import & export route targets
-* VLANs with variably-scoped groups
-* AS number (ASN) management
-* Rack elevations with SVG rendering
-* Device modeling using pre-defined types
-* Virtual chassis and device contexts
-* Network, power, and console cabling with SVG traces
-* Breakout cables
-* Power distribution modeling
-* Data circuit and provider tracking
-* Wireless LAN and point-to-point links
-* VPN tunnels
-* IKE & IPSec policies
-* Layer 2 VPN overlays
-* FHRP groups (VRRP, HSRP, etc.)
-* Application service bindings
-* Virtual machines & clusters
-* Flexible hierarchy for sites and locations
-* Tenant ownership assignment
-* Device & VM configuration contexts for advanced configuration rendering
-* Custom fields for data model extension
-* Custom validation & protection rules
-* Custom reports & scripts executable directly within the UI
-* Extensive plugin framework for adding custom functionality
-* Single sign-on (SSO) authentication
-* Robust object-based permissions
-* Detailed, automatic change logging
-* Global search engine
-* Event-driven scripts & webhooks
+* 具有完整 IPv4/IPv6 对等性的 IP 地址管理（IPAM）
+* 下一个可用前缀/IP 的自动配置
+* 具有导入和导出路由目标的 VRFs
+* 具有可变范围组的 VLANs
+* AS 号（ASN）管理
+* 具有 SVG 渲染的机架高程
+* 使用预定义类型进行设备建模
+* 虚拟底座和设备上下文
+* 具有 SVG 追踪的网络、电源和控制台线缆
+* 分支线缆
+* 电源分配建模
+* 数据线路和供应商跟踪
+* 无线局域网和点对点链接
+* VPN 隧道
+* IKE 和 IPSec 策略
+* 第2层 VPN Overlay
+* FHRP 组（VRRP、HSRP 等）
+* 应用服务绑定
+* 虚拟机和集群
+* 灵活的站点和位置层次结构
+* 租户所有权分配
+* 用于高级配置呈现的设备和虚拟机配置上下文
+* 数据模型扩展的自定义字段
+* 自定义验证和保护规则
+* 直接在用户界面中执行的自定义报告和脚本
+* 用于添加自定义功能的广泛插件框架
+* 单一登录（SSO）身份验证
+* 坚固的基于对象的权限
+* 详细的、自动的变更日志
+* 全局搜索引擎
+* 事件驱动的脚本和 Webhooks
 
-## What NetBox Is Not
+## NetBox 不是什么
 
-While NetBox strives to cover many areas of network management, the scope of its feature set is necessarily limited. This ensures that development focuses on core functionality and that scope creep is reasonably contained. To that end, it might help to provide some examples of functionality that NetBox **does not** provide:
+虽然 NetBox 力图涵盖网络管理的许多领域，但其功能集的范围必然是有限的。这确保了开发集中在核心功能上，并且范围扩张被合理地限制。为此，提供一些 NetBox **不提供** 的功能的例子可能有助于理解：
 
-* Network monitoring
-* DNS server
-* RADIUS server
-* Configuration management
-* Facilities management
+* 网络监控
+* DNS 服务器
+* RADIUS 服务器
+* 配置管理
+* 设施管理
 
-That said, NetBox _can_ be used to great effect in populating external tools with the data they need to perform these functions.
+尽管如此，NetBox _可以_ 在向外部工具提供执行这些功能所需的数据方面发挥重要作用。
 
-## Design Philosophy
+## 设计哲学
 
-NetBox was designed with the following tenets foremost in mind.
+NetBox 的设计主要遵循以下原则。
 
-### Replicate the Real World
+### 复制现实世界
 
-Careful consideration has been given to the data model to ensure that it can accurately reflect a real-world network. For instance, IP addresses are assigned not to devices, but to specific interfaces attached to a device, and an interface may have multiple IP addresses assigned to it.
+在数据模型中进行了仔细考虑，以确保它能够准确反映现实世界的网络。例如，IP 地址不是分配给设备，而是分配给连接到设备的特定接口，一个接口可能分配有多个 IP 地址。
 
-### Serve as a "Source of Truth"
+### 作为“真相之源”
 
-NetBox intends to represent the _desired_ state of a network versus its _operational_ state. As such, automated import of live network state is strongly discouraged. All data created in NetBox should first be vetted by a human to ensure its integrity. NetBox can then be used to populate monitoring and provisioning systems with a high degree of confidence.
+NetBox 打算代表网络的 _期望_ 状态，而不是其 _操作_ 状态。因此，强烈不推荐自动导入实时网络状态。在 NetBox 中创建的所有数据都应由人工审核，以确保其完整性。然后，NetBox 可以用于以高度自信的方式填充监控和配置系统。
 
-### Keep it Simple
+### 保持简单
 
-When given a choice between a relatively simple [80% solution](https://en.wikipedia.org/wiki/Pareto_principle) and a much more complex complete solution, the former will typically be favored. This ensures a lean codebase with a low learning curve.
+在相对简单的 [80% 解决方案](https://en.wikipedia.org/wiki/Pareto_principle) 和更复杂的完整解决方案之间做出选择时，通常会选择前者。这确保了一个精简的代码库和低学习曲线。
 
-## Application Stack
+## 应用栈
 
-NetBox is built on the [Django](https://djangoproject.com/) Python framework and utilizes a [PostgreSQL](https://www.postgresql.org/) database. It runs as a WSGI service behind your choice of HTTP server.
+NetBox 基于 [Django](https://djangoproject.com/) Python 框架构建，并使用 [PostgreSQL](https://www.postgresql.org/) 数据库。它作为一个 WSGI 服务在您选择的 HTTP 服务器后面运行。
 
-| Function           | Component         |
-|--------------------|-------------------|
-| HTTP service       | nginx or Apache   |
-| WSGI service       | gunicorn or uWSGI |
-| Application        | Django/Python     |
-| Database           | PostgreSQL 12+    |
-| Task queuing       | Redis/django-rq   |
+| 功能             | 组件            |
+|------------------|-----------------|
+| HTTP 服务         | nginx 或 Apache |
+| WSGI 服务         | gunicorn 或 uWSGI |
+| 应用程序          | Django/Python   |
+| 数据库            | PostgreSQL 12+  |
+| 任务队列          | Redis/django-rq |
