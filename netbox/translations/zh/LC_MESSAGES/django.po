@@ -835,7 +835,7 @@ msgstr "线路"
 
 #: circuits/models/circuits.py:169
 msgid "termination"
-msgstr "终端"
+msgstr "端点"
 
 #: circuits/models/circuits.py:186
 msgid "port speed (Kbps)"
@@ -884,11 +884,11 @@ msgstr "描述"
 
 #: circuits/models/circuits.py:223
 msgid "circuit termination"
-msgstr "线路终端"
+msgstr "线路端点"
 
 #: circuits/models/circuits.py:224
 msgid "circuit terminations"
-msgstr "线路终端"
+msgstr "线路端点"
 
 #: circuits/models/providers.py:22 circuits/models/providers.py:66
 #: circuits/models/providers.py:104 core/models/data.py:41
@@ -3351,7 +3351,7 @@ msgstr "A 端类型"
 
 #: dcim/forms/bulk_import.py:1112 dcim/forms/bulk_import.py:1130
 msgid "Termination type"
-msgstr "终端类型"
+msgstr "端点类型"
 
 #: dcim/forms/bulk_import.py:1115
 msgid "Side A name"
@@ -3359,7 +3359,7 @@ msgstr "A 端名称"
 
 #: dcim/forms/bulk_import.py:1116 dcim/forms/bulk_import.py:1134
 msgid "Termination name"
-msgstr "终端名称"
+msgstr "端点名称"
 
 #: dcim/forms/bulk_import.py:1121
 msgid "Side B device"
@@ -3809,11 +3809,11 @@ msgstr "结束"
 
 #: dcim/models/cables.py:310
 msgid "cable termination"
-msgstr "电缆终端"
+msgstr "电缆端点"
 
 #: dcim/models/cables.py:311
 msgid "cable terminations"
-msgstr "电缆终端"
+msgstr "电缆端点"
 
 #: dcim/models/cables.py:434 extras/models/configs.py:50
 msgid "is active"
@@ -8807,7 +8807,7 @@ msgstr "隧道组"
 
 #: netbox/navigation/menu.py:207
 msgid "Tunnel Terminations"
-msgstr "隧道终端"
+msgstr "隧道端点"
 
 #: netbox/navigation/menu.py:211 netbox/navigation/menu.py:213
 #: vpn/models/l2vpn.py:64
@@ -8817,7 +8817,7 @@ msgstr "L2VPNs"
 #: netbox/navigation/menu.py:214 templates/vpn/l2vpn.html:57
 #: templates/vpn/tunnel.html:73 vpn/tables/tunnels.py:54
 msgid "Terminations"
-msgstr "终端"
+msgstr "端点"
 
 #: netbox/navigation/menu.py:220
 msgid "IKE Proposals"
@@ -9363,12 +9363,12 @@ msgstr "终止日期"
 
 #: templates/circuits/circuit_terminations_swap.html:4
 msgid "Swap Circuit Terminations"
-msgstr "交换电路终止"
+msgstr "交换线路端点"
 
 #: templates/circuits/circuit_terminations_swap.html:8
 #, python-format
 msgid "Swap these terminations for circuit %(circuit)s?"
-msgstr "交换这些终止与电路 %(circuit)s?"
+msgstr "为线路 %(circuit)s 交换这些端点?"
 
 #: templates/circuits/circuit_terminations_swap.html:14
 msgid "A side"
@@ -9383,11 +9383,11 @@ msgstr "Z 端"
 #: templates/dcim/frontport.html:128 templates/dcim/interface.html:199
 #: templates/dcim/rearport.html:118
 msgid "Circuit Termination"
-msgstr "线路终端"
+msgstr "线路端点"
 
 #: templates/circuits/circuittermination_edit.html:41
 msgid "Termination Details"
-msgstr "终端详细信息"
+msgstr "端点详细信息"
 
 #: templates/circuits/circuittype.html:10
 msgid "Add Circuit"
@@ -9423,13 +9423,13 @@ msgstr "交换"
 #: templates/circuits/inc/circuit_termination.html:26
 #, python-format
 msgid "Termination %(side)s"
-msgstr "终端 %(side)s"
+msgstr "端点 %(side)s"
 
 #: templates/circuits/inc/circuit_termination.html:42
 #: templates/dcim/cable.html:70 templates/dcim/cable.html:76
 #: vpn/forms/bulk_import.py:100 vpn/forms/filtersets.py:76
 msgid "Termination"
-msgstr "终端"
+msgstr "端点"
 
 #: templates/circuits/inc/circuit_termination.html:46
 #: templates/dcim/consoleport.html:62 templates/dcim/consoleserverport.html:62
@@ -9451,11 +9451,11 @@ msgstr "跟踪"
 
 #: templates/circuits/inc/circuit_termination.html:62
 msgid "Edit cable"
-msgstr "编辑电缆"
+msgstr "编辑线路"
 
 #: templates/circuits/inc/circuit_termination.html:67
 msgid "Remove cable"
-msgstr "删除电缆"
+msgstr "删除线路"
 
 #: templates/circuits/inc/circuit_termination.html:68
 #: templates/dcim/bulk_disconnect.html:5
@@ -10019,7 +10019,7 @@ msgstr "连接状态"
 
 #: templates/dcim/inc/cable_termination.html:65
 msgid "No termination"
-msgstr "无终端"
+msgstr "无端点"
 
 #: templates/dcim/inc/cable_toggle_buttons.html:4
 msgid "Mark Planned"
@@ -11713,360 +11713,360 @@ msgstr "建议"
 
 #: templates/vpn/ikeproposal.html:10
 msgid "IKE Proposal"
-msgstr ""
+msgstr "IKE 提案"
 
 #: templates/vpn/ikeproposal.html:22 vpn/forms/bulk_edit.py:96
 #: vpn/forms/bulk_import.py:145 vpn/forms/filtersets.py:98
 msgid "Authentication method"
-msgstr ""
+msgstr "认证方法"
 
 #: templates/vpn/ikeproposal.html:26 templates/vpn/ipsecproposal.html:22
 #: vpn/forms/bulk_edit.py:101 vpn/forms/bulk_edit.py:173
 #: vpn/forms/bulk_import.py:149 vpn/forms/bulk_import.py:193
 #: vpn/forms/filtersets.py:103 vpn/forms/filtersets.py:151
 msgid "Encryption algorithm"
-msgstr ""
+msgstr "加密算法"
 
 #: templates/vpn/ikeproposal.html:30 templates/vpn/ipsecproposal.html:26
 #: vpn/forms/bulk_edit.py:106 vpn/forms/bulk_edit.py:178
 #: vpn/forms/bulk_import.py:153 vpn/forms/bulk_import.py:197
 #: vpn/forms/filtersets.py:108 vpn/forms/filtersets.py:156
 msgid "Authentication algorithm"
-msgstr ""
+msgstr "认证算法"
 
 #: templates/vpn/ikeproposal.html:34
 msgid "DH group"
-msgstr ""
+msgstr "DH 组"
 
 #: templates/vpn/ikeproposal.html:38 templates/vpn/ipsecproposal.html:30
 #: vpn/forms/bulk_edit.py:183 vpn/models/crypto.py:134
 msgid "SA lifetime (seconds)"
-msgstr ""
+msgstr "SA 寿命（秒）"
 
 #: templates/vpn/ipsecpolicy.html:10 templates/vpn/ipsecprofile.html:70
 #: vpn/tables/crypto.py:170
 msgid "IPSec Policy"
-msgstr ""
+msgstr "IPSec 策略"
 
 #: templates/vpn/ipsecpolicy.html:22 vpn/forms/bulk_edit.py:211
 #: vpn/models/crypto.py:181
 msgid "PFS group"
-msgstr ""
+msgstr "PFS 组"
 
 #: templates/vpn/ipsecprofile.html:10 vpn/forms/model_forms.py:53
 msgid "IPSec Profile"
-msgstr ""
+msgstr "IPSec 配置文件"
 
 #: templates/vpn/ipsecprofile.html:94 vpn/tables/crypto.py:137
 msgid "PFS Group"
-msgstr ""
+msgstr "PFS 组"
 
 #: templates/vpn/ipsecproposal.html:10
 msgid "IPSec Proposal"
-msgstr ""
+msgstr "IPSec 提案"
 
 #: templates/vpn/ipsecproposal.html:34 vpn/forms/bulk_edit.py:187
 #: vpn/models/crypto.py:140
 msgid "SA lifetime (KB)"
-msgstr ""
+msgstr "SA 寿命（KB）"
 
 #: templates/vpn/l2vpn.html:11 templates/vpn/l2vpntermination.html:10
 msgid "L2VPN Attributes"
-msgstr ""
+msgstr "L2VPN 属性"
 
 #: templates/vpn/l2vpn.html:65 templates/vpn/tunnel.html:81
 msgid "Add a Termination"
-msgstr ""
+msgstr "添加端点"
 
 #: templates/vpn/l2vpntermination_edit.html:9
 msgid "L2VPN Termination"
-msgstr ""
+msgstr "L2VPN 端点"
 
 #: templates/vpn/tunnel.html:9
 msgid "Add Termination"
-msgstr ""
+msgstr "添加端点"
 
 #: templates/vpn/tunnel.html:38 vpn/forms/bulk_edit.py:48
 #: vpn/forms/bulk_import.py:48 vpn/forms/filtersets.py:56
 msgid "Encapsulation"
-msgstr ""
+msgstr "封装"
 
 #: templates/vpn/tunnel.html:42 vpn/forms/bulk_edit.py:54
 #: vpn/forms/bulk_import.py:53 vpn/forms/filtersets.py:63
 #: vpn/models/crypto.py:238 vpn/tables/tunnels.py:47
 msgid "IPSec profile"
-msgstr ""
+msgstr "IPSec 配置文件"
 
 #: templates/vpn/tunnel.html:46 vpn/forms/bulk_edit.py:68
 #: vpn/forms/filtersets.py:67
 msgid "Tunnel ID"
-msgstr ""
+msgstr "隧道 ID"
 
 #: templates/vpn/tunnelgroup.html:14
 msgid "Add Tunnel"
-msgstr ""
+msgstr "添加隧道"
 
 #: templates/vpn/tunnelgroup.html:24 vpn/forms/model_forms.py:35
 #: vpn/forms/model_forms.py:48
 msgid "Tunnel Group"
-msgstr ""
+msgstr "隧道组"
 
 #: templates/vpn/tunneltermination.html:10
 msgid "Tunnel Termination"
-msgstr ""
+msgstr "隧道端点"
 
 #: templates/vpn/tunneltermination.html:36 vpn/forms/bulk_import.py:107
 #: vpn/forms/model_forms.py:101 vpn/forms/model_forms.py:137
 #: vpn/forms/model_forms.py:248 vpn/tables/tunnels.py:97
 msgid "Outside IP"
-msgstr ""
+msgstr "外部 IP"
 
 #: templates/vpn/tunneltermination.html:53
 msgid "Peer Terminations"
-msgstr ""
+msgstr "对端端点"
 
 #: templates/wireless/inc/authentication_attrs.html:13
 msgid "Cipher"
-msgstr ""
+msgstr "加密方式"
 
 #: templates/wireless/inc/authentication_attrs.html:17
 msgid "PSK"
-msgstr ""
+msgstr "PSK"
 
 #: templates/wireless/inc/wirelesslink_interface.html:35
 #: templates/wireless/inc/wirelesslink_interface.html:45
 msgctxt "Abbreviation for megahertz"
 msgid "MHz"
-msgstr ""
+msgstr "MHz"
 
 #: templates/wireless/wirelesslan.html:11 wireless/forms/model_forms.py:54
 msgid "Wireless LAN"
-msgstr ""
+msgstr "无线局域网"
 
 #: templates/wireless/wirelesslan.html:59
 msgid "Attached Interfaces"
-msgstr ""
+msgstr "附加接口"
 
 #: templates/wireless/wirelesslangroup.html:17
 msgid "Add Wireless LAN"
-msgstr ""
+msgstr "添加无线局域网"
 
 #: templates/wireless/wirelesslangroup.html:26 wireless/forms/model_forms.py:27
 msgid "Wireless LAN Group"
-msgstr ""
+msgstr "无线局域网组"
 
 #: templates/wireless/wirelesslangroup.html:64
 msgid "Add Wireless LAN Group"
-msgstr ""
+msgstr "添加无线局域网组"
 
 #: templates/wireless/wirelesslink.html:16
 msgid "Link Properties"
-msgstr ""
+msgstr "链路属性"
 
 #: tenancy/choices.py:19
 msgid "Tertiary"
-msgstr ""
+msgstr "第三"
 
 #: tenancy/choices.py:20
 msgid "Inactive"
-msgstr ""
+msgstr "不活跃"
 
 #: tenancy/filtersets.py:29 tenancy/filtersets.py:55 tenancy/filtersets.py:97
 msgid "Contact group (ID)"
-msgstr ""
+msgstr "联系组（ID）"
 
 #: tenancy/filtersets.py:35 tenancy/filtersets.py:62 tenancy/filtersets.py:104
 msgid "Contact group (slug)"
-msgstr ""
+msgstr "联系组（slug）"
 
 #: tenancy/filtersets.py:91
 msgid "Contact (ID)"
-msgstr ""
+msgstr "联系人（ID）"
 
 #: tenancy/filtersets.py:108
 msgid "Contact role (ID)"
-msgstr ""
+msgstr "联系人角色（ID）"
 
 #: tenancy/filtersets.py:114
 msgid "Contact role (slug)"
-msgstr ""
+msgstr "联系人角色（slug）"
 
 #: tenancy/filtersets.py:146
 msgid "Contact group"
-msgstr ""
+msgstr "联系组"
 
 #: tenancy/filtersets.py:157 tenancy/filtersets.py:176
 msgid "Tenant group (ID)"
-msgstr ""
+msgstr "租户组（ID）"
 
 #: tenancy/filtersets.py:209
 msgid "Tenant Group (ID)"
-msgstr ""
+msgstr "租户组（ID）"
 
 #: tenancy/filtersets.py:216
 msgid "Tenant Group (slug)"
-msgstr ""
+msgstr "租户组（slug）"
 
 #: tenancy/forms/bulk_edit.py:65
 msgid "Desciption"
-msgstr ""
+msgstr "描述"
 
 #: tenancy/forms/bulk_import.py:101
 msgid "Assigned contact"
-msgstr ""
+msgstr "已分配的联系人"
 
 #: tenancy/models/contacts.py:32
 msgid "contact group"
-msgstr ""
+msgstr "联系人群组"
 
 #: tenancy/models/contacts.py:33
 msgid "contact groups"
-msgstr ""
+msgstr "联系人群组"
 
 #: tenancy/models/contacts.py:48
 msgid "contact role"
-msgstr ""
+msgstr "联系人角色"
 
 #: tenancy/models/contacts.py:49
 msgid "contact roles"
-msgstr ""
+msgstr "联系人角色"
 
 #: tenancy/models/contacts.py:68
 msgid "title"
-msgstr ""
+msgstr "职称"
 
 #: tenancy/models/contacts.py:73
 msgid "phone"
-msgstr ""
+msgstr "电话"
 
 #: tenancy/models/contacts.py:78
 msgid "email"
-msgstr ""
+msgstr "电子邮件"
 
 #: tenancy/models/contacts.py:87
 msgid "link"
-msgstr ""
+msgstr "链接"
 
 #: tenancy/models/contacts.py:103
 msgid "contact"
-msgstr ""
+msgstr "联系人"
 
 #: tenancy/models/contacts.py:104
 msgid "contacts"
-msgstr ""
+msgstr "联系人"
 
 #: tenancy/models/contacts.py:153
 msgid "contact assignment"
-msgstr ""
+msgstr "联系人分配"
 
 #: tenancy/models/contacts.py:154
 msgid "contact assignments"
-msgstr ""
+msgstr "联系人分配"
 
 #: tenancy/models/contacts.py:170
 #, python-brace-format
 msgid "Contacts cannot be assigned to this object type ({type})."
-msgstr ""
+msgstr "联系人不能分配给此对象类型 ({type})。"
 
 #: tenancy/models/tenants.py:32
 msgid "tenant group"
-msgstr ""
+msgstr "租户群组"
 
 #: tenancy/models/tenants.py:33
 msgid "tenant groups"
-msgstr ""
+msgstr "租户群组"
 
 #: tenancy/models/tenants.py:70
 msgid "Tenant name must be unique per group."
-msgstr ""
+msgstr "每个群组的租户名称必须唯一。"
 
 #: tenancy/models/tenants.py:80
 msgid "Tenant slug must be unique per group."
-msgstr ""
+msgstr "每个群组的租户别名 (slug) 必须唯一。"
 
 #: tenancy/models/tenants.py:88
 msgid "tenant"
-msgstr ""
+msgstr "租户"
 
 #: tenancy/models/tenants.py:89
 msgid "tenants"
-msgstr ""
+msgstr "租户"
 
 #: tenancy/tables/contacts.py:112
 msgid "Contact Title"
-msgstr ""
+msgstr "联系人职称"
 
 #: tenancy/tables/contacts.py:116
 msgid "Contact Phone"
-msgstr ""
+msgstr "联系人电话"
 
 #: tenancy/tables/contacts.py:120
 msgid "Contact Email"
-msgstr ""
+msgstr "联系人电子邮件"
 
 #: tenancy/tables/contacts.py:124
 msgid "Contact Address"
-msgstr ""
+msgstr "联系人地址"
 
 #: tenancy/tables/contacts.py:128
 msgid "Contact Link"
-msgstr ""
+msgstr "联系人链接"
 
 #: tenancy/tables/contacts.py:132
 msgid "Contact Description"
-msgstr ""
+msgstr "联系人描述"
 
 #: users/filtersets.py:48 users/filtersets.py:151
 msgid "Group (name)"
-msgstr ""
+msgstr "群组 (名称)"
 
 #: users/forms/bulk_edit.py:24
 msgid "First name"
-msgstr ""
+msgstr "名字"
 
 #: users/forms/bulk_edit.py:29
 msgid "Last name"
-msgstr ""
+msgstr "姓氏"
 
 #: users/forms/bulk_edit.py:41
 msgid "Staff status"
-msgstr ""
+msgstr "员工状态"
 
 #: users/forms/bulk_edit.py:46
 msgid "Superuser status"
-msgstr ""
+msgstr "超级用户状态"
 
 #: users/forms/bulk_import.py:43
 msgid "If no key is provided, one will be generated automatically."
-msgstr ""
+msgstr "如果没有提供密钥，将自动生成一个密钥。"
 
 #: users/forms/filtersets.py:52 users/tables.py:42
 msgid "Is Staff"
-msgstr ""
+msgstr "是员工"
 
 #: users/forms/filtersets.py:59 users/tables.py:45
 msgid "Is Superuser"
-msgstr ""
+msgstr "是超级用户"
 
 #: users/forms/filtersets.py:92 users/tables.py:89
 msgid "Can View"
-msgstr ""
+msgstr "可以查看"
 
 #: users/forms/filtersets.py:99 users/tables.py:92
 msgid "Can Add"
-msgstr ""
+msgstr "可以添加"
 
 #: users/forms/filtersets.py:106 users/tables.py:95
 msgid "Can Change"
-msgstr ""
+msgstr "可以更改"
 
 #: users/forms/filtersets.py:113 users/tables.py:98
 msgid "Can Delete"
-msgstr ""
+msgstr "可以删除"
 
 #: users/forms/model_forms.py:58
 msgid "User Interface"
-msgstr ""
+msgstr "用户界面"
 
 #: users/forms/model_forms.py:115
 msgid ""
@@ -12074,6 +12074,7 @@ msgid ""
 "your key</strong> prior to submitting this form, as it may no longer be "
 "accessible once the token has been created."
 msgstr ""
+"密钥必须至少为40个字符长。<strong>在提交此表单之前，请确保记录您的密钥</strong>，因为一旦令牌被创建，它可能不再可访问。"
 
 #: users/forms/model_forms.py:127
 msgid ""
@@ -12081,30 +12082,32 @@ msgid ""
 "no restrictions. Example: <code>10.1.1.0/24,192.168.10.16/32,2001:"
 "db8:1::/64</code>"
 msgstr ""
+"允许使用令牌的IPv4/IPv6网络。留空表示没有限制。示例：<code>10.1.1.0/24,192.168.10.16/32,2001:"
+"db8:1::/64</code>"
 
 #: users/forms/model_forms.py:176
 msgid "Confirm password"
-msgstr ""
+msgstr "确认密码"
 
 #: users/forms/model_forms.py:179
 msgid "Enter the same password as before, for verification."
-msgstr ""
+msgstr "输入与之前相同的密码，以进行验证。"
 
 #: users/forms/model_forms.py:237
 msgid "Passwords do not match! Please check your input and try again."
-msgstr ""
+msgstr "密码不匹配！请检查您的输入并重试。"
 
 #: users/forms/model_forms.py:303
 msgid "Additional actions"
-msgstr ""
+msgstr "附加操作"
 
 #: users/forms/model_forms.py:306
 msgid "Actions granted in addition to those listed above"
-msgstr ""
+msgstr "除上述列出的操作之外授予的操作"
 
 #: users/forms/model_forms.py:322
 msgid "Objects"
-msgstr ""
+msgstr "对象"
 
 #: users/forms/model_forms.py:334
 msgid ""
@@ -12112,218 +12115,220 @@ msgid ""
 "objects. Leave null to match all objects of this type. A list of multiple "
 "objects will result in a logical OR operation."
 msgstr ""
+"将返回仅允许对象的查询集筛选器的JSON表达式。留空以匹配此类型的所有对象。多个对象的列表将导致逻辑OR操作。"
 
 #: users/forms/model_forms.py:372
 msgid "At least one action must be selected."
-msgstr ""
+msgstr "必须选择至少一个操作。"
 
 #: users/forms/model_forms.py:389
 #, python-brace-format
 msgid "Invalid filter for {model}: {error}"
-msgstr ""
+msgstr "无效的筛选器对于 {model}：{error}"
 
 #: users/models.py:54
 msgid "user"
-msgstr ""
+msgstr "用户"
 
 #: users/models.py:55
 msgid "users"
-msgstr ""
+msgstr "用户"
 
 #: users/models.py:66
 msgid "A user with this username already exists."
-msgstr ""
+msgstr "具有此用户名的用户已存在。"
 
 #: users/models.py:78 vpn/models/crypto.py:42
 msgid "group"
-msgstr ""
+msgstr "群组"
 
 #: users/models.py:79
 msgid "groups"
-msgstr ""
+msgstr "群组"
 
 #: users/models.py:106 users/models.py:107
 msgid "user preferences"
-msgstr ""
+msgstr "用户偏好"
 
 #: users/models.py:174
 #, python-brace-format
 msgid "Key '{path}' is a leaf node; cannot assign new keys"
-msgstr ""
+msgstr "密钥 '{path}' 是叶节点；无法分配新的密钥"
 
 #: users/models.py:186
 #, python-brace-format
 msgid "Key '{path}' is a dictionary; cannot assign a non-dictionary value"
-msgstr ""
+msgstr "密钥 '{path}' 是字典；无法分配非字典值"
 
 #: users/models.py:252
 msgid "expires"
-msgstr ""
+msgstr "过期"
 
 #: users/models.py:257
 msgid "last used"
-msgstr ""
+msgstr "上次使用"
 
 #: users/models.py:262
 msgid "key"
-msgstr ""
+msgstr "密钥"
 
 #: users/models.py:268
 msgid "write enabled"
-msgstr ""
+msgstr "写入启用"
 
 #: users/models.py:270
 msgid "Permit create/update/delete operations using this key"
-msgstr ""
+msgstr "允许使用此密钥进行创建/更新/删除操作"
 
 #: users/models.py:281
 msgid "allowed IPs"
-msgstr ""
+msgstr "允许的 IP 地址"
 
 #: users/models.py:283
 msgid ""
 "Allowed IPv4/IPv6 networks from where the token can be used. Leave blank for "
 "no restrictions. Ex: \"10.1.1.0/24, 192.168.10.16/32, 2001:DB8:1::/64\""
 msgstr ""
+"允许使用令牌的 IPv4/IPv6 网络。留空表示没有限制。示例：\"10.1.1.0/24, 192.168.10.16/32, 2001:DB8:1::/64\""
 
 #: users/models.py:291
 msgid "token"
-msgstr ""
+msgstr "令牌"
 
 #: users/models.py:292
 msgid "tokens"
-msgstr ""
+msgstr "令牌"
 
 #: users/models.py:373
 msgid "The list of actions granted by this permission"
-msgstr ""
+msgstr "此权限授予的操作列表"
 
 #: users/models.py:378
 msgid "constraints"
-msgstr ""
+msgstr "约束"
 
 #: users/models.py:379
 msgid "Queryset filter matching the applicable objects of the selected type(s)"
-msgstr ""
+msgstr "与所选类型的适用对象匹配的查询集筛选器"
 
 #: users/models.py:386
 msgid "permission"
-msgstr ""
+msgstr "权限"
 
 #: users/models.py:387
 msgid "permissions"
-msgstr ""
+msgstr "权限"
 
 #: users/tables.py:101
 msgid "Custom Actions"
-msgstr ""
+msgstr "自定义操作"
 
 #: utilities/choices.py:16
 #, python-brace-format
 msgid "{name} has a key defined but CHOICES is not a list"
-msgstr ""
+msgstr "{name} 定义了密钥，但 CHOICES 不是列表"
 
 #: utilities/choices.py:135
 msgid "Dark Red"
-msgstr ""
+msgstr "深红色"
 
 #: utilities/choices.py:138
 msgid "Rose"
-msgstr ""
+msgstr "玫瑰色"
 
 #: utilities/choices.py:139
 msgid "Fuchsia"
-msgstr ""
+msgstr "紫红色"
 
 #: utilities/choices.py:141
 msgid "Dark Purple"
-msgstr ""
+msgstr "深紫色"
 
 #: utilities/choices.py:144
 msgid "Light Blue"
-msgstr ""
+msgstr "浅蓝色"
 
 #: utilities/choices.py:147
 msgid "Aqua"
-msgstr ""
+msgstr "水绿色"
 
 #: utilities/choices.py:148
 msgid "Dark Green"
-msgstr ""
+msgstr "深绿色"
 
 #: utilities/choices.py:150
 msgid "Light Green"
-msgstr ""
+msgstr "浅绿色"
 
 #: utilities/choices.py:151
 msgid "Lime"
-msgstr ""
+msgstr "酸橙色"
 
 #: utilities/choices.py:153
 msgid "Amber"
-msgstr ""
+msgstr "琥珀色"
 
 #: utilities/choices.py:155
 msgid "Dark Orange"
-msgstr ""
+msgstr "深橙色"
 
 #: utilities/choices.py:156
 msgid "Brown"
-msgstr ""
+msgstr "棕色"
 
 #: utilities/choices.py:157
 msgid "Light Grey"
-msgstr ""
+msgstr "浅灰色"
 
 #: utilities/choices.py:158
 msgid "Grey"
-msgstr ""
+msgstr "灰色"
 
 #: utilities/choices.py:159
 msgid "Dark Grey"
-msgstr ""
+msgstr "深灰色"
 
 #: utilities/choices.py:217
 msgid "Direct"
-msgstr ""
+msgstr "直接"
 
 #: utilities/choices.py:218
 msgid "Upload"
-msgstr ""
+msgstr "上传"
 
 #: utilities/choices.py:230 utilities/choices.py:244
 msgid "Auto-detect"
-msgstr ""
+msgstr "自动检测"
 
 #: utilities/choices.py:245
 msgid "Comma"
-msgstr ""
+msgstr "逗号"
 
 #: utilities/choices.py:246
 msgid "Semicolon"
-msgstr ""
+msgstr "分号"
 
 #: utilities/choices.py:247
 msgid "Tab"
-msgstr ""
+msgstr "制表符"
 
 #: utilities/error_handlers.py:20
 #, python-brace-format
 msgid ""
 "Unable to delete <strong>{objects}</strong>. {count} dependent objects were "
 "found: "
-msgstr ""
+msgstr "无法删除 <strong>{objects}</strong>。找到了 {count} 个依赖对象："
 
 #: utilities/error_handlers.py:22
 msgid "More than 50"
-msgstr ""
+msgstr "超过 50 个"
 
 #: utilities/fields.py:162
 #, python-format
 msgid ""
 "%s(%r) is invalid. to_model parameter to CounterCacheField must be a string "
 "in the format 'app.model'"
-msgstr ""
+msgstr "%s(%r) 无效。CounterCacheField 的 to_model 参数必须是 'app.model' 格式的字符串"
 
 #: utilities/fields.py:172
 #, python-format
@@ -12331,32 +12336,33 @@ msgid ""
 "%s(%r) is invalid. to_field parameter to CounterCacheField must be a string "
 "in the format 'field'"
 msgstr ""
+"%s(%r) 无效。CounterCacheField 的 to_field 参数必须是 'field' 格式的字符串"
 
 #: utilities/forms/bulk_import.py:24
 msgid "Enter object data in CSV, JSON or YAML format."
-msgstr ""
+msgstr "以 CSV、JSON 或 YAML 格式输入对象数据。"
 
 #: utilities/forms/bulk_import.py:37
 msgid "CSV delimiter"
-msgstr ""
+msgstr "CSV 分隔符"
 
 #: utilities/forms/bulk_import.py:38
 msgid "The character which delimits CSV fields. Applies only to CSV format."
-msgstr ""
+msgstr "用于分隔 CSV 字段的字符。仅适用于 CSV 格式。"
 
 #: utilities/forms/bulk_import.py:101
 msgid "Unable to detect data format. Please specify."
-msgstr ""
+msgstr "无法检测到数据格式。请指定。"
 
 #: utilities/forms/bulk_import.py:124
 msgid "Invalid CSV delimiter"
-msgstr ""
+msgstr "无效的 CSV 分隔符"
 
 #: utilities/forms/bulk_import.py:168
 msgid ""
 "Invalid YAML data. Data must be in the form of multiple documents, or a "
 "single document comprising a list of dictionaries."
-msgstr ""
+msgstr "无效的 YAML 数据。数据必须是多个文档形式，或者是包含字典列表的单个文档。"
 
 #: utilities/forms/fields/array.py:17
 #, python-brace-format
@@ -12364,30 +12370,32 @@ msgid ""
 "Invalid list ({value}). Must be numeric and ranges must be in ascending "
 "order."
 msgstr ""
+"无效的列表 ({value})。必须是数字，且范围必须按升序排列。"
 
 #: utilities/forms/fields/csv.py:44
 #, python-brace-format
 msgid "Invalid value for a multiple choice field: {value}"
-msgstr ""
+msgstr "多选字段的值无效：{value}"
 
 #: utilities/forms/fields/csv.py:57 utilities/forms/fields/csv.py:74
 #, python-format
 msgid "Object not found: %(value)s"
-msgstr ""
+msgstr "未找到对象：%（value）s"
 
 #: utilities/forms/fields/csv.py:65
 #, python-brace-format
 msgid ""
 "\"{value}\" is not a unique value for this field; multiple objects were found"
 msgstr ""
+"\"{value}\" 不是此字段的唯一值；找到多个对象"
 
 #: utilities/forms/fields/csv.py:97
 msgid "Object type must be specified as \"<app>.<model>\""
-msgstr ""
+msgstr "必须将对象类型指定为“<app>.<model>”"
 
 #: utilities/forms/fields/csv.py:101
 msgid "Invalid object type"
-msgstr ""
+msgstr "无效的对象类型"
 
 #: utilities/forms/fields/expandable.py:25
 msgid ""
@@ -12395,12 +12403,15 @@ msgid ""
 "within a single range are not supported (example: <code>[ge,xe]-0/0/[0-9]</"
 "code>)."
 msgstr ""
+"支持字母数字范围进行批量创建。不支持在单个范围内混合大小写和类型（示例：<code>[ge,xe]-0/0/[0-9]</"
+"code>）。"
 
 #: utilities/forms/fields/expandable.py:46
 msgid ""
 "Specify a numeric range to create multiple IPs.<br />Example: <code>192.0.2."
 "[1,5,100-254]/24</code>"
 msgstr ""
+"指定数值范围以创建多个 IP。<br />示例：<code>192.0.2. [1,5,100-254]/24</code>"
 
 #: utilities/forms/fields/fields.py:31
 #, python-brace-format
@@ -12408,174 +12419,177 @@ msgid ""
 "<i class=\"mdi mdi-information-outline\"></i> <a href=\"{url}\" "
 "target=\"_blank\" tabindex=\"-1\">Markdown</a> syntax is supported"
 msgstr ""
+"支持 <i class=\"mdi mdi-information-outline\"></i> <a href=\"{url}\" "
+"target=\"_blank\" tabindex=\"-1\">Markdown</a> 语法"
 
 #: utilities/forms/fields/fields.py:48
 msgid "URL-friendly unique shorthand"
-msgstr ""
+msgstr "URL 友好的唯一缩写"
 
 #: utilities/forms/fields/fields.py:99
 msgid "Enter context data in <a href=\"https://json.org/\">JSON</a> format."
-msgstr ""
+msgstr "以 <a href=\"https://json.org/\">JSON</a> 格式输入上下文数据。"
 
 #: utilities/forms/fields/fields.py:117
 msgid "MAC address must be in EUI-48 format"
-msgstr ""
+msgstr "MAC 地址必须符合 EUI-48 格式"
 
 #: utilities/forms/forms.py:53
 msgid "Use regular expressions"
-msgstr ""
+msgstr "使用正则表达式"
 
 #: utilities/forms/forms.py:87
 #, python-brace-format
 msgid "Unrecognized header: {name}"
-msgstr ""
+msgstr "无法识别的标题：{name}"
 
 #: utilities/forms/forms.py:113
 msgid "Available Columns"
-msgstr ""
+msgstr "可用列"
 
 #: utilities/forms/forms.py:121
 msgid "Selected Columns"
-msgstr ""
+msgstr "已选择的列"
 
 #: utilities/forms/mixins.py:101
 msgid ""
 "This object has been modified since the form was rendered. Please consult "
 "the object's change log for details."
 msgstr ""
+"此对象自呈现表单以来已被修改。请查阅对象的更改日志以获取详细信息。"
 
 #: utilities/templates/builtins/customfield_value.html:30
 msgid "Not defined"
-msgstr ""
+msgstr "未定义"
 
 #: utilities/templates/buttons/bookmark.html:9
 msgid "Unbookmark"
-msgstr ""
+msgstr "取消书签"
 
 #: utilities/templates/buttons/bookmark.html:13
 msgid "Bookmark"
-msgstr ""
+msgstr "书签"
 
 #: utilities/templates/buttons/clone.html:4
 msgid "Clone"
-msgstr ""
+msgstr "克隆"
 
 #: utilities/templates/buttons/export.html:4
 msgid "Export"
-msgstr ""
+msgstr "导出"
 
 #: utilities/templates/buttons/export.html:7
 msgid "Current View"
-msgstr ""
+msgstr "当前视图"
 
 #: utilities/templates/buttons/export.html:8
 msgid "All Data"
-msgstr ""
+msgstr "所有数据"
 
 #: utilities/templates/buttons/export.html:28
 msgid "Add export template"
-msgstr ""
+msgstr "添加导出模板"
 
 #: utilities/templates/buttons/import.html:4
 msgid "Import"
-msgstr ""
+msgstr "导入"
 
 #: utilities/templates/form_helpers/render_field.html:36
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "复制到剪贴板"
 
 #: utilities/templates/form_helpers/render_field.html:52
 msgid "This field is required"
-msgstr ""
+msgstr "此字段为必填项"
 
 #: utilities/templates/form_helpers/render_field.html:65
 msgid "Set Null"
-msgstr ""
+msgstr "设置为空"
 
 #: utilities/templates/helpers/applied_filters.html:11
 msgid "Clear all"
-msgstr ""
+msgstr "清除所有"
 
 #: utilities/templates/helpers/table_config_form.html:8
 msgid "Table Configuration"
-msgstr ""
+msgstr "表格配置"
 
 #: utilities/templates/helpers/table_config_form.html:31
 msgid "Move Up"
-msgstr ""
+msgstr "上移"
 
 #: utilities/templates/helpers/table_config_form.html:34
 msgid "Move Down"
-msgstr ""
+msgstr "下移"
 
 #: utilities/templates/widgets/apiselect.html:7
 msgid "Open selector"
-msgstr ""
+msgstr "打开选择器"
 
 #: utilities/templates/widgets/clearable_file_input.html:12
 msgid "None assigned"
-msgstr ""
+msgstr "未分配"
 
 #: utilities/templates/widgets/markdown_input.html:6
 msgid "Write"
-msgstr ""
+msgstr "写"
 
 #: utilities/templates/widgets/markdown_input.html:20
 msgid "Testing"
-msgstr ""
+msgstr "测试"
 
 #: virtualization/filtersets.py:79
 msgid "Parent group (ID)"
-msgstr ""
+msgstr "父组 (ID)"
 
 #: virtualization/filtersets.py:85
 msgid "Parent group (slug)"
-msgstr ""
+msgstr "父组 (slug)"
 
 #: virtualization/filtersets.py:89 virtualization/filtersets.py:140
 msgid "Cluster type (ID)"
-msgstr ""
+msgstr "集群类型 (ID)"
 
 #: virtualization/filtersets.py:129
 msgid "Cluster group (ID)"
-msgstr ""
+msgstr "集群组 (ID)"
 
 #: virtualization/filtersets.py:150 virtualization/filtersets.py:265
 msgid "Cluster (ID)"
-msgstr ""
+msgstr "集群 (ID)"
 
 #: virtualization/forms/bulk_edit.py:165
 #: virtualization/models/virtualmachines.py:113
 msgid "vCPUs"
-msgstr ""
+msgstr "虚拟 CPU 数"
 
 #: virtualization/forms/bulk_edit.py:169
 msgid "Memory (MB)"
-msgstr ""
+msgstr "内存 (MB)"
 
 #: virtualization/forms/bulk_edit.py:173
 msgid "Disk (GB)"
-msgstr ""
+msgstr "磁盘 (GB)"
 
 #: virtualization/forms/bulk_edit.py:333 virtualization/forms/filtersets.py:243
 msgid "Size (GB)"
-msgstr ""
+msgstr "大小 (GB)"
 
 #: virtualization/forms/bulk_import.py:44
 msgid "Type of cluster"
-msgstr ""
+msgstr "集群类型"
 
 #: virtualization/forms/bulk_import.py:51
 msgid "Assigned cluster group"
-msgstr ""
+msgstr "已分配的集群组"
 
 #: virtualization/forms/bulk_import.py:96
 msgid "Assigned cluster"
-msgstr ""
+msgstr "已分配的集群"
 
 #: virtualization/forms/bulk_import.py:103
 msgid "Assigned device within cluster"
-msgstr ""
+msgstr "分配给集群的设备"
 
 #: virtualization/forms/model_forms.py:156
 #, python-brace-format
@@ -12583,46 +12597,47 @@ msgid ""
 "{device} belongs to a different site ({device_site}) than the cluster "
 "({cluster_site})"
 msgstr ""
+"{device} 属于与集群 ({cluster_site}) 不同的站点 ({device_site})"
 
 #: virtualization/forms/model_forms.py:195
 msgid "Optionally pin this VM to a specific host device within the cluster"
-msgstr ""
+msgstr "可选择将此虚拟机固定到集群内的特定主机设备"
 
 #: virtualization/forms/model_forms.py:224
 msgid "Site/Cluster"
-msgstr ""
+msgstr "站点/集群"
 
 #: virtualization/forms/model_forms.py:247
 msgid "Disk size is managed via the attachment of virtual disks."
-msgstr ""
+msgstr "磁盘大小通过虚拟磁盘的附加来管理。"
 
 #: virtualization/forms/model_forms.py:375
 msgid "Disk"
-msgstr ""
+msgstr "磁盘"
 
 #: virtualization/models/clusters.py:25
 msgid "cluster type"
-msgstr ""
+msgstr "集群类型"
 
 #: virtualization/models/clusters.py:26
 msgid "cluster types"
-msgstr ""
+msgstr "集群类型"
 
 #: virtualization/models/clusters.py:45
 msgid "cluster group"
-msgstr ""
+msgstr "集群组"
 
 #: virtualization/models/clusters.py:46
 msgid "cluster groups"
-msgstr ""
+msgstr "集群组"
 
 #: virtualization/models/clusters.py:121
 msgid "cluster"
-msgstr ""
+msgstr "集群"
 
 #: virtualization/models/clusters.py:122
 msgid "clusters"
-msgstr ""
+msgstr "集群"
 
 #: virtualization/models/clusters.py:141
 #, python-brace-format
@@ -12630,62 +12645,63 @@ msgid ""
 "{count} devices are assigned as hosts for this cluster but are not in site "
 "{site}"
 msgstr ""
+"{count} 个设备被分配为此集群的主机，但不在站点 {site} 中"
 
 #: virtualization/models/virtualmachines.py:121
 msgid "memory (MB)"
-msgstr ""
+msgstr "内存 (MB)"
 
 #: virtualization/models/virtualmachines.py:126
 msgid "disk (GB)"
-msgstr ""
+msgstr "磁盘 (GB)"
 
 #: virtualization/models/virtualmachines.py:159
 msgid "Virtual machine name must be unique per cluster."
-msgstr ""
+msgstr "虚拟机名称必须在集群内唯一。"
 
 #: virtualization/models/virtualmachines.py:162
 msgid "virtual machine"
-msgstr ""
+msgstr "虚拟机"
 
 #: virtualization/models/virtualmachines.py:163
 msgid "virtual machines"
-msgstr ""
+msgstr "虚拟机"
 
 #: virtualization/models/virtualmachines.py:177
 msgid "A virtual machine must be assigned to a site and/or cluster."
-msgstr ""
+msgstr "虚拟机必须分配给站点和/或集群。"
 
 #: virtualization/models/virtualmachines.py:184
 #, python-brace-format
 msgid "The selected cluster ({cluster}) is not assigned to this site ({site})."
-msgstr ""
+msgstr "所选的集群 ({cluster}) 未分配给此站点 ({site})。"
 
 #: virtualization/models/virtualmachines.py:191
 msgid "Must specify a cluster when assigning a host device."
-msgstr ""
+msgstr "分配主机设备时必须指定一个集群。"
 
 #: virtualization/models/virtualmachines.py:196
 #, python-brace-format
 msgid ""
 "The selected device ({device}) is not assigned to this cluster ({cluster})."
-msgstr ""
+msgstr "所选设备 ({device}) 未分配给此集群 ({cluster})。"
 
 #: virtualization/models/virtualmachines.py:208
 #, python-brace-format
 msgid ""
 "The specified disk size ({size}) must match the aggregate size of assigned "
 "virtual disks ({total_size})."
-msgstr ""
+msgstr "指定的磁盘大小 ({size}) 必须与已分配虚拟磁盘的总大小 ({total_size}) 匹配。"
 
 #: virtualization/models/virtualmachines.py:222
 #, python-brace-format
 msgid "Must be an IPv{family} address. ({ip} is an IPv{version} address.)"
-msgstr ""
+msgstr "必须是 IPv{family} 地址。({ip} 是 IPv{version} 地址。)"
 
 #: virtualization/models/virtualmachines.py:231
 #, python-brace-format
 msgid "The specified IP address ({ip}) is not assigned to this VM."
-msgstr ""
+msgstr "指定的 IP 地址 ({ip}) 未分配给此虚拟机。"
 
 #: virtualization/models/virtualmachines.py:389
 #, python-brace-format
@@ -12693,6 +12709,7 @@ msgid ""
 "The selected parent interface ({parent}) belongs to a different virtual "
 "machine ({virtual_machine})."
 msgstr ""
+"所选的上级接口 ({parent}) 属于不同的虚拟机 ({virtual_machine})。"
 
 #: virtualization/models/virtualmachines.py:404
 #, python-brace-format
@@ -12700,6 +12717,7 @@ msgid ""
 "The selected bridge interface ({bridge}) belongs to a different virtual "
 "machine ({virtual_machine})."
 msgstr ""
+"所选的桥接接口 ({bridge}) 属于不同的虚拟机 ({virtual_machine})。"
 
 #: virtualization/models/virtualmachines.py:415
 #, python-brace-format
@@ -12707,66 +12725,67 @@ msgid ""
 "The untagged VLAN ({untagged_vlan}) must belong to the same site as the "
 "interface's parent virtual machine, or it must be global."
 msgstr ""
+"未标记的 VLAN ({untagged_vlan}) 必须属于与接口的父虚拟机相同的站点，或者它必须是全局的。"
 
 #: virtualization/models/virtualmachines.py:427
 msgid "size (GB)"
-msgstr ""
+msgstr "大小 (GB)"
 
 #: virtualization/models/virtualmachines.py:431
 msgid "virtual disk"
-msgstr ""
+msgstr "虚拟磁盘"
 
 #: virtualization/models/virtualmachines.py:432
 msgid "virtual disks"
-msgstr ""
+msgstr "虚拟磁盘"
 
 #: vpn/choices.py:31
 msgid "IPsec - Transport"
-msgstr ""
+msgstr "IPsec - 传输"
 
 #: vpn/choices.py:32
 msgid "IPsec - Tunnel"
-msgstr ""
+msgstr "IPsec - 隧道"
 
 #: vpn/choices.py:33
 msgid "IP-in-IP"
-msgstr ""
+msgstr "IP-in-IP"
 
 #: vpn/choices.py:34
 msgid "GRE"
-msgstr ""
+msgstr "GRE"
 
 #: vpn/choices.py:56
 msgid "Hub"
-msgstr ""
+msgstr "集线器"
 
 #: vpn/choices.py:57
 msgid "Spoke"
-msgstr ""
+msgstr "辐条"
 
 #: vpn/choices.py:80
 msgid "Aggressive"
-msgstr ""
+msgstr "积极"
 
 #: vpn/choices.py:81
 msgid "Main"
-msgstr ""
+msgstr "主要"
 
 #: vpn/choices.py:92
 msgid "Pre-shared keys"
-msgstr ""
+msgstr "预共享密钥"
 
 #: vpn/choices.py:93
 msgid "Certificates"
-msgstr ""
+msgstr "证书"
 
 #: vpn/choices.py:94
 msgid "RSA signatures"
-msgstr ""
+msgstr "RSA 签名"
 
 #: vpn/choices.py:95
 msgid "DSA signatures"
-msgstr ""
+msgstr "DSA 签名"
 
 #: vpn/choices.py:178 vpn/choices.py:179 vpn/choices.py:180 vpn/choices.py:181
 #: vpn/choices.py:182 vpn/choices.py:183 vpn/choices.py:184 vpn/choices.py:185
@@ -12776,297 +12795,298 @@ msgstr ""
 #: vpn/choices.py:198 vpn/choices.py:199 vpn/choices.py:200
 #, python-brace-format
 msgid "Group {n}"
-msgstr ""
+msgstr "组 {n}"
 
 #: vpn/choices.py:240
 msgid "Ethernet Private LAN"
-msgstr ""
+msgstr "以太网专用局域网"
 
 #: vpn/choices.py:241
 msgid "Ethernet Virtual Private LAN"
-msgstr ""
+msgstr "以太网虚拟专用局域网"
 
 #: vpn/choices.py:244
 msgid "Ethernet Private Tree"
-msgstr ""
+msgstr "以太网专用树"
 
 #: vpn/choices.py:245
 msgid "Ethernet Virtual Private Tree"
-msgstr ""
+msgstr "以太网虚拟专用树"
 
 #: vpn/filtersets.py:41
 msgid "Tunnel group (ID)"
-msgstr ""
+msgstr "隧道组 (ID)"
 
 #: vpn/filtersets.py:47
 msgid "Tunnel group (slug)"
-msgstr ""
+msgstr "隧道组 (slug)"
 
 #: vpn/filtersets.py:54
 msgid "IPSec profile (ID)"
-msgstr ""
+msgstr "IPSec 配置文件 (ID)"
 
 #: vpn/filtersets.py:60
 msgid "IPSec profile (name)"
-msgstr ""
+msgstr "IPSec 配置文件 (名称)"
 
 #: vpn/filtersets.py:81
 msgid "Tunnel (ID)"
-msgstr ""
+msgstr "隧道 (ID)"
 
 #: vpn/filtersets.py:87
 msgid "Tunnel (name)"
-msgstr ""
+msgstr "隧道 (名称)"
 
 #: vpn/filtersets.py:118
 msgid "Outside IP (ID)"
-msgstr ""
+msgstr "外部 IP (ID)"
 
 #: vpn/filtersets.py:235
 msgid "IKE policy (ID)"
-msgstr ""
+msgstr "IKE 策略 (ID)"
 
 #: vpn/filtersets.py:241
 msgid "IKE policy (name)"
-msgstr ""
+msgstr "IKE 策略 (名称)"
 
 #: vpn/filtersets.py:245
 msgid "IPSec policy (ID)"
-msgstr ""
+msgstr "IPSec 策略 (ID)"
 
 #: vpn/filtersets.py:251
 msgid "IPSec policy (name)"
-msgstr ""
+msgstr "IPSec 策略 (名称)"
 
 #: vpn/filtersets.py:320
 msgid "L2VPN (slug)"
-msgstr ""
+msgstr "L2VPN (slug)"
 
 #: vpn/filtersets.py:384
 msgid "VM Interface (ID)"
-msgstr ""
+msgstr "VM 接口 (ID)"
 
 #: vpn/filtersets.py:390
 msgid "VLAN (name)"
-msgstr ""
+msgstr "VLAN (名称)"
 
 #: vpn/forms/bulk_edit.py:44 vpn/forms/bulk_import.py:42
 #: vpn/forms/filtersets.py:53
 msgid "Tunnel group"
-msgstr ""
+msgstr "隧道组"
 
 #: vpn/forms/bulk_edit.py:116 vpn/models/crypto.py:47
 msgid "SA lifetime"
-msgstr ""
+msgstr "SA 生命周期"
 
 #: vpn/forms/bulk_edit.py:150 wireless/forms/bulk_edit.py:78
 #: wireless/forms/bulk_edit.py:125 wireless/forms/filtersets.py:63
 #: wireless/forms/filtersets.py:97
 msgid "Pre-shared key"
-msgstr ""
+msgstr "预共享密钥"
 
 #: vpn/forms/bulk_edit.py:238 vpn/forms/bulk_import.py:234
 #: vpn/forms/filtersets.py:196 vpn/forms/model_forms.py:363
 #: vpn/models/crypto.py:103
 msgid "IKE policy"
-msgstr ""
+msgstr "IKE 策略"
 
 #: vpn/forms/bulk_edit.py:243 vpn/forms/bulk_import.py:239
 #: vpn/forms/filtersets.py:201 vpn/forms/model_forms.py:367
 #: vpn/models/crypto.py:197
 msgid "IPSec policy"
-msgstr ""
+msgstr "IPSec 策略"
 
 #: vpn/forms/bulk_import.py:50
 msgid "Tunnel encapsulation"
-msgstr ""
+msgstr "隧道封装"
 
 #: vpn/forms/bulk_import.py:83
 msgid "Operational role"
-msgstr ""
+msgstr "操作角色"
 
 #: vpn/forms/bulk_import.py:90
 msgid "Parent device of assigned interface"
-msgstr ""
+msgstr "已分配接口的父设备"
 
 #: vpn/forms/bulk_import.py:97
 msgid "Parent VM of assigned interface"
-msgstr ""
+msgstr "已分配接口的父 VM"
 
 #: vpn/forms/bulk_import.py:104
 msgid "Device or virtual machine interface"
-msgstr ""
+msgstr "设备或虚拟机接口"
 
 #: vpn/forms/bulk_import.py:181
 msgid "IKE proposal(s)"
-msgstr ""
+msgstr "IKE 提案"
 
 #: vpn/forms/bulk_import.py:211 vpn/models/crypto.py:185
 msgid "Diffie-Hellman group for Perfect Forward Secrecy"
-msgstr ""
+msgstr "用于完美前向保密的Diffie-Hellman群组"
 
 #: vpn/forms/bulk_import.py:217
 msgid "IPSec proposal(s)"
-msgstr ""
+msgstr "IPSec 提案"
 
 #: vpn/forms/bulk_import.py:231
 msgid "IPSec protocol"
-msgstr ""
+msgstr "IPSec 协议"
 
 #: vpn/forms/bulk_import.py:261
 msgid "L2VPN type"
-msgstr ""
+msgstr "L2VPN 类型"
 
 #: vpn/forms/bulk_import.py:282
 msgid "Parent device (for interface)"
-msgstr ""
+msgstr "父设备 (用于接口)"
 
 #: vpn/forms/bulk_import.py:289
 msgid "Parent virtual machine (for interface)"
-msgstr ""
+msgstr "父虚拟机 (用于接口)"
 
 #: vpn/forms/bulk_import.py:296
 msgid "Assigned interface (device or VM)"
-msgstr ""
+msgstr "已分配接口 (设备或 VM)"
 
 #: vpn/forms/bulk_import.py:329
 msgid "Cannot import device and VM interface terminations simultaneously."
-msgstr ""
+msgstr "无法同时导入设备和 VM 接口终止。"
 
 #: vpn/forms/bulk_import.py:331
 msgid "Each termination must specify either an interface or a VLAN."
-msgstr ""
+msgstr "每个终止必须指定接口或 VLAN。"
 
 #: vpn/forms/bulk_import.py:333
 msgid "Cannot assign both an interface and a VLAN."
-msgstr ""
+msgstr "无法同时分配接口和 VLAN。"
 
 #: vpn/forms/filtersets.py:127
 msgid "IKE version"
-msgstr ""
+msgstr "IKE 版本"
 
 #: vpn/forms/filtersets.py:139 vpn/forms/filtersets.py:172
 #: vpn/forms/model_forms.py:293 vpn/forms/model_forms.py:328
 msgid "Proposal"
-msgstr ""
+msgstr "提案"
 
 #: vpn/forms/filtersets.py:247
 msgid "Assigned Object Type"
-msgstr ""
+msgstr "已分配对象类型"
 
 #: vpn/forms/model_forms.py:147
 msgid "First Termination"
-msgstr ""
+msgstr "第一终止"
 
 #: vpn/forms/model_forms.py:151
 msgid "Second Termination"
-msgstr ""
+msgstr "第二终止"
 
 #: vpn/forms/model_forms.py:198
 msgid "This parameter is required when defining a termination."
-msgstr ""
+msgstr "在定义终止时需要此参数。"
 
 #: vpn/forms/model_forms.py:314 vpn/forms/model_forms.py:349
 msgid "Policy"
-msgstr ""
+msgstr "策略"
 
 #: vpn/forms/model_forms.py:469
 msgid "A termination must specify an interface or VLAN."
-msgstr ""
+msgstr "终止必须指定接口或 VLAN。"
 
 #: vpn/forms/model_forms.py:471
 msgid ""
 "A termination can only have one terminating object (an interface or VLAN)."
 msgstr ""
+"一个终止只能有一个终止对象 (接口或 VLAN)。"
 
 #: vpn/models/crypto.py:33
 msgid "encryption algorithm"
-msgstr ""
+msgstr "加密算法"
 
 #: vpn/models/crypto.py:37
 msgid "authentication algorithm"
-msgstr ""
+msgstr "认证算法"
 
 #: vpn/models/crypto.py:44
 msgid "Diffie-Hellman group ID"
-msgstr ""
+msgstr "Diffie-Hellman 群组 ID"
 
 #: vpn/models/crypto.py:50
 msgid "Security association lifetime (in seconds)"
-msgstr ""
+msgstr "安全关联生命周期 (以秒为单位)"
 
 #: vpn/models/crypto.py:59
 msgid "IKE proposal"
-msgstr ""
+msgstr "IKE 提案"
 
 #: vpn/models/crypto.py:60
 msgid "IKE proposals"
-msgstr ""
+msgstr "IKE 提案"
 
 #: vpn/models/crypto.py:76
 msgid "version"
-msgstr ""
+msgstr "版本"
 
 #: vpn/models/crypto.py:87 vpn/models/crypto.py:178
 msgid "proposals"
-msgstr ""
+msgstr "提案"
 
 #: vpn/models/crypto.py:90 wireless/models.py:38
 msgid "pre-shared key"
-msgstr ""
+msgstr "预共享密钥"
 
 #: vpn/models/crypto.py:104
 msgid "IKE policies"
-msgstr ""
+msgstr "IKE 策略"
 
 #: vpn/models/crypto.py:124
 msgid "encryption"
-msgstr ""
+msgstr "加密"
 
 #: vpn/models/crypto.py:129
 msgid "authentication"
-msgstr ""
+msgstr "认证"
 
 #: vpn/models/crypto.py:137
 msgid "Security association lifetime (seconds)"
-msgstr ""
+msgstr "安全关联生命周期（秒）"
 
 #: vpn/models/crypto.py:143
 msgid "Security association lifetime (in kilobytes)"
-msgstr ""
+msgstr "安全关联生命周期（以千字节为单位）"
 
 #: vpn/models/crypto.py:152
 msgid "IPSec proposal"
-msgstr ""
+msgstr "IPSec 提案"
 
 #: vpn/models/crypto.py:153
 msgid "IPSec proposals"
-msgstr ""
+msgstr "IPSec 提案"
 
 #: vpn/models/crypto.py:166
 msgid "Encryption and/or authentication algorithm must be defined"
-msgstr ""
+msgstr "必须定义加密和/或认证算法"
 
 #: vpn/models/crypto.py:198
 msgid "IPSec policies"
-msgstr ""
+msgstr "IPSec 策略"
 
 #: vpn/models/crypto.py:239
 msgid "IPSec profiles"
-msgstr ""
+msgstr "IPSec 配置文件"
 
 #: vpn/models/l2vpn.py:116
 msgid "L2VPN termination"
-msgstr ""
+msgstr "L2VPN 端点"
 
 #: vpn/models/l2vpn.py:117
 msgid "L2VPN terminations"
-msgstr ""
+msgstr "L2VPN 终止"
 
 #: vpn/models/l2vpn.py:135
 #, python-brace-format
 msgid "L2VPN Termination already assigned ({assigned_object})"
-msgstr ""
+msgstr "L2VPN 终止已分配 ({assigned_object})"
 
 #: vpn/models/l2vpn.py:147
 #, python-brace-format
@@ -13074,164 +13094,165 @@ msgid ""
 "{l2vpn_type} L2VPNs cannot have more than two terminations; found "
 "{terminations_count} already defined."
 msgstr ""
+"{l2vpn_type} L2VPN 不能拥有超过两个终止；已找到 {terminations_count} 个已定义的终止。"
 
 #: vpn/models/tunnels.py:26
 msgid "tunnel group"
-msgstr ""
+msgstr "隧道组"
 
 #: vpn/models/tunnels.py:27
 msgid "tunnel groups"
-msgstr ""
+msgstr "隧道组"
 
 #: vpn/models/tunnels.py:53
 msgid "encapsulation"
-msgstr ""
+msgstr "封装"
 
 #: vpn/models/tunnels.py:72
 msgid "tunnel ID"
-msgstr ""
+msgstr "隧道 ID"
 
 #: vpn/models/tunnels.py:94
 msgid "tunnel"
-msgstr ""
+msgstr "隧道"
 
 #: vpn/models/tunnels.py:95
 msgid "tunnels"
-msgstr ""
+msgstr "隧道"
 
 #: vpn/models/tunnels.py:153
 msgid "An object may be terminated to only one tunnel at a time."
-msgstr ""
+msgstr "一个对象只能终止到一个隧道。"
 
 #: vpn/models/tunnels.py:156
 msgid "tunnel termination"
-msgstr ""
+msgstr "隧道端点"
 
 #: vpn/models/tunnels.py:157
 msgid "tunnel terminations"
-msgstr ""
+msgstr "隧道端点"
 
 #: vpn/models/tunnels.py:174
 #, python-brace-format
 msgid "{name} is already attached to a tunnel ({tunnel})."
-msgstr ""
+msgstr "{name} 已连接到隧道 ({tunnel})。"
 
 #: vpn/tables/crypto.py:22
 msgid "Authentication Method"
-msgstr ""
+msgstr "认证方法"
 
 #: vpn/tables/crypto.py:25 vpn/tables/crypto.py:97
 msgid "Encryption Algorithm"
-msgstr ""
+msgstr "加密算法"
 
 #: vpn/tables/crypto.py:28 vpn/tables/crypto.py:100
 msgid "Authentication Algorithm"
-msgstr ""
+msgstr "认证算法"
 
 #: vpn/tables/crypto.py:34
 msgid "SA Lifetime"
-msgstr ""
+msgstr "SA 生命周期"
 
 #: vpn/tables/crypto.py:71
 msgid "Pre-shared Key"
-msgstr ""
+msgstr "预共享密钥"
 
 #: vpn/tables/crypto.py:103
 msgid "SA Lifetime (Seconds)"
-msgstr ""
+msgstr "SA 生命周期（秒）"
 
 #: vpn/tables/crypto.py:106
 msgid "SA Lifetime (KB)"
-msgstr ""
+msgstr "SA 生命周期（KB）"
 
 #: vpn/tables/l2vpn.py:69
 msgid "Object Parent"
-msgstr ""
+msgstr "对象父级"
 
 #: vpn/tables/l2vpn.py:74
 msgid "Object Site"
-msgstr ""
+msgstr "对象站点"
 
 #: vpn/tables/tunnels.py:84
 msgid "Host"
-msgstr ""
+msgstr "主机"
 
 #: wireless/choices.py:11
 msgid "Access point"
-msgstr ""
+msgstr "接入点"
 
 #: wireless/choices.py:12
 msgid "Station"
-msgstr ""
+msgstr "站点"
 
 #: wireless/choices.py:467
 msgid "Open"
-msgstr ""
+msgstr "开放"
 
 #: wireless/choices.py:469
 msgid "WPA Personal (PSK)"
-msgstr ""
+msgstr "WPA 个人（PSK）"
 
 #: wireless/choices.py:470
 msgid "WPA Enterprise"
-msgstr ""
+msgstr "WPA 企业"
 
 #: wireless/forms/bulk_edit.py:72 wireless/forms/bulk_edit.py:119
 #: wireless/forms/bulk_import.py:68 wireless/forms/bulk_import.py:71
 #: wireless/forms/bulk_import.py:110 wireless/forms/bulk_import.py:113
 #: wireless/forms/filtersets.py:58 wireless/forms/filtersets.py:92
 msgid "Authentication cipher"
-msgstr ""
+msgstr "认证密码"
 
 #: wireless/forms/bulk_import.py:52
 msgid "Bridged VLAN"
-msgstr ""
+msgstr "桥接 VLAN"
 
 #: wireless/forms/bulk_import.py:89 wireless/tables/wirelesslink.py:27
 msgid "Interface A"
-msgstr ""
+msgstr "接口 A"
 
 #: wireless/forms/bulk_import.py:93 wireless/tables/wirelesslink.py:36
 msgid "Interface B"
-msgstr ""
+msgstr "接口 B"
 
 #: wireless/forms/model_forms.py:158
 msgid "Side B"
-msgstr ""
+msgstr "端点 B"
 
 #: wireless/models.py:30
 msgid "authentication cipher"
-msgstr ""
+msgstr "认证密码"
 
 #: wireless/models.py:68
 msgid "wireless LAN group"
-msgstr ""
+msgstr "无线局域网组"
 
 #: wireless/models.py:69
 msgid "wireless LAN groups"
-msgstr ""
+msgstr "无线局域网组"
 
 #: wireless/models.py:115
 msgid "wireless LAN"
-msgstr ""
+msgstr "无线局域网"
 
 #: wireless/models.py:143
 msgid "interface A"
-msgstr ""
+msgstr "接口 A"
 
 #: wireless/models.py:150
 msgid "interface B"
-msgstr ""
+msgstr "接口 B"
 
 #: wireless/models.py:198
 msgid "wireless link"
-msgstr ""
+msgstr "无线链接"
 
 #: wireless/models.py:199
 msgid "wireless links"
-msgstr ""
+msgstr "无线链接"
 
 #: wireless/models.py:216 wireless/models.py:222
 #, python-brace-format
 msgid "{type} is not a wireless interface."
-msgstr ""
+msgstr "{type} 不是无线接口。"
