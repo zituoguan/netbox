@@ -107,7 +107,7 @@ msgstr "地区（ID）"
 #: virtualization/filtersets.py:52 virtualization/filtersets.py:179
 #: vpn/filtersets.py:325
 msgid "Region (slug)"
-msgstr "地区（标识符）"
+msgstr "地区 (slug)"
 
 #: circuits/filtersets.py:42 circuits/filtersets.py:195 dcim/filtersets.py:194
 #: dcim/filtersets.py:269 dcim/filtersets.py:377 dcim/filtersets.py:894
@@ -124,7 +124,7 @@ msgstr "站点组（ID）"
 #: ipam/filtersets.py:916 virtualization/filtersets.py:65
 #: virtualization/filtersets.py:192
 msgid "Site group (slug)"
-msgstr "站点组（标识符）"
+msgstr "站点组 (slug)"
 
 #: circuits/filtersets.py:54 circuits/forms/bulk_import.py:117
 #: circuits/forms/filtersets.py:47 circuits/forms/filtersets.py:171
@@ -181,7 +181,7 @@ msgstr "站点"
 #: virtualization/filtersets.py:75 virtualization/filtersets.py:202
 #: vpn/filtersets.py:335
 msgid "Site (slug)"
-msgstr "站点 (缩写)"
+msgstr "站点  (slug)"
 
 #: circuits/filtersets.py:65
 msgid "ASN (ID)"
@@ -195,7 +195,7 @@ msgstr "提供商 (ID)"
 #: circuits/filtersets.py:92 circuits/filtersets.py:118
 #: circuits/filtersets.py:152
 msgid "Provider (slug)"
-msgstr "提供商 (缩写)"
+msgstr "提供商  (slug)"
 
 #: circuits/filtersets.py:157
 msgid "Provider account (ID)"
@@ -207,11 +207,11 @@ msgstr "提供商网络 (ID)"
 
 #: circuits/filtersets.py:166
 msgid "Circuit type (ID)"
-msgstr "电路类型 (ID)"
+msgstr "线路类型 (ID)"
 
 #: circuits/filtersets.py:172
 msgid "Circuit type (slug)"
-msgstr "电路类型 (缩写)"
+msgstr "线路类型  (slug)"
 
 #: circuits/filtersets.py:207 circuits/filtersets.py:244 dcim/filtersets.py:205
 #: dcim/filtersets.py:280 dcim/filtersets.py:352 dcim/filtersets.py:905
@@ -244,7 +244,7 @@ msgstr "搜索"
 #: templates/dcim/inc/cable_termination.html:55
 #: templates/dcim/trace/circuit.html:4
 msgid "Circuit"
-msgstr "电路"
+msgstr "线路"
 
 #: circuits/filtersets.py:254
 msgid "ProviderNetwork (ID)"
@@ -599,7 +599,7 @@ msgstr "指定的提供商账户"
 
 #: circuits/forms/bulk_import.py:92
 msgid "Type of circuit"
-msgstr "电路类型"
+msgstr "线路类型"
 
 #: circuits/forms/bulk_import.py:97 dcim/forms/bulk_import.py:89
 #: dcim/forms/bulk_import.py:148 dcim/forms/bulk_import.py:196
@@ -662,13 +662,13 @@ msgstr "提供商网络"
 #: virtualization/forms/filtersets.py:99 wireless/forms/model_forms.py:88
 #: wireless/forms/model_forms.py:128
 msgid "Location"
-msgstr ""
+msgstr "位置"
 
 #: circuits/forms/filtersets.py:27 ipam/forms/model_forms.py:158
 #: ipam/models/asns.py:108 ipam/models/asns.py:125 ipam/tables/asn.py:41
 #: templates/ipam/asn.html:20
 msgid "ASN"
-msgstr ""
+msgstr "ASN"
 
 #: circuits/forms/filtersets.py:28 circuits/forms/filtersets.py:120
 #: dcim/forms/filtersets.py:136 dcim/forms/filtersets.py:150
@@ -681,7 +681,7 @@ msgstr ""
 #: virtualization/forms/filtersets.py:36 virtualization/forms/filtersets.py:47
 #: virtualization/forms/filtersets.py:102
 msgid "Contacts"
-msgstr ""
+msgstr "联系人"
 
 #: circuits/forms/filtersets.py:33 circuits/forms/filtersets.py:157
 #: dcim/forms/bulk_edit.py:110 dcim/forms/bulk_edit.py:222
@@ -706,7 +706,7 @@ msgstr ""
 #: virtualization/forms/filtersets.py:129
 #: virtualization/forms/model_forms.py:95 vpn/forms/filtersets.py:253
 msgid "Region"
-msgstr ""
+msgstr "地区"
 
 #: circuits/forms/filtersets.py:38 circuits/forms/filtersets.py:162
 #: dcim/forms/bulk_edit.py:230 dcim/forms/bulk_edit.py:755
@@ -723,11 +723,11 @@ msgstr ""
 #: virtualization/forms/filtersets.py:134
 #: virtualization/forms/model_forms.py:101
 msgid "Site group"
-msgstr ""
+msgstr "站点组"
 
 #: circuits/forms/filtersets.py:51
 msgid "ASN (legacy)"
-msgstr ""
+msgstr "ASN（旧式）"
 
 #: circuits/forms/filtersets.py:65 circuits/forms/filtersets.py:83
 #: circuits/forms/filtersets.py:102 circuits/forms/filtersets.py:117
@@ -753,24 +753,24 @@ msgstr ""
 #: virtualization/forms/filtersets.py:235 vpn/forms/filtersets.py:210
 #: wireless/forms/filtersets.py:33 wireless/forms/filtersets.py:73
 msgid "Attributes"
-msgstr ""
+msgstr "属性"
 
 #: circuits/forms/filtersets.py:73 circuits/tables/circuits.py:60
 #: circuits/tables/providers.py:66 templates/circuits/circuit.html:23
 #: templates/circuits/provideraccount.html:25
 msgid "Account"
-msgstr ""
+msgstr "账户"
 
 #: circuits/forms/model_forms.py:64
 #: templates/circuits/circuittermination_edit.html:23
 #: templates/circuits/inc/circuit_termination.html:89
 #: templates/circuits/providernetwork.html:18
 msgid "Provider Network"
-msgstr ""
+msgstr "提供商网络"
 
 #: circuits/forms/model_forms.py:78 templates/circuits/circuittype.html:20
 msgid "Circuit Type"
-msgstr ""
+msgstr "线路类型"
 
 #: circuits/models/circuits.py:25 dcim/models/cables.py:67
 #: dcim/models/device_component_templates.py:491
@@ -779,23 +779,23 @@ msgstr ""
 #: dcim/models/device_components.py:1166 dcim/models/devices.py:467
 #: dcim/models/racks.py:43 extras/models/tags.py:28
 msgid "color"
-msgstr ""
+msgstr "颜色"
 
 #: circuits/models/circuits.py:34
 msgid "circuit type"
-msgstr ""
+msgstr "线路类型"
 
 #: circuits/models/circuits.py:35
 msgid "circuit types"
-msgstr ""
+msgstr "线路类型"
 
 #: circuits/models/circuits.py:46
 msgid "circuit ID"
-msgstr ""
+msgstr "线路ID"
 
 #: circuits/models/circuits.py:47
 msgid "Unique circuit ID"
-msgstr ""
+msgstr "唯一线路 ID"
 
 #: circuits/models/circuits.py:67 core/models/data.py:54 core/models/jobs.py:85
 #: dcim/models/cables.py:49 dcim/models/devices.py:641
@@ -807,67 +807,67 @@ msgstr ""
 #: virtualization/models/virtualmachines.py:82 vpn/models/tunnels.py:40
 #: wireless/models.py:94 wireless/models.py:158
 msgid "status"
-msgstr ""
+msgstr "状态"
 
 #: circuits/models/circuits.py:82
 msgid "installed"
-msgstr ""
+msgstr "安装时间"
 
 #: circuits/models/circuits.py:87
 msgid "terminates"
-msgstr ""
+msgstr "到期时间"
 
 #: circuits/models/circuits.py:92
 msgid "commit rate (Kbps)"
-msgstr ""
+msgstr "承诺速率（Kbps）"
 
 #: circuits/models/circuits.py:93
 msgid "Committed rate"
-msgstr ""
+msgstr "已承诺的速率"
 
 #: circuits/models/circuits.py:135
 msgid "circuit"
-msgstr ""
+msgstr "线路"
 
 #: circuits/models/circuits.py:136
 msgid "circuits"
-msgstr ""
+msgstr "线路"
 
 #: circuits/models/circuits.py:169
 msgid "termination"
-msgstr ""
+msgstr "终端"
 
 #: circuits/models/circuits.py:186
 msgid "port speed (Kbps)"
-msgstr ""
+msgstr "端口速度（Kbps）"
 
 #: circuits/models/circuits.py:189
 msgid "Physical circuit speed"
-msgstr ""
+msgstr "物理线路速度"
 
 #: circuits/models/circuits.py:194
 msgid "upstream speed (Kbps)"
-msgstr ""
+msgstr "上行速度（Kbps）"
 
 #: circuits/models/circuits.py:195
 msgid "Upstream speed, if different from port speed"
-msgstr ""
+msgstr "上行速度，若与端口速度不同"
 
 #: circuits/models/circuits.py:200
 msgid "cross-connect ID"
-msgstr ""
+msgstr "交叉连接 ID"
 
 #: circuits/models/circuits.py:201
 msgid "ID of the local cross-connect"
-msgstr ""
+msgstr "本地交叉连接的 ID"
 
 #: circuits/models/circuits.py:206
 msgid "patch panel/port(s)"
-msgstr ""
+msgstr "配线架/端口"
 
 #: circuits/models/circuits.py:207
 msgid "Patch panel ID and port number(s)"
-msgstr ""
+msgstr "配线架 ID 和端口号码"
 
 #: circuits/models/circuits.py:210 dcim/models/device_component_templates.py:61
 #: dcim/models/device_components.py:69 dcim/models/racks.py:537
@@ -880,15 +880,15 @@ msgstr ""
 #: users/models.py:273 users/models.py:348
 #: virtualization/models/virtualmachines.py:282
 msgid "description"
-msgstr ""
+msgstr "描述"
 
 #: circuits/models/circuits.py:223
 msgid "circuit termination"
-msgstr ""
+msgstr "线路终端"
 
 #: circuits/models/circuits.py:224
 msgid "circuit terminations"
-msgstr ""
+msgstr "线路终端"
 
 #: circuits/models/providers.py:22 circuits/models/providers.py:66
 #: circuits/models/providers.py:104 core/models/data.py:41
@@ -914,11 +914,11 @@ msgstr ""
 #: vpn/models/crypto.py:209 vpn/models/l2vpn.py:22 vpn/models/tunnels.py:35
 #: wireless/models.py:50
 msgid "name"
-msgstr ""
+msgstr "名称"
 
 #: circuits/models/providers.py:25
 msgid "Full name of the provider"
-msgstr ""
+msgstr "提供商的全称"
 
 #: circuits/models/providers.py:28 dcim/models/devices.py:86
 #: dcim/models/sites.py:149 extras/models/models.py:536 ipam/models/asns.py:23
@@ -926,39 +926,39 @@ msgstr ""
 #: netbox/models/__init__.py:185 tenancy/models/tenants.py:25
 #: tenancy/models/tenants.py:49 vpn/models/l2vpn.py:27 wireless/models.py:55
 msgid "slug"
-msgstr ""
+msgstr "slug"
 
 #: circuits/models/providers.py:42
 msgid "provider"
-msgstr ""
+msgstr "提供商"
 
 #: circuits/models/providers.py:43
 msgid "providers"
-msgstr ""
+msgstr "提供商"
 
 #: circuits/models/providers.py:63
 msgid "account ID"
-msgstr ""
+msgstr "账户 ID"
 
 #: circuits/models/providers.py:86
 msgid "provider account"
-msgstr ""
+msgstr "提供商账户"
 
 #: circuits/models/providers.py:87
 msgid "provider accounts"
-msgstr ""
+msgstr "提供商账户"
 
 #: circuits/models/providers.py:115
 msgid "service ID"
-msgstr ""
+msgstr "服务 ID"
 
 #: circuits/models/providers.py:126
 msgid "provider network"
-msgstr ""
+msgstr "提供商网络"
 
 #: circuits/models/providers.py:127
 msgid "provider networks"
-msgstr ""
+msgstr "提供商网络"
 
 #: circuits/tables/circuits.py:29 circuits/tables/providers.py:18
 #: circuits/tables/providers.py:69 circuits/tables/providers.py:99
@@ -1042,7 +1042,7 @@ msgstr ""
 #: vpn/tables/tunnels.py:40 wireless/tables/wirelesslan.py:18
 #: wireless/tables/wirelesslan.py:79
 msgid "Name"
-msgstr ""
+msgstr "名称"
 
 #: circuits/tables/circuits.py:38 circuits/tables/providers.py:45
 #: circuits/tables/providers.py:79 netbox/navigation/menu.py:254
@@ -1051,23 +1051,23 @@ msgstr ""
 #: templates/circuits/provideraccount.html:46
 #: templates/circuits/providernetwork.html:54
 msgid "Circuits"
-msgstr ""
+msgstr "线路"
 
 #: circuits/tables/circuits.py:52 templates/circuits/circuit.html:27
 msgid "Circuit ID"
-msgstr ""
+msgstr "线路 ID"
 
 #: circuits/tables/circuits.py:65 wireless/forms/model_forms.py:157
 msgid "Side A"
-msgstr ""
+msgstr "A 侧"
 
 #: circuits/tables/circuits.py:69
 msgid "Side Z"
-msgstr ""
+msgstr "Z 侧"
 
 #: circuits/tables/circuits.py:72 templates/circuits/circuit.html:56
 msgid "Commit Rate"
-msgstr ""
+msgstr "承诺速率"
 
 #: circuits/tables/circuits.py:75 circuits/tables/providers.py:48
 #: circuits/tables/providers.py:82 circuits/tables/providers.py:107
@@ -1088,115 +1088,115 @@ msgstr ""
 #: vpn/tables/crypto.py:173 vpn/tables/l2vpn.py:37 vpn/tables/tunnels.py:57
 #: wireless/tables/wirelesslan.py:27 wireless/tables/wirelesslan.py:58
 msgid "Comments"
-msgstr ""
+msgstr "评论"
 
 #: circuits/tables/providers.py:23
 msgid "Accounts"
-msgstr ""
+msgstr "账户"
 
 #: circuits/tables/providers.py:29
 msgid "Account Count"
-msgstr ""
+msgstr "账户数量"
 
 #: circuits/tables/providers.py:39 dcim/tables/sites.py:100
 msgid "ASN Count"
-msgstr ""
+msgstr "ASN 数量"
 
 #: core/choices.py:18
 msgid "New"
-msgstr ""
+msgstr "新的"
 
 #: core/choices.py:19
 msgid "Queued"
-msgstr ""
+msgstr "排队中"
 
 #: core/choices.py:20
 msgid "Syncing"
-msgstr ""
+msgstr "同步中"
 
 #: core/choices.py:21 core/choices.py:57 core/tables/jobs.py:41
 #: extras/choices.py:210 templates/core/job.html:75
 msgid "Completed"
-msgstr ""
+msgstr "已完成"
 
 #: core/choices.py:22 core/choices.py:59 dcim/choices.py:176
 #: dcim/choices.py:222 dcim/choices.py:1496 extras/choices.py:212
 #: virtualization/choices.py:47
 msgid "Failed"
-msgstr ""
+msgstr "失败"
 
 #: core/choices.py:35 netbox/navigation/menu.py:330
 #: templates/extras/script/base.html:14 templates/extras/script_list.html:6
 #: templates/extras/script_list.html:20 templates/extras/script_result.html:18
 msgid "Scripts"
-msgstr ""
+msgstr "脚本"
 
 #: core/choices.py:36 netbox/navigation/menu.py:324
 #: templates/extras/report/base.html:13 templates/extras/report_list.html:7
 #: templates/extras/report_list.html:12
 msgid "Reports"
-msgstr ""
+msgstr "报告"
 
 #: core/choices.py:54 extras/choices.py:207
 msgid "Pending"
-msgstr ""
+msgstr "待定"
 
 #: core/choices.py:55 core/tables/jobs.py:32 extras/choices.py:208
 #: templates/core/job.html:62
 msgid "Scheduled"
-msgstr ""
+msgstr "已安排"
 
 #: core/choices.py:56 extras/choices.py:209
 msgid "Running"
-msgstr ""
+msgstr "运行中"
 
 #: core/choices.py:58 extras/choices.py:211
 msgid "Errored"
-msgstr ""
+msgstr "出错"
 
 #: core/data_backends.py:29 templates/dcim/interface.html:224
 msgid "Local"
-msgstr ""
+msgstr "本地"
 
 #: core/data_backends.py:47 extras/tables/tables.py:431
 #: templates/account/profile.html:16 templates/users/user.html:18
 #: users/tables.py:31
 msgid "Username"
-msgstr ""
+msgstr "用户名"
 
 #: core/data_backends.py:49 core/data_backends.py:55
 msgid "Only used for cloning with HTTP(S)"
-msgstr ""
+msgstr "仅用于通过 HTTP(S) 克隆"
 
 #: core/data_backends.py:53 templates/account/base.html:17
 #: templates/account/password.html:11 users/forms/model_forms.py:171
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: core/data_backends.py:59
 msgid "Branch"
-msgstr ""
+msgstr "分支"
 
 #: core/data_backends.py:118
 msgid "AWS access key ID"
-msgstr ""
+msgstr "AWS 访问密钥 ID"
 
 #: core/data_backends.py:122
 msgid "AWS secret access key"
-msgstr ""
+msgstr "AWS 秘密访问密钥"
 
 #: core/filtersets.py:49 extras/filtersets.py:203 extras/filtersets.py:538
 #: extras/filtersets.py:566
 msgid "Data source (ID)"
-msgstr ""
+msgstr "数据源（ID）"
 
 #: core/filtersets.py:55
 msgid "Data source (name)"
-msgstr ""
+msgstr "数据源（名称）"
 
 #: core/forms/bulk_edit.py:24 ipam/forms/bulk_edit.py:47
 msgid "Enforce unique space"
-msgstr ""
+msgstr "强制唯一地址"
 
 #: core/forms/bulk_edit.py:33 extras/forms/model_forms.py:202
 #: templates/extras/savedfilter.html:57 vpn/forms/filtersets.py:95
@@ -1205,11 +1205,11 @@ msgstr ""
 #: vpn/forms/model_forms.py:315 vpn/forms/model_forms.py:329
 #: vpn/forms/model_forms.py:350 vpn/forms/model_forms.py:373
 msgid "Parameters"
-msgstr ""
+msgstr "参数"
 
 #: core/forms/bulk_edit.py:37 templates/core/datasource.html:69
 msgid "Ignore rules"
-msgstr ""
+msgstr "忽略规则"
 
 #: core/forms/filtersets.py:26 core/forms/model_forms.py:95
 #: extras/forms/model_forms.py:165 extras/forms/model_forms.py:455
@@ -1222,7 +1222,7 @@ msgstr ""
 #: templates/extras/exporttemplate.html:41
 #: templates/virtualization/virtualmachine/render_config.html:19
 msgid "Data Source"
-msgstr ""
+msgstr "数据源"
 
 #: core/forms/filtersets.py:39 core/tables/data.py:26
 #: dcim/forms/bulk_edit.py:1012 dcim/forms/bulk_edit.py:1285
@@ -1240,60 +1240,60 @@ msgstr ""
 #: users/forms/filtersets.py:71 users/tables.py:86
 #: virtualization/forms/bulk_edit.py:216 virtualization/forms/filtersets.py:207
 msgid "Enabled"
-msgstr ""
+msgstr "已启用"
 
 #: core/forms/filtersets.py:51 core/forms/mixins.py:21
 msgid "File"
-msgstr ""
+msgstr "文件"
 
 #: core/forms/filtersets.py:56 core/forms/mixins.py:16
 #: extras/forms/filtersets.py:147 extras/forms/filtersets.py:336
 #: extras/forms/filtersets.py:422
 msgid "Data source"
-msgstr ""
+msgstr "数据源"
 
 #: core/forms/filtersets.py:64 extras/forms/filtersets.py:449
 msgid "Creation"
-msgstr ""
+msgstr "创建"
 
 #: core/forms/filtersets.py:70 extras/forms/filtersets.py:473
 #: extras/forms/filtersets.py:519 extras/tables/tables.py:474
 #: templates/core/job.html:25 templates/extras/objectchange.html:56
 #: tenancy/tables/contacts.py:90 vpn/tables/l2vpn.py:59
 msgid "Object Type"
-msgstr ""
+msgstr "对象类型"
 
 #: core/forms/filtersets.py:80
 msgid "Created after"
-msgstr ""
+msgstr "创建于之后"
 
 #: core/forms/filtersets.py:85
 msgid "Created before"
-msgstr ""
+msgstr "创建于之前"
 
 #: core/forms/filtersets.py:90
 msgid "Scheduled after"
-msgstr ""
+msgstr "计划于之后"
 
 #: core/forms/filtersets.py:95
 msgid "Scheduled before"
-msgstr ""
+msgstr "计划于之前"
 
 #: core/forms/filtersets.py:100
 msgid "Started after"
-msgstr ""
+msgstr "开始于之后"
 
-#: core/forms/filtersets.py:105
+#: core.forms/filtersets.py:105
 msgid "Started before"
-msgstr ""
+msgstr "开始于之前"
 
 #: core/forms/filtersets.py:110
 msgid "Completed after"
-msgstr ""
+msgstr "完成于之后"
 
 #: core/forms/filtersets.py:115
 msgid "Completed before"
-msgstr ""
+msgstr "完成于之前"
 
 #: core/forms/filtersets.py:122 dcim/forms/bulk_edit.py:359
 #: dcim/forms/filtersets.py:352 dcim/forms/filtersets.py:396
@@ -1306,120 +1306,120 @@ msgstr ""
 #: users/forms/model_forms.py:156 users/forms/model_forms.py:194
 #: users/tables.py:19
 msgid "User"
-msgstr ""
+msgstr "用户"
 
 #: core/forms/model_forms.py:52 core/tables/data.py:46
 #: templates/core/datafile.html:36 templates/extras/report/base.html:33
 #: templates/extras/script/base.html:32 templates/extras/script_result.html:45
 msgid "Source"
-msgstr ""
+msgstr "来源"
 
 #: core/forms/model_forms.py:56
 msgid "Backend Parameters"
-msgstr ""
+msgstr "后端参数"
 
 #: core/forms/model_forms.py:94
 msgid "File Upload"
-msgstr ""
+msgstr "文件上传"
 
 #: core/forms/model_forms.py:147 templates/core/configrevision.html:43
 #: templates/dcim/rack_elevation_list.html:6
 msgid "Rack Elevations"
-msgstr ""
+msgstr "机架高度"
 
 #: core/forms/model_forms.py:148 dcim/choices.py:1407
 #: dcim/forms/bulk_edit.py:859 dcim/forms/bulk_edit.py:1242
 #: dcim/forms/bulk_edit.py:1260 dcim/tables/racks.py:89
 #: netbox/navigation/menu.py:276 netbox/navigation/menu.py:280
 msgid "Power"
-msgstr ""
+msgstr "电源"
 
 #: core/forms/model_forms.py:149 netbox/navigation/menu.py:142
 #: templates/core/configrevision.html:79
 msgid "IPAM"
-msgstr ""
+msgstr "IPAM"
 
 #: core/forms/model_forms.py:150 netbox/navigation/menu.py:218
 #: templates/core/configrevision.html:95 vpn/forms/bulk_edit.py:76
 #: vpn/forms/filtersets.py:42 vpn/forms/model_forms.py:60
 #: vpn/forms/model_forms.py:145
 msgid "Security"
-msgstr ""
+msgstr "安全"
 
 #: core/forms/model_forms.py:151 templates/core/configrevision.html:107
 msgid "Banners"
-msgstr ""
+msgstr "横幅"
 
 #: core/forms/model_forms.py:152 templates/core/configrevision.html:131
 msgid "Pagination"
-msgstr ""
+msgstr "分页"
 
 #: core/forms/model_forms.py:153 extras/forms/model_forms.py:63
 #: templates/core/configrevision.html:147
 msgid "Validation"
-msgstr ""
+msgstr "验证"
 
 #: core/forms/model_forms.py:154 templates/account/preferences.html:6
 #: templates/core/configrevision.html:175
 msgid "User Preferences"
-msgstr ""
+msgstr "用户首选项"
 
 #: core/forms/model_forms.py:155 dcim/forms/filtersets.py:658
 #: templates/core/configrevision.html:193 users/forms/model_forms.py:63
 msgid "Miscellaneous"
-msgstr ""
+msgstr "杂项"
 
 #: core/forms/model_forms.py:158
 msgid "Config Revision"
-msgstr ""
+msgstr "配置修订"
 
 #: core/forms/model_forms.py:197
 msgid "This parameter has been defined statically and cannot be modified."
-msgstr ""
+msgstr "该参数已静态定义，无法修改。"
 
 #: core/forms/model_forms.py:205
 #, python-brace-format
 msgid "Current value: <strong>{value}</strong>"
-msgstr ""
+msgstr "当前值：<strong>{value}</strong>"
 
 #: core/forms/model_forms.py:207
 msgid " (default)"
-msgstr ""
+msgstr "（默认）"
 
 #: core/models/config.py:18 core/models/data.py:259 core/models/files.py:27
 #: core/models/jobs.py:50 extras/models/models.py:760
 #: netbox/models/features.py:52 users/models.py:248
 msgid "created"
-msgstr ""
+msgstr "已创建"
 
 #: core/models/config.py:22
 msgid "comment"
-msgstr ""
+msgstr "评论"
 
 #: core/models/config.py:29
 msgid "configuration data"
-msgstr ""
+msgstr "配置数据"
 
 #: core/models/config.py:36
 msgid "config revision"
-msgstr ""
+msgstr "配置修订"
 
 #: core/models/config.py:37
 msgid "config revisions"
-msgstr ""
+msgstr "配置修订"
 
 #: core/models/config.py:41
 msgid "Default configuration"
-msgstr ""
+msgstr "默认配置"
 
 #: core/models/config.py:43
 msgid "Current configuration"
-msgstr ""
+msgstr "当前配置"
 
 #: core/models/config.py:44
 #, python-brace-format
 msgid "Config revision #{id}"
-msgstr ""
+msgstr "配置修订 #{id}"
 
 #: core/models/data.py:46 dcim/models/cables.py:43
 #: dcim/models/device_component_templates.py:177
@@ -1437,176 +1437,176 @@ msgstr ""
 #: extras/models/search.py:43 virtualization/models/clusters.py:61
 #: vpn/models/l2vpn.py:32
 msgid "type"
-msgstr ""
+msgstr "类型"
 
 #: core/models/data.py:51 extras/choices.py:34 extras/models/models.py:194
 #: templates/core/datasource.html:59
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: core/models/data.py:61 dcim/models/device_component_templates.py:392
 #: dcim/models/device_components.py:513 extras/models/models.py:88
 #: extras/models/models.py:331 extras/models/models.py:556 users/models.py:353
 msgid "enabled"
-msgstr ""
+msgstr "已启用"
 
 #: core/models/data.py:65
 msgid "ignore rules"
-msgstr ""
+msgstr "忽略规则"
 
 #: core/models/data.py:67
 msgid "Patterns (one per line) matching files to ignore when syncing"
-msgstr ""
+msgstr "模式（每行一个）匹配同步时要忽略的文件"
 
 #: core/models/data.py:70 extras/models/models.py:564
 msgid "parameters"
-msgstr ""
+msgstr "参数"
 
 #: core/models/data.py:75
 msgid "last synced"
-msgstr ""
+msgstr "上次同步"
 
 #: core/models/data.py:83
 msgid "data source"
-msgstr ""
+msgstr "数据源"
 
 #: core/models/data.py:84
 msgid "data sources"
-msgstr ""
+msgstr "数据源"
 
 #: core/models/data.py:124
 #, python-brace-format
 msgid "Unknown backend type: {type}"
-msgstr ""
+msgstr "未知的后端类型：{type}"
 
 #: core/models/data.py:263 core/models/files.py:31 netbox/models/features.py:58
 msgid "last updated"
-msgstr ""
+msgstr "上次更新"
 
 #: core/models/data.py:273 dcim/models/cables.py:430
 msgid "path"
-msgstr ""
+msgstr "路径"
 
 #: core/models/data.py:276
 msgid "File path relative to the data source's root"
-msgstr ""
+msgstr "相对于数据源根目录的文件路径"
 
 #: core/models/data.py:280 ipam/models/ip.py:502
 msgid "size"
-msgstr ""
+msgstr "大小"
 
 #: core/models/data.py:283
 msgid "hash"
-msgstr ""
+msgstr "哈希"
 
 #: core/models/data.py:287
 msgid "Length must be 64 hexadecimal characters."
-msgstr ""
+msgstr "长度必须为 64 个十六进制字符。"
 
 #: core/models/data.py:289
 msgid "SHA256 hash of the file data"
-msgstr ""
+msgstr "文件数据的 SHA256 哈希值"
 
 #: core/models/data.py:306
 msgid "data file"
-msgstr ""
+msgstr "数据文件"
 
 #: core/models/data.py:307
 msgid "data files"
-msgstr ""
+msgstr "数据文件"
 
 #: core/models/data.py:393
 msgid "auto sync record"
-msgstr ""
+msgstr "自动同步记录"
 
 #: core/models/data.py:394
 msgid "auto sync records"
-msgstr ""
+msgstr "自动同步记录"
 
 #: core/models/files.py:37
 msgid "file root"
-msgstr ""
+msgstr "文件根目录"
 
 #: core/models/files.py:42
 msgid "file path"
-msgstr ""
+msgstr "文件路径"
 
 #: core/models/files.py:44
 msgid "File path relative to the designated root path"
-msgstr ""
+msgstr "相对于指定根路径的文件路径"
 
 #: core/models/files.py:61
 msgid "managed file"
-msgstr ""
+msgstr "管理的文件"
 
 #: core/models/files.py:62
 msgid "managed files"
-msgstr ""
+msgstr "管理的文件"
 
 #: core/models/jobs.py:54
 msgid "scheduled"
-msgstr ""
+msgstr "已计划"
 
 #: core/models/jobs.py:59
 msgid "interval"
-msgstr ""
+msgstr "间隔"
 
 #: core/models/jobs.py:65
 msgid "Recurrence interval (in minutes)"
-msgstr ""
+msgstr "重复间隔（以分钟为单位）"
 
 #: core/models/jobs.py:68
 msgid "started"
-msgstr ""
+msgstr "已开始"
 
 #: core/models/jobs.py:73
 msgid "completed"
-msgstr ""
+msgstr "已完成"
 
 #: core/models/jobs.py:91 extras/models/models.py:123
 #: extras/models/staging.py:87
 msgid "data"
-msgstr ""
+msgstr "数据"
 
 #: core/models/jobs.py:96
 msgid "error"
-msgstr ""
+msgstr "错误"
 
 #: core/models/jobs.py:101
 msgid "job ID"
-msgstr ""
+msgstr "作业 ID"
 
 #: core/models/jobs.py:112
 msgid "job"
-msgstr ""
+msgstr "作业"
 
 #: core/models/jobs.py:113
 msgid "jobs"
-msgstr ""
+msgstr "作业"
 
 #: core/models/jobs.py:135
 #, python-brace-format
 msgid "Jobs cannot be assigned to this object type ({type})."
-msgstr ""
+msgstr "不能将作业分配给此对象类型（{type}）。"
 
 #: core/tables/config.py:21 users/forms/filtersets.py:45 users/tables.py:39
 msgid "Is Active"
-msgstr ""
+msgstr "是否激活"
 
 #: core/tables/data.py:50 templates/core/datafile.html:40
 msgid "Path"
-msgstr ""
+msgstr "路径"
 
 #: core/tables/data.py:54 templates/extras/inc/result_pending.html:7
 msgid "Last updated"
-msgstr ""
+msgstr "上次更新"
 
 #: core/tables/jobs.py:10 dcim/tables/devicetypes.py:161
 #: extras/tables/tables.py:174 extras/tables/tables.py:340
 #: netbox/tables/tables.py:184 templates/dcim/virtualchassis_edit.html:53
 #: wireless/tables/wirelesslink.py:16
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: core/tables/jobs.py:21 extras/choices.py:38 extras/tables/tables.py:236
 #: extras/tables/tables.py:350 extras/tables/tables.py:448
@@ -1616,94 +1616,94 @@ msgstr ""
 #: templates/extras/journalentry.html:21 templates/extras/objectchange.html:62
 #: tenancy/tables/contacts.py:93 vpn/tables/l2vpn.py:64
 msgid "Object"
-msgstr ""
+msgstr "对象"
 
 #: core/tables/jobs.py:35
 msgid "Interval"
-msgstr ""
+msgstr "间隔"
 
 #: core/tables/jobs.py:38 templates/core/job.html:71
 #: templates/extras/htmx/report_result.html:7
 #: templates/extras/htmx/script_result.html:8
 msgid "Started"
-msgstr ""
+msgstr "开始"
 
 #: dcim/api/serializers.py:205 templates/dcim/rack.html:33
 msgid "Facility ID"
-msgstr ""
+msgstr "设施 ID"
 
 #: dcim/api/serializers.py:321 dcim/api/serializers.py:680
 msgid "Position (U)"
-msgstr ""
+msgstr "位置（U）"
 
 #: dcim/choices.py:21 virtualization/choices.py:21
 msgid "Staging"
-msgstr ""
+msgstr "暂存"
 
 #: dcim/choices.py:23 dcim/choices.py:178 dcim/choices.py:223
 #: dcim/choices.py:1420 virtualization/choices.py:23
 #: virtualization/choices.py:48
 msgid "Decommissioning"
-msgstr ""
+msgstr "停用"
 
 #: dcim/choices.py:24
 msgid "Retired"
-msgstr ""
+msgstr "已退役"
 
 #: dcim/choices.py:65
 msgid "2-post frame"
-msgstr ""
+msgstr "2 柱架"
 
 #: dcim/choices.py:66
 msgid "4-post frame"
-msgstr ""
+msgstr "4 柱架"
 
 #: dcim/choices.py:67
 msgid "4-post cabinet"
-msgstr ""
+msgstr "4 柱柜"
 
 #: dcim/choices.py:68
 msgid "Wall-mounted frame"
-msgstr ""
+msgstr "壁挂架"
 
 #: dcim/choices.py:69
 msgid "Wall-mounted frame (vertical)"
-msgstr ""
+msgstr "壁挂架（垂直）"
 
 #: dcim/choices.py:70
 msgid "Wall-mounted cabinet"
-msgstr ""
+msgstr "壁挂柜"
 
 #: dcim/choices.py:71
 msgid "Wall-mounted cabinet (vertical)"
-msgstr ""
+msgstr "壁挂柜（垂直）"
 
 #: dcim/choices.py:83 dcim/choices.py:84 dcim/choices.py:85 dcim/choices.py:86
 #, python-brace-format
 msgid "{n} inches"
-msgstr ""
+msgstr "{n} 英寸"
 
 #: dcim/choices.py:100 ipam/choices.py:32 ipam/choices.py:50 ipam/choices.py:70
 #: ipam/choices.py:155 wireless/choices.py:26
 msgid "Reserved"
-msgstr ""
+msgstr "已保留"
 
 #: dcim/choices.py:101 templates/dcim/device.html:262
 msgid "Available"
-msgstr ""
+msgstr "可用"
 
 #: dcim/choices.py:104 ipam/choices.py:33 ipam/choices.py:51 ipam/choices.py:71
 #: ipam/choices.py:156 wireless/choices.py:28
 msgid "Deprecated"
-msgstr ""
+msgstr "已弃用"
 
 #: dcim/choices.py:114 templates/dcim/rack.html:128
 msgid "Millimeters"
-msgstr ""
+msgstr "毫米"
 
 #: dcim/choices.py:115 dcim/choices.py:1442
 msgid "Inches"
-msgstr ""
+msgstr "英寸"
 
 #: dcim/choices.py:140 dcim/forms/bulk_edit.py:66 dcim/forms/bulk_edit.py:85
 #: dcim/forms/bulk_edit.py:171 dcim/forms/bulk_edit.py:1290
@@ -1729,108 +1729,108 @@ msgstr ""
 #: virtualization/tables/virtualmachines.py:142 wireless/forms/bulk_edit.py:23
 #: wireless/forms/bulk_import.py:21 wireless/forms/model_forms.py:20
 msgid "Parent"
-msgstr ""
+msgstr "父级"
 
 #: dcim/choices.py:141
 msgid "Child"
-msgstr ""
+msgstr "子级"
 
 #: dcim/choices.py:155 templates/dcim/device.html:345
 #: templates/dcim/rack.html:181 templates/dcim/rack_elevation_list.html:22
 #: templates/dcim/rackreservation.html:84
 msgid "Front"
-msgstr ""
+msgstr "前方"
 
 #: dcim/choices.py:156 templates/dcim/device.html:351
 #: templates/dcim/rack.html:187 templates/dcim/rack_elevation_list.html:23
 #: templates/dcim/rackreservation.html:90
 msgid "Rear"
-msgstr ""
+msgstr "后方"
 
 #: dcim/choices.py:175 dcim/choices.py:221 virtualization/choices.py:46
 msgid "Staged"
-msgstr ""
+msgstr "已暂存"
 
 #: dcim/choices.py:177
 msgid "Inventory"
-msgstr ""
+msgstr "库存"
 
 #: dcim/choices.py:193
 msgid "Front to rear"
-msgstr ""
+msgstr "前方到后方"
 
 #: dcim/choices.py:194
 msgid "Rear to front"
-msgstr ""
+msgstr "后方到前方"
 
 #: dcim/choices.py:195
 msgid "Left to right"
-msgstr ""
+msgstr "左到右"
 
 #: dcim/choices.py:196
 msgid "Right to left"
-msgstr ""
+msgstr "右到左"
 
 #: dcim/choices.py:197
 msgid "Side to rear"
-msgstr ""
+msgstr "侧方到后方"
 
 #: dcim/choices.py:198 dcim/choices.py:1215
 msgid "Passive"
-msgstr ""
+msgstr "被动"
 
 #: dcim/choices.py:199
 msgid "Mixed"
-msgstr ""
+msgstr "混合"
 
 #: dcim/choices.py:443 dcim/choices.py:680
 msgid "NEMA (Non-locking)"
-msgstr ""
+msgstr "NEMA（非锁定）"
 
 #: dcim/choices.py:465 dcim/choices.py:702
 msgid "NEMA (Locking)"
-msgstr ""
+msgstr "NEMA（锁定）"
 
 #: dcim/choices.py:488 dcim/choices.py:725
 msgid "California Style"
-msgstr ""
+msgstr "加州风格"
 
 #: dcim/choices.py:496
 msgid "International/ITA"
-msgstr ""
+msgstr "国际/ITA"
 
 #: dcim/choices.py:526 dcim/choices.py:755
 msgid "Proprietary"
-msgstr ""
+msgstr "专有"
 
 #: dcim/choices.py:534 dcim/choices.py:764 dcim/choices.py:1131
 #: dcim/choices.py:1133 dcim/choices.py:1338 dcim/choices.py:1340
 #: netbox/navigation/menu.py:188
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 #: dcim/choices.py:733
 msgid "ITA/International"
-msgstr ""
+msgstr "ITA/国际"
 
 #: dcim/choices.py:794
 msgid "Physical"
-msgstr ""
+msgstr "物理"
 
 #: dcim/choices.py:795 dcim/choices.py:949
 msgid "Virtual"
-msgstr ""
+msgstr "虚拟"
 
 #: dcim/choices.py:796 dcim/choices.py:1019 dcim/forms/bulk_edit.py:1398
 #: dcim/forms/filtersets.py:1233 dcim/forms/model_forms.py:881
 #: dcim/forms/model_forms.py:1190 netbox/navigation/menu.py:128
 #: netbox/navigation/menu.py:132 templates/dcim/interface.html:217
 msgid "Wireless"
-msgstr ""
+msgstr "无线"
 
 #: dcim/choices.py:947
 msgid "Virtual interfaces"
-msgstr ""
+msgstr "虚拟接口"
 
 #: dcim/choices.py:950 dcim/forms/bulk_edit.py:1295
 #: dcim/forms/bulk_import.py:777 dcim/forms/model_forms.py:869
@@ -1840,349 +1840,346 @@ msgstr ""
 #: virtualization/forms/bulk_import.py:158
 #: virtualization/tables/virtualmachines.py:146
 msgid "Bridge"
-msgstr ""
+msgstr "桥接"
 
 #: dcim/choices.py:951
 msgid "Link Aggregation Group (LAG)"
-msgstr ""
+msgstr "链路聚合组 (LAG)"
 
 #: dcim/choices.py:955
 msgid "Ethernet (fixed)"
-msgstr ""
+msgstr "以太网 (固定)"
 
 #: dcim/choices.py:969
 msgid "Ethernet (modular)"
-msgstr ""
+msgstr "以太网 (模块化)"
 
 #: dcim/choices.py:1005
 msgid "Ethernet (backplane)"
-msgstr ""
+msgstr "以太网 (背板)"
 
 #: dcim/choices.py:1033
 msgid "Cellular"
-msgstr ""
+msgstr "蜂窝网络"
 
 #: dcim/choices.py:1080 dcim/forms/filtersets.py:302
 #: dcim/forms/filtersets.py:736 dcim/forms/filtersets.py:876
 #: dcim/forms/filtersets.py:1426 templates/dcim/inventoryitem.html:53
 #: templates/dcim/virtualchassis_edit.html:55
 msgid "Serial"
-msgstr ""
+msgstr "串行"
 
 #: dcim/choices.py:1095
 msgid "Coaxial"
-msgstr ""
+msgstr "同轴"
 
 #: dcim/choices.py:1112
 msgid "Stacking"
-msgstr ""
+msgstr "堆叠"
 
 #: dcim/choices.py:1162
 msgid "Half"
-msgstr ""
+msgstr "半"
 
 #: dcim/choices.py:1163
 msgid "Full"
-msgstr ""
+msgstr "全"
 
 #: dcim/choices.py:1164 wireless/choices.py:480
 msgid "Auto"
-msgstr ""
+msgstr "自动"
 
 #: dcim/choices.py:1175
 msgid "Access"
-msgstr ""
+msgstr "访问"
 
 #: dcim/choices.py:1176 ipam/tables/vlans.py:168 ipam/tables/vlans.py:213
 #: templates/dcim/inc/interface_vlans_table.html:7
 msgid "Tagged"
-msgstr ""
+msgstr "Tagged"
 
 #: dcim/choices.py:1177
 msgid "Tagged (All)"
-msgstr ""
+msgstr "Tagged (All)"
 
 #: dcim/choices.py:1206
 msgid "IEEE Standard"
-msgstr ""
+msgstr "IEEE 标准"
 
 #: dcim/choices.py:1217
 msgid "Passive 24V (2-pair)"
-msgstr ""
+msgstr "被动 24V (2 对)"
 
 #: dcim/choices.py:1218
 msgid "Passive 24V (4-pair)"
-msgstr ""
+msgstr "被动 24V (4 对)"
 
 #: dcim/choices.py:1219
 msgid "Passive 48V (2-pair)"
-msgstr ""
+msgstr "被动 48V (2 对)"
 
 #: dcim/choices.py:1220
 msgid "Passive 48V (4-pair)"
-msgstr ""
+msgstr "被动 48V (4 对)"
 
 #: dcim/choices.py:1282 dcim/choices.py:1378
 msgid "Copper"
-msgstr ""
+msgstr "铜"
 
 #: dcim/choices.py:1305
 msgid "Fiber Optic"
-msgstr ""
+msgstr "光纤"
 
 #: dcim/choices.py:1394
 msgid "Fiber"
-msgstr ""
+msgstr "光纤"
 
 #: dcim/choices.py:1418 dcim/forms/filtersets.py:1140
 msgid "Connected"
-msgstr ""
+msgstr "已连接"
 
 #: dcim/choices.py:1437
 msgid "Kilometers"
-msgstr ""
+msgstr "千米"
 
 #: dcim/choices.py:1438 templates/dcim/cable_trace.html:62
 msgid "Meters"
-msgstr ""
+msgstr "米"
 
 #: dcim/choices.py:1439
 msgid "Centimeters"
-msgstr ""
+msgstr "厘米"
 
 #: dcim/choices.py:1440
 msgid "Miles"
-msgstr ""
+msgstr "英里"
 
 #: dcim/choices.py:1441 templates/dcim/cable_trace.html:63
 msgid "Feet"
-msgstr ""
+msgstr "英尺"
 
 #: dcim/choices.py:1457 templates/dcim/device.html:332
 #: templates/dcim/rack.html:157
 msgid "Kilograms"
-msgstr ""
+msgstr "千克"
 
 #: dcim/choices.py:1458
 msgid "Grams"
-msgstr ""
+msgstr "克"
 
 #: dcim/choices.py:1459 templates/dcim/rack.html:158
 msgid "Pounds"
-msgstr ""
+msgstr "磅"
 
 #: dcim/choices.py:1460
 msgid "Ounces"
-msgstr ""
+msgstr "盎司"
 
 #: dcim/choices.py:1506 tenancy/choices.py:17
 msgid "Primary"
-msgstr ""
+msgstr "主要"
 
 #: dcim/choices.py:1507
 msgid "Redundant"
-msgstr ""
+msgstr "冗余"
 
 #: dcim/choices.py:1528
 msgid "Single phase"
-msgstr ""
+msgstr "单相"
 
 #: dcim/choices.py:1529
 msgid "Three-phase"
-msgstr ""
+msgstr "三相"
 
 #: dcim/filtersets.py:80
 msgid "Parent region (ID)"
-msgstr ""
+msgstr "父级地区（ID）"
 
 #: dcim/filtersets.py:86
 msgid "Parent region (slug)"
-msgstr ""
+msgstr "父级地区（slug）"
 
 #: dcim/filtersets.py:97
 msgid "Parent site group (ID)"
-msgstr ""
+msgstr "父级站点组（ID）"
 
 #: dcim/filtersets.py:103
 msgid "Parent site group (slug)"
-msgstr ""
+msgstr "父站点组（slug）"
 
 #: dcim/filtersets.py:132 ipam/filtersets.py:797 ipam/filtersets.py:930
 msgid "Group (ID)"
-msgstr ""
+msgstr "组（ID）"
 
 #: dcim/filtersets.py:138
 msgid "Group (slug)"
-msgstr ""
+msgstr "组（slug）"
 
 #: dcim/filtersets.py:144 dcim/filtersets.py:149
 msgid "AS (ID)"
-msgstr ""
+msgstr "自动系统（ID）"
 
 #: dcim/filtersets.py:217 dcim/filtersets.py:292 dcim/filtersets.py:390
 #: dcim/filtersets.py:917 dcim/filtersets.py:1213 dcim/filtersets.py:1881
 msgid "Location (ID)"
-msgstr ""
+msgstr "位置（ID）"
 
 #: dcim/filtersets.py:224 dcim/filtersets.py:299 dcim/filtersets.py:397
 #: dcim/filtersets.py:1219 extras/filtersets.py:447
 msgid "Location (slug)"
-msgstr ""
+msgstr "位置（slug）"
 
 #: dcim/filtersets.py:313 dcim/filtersets.py:764 dcim/filtersets.py:854
 #: dcim/filtersets.py:1619 ipam/filtersets.py:347 ipam/filtersets.py:459
 #: ipam/filtersets.py:940 virtualization/filtersets.py:209
 msgid "Role (ID)"
-msgstr ""
+msgstr "角色（ID）"
 
 #: dcim/filtersets.py:319 dcim/filtersets.py:770 dcim/filtersets.py:860
 #: dcim/filtersets.py:1625 extras/filtersets.py:463 ipam/filtersets.py:353
 #: ipam/filtersets.py:465 ipam/filtersets.py:946
 #: virtualization/filtersets.py:215
 msgid "Role (slug)"
-msgstr ""
+msgstr "角色（slug）"
 
 #: dcim/filtersets.py:347 dcim/filtersets.py:922 dcim/filtersets.py:1224
 #: dcim/filtersets.py:1942
 msgid "Rack (ID)"
-msgstr ""
+msgstr "机架（ID）"
 
 #: dcim/filtersets.py:401 extras/filtersets.py:234 extras/filtersets.py:278
 #: extras/filtersets.py:318 extras/filtersets.py:613
 msgid "User (ID)"
-msgstr ""
+msgstr "用户（ID）"
 
 #: dcim/filtersets.py:407 extras/filtersets.py:240 extras/filtersets.py:284
 #: extras/filtersets.py:324 users/filtersets.py:80 users/filtersets.py:140
 msgid "User (name)"
-msgstr ""
+msgstr "用户（名称）"
 
 #: dcim/filtersets.py:435 dcim/filtersets.py:561 dcim/filtersets.py:754
-#: dcim/filtersets.py:805 dcim/filtersets.py:833 dcim/filtersets.py:1116
+#: dcim/filtersets.py:805 dcim.filtersets.py:833 dcim/filtersets.py:1116
 #: dcim/filtersets.py:1609
 msgid "Manufacturer (ID)"
-msgstr ""
+msgstr "制造商（ID）"
 
 #: dcim/filtersets.py:441 dcim/filtersets.py:567 dcim/filtersets.py:760
 #: dcim/filtersets.py:811 dcim/filtersets.py:839 dcim/filtersets.py:1122
 #: dcim/filtersets.py:1615
 msgid "Manufacturer (slug)"
-msgstr ""
+msgstr "制造商（slug）"
 
 #: dcim/filtersets.py:445
 msgid "Default platform (ID)"
-msgstr ""
+msgstr "默认平台（ID）"
 
 #: dcim/filtersets.py:451
 msgid "Default platform (slug)"
-msgstr ""
+msgstr "默认平台（slug）"
 
 #: dcim/filtersets.py:454 dcim/forms/filtersets.py:452
 msgid "Has a front image"
-msgstr ""
+msgstr "有正面图像"
 
 #: dcim/filtersets.py:458 dcim/forms/filtersets.py:459
 msgid "Has a rear image"
-msgstr ""
+msgstr "有背面图像"
 
 #: dcim/filtersets.py:463 dcim/filtersets.py:571 dcim/filtersets.py:975
 #: dcim/forms/filtersets.py:466 dcim/forms/filtersets.py:563
 #: dcim/forms/filtersets.py:775
 msgid "Has console ports"
-msgstr ""
+msgstr "有控制台端口"
 
 #: dcim/filtersets.py:467 dcim/filtersets.py:575 dcim/filtersets.py:979
 #: dcim/forms/filtersets.py:473 dcim/forms/filtersets.py:570
 #: dcim/forms/filtersets.py:782
 msgid "Has console server ports"
-msgstr ""
+msgstr "有控制台服务器端口"
 
 #: dcim/filtersets.py:471 dcim/filtersets.py:579 dcim/filtersets.py:983
 #: dcim/forms/filtersets.py:480 dcim/forms/filtersets.py:577
 #: dcim/forms/filtersets.py:789
 msgid "Has power ports"
-msgstr ""
+msgstr "有电源端口"
 
 #: dcim/filtersets.py:475 dcim/filtersets.py:583 dcim/filtersets.py:987
 #: dcim/forms/filtersets.py:487 dcim/forms/filtersets.py:584
 #: dcim/forms/filtersets.py:796
 msgid "Has power outlets"
-msgstr ""
+msgstr "有电源插座"
 
 #: dcim/filtersets.py:479 dcim/filtersets.py:587 dcim/filtersets.py:991
 #: dcim/forms/filtersets.py:494 dcim/forms/filtersets.py:591
 #: dcim/forms/filtersets.py:803
 msgid "Has interfaces"
-msgstr ""
+msgstr "有接口"
 
 #: dcim/filtersets.py:483 dcim/filtersets.py:591 dcim/filtersets.py:995
 #: dcim/forms/filtersets.py:501 dcim/forms/filtersets.py:598
 #: dcim/forms/filtersets.py:810
-msgid "Has pass-through ports"
-msgstr ""
-
 #: dcim/filtersets.py:487 dcim/filtersets.py:999 dcim/forms/filtersets.py:515
-msgid "Has module bays"
-msgstr ""
+msgid "Has pass-through ports"
+msgstr "具有直通端口"
 
 #: dcim/filtersets.py:491 dcim/filtersets.py:1003 dcim/forms/filtersets.py:508
-msgid "Has device bays"
-msgstr ""
+msgid "Has module bays"
+msgstr "具有模块插槽"
 
 #: dcim/filtersets.py:495 dcim/forms/filtersets.py:522
 msgid "Has inventory items"
-msgstr ""
+msgstr "具有库存项目"
 
 #: dcim/filtersets.py:638 dcim/filtersets.py:849 dcim/filtersets.py:1245
 msgid "Device type (ID)"
-msgstr ""
+msgstr "设备类型（ID）"
 
 #: dcim/filtersets.py:651 dcim/filtersets.py:1127
 msgid "Module type (ID)"
-msgstr ""
+msgstr "模块类型（ID）"
 
 #: dcim/filtersets.py:750 dcim/filtersets.py:1605
 msgid "Parent inventory item (ID)"
-msgstr ""
+msgstr "父库存项目（ID）"
 
 #: dcim/filtersets.py:793 dcim/filtersets.py:815 dcim/filtersets.py:971
 #: virtualization/filtersets.py:237
 msgid "Config template (ID)"
-msgstr ""
+msgstr "配置模板（ID）"
 
 #: dcim/filtersets.py:845
 msgid "Device type (slug)"
-msgstr ""
+msgstr "设备类型（slug）"
 
 #: dcim/filtersets.py:865
 msgid "Parent Device (ID)"
-msgstr ""
+msgstr "父设备（ID）"
 
 #: dcim/filtersets.py:869 virtualization/filtersets.py:219
 msgid "Platform (ID)"
-msgstr ""
+msgstr "平台（ID）"
 
 #: dcim/filtersets.py:875 extras/filtersets.py:474
 #: virtualization/filtersets.py:225
 msgid "Platform (slug)"
-msgstr ""
+msgstr "平台（slug）"
 
 #: dcim/filtersets.py:911 dcim/filtersets.py:1208 dcim/filtersets.py:1703
 #: dcim/filtersets.py:1875 dcim/filtersets.py:1933
 msgid "Site name (slug)"
-msgstr ""
+msgstr "站点名称（slug）"
 
 #: dcim/filtersets.py:926
 msgid "VM cluster (ID)"
-msgstr ""
+msgstr "虚拟机群集（ID）"
 
 #: dcim/filtersets.py:932
 msgid "Device model (slug)"
-msgstr ""
+msgstr "设备型号（slug）"
 
 #: dcim/filtersets.py:943 dcim/forms/bulk_edit.py:421
 msgid "Is full depth"
-msgstr ""
+msgstr "全深度"
 
 #: dcim/filtersets.py:947 dcim/forms/common.py:18 dcim/forms/filtersets.py:745
 #: dcim/forms/filtersets.py:1285 dcim/models/device_components.py:519
@@ -2190,68 +2187,68 @@ msgstr ""
 #: virtualization/forms/filtersets.py:168
 #: virtualization/forms/filtersets.py:215
 msgid "MAC address"
-msgstr ""
+msgstr "MAC 地址"
 
 #: dcim/filtersets.py:954 dcim/forms/filtersets.py:754
 #: dcim/forms/filtersets.py:841 virtualization/filtersets.py:233
 #: virtualization/forms/filtersets.py:172
 msgid "Has a primary IP"
-msgstr ""
+msgstr "具有主要 IP 地址"
 
 #: dcim/filtersets.py:958
 msgid "Has an out-of-band IP"
-msgstr ""
+msgstr "具有带外 IP 地址"
 
 #: dcim/filtersets.py:963
 msgid "Virtual chassis (ID)"
-msgstr ""
+msgstr "虚拟机箱（ID）"
 
 #: dcim/filtersets.py:967
 msgid "Is a virtual chassis member"
-msgstr ""
+msgstr "是虚拟机箱成员"
 
 #: dcim/filtersets.py:1008
 msgid "OOB IP (ID)"
-msgstr ""
+msgstr "带外 IP（ID）"
 
 #: dcim/filtersets.py:1133
 msgid "Module type (model)"
-msgstr ""
+msgstr "模块类型（型号）"
 
 #: dcim/filtersets.py:1139
 msgid "Module Bay (ID)"
-msgstr ""
+msgstr "模块插槽（ID）"
 
 #: dcim/filtersets.py:1143 dcim/filtersets.py:1234 ipam/filtersets.py:577
 #: ipam/filtersets.py:807 ipam/filtersets.py:1015
 #: virtualization/filtersets.py:160 vpn/filtersets.py:351
 msgid "Device (ID)"
-msgstr ""
+msgstr "设备（ID）"
 
 #: dcim/filtersets.py:1230
 msgid "Rack (name)"
-msgstr ""
+msgstr "机架（名称）"
 
 #: dcim/filtersets.py:1240 ipam/filtersets.py:572 ipam/filtersets.py:802
 #: ipam/filtersets.py:1021 vpn/filtersets.py:346
 msgid "Device (name)"
-msgstr ""
+msgstr "设备（名称）"
 
 #: dcim/filtersets.py:1251
 msgid "Device type (model)"
-msgstr ""
+msgstr "设备类型（型号）"
 
 #: dcim/filtersets.py:1256 dcim/filtersets.py:1279
 msgid "Device role (ID)"
-msgstr ""
+msgstr "设备角色（ID）"
 
 #: dcim/filtersets.py:1262 dcim/filtersets.py:1285
 msgid "Device role (slug)"
-msgstr ""
+msgstr "设备角色（slug）"
 
 #: dcim/filtersets.py:1267
 msgid "Virtual Chassis (ID)"
-msgstr ""
+msgstr "虚拟机箱（ID）"
 
 #: dcim/filtersets.py:1273 dcim/forms/filtersets.py:106
 #: dcim/tables/devices.py:235 netbox/navigation/menu.py:67
@@ -2260,20 +2257,20 @@ msgstr ""
 #: templates/dcim/virtualchassis_add.html:8
 #: templates/dcim/virtualchassis_edit.html:25
 msgid "Virtual Chassis"
-msgstr ""
+msgstr "虚拟机箱"
 
 #: dcim/filtersets.py:1305
 msgid "Module (ID)"
-msgstr ""
+msgstr "模块（ID）"
 
 #: dcim/filtersets.py:1409 ipam/forms/bulk_import.py:188
 #: vpn/forms/bulk_import.py:303
 msgid "Assigned VLAN"
-msgstr ""
+msgstr "分配的 VLAN"
 
 #: dcim/filtersets.py:1413
 msgid "Assigned VID"
-msgstr ""
+msgstr "分配的 VID"
 
 #: dcim/filtersets.py:1418 dcim/forms/bulk_edit.py:1374
 #: dcim/forms/bulk_import.py:828 dcim/forms/filtersets.py:1328
@@ -2302,16 +2299,16 @@ msgstr ""
 #: virtualization/models/virtualmachines.py:348
 #: virtualization/tables/virtualmachines.py:123
 msgid "VRF"
-msgstr ""
+msgstr "VRF"
 
 #: dcim/filtersets.py:1424 ipam/filtersets.py:288 ipam/filtersets.py:299
 #: ipam/filtersets.py:455 ipam/filtersets.py:556 ipam/filtersets.py:567
 msgid "VRF (RD)"
-msgstr ""
+msgstr "VRF (RD)"
 
 #: dcim/filtersets.py:1429 ipam/filtersets.py:963 vpn/filtersets.py:314
 msgid "L2VPN (ID)"
-msgstr ""
+msgstr "L2VPN (ID)"
 
 #: dcim/filtersets.py:1435 dcim/forms/filtersets.py:1333
 #: dcim/tables/devices.py:585 ipam/filtersets.py:969
@@ -2322,55 +2319,55 @@ msgstr ""
 #: vpn/forms/filtersets.py:242 vpn/forms/model_forms.py:402
 #: vpn/forms/model_forms.py:420 vpn/models/l2vpn.py:63 vpn/tables/l2vpn.py:55
 msgid "L2VPN"
-msgstr ""
+msgstr "L2VPN"
 
 #: dcim/filtersets.py:1467
 msgid "Virtual Chassis Interfaces for Device"
-msgstr ""
+msgstr "设备的虚拟机箱接口"
 
 #: dcim/filtersets.py:1472
 msgid "Virtual Chassis Interfaces for Device (ID)"
-msgstr ""
+msgstr "设备的虚拟机箱接口（ID）"
 
 #: dcim/filtersets.py:1476
 msgid "Kind of interface"
-msgstr ""
+msgstr "接口类型"
 
 #: dcim/filtersets.py:1481 virtualization/filtersets.py:287
 msgid "Parent interface (ID)"
-msgstr ""
+msgstr "父接口（ID）"
 
 #: dcim/filtersets.py:1486 virtualization/filtersets.py:292
 msgid "Bridged interface (ID)"
-msgstr ""
+msgstr "桥接接口（ID）"
 
 #: dcim/filtersets.py:1491
 msgid "LAG interface (ID)"
-msgstr ""
+msgstr "LAG 接口（ID）"
 
 #: dcim/filtersets.py:1660
 msgid "Master (ID)"
-msgstr ""
+msgstr "主接口（ID）"
 
 #: dcim/filtersets.py:1666
 msgid "Master (name)"
-msgstr ""
+msgstr "主接口（名称）"
 
 #: dcim/filtersets.py:1708 tenancy/filtersets.py:220
 msgid "Tenant (ID)"
-msgstr ""
+msgstr "租户（ID）"
 
 #: dcim/filtersets.py:1714 extras/filtersets.py:523 tenancy/filtersets.py:226
 msgid "Tenant (slug)"
-msgstr ""
+msgstr "租户（slug）"
 
 #: dcim/filtersets.py:1749 dcim/forms/filtersets.py:990
 msgid "Unterminated"
-msgstr ""
+msgstr "未终止"
 
 #: dcim/filtersets.py:1937
 msgid "Power panel (ID)"
-msgstr ""
+msgstr "电源面板（ID）"
 
 #: dcim/forms/bulk_create.py:40 extras/forms/filtersets.py:410
 #: extras/forms/model_forms.py:444 extras/forms/model_forms.py:495
@@ -2380,7 +2377,7 @@ msgstr ""
 #: templates/generic/bulk_edit.html:81 templates/inc/panels/tags.html:5
 #: utilities/forms/fields/fields.py:81
 msgid "Tags"
-msgstr ""
+msgstr "标签"
 
 #: dcim/forms/bulk_create.py:112 dcim/forms/filtersets.py:1390
 #: dcim/forms/model_forms.py:422 dcim/forms/model_forms.py:468
@@ -2391,13 +2388,14 @@ msgstr ""
 #: templates/dcim/virtualchassis.html:59
 #: templates/dcim/virtualchassis_edit.html:56
 msgid "Position"
-msgstr ""
+msgstr "位置"
 
 #: dcim/forms/bulk_create.py:114
 msgid ""
 "Alphanumeric ranges are supported. (Must match the number of names being "
 "created.)"
 msgstr ""
+"支持字母数字范围。（必须与创建的名称数量匹配。）"
 
 #: dcim/forms/bulk_edit.py:115 dcim/forms/bulk_import.py:99
 #: dcim/forms/model_forms.py:120 dcim/tables/sites.py:89 ipam/filtersets.py:936
@@ -2426,24 +2424,24 @@ msgstr ""
 #: wireless/forms/bulk_import.py:36 wireless/forms/filtersets.py:45
 #: wireless/forms/model_forms.py:41 wireless/tables/wirelesslan.py:48
 msgid "Group"
-msgstr ""
+msgstr "组"
 
 #: dcim/forms/bulk_edit.py:130
 msgid "Contact name"
-msgstr ""
+msgstr "联系人姓名"
 
 #: dcim/forms/bulk_edit.py:135
 msgid "Contact phone"
-msgstr ""
+msgstr "联系电话"
 
 #: dcim/forms/bulk_edit.py:141
 msgid "Contact E-mail"
-msgstr ""
+msgstr "联系电子邮件"
 
 #: dcim/forms/bulk_edit.py:144 dcim/forms/bulk_import.py:122
 #: dcim/forms/model_forms.py:131
 msgid "Time zone"
-msgstr ""
+msgstr "时区"
 
 #: dcim/forms/bulk_edit.py:266 dcim/forms/bulk_edit.py:1152
 #: dcim/forms/bulk_edit.py:1539 dcim/forms/bulk_import.py:199
@@ -2483,50 +2481,50 @@ msgstr ""
 #: vpn/forms/model_forms.py:77 vpn/forms/model_forms.py:112
 #: vpn/tables/tunnels.py:78
 msgid "Role"
-msgstr ""
+msgstr "角色"
 
 #: dcim/forms/bulk_edit.py:273 dcim/forms/bulk_edit.py:605
 #: dcim/forms/bulk_edit.py:654 templates/dcim/device.html:106
 #: templates/dcim/module.html:75 templates/dcim/modulebay.html:69
 #: templates/dcim/rack.html:58
 msgid "Serial Number"
-msgstr ""
+msgstr "序列号"
 
 #: dcim/forms/bulk_edit.py:276 dcim/forms/filtersets.py:306
 #: dcim/forms/filtersets.py:740 dcim/forms/filtersets.py:880
 #: dcim/forms/filtersets.py:1430
 msgid "Asset tag"
-msgstr ""
+msgstr "资产标签"
 
 #: dcim/forms/bulk_edit.py:286 dcim/forms/bulk_import.py:212
 #: dcim/forms/filtersets.py:291 templates/dcim/rack.html:91
 #: templates/dcim/rack_edit.html:48
 msgid "Width"
-msgstr ""
+msgstr "宽度"
 
 #: dcim/forms/bulk_edit.py:292
 msgid "Height (U)"
-msgstr ""
+msgstr "高度（U）"
 
 #: dcim/forms/bulk_edit.py:297
 msgid "Descending units"
-msgstr ""
+msgstr "下降单位"
 
 #: dcim/forms/bulk_edit.py:300
 msgid "Outer width"
-msgstr ""
+msgstr "外宽"
 
 #: dcim/forms/bulk_edit.py:305
 msgid "Outer depth"
-msgstr ""
+msgstr "外深"
 
 #: dcim/forms/bulk_edit.py:310 dcim/forms/bulk_import.py:217
 msgid "Outer unit"
-msgstr ""
+msgstr "外单元"
 
 #: dcim/forms/bulk_edit.py:315
 msgid "Mounting depth"
-msgstr ""
+msgstr "安装深度"
 
 #: dcim/forms/bulk_edit.py:320 dcim/forms/bulk_edit.py:349
 #: dcim/forms/bulk_edit.py:434 dcim/forms/bulk_edit.py:457
@@ -2547,19 +2545,19 @@ msgstr ""
 #: templates/extras/configcontext.html:18 templates/extras/customlink.html:26
 #: templates/extras/savedfilter.html:34 templates/ipam/role.html:33
 msgid "Weight"
-msgstr ""
+msgstr "重量"
 
 #: dcim/forms/bulk_edit.py:325 dcim/forms/filtersets.py:316
 msgid "Max weight"
-msgstr ""
+msgstr "最大重量"
 
 #: dcim/forms/bulk_edit.py:330 dcim/forms/bulk_edit.py:439
-#: dcim/forms/bulk_edit.py:478 dcim/forms/bulk_import.py:223
+#: dcim.forms/bulk_edit.py:478 dcim/forms/bulk_import.py:223
 #: dcim/forms/bulk_import.py:329 dcim/forms/bulk_import.py:355
 #: dcim/forms/filtersets.py:321 dcim/forms/filtersets.py:533
 #: dcim/forms/filtersets.py:609
 msgid "Weight unit"
-msgstr ""
+msgstr "重量单位"
 
 #: dcim/forms/bulk_edit.py:344 dcim/forms/bulk_edit.py:800
 #: dcim/forms/bulk_import.py:262 dcim/forms/bulk_import.py:265
@@ -2580,7 +2578,7 @@ msgstr ""
 #: templates/dcim/rackreservation.html:39
 #: virtualization/forms/model_forms.py:116
 msgid "Rack"
-msgstr ""
+msgstr "机架"
 
 #: dcim/forms/bulk_edit.py:346 dcim/forms/bulk_edit.py:623
 #: dcim/forms/filtersets.py:247 dcim/forms/filtersets.py:332
@@ -2611,49 +2609,49 @@ msgstr ""
 #: templates/dcim/manufacturer.html:34 templates/dcim/modulebay.html:61
 #: templates/dcim/moduletype.html:15 templates/dcim/platform.html:40
 msgid "Manufacturer"
-msgstr ""
+msgstr "制造商"
 
 #: dcim/forms/bulk_edit.py:405 dcim/forms/bulk_import.py:317
 #: dcim/forms/filtersets.py:434 dcim/forms/model_forms.py:292
 msgid "Default platform"
-msgstr ""
+msgstr "默认平台"
 
 #: dcim/forms/bulk_edit.py:410 dcim/forms/bulk_edit.py:469
 #: dcim/forms/filtersets.py:437 dcim/forms/filtersets.py:558
 msgid "Part number"
-msgstr ""
+msgstr "零件号"
 
 #: dcim/forms/bulk_edit.py:414
 msgid "U height"
-msgstr ""
+msgstr "U 高度"
 
 #: dcim/forms/bulk_edit.py:426
 msgid "Exclude from utilization"
-msgstr ""
+msgstr "排除在利用率之外"
 
 #: dcim/forms/bulk_edit.py:429 dcim/forms/bulk_edit.py:598
 #: dcim/forms/bulk_import.py:517 dcim/forms/filtersets.py:446
 #: dcim/forms/filtersets.py:731 templates/dcim/device.html:100
 #: templates/dcim/devicetype.html:68
 msgid "Airflow"
-msgstr ""
+msgstr "空气流量"
 
 #: dcim/forms/bulk_edit.py:453 dcim/forms/model_forms.py:303
 #: dcim/tables/devicetypes.py:78 templates/dcim/device.html:90
 #: templates/dcim/devicebay.html:59 templates/dcim/module.html:59
 msgid "Device Type"
-msgstr ""
+msgstr "设备类型"
 
 #: dcim/forms/bulk_edit.py:492 dcim/forms/model_forms.py:336
 #: dcim/tables/modules.py:17 dcim/tables/modules.py:65
 #: templates/dcim/module.html:63 templates/dcim/modulebay.html:65
 #: templates/dcim/moduletype.html:11
 msgid "Module Type"
-msgstr ""
+msgstr "模块类型"
 
 #: dcim/forms/bulk_edit.py:506 dcim/models/devices.py:472
 msgid "VM role"
-msgstr ""
+msgstr "虚拟机角色"
 
 #: dcim/forms/bulk_edit.py:509 dcim/forms/bulk_edit.py:533
 #: dcim/forms/bulk_edit.py:613 dcim/forms/bulk_import.py:368
@@ -2667,19 +2665,19 @@ msgstr ""
 #: virtualization/forms/filtersets.py:180
 #: virtualization/forms/model_forms.py:218
 msgid "Config template"
-msgstr ""
+msgstr "配置模板"
 
 #: dcim/forms/bulk_edit.py:557 dcim/forms/bulk_edit.py:951
 #: dcim/forms/bulk_import.py:429 dcim/forms/filtersets.py:111
 #: dcim/forms/model_forms.py:435 dcim/forms/model_forms.py:776
 #: dcim/forms/model_forms.py:790 extras/filtersets.py:452
 msgid "Device type"
-msgstr ""
+msgstr "设备类型"
 
-#: dcim/forms/bulk_edit.py:565 dcim/forms/bulk_import.py:410
+#: dcim/forms/bulk_edit.py:565 dcim.forms/bulk_import.py:410
 #: dcim/forms/filtersets.py:116 dcim/forms/model_forms.py:440
 msgid "Device role"
-msgstr ""
+msgstr "设备角色"
 
 #: dcim/forms/bulk_edit.py:588 dcim/forms/bulk_import.py:435
 #: dcim/forms/filtersets.py:723 dcim/forms/model_forms.py:385
@@ -2691,7 +2689,7 @@ msgstr ""
 #: virtualization/forms/filtersets.py:164
 #: virtualization/forms/model_forms.py:206
 msgid "Platform"
-msgstr ""
+msgstr "平台"
 
 #: dcim/forms/bulk_edit.py:621 dcim/forms/bulk_edit.py:1171
 #: dcim/forms/bulk_edit.py:1534 dcim/forms/bulk_edit.py:1580
@@ -2751,17 +2749,17 @@ msgstr ""
 #: wireless/forms/model_forms.py:100 wireless/forms/model_forms.py:140
 #: wireless/tables/wirelesslan.py:75
 msgid "Device"
-msgstr ""
+msgstr "设备"
 
 #: dcim/forms/bulk_edit.py:624 netbox/navigation/menu.py:441
 #: templates/extras/dashboard/widget_config.html:7
 msgid "Configuration"
-msgstr ""
+msgstr "配置"
 
 #: dcim/forms/bulk_edit.py:638 dcim/forms/bulk_import.py:590
 #: dcim/forms/model_forms.py:569 dcim/forms/model_forms.py:795
 msgid "Module type"
-msgstr ""
+msgstr "模块类型"
 
 #: dcim/forms/bulk_edit.py:689 dcim/forms/bulk_edit.py:874
 #: dcim/forms/bulk_edit.py:893 dcim/forms/bulk_edit.py:916
@@ -2778,96 +2776,96 @@ msgstr ""
 #: templates/dcim/powerport.html:35 templates/dcim/rearport.html:35
 #: templates/extras/customfield.html:27 templates/generic/bulk_import.html:155
 msgid "Label"
-msgstr ""
+msgstr "标签"
 
 #: dcim/forms/bulk_edit.py:698 dcim/forms/filtersets.py:981
 #: templates/dcim/cable.html:51
 msgid "Length"
-msgstr ""
+msgstr "长度"
 
 #: dcim/forms/bulk_edit.py:703 dcim/forms/bulk_import.py:1158
 #: dcim/forms/bulk_import.py:1161 dcim/forms/filtersets.py:985
 msgid "Length unit"
-msgstr ""
+msgstr "长度单位"
 
 #: dcim/forms/bulk_edit.py:727 templates/dcim/virtualchassis.html:24
 msgid "Domain"
-msgstr ""
+msgstr "域"
 
 #: dcim/forms/bulk_edit.py:795 dcim/forms/bulk_import.py:1273
 #: dcim/forms/filtersets.py:1071 dcim/forms/model_forms.py:657
 msgid "Power panel"
-msgstr ""
+msgstr "电源面板"
 
-#: dcim/forms/bulk_edit.py:817 dcim/forms/bulk_import.py:1309
+#: dcim/forms/bulk_edit.py:817 dcim.forms/bulk_import.py:1309
 #: dcim/forms/filtersets.py:1093 templates/dcim/powerfeed.html:90
 msgid "Supply"
-msgstr ""
+msgstr "供应"
 
 #: dcim/forms/bulk_edit.py:823 dcim/forms/bulk_import.py:1314
 #: dcim/forms/filtersets.py:1098 templates/dcim/powerfeed.html:102
 msgid "Phase"
-msgstr ""
+msgstr "相位"
 
 #: dcim/forms/bulk_edit.py:829 dcim/forms/filtersets.py:1103
 #: templates/dcim/powerfeed.html:94
 msgid "Voltage"
-msgstr ""
+msgstr "电压"
 
 #: dcim/forms/bulk_edit.py:833 dcim/forms/filtersets.py:1107
 #: templates/dcim/powerfeed.html:98
 msgid "Amperage"
-msgstr ""
+msgstr "电流"
 
 #: dcim/forms/bulk_edit.py:837 dcim/forms/filtersets.py:1111
 msgid "Max utilization"
-msgstr ""
+msgstr "最大利用率"
 
 #: dcim/forms/bulk_edit.py:841 dcim/forms/bulk_edit.py:1200
 #: dcim/forms/bulk_edit.py:1217 dcim/forms/bulk_edit.py:1234
 #: dcim/forms/bulk_edit.py:1252 dcim/forms/bulk_edit.py:1340
 #: dcim/forms/bulk_edit.py:1478 dcim/forms/bulk_edit.py:1495
 msgid "Mark connected"
-msgstr ""
+msgstr "标记已连接"
 
 #: dcim/forms/bulk_edit.py:926
 msgid "Maximum draw"
-msgstr ""
+msgstr "最大功耗"
 
 #: dcim/forms/bulk_edit.py:929 dcim/models/device_component_templates.py:256
 #: dcim/models/device_components.py:357
 msgid "Maximum power draw (watts)"
-msgstr ""
+msgstr "最大功耗 (瓦特)"
 
 #: dcim/forms/bulk_edit.py:932
 msgid "Allocated draw"
-msgstr ""
+msgstr "已分配功耗"
 
 #: dcim/forms/bulk_edit.py:935 dcim/models/device_component_templates.py:263
 #: dcim/models/device_components.py:364
 msgid "Allocated power draw (watts)"
-msgstr ""
+msgstr "已分配功耗 (瓦特)"
 
 #: dcim/forms/bulk_edit.py:968 dcim/forms/bulk_import.py:723
 #: dcim/forms/model_forms.py:848 dcim/forms/model_forms.py:1076
 #: dcim/forms/model_forms.py:1361 dcim/forms/object_import.py:60
 msgid "Power port"
-msgstr ""
+msgstr "电源端口"
 
 #: dcim/forms/bulk_edit.py:973
 msgid "Feed leg"
-msgstr ""
+msgstr "电源馈线"
 
 #: dcim/forms/bulk_edit.py:1019 dcim/forms/bulk_edit.py:1325
 msgid "Management only"
-msgstr ""
+msgstr "仅管理"
 
 #: dcim/forms/bulk_edit.py:1029 dcim/forms/bulk_edit.py:1331
 #: dcim/forms/bulk_import.py:813 dcim/forms/filtersets.py:1294
 #: dcim/forms/object_import.py:95 dcim/models/device_component_templates.py:411
 #: dcim/models/device_components.py:671
 msgid "PoE mode"
-msgstr ""
+msgstr "PoE 模式"
 
 #: dcim/forms/bulk_edit.py:1035 dcim/forms/bulk_edit.py:1337
 #: dcim/forms/bulk_import.py:819 dcim/forms/filtersets.py:1299
@@ -2875,12 +2873,12 @@ msgstr ""
 #: dcim/models/device_component_templates.py:417
 #: dcim/models/device_components.py:677
 msgid "PoE type"
-msgstr ""
+msgstr "PoE 类型"
 
 #: dcim/forms/bulk_edit.py:1041 dcim/forms/filtersets.py:1304
 #: dcim/forms/object_import.py:105
 msgid "Wireless role"
-msgstr ""
+msgstr "无线角色"
 
 #: dcim/forms/bulk_edit.py:1178 dcim/forms/model_forms.py:588
 #: dcim/forms/model_forms.py:1019 dcim/tables/devices.py:337
@@ -2890,25 +2888,24 @@ msgstr ""
 #: templates/dcim/poweroutlet.html:27 templates/dcim/powerport.html:27
 #: templates/dcim/rearport.html:27
 msgid "Module"
-msgstr ""
+msgstr "模块"
 
 #: dcim/forms/bulk_edit.py:1305 dcim/tables/devices.py:680
 #: templates/dcim/interface.html:113
 msgid "LAG"
-msgstr ""
+msgstr "链路聚合组 (LAG)"
 
 #: dcim/forms/bulk_edit.py:1310 dcim/forms/model_forms.py:1103
 msgid "Virtual device contexts"
-msgstr ""
+msgstr "虚拟设备上下文"
 
 #: dcim/forms/bulk_edit.py:1316 dcim/forms/bulk_import.py:651
 #: dcim/forms/bulk_import.py:677 dcim/forms/filtersets.py:1163
-#: dcim/forms/filtersets.py:1185 dcim/forms/filtersets.py:1258
-#: dcim/tables/devices.py:621
+#: dcim/forms/filtersets.py:1185 dcim/tables/devices.py:621
 #: templates/circuits/inc/circuit_termination.html:94
 #: templates/dcim/consoleport.html:43 templates/dcim/consoleserverport.html:43
 msgid "Speed"
-msgstr ""
+msgstr "速度"
 
 #: dcim/forms/bulk_edit.py:1345 dcim/forms/bulk_import.py:822
 #: templates/vpn/ikepolicy.html:26 templates/vpn/ipsecprofile.html:22
@@ -2919,36 +2916,36 @@ msgstr ""
 #: vpn/forms/filtersets.py:175 vpn/forms/filtersets.py:189
 #: vpn/tables/crypto.py:64 vpn/tables/crypto.py:162
 msgid "Mode"
-msgstr ""
+msgstr "模式"
 
 #: dcim/forms/bulk_edit.py:1353 dcim/forms/model_forms.py:1152
 #: ipam/forms/bulk_import.py:177 ipam/forms/filtersets.py:479
 #: ipam/models/vlans.py:84 virtualization/forms/bulk_edit.py:239
 #: virtualization/forms/model_forms.py:324
 msgid "VLAN group"
-msgstr ""
+msgstr "VLAN 组"
 
 #: dcim/forms/bulk_edit.py:1361 dcim/forms/model_forms.py:1157
 #: dcim/tables/devices.py:594 virtualization/forms/bulk_edit.py:247
 #: virtualization/forms/model_forms.py:329
 msgid "Untagged VLAN"
-msgstr ""
+msgstr "Untagged VLAN"
 
 #: dcim/forms/bulk_edit.py:1369 dcim/forms/model_forms.py:1166
 #: dcim/tables/devices.py:600 virtualization/forms/bulk_edit.py:255
 #: virtualization/forms/model_forms.py:338
 msgid "Tagged VLANs"
-msgstr ""
+msgstr "Tagged VLAN"
 
 #: dcim/forms/bulk_edit.py:1379 dcim/forms/model_forms.py:1139
 msgid "Wireless LAN group"
-msgstr ""
+msgstr "无线局域网组"
 
 #: dcim/forms/bulk_edit.py:1384 dcim/forms/model_forms.py:1144
 #: dcim/tables/devices.py:630 netbox/navigation/menu.py:134
 #: templates/dcim/interface.html:289 wireless/tables/wirelesslan.py:24
 msgid "Wireless LANs"
-msgstr ""
+msgstr "无线局域网"
 
 #: dcim/forms/bulk_edit.py:1393 dcim/forms/filtersets.py:1231
 #: dcim/forms/model_forms.py:1185 ipam/forms/bulk_edit.py:270
@@ -2956,164 +2953,164 @@ msgstr ""
 #: templates/dcim/interface.html:126 templates/ipam/prefix.html:96
 #: virtualization/forms/model_forms.py:352
 msgid "Addressing"
-msgstr ""
+msgstr "寻址"
 
 #: dcim/forms/bulk_edit.py:1394 dcim/forms/filtersets.py:651
 #: dcim/forms/model_forms.py:1186 virtualization/forms/model_forms.py:353
 msgid "Operation"
-msgstr ""
+msgstr "操作"
 
 #: dcim/forms/bulk_edit.py:1395 dcim/forms/filtersets.py:1232
 #: dcim/forms/model_forms.py:880 dcim/forms/model_forms.py:1188
 msgid "PoE"
-msgstr ""
+msgstr "PoE"
 
 #: dcim/forms/bulk_edit.py:1396 dcim/forms/model_forms.py:1187
 #: templates/dcim/interface.html:101 virtualization/forms/bulk_edit.py:266
 #: virtualization/forms/model_forms.py:354
 msgid "Related Interfaces"
-msgstr ""
+msgstr "相关接口"
 
 #: dcim/forms/bulk_edit.py:1397 dcim/forms/model_forms.py:1189
 #: virtualization/forms/bulk_edit.py:267
 #: virtualization/forms/model_forms.py:355
 msgid "802.1Q Switching"
-msgstr ""
+msgstr "802.1Q 交换"
 
 #: dcim/forms/bulk_edit.py:1458 dcim/forms/bulk_edit.py:1460
 msgid "Interface mode must be specified to assign VLANs"
-msgstr ""
+msgstr "必须指定接口模式以分配 VLAN"
 
 #: dcim/forms/bulk_edit.py:1465 dcim/forms/common.py:50
 msgid "An access interface cannot have tagged VLANs assigned."
-msgstr ""
+msgstr "访问接口不能分配标记的 VLAN。"
 
 #: dcim/forms/bulk_import.py:63
 msgid "Name of parent region"
-msgstr ""
+msgstr "父区域的名称"
 
 #: dcim/forms/bulk_import.py:77
 msgid "Name of parent site group"
-msgstr ""
+msgstr "父站点组的名称"
 
 #: dcim/forms/bulk_import.py:96
 msgid "Assigned region"
-msgstr ""
+msgstr "分配的区域"
 
 #: dcim/forms/bulk_import.py:103 tenancy/forms/bulk_import.py:44
 #: tenancy/forms/bulk_import.py:85 wireless/forms/bulk_import.py:40
 msgid "Assigned group"
-msgstr ""
+msgstr "分配的组"
 
 #: dcim/forms/bulk_import.py:122
 msgid "available options"
-msgstr ""
+msgstr "可用选项"
 
 #: dcim/forms/bulk_import.py:133 dcim/forms/bulk_import.py:480
 #: dcim/forms/bulk_import.py:1270 ipam/forms/bulk_import.py:174
 #: ipam/forms/bulk_import.py:441 virtualization/forms/bulk_import.py:63
 #: virtualization/forms/bulk_import.py:89
 msgid "Assigned site"
-msgstr ""
+msgstr "分配的站点"
 
 #: dcim/forms/bulk_import.py:140
 msgid "Parent location"
-msgstr ""
+msgstr "父位置"
 
 #: dcim/forms/bulk_import.py:142
 msgid "Location not found."
-msgstr ""
+msgstr "未找到位置。"
 
 #: dcim/forms/bulk_import.py:191
 msgid "Name of assigned tenant"
-msgstr ""
+msgstr "分配的租户的名称"
 
 #: dcim/forms/bulk_import.py:203
 msgid "Name of assigned role"
-msgstr ""
+msgstr "分配的角色的名称"
 
 #: dcim/forms/bulk_import.py:209
 msgid "Rack type"
-msgstr ""
+msgstr "机架类型"
 
 #: dcim/forms/bulk_import.py:214
 msgid "Rail-to-rail width (in inches)"
-msgstr ""
+msgstr "轨道到轨道的宽度（英寸）"
 
 #: dcim/forms/bulk_import.py:220
 msgid "Unit for outer dimensions"
-msgstr ""
+msgstr "外部尺寸的单位"
 
 #: dcim/forms/bulk_import.py:226
 msgid "Unit for rack weights"
-msgstr ""
+msgstr "机架重量的单位"
 
 #: dcim/forms/bulk_import.py:252
 msgid "Parent site"
-msgstr ""
+msgstr "父站点"
 
 #: dcim/forms/bulk_import.py:259 dcim/forms/bulk_import.py:1283
 msgid "Rack's location (if any)"
-msgstr ""
+msgstr "机架的位置（如果有）"
 
 #: dcim/forms/bulk_import.py:268 dcim/forms/model_forms.py:246
 #: dcim/tables/racks.py:153 templates/dcim/rackreservation.html:12
 #: templates/dcim/rackreservation.html:52
 msgid "Units"
-msgstr ""
+msgstr "单元"
 
 #: dcim/forms/bulk_import.py:271
 msgid "Comma-separated list of individual unit numbers"
-msgstr ""
+msgstr "逗号分隔的单元号列表"
 
 #: dcim/forms/bulk_import.py:314
 msgid "The manufacturer which produces this device type"
-msgstr ""
+msgstr "生产此设备类型的制造商"
 
 #: dcim/forms/bulk_import.py:321
 msgid "The default platform for devices of this type (optional)"
-msgstr ""
+msgstr "此类型设备的默认平台（可选）"
 
 #: dcim/forms/bulk_import.py:326
 msgid "Device weight"
-msgstr ""
+msgstr "设备重量"
 
 #: dcim/forms/bulk_import.py:332
 msgid "Unit for device weight"
-msgstr ""
+msgstr "设备重量的单位"
 
 #: dcim/forms/bulk_import.py:352
 msgid "Module weight"
-msgstr ""
+msgstr "模块重量"
 
 #: dcim/forms/bulk_import.py:358
 msgid "Unit for module weight"
-msgstr ""
+msgstr "模块重量的单位"
 
 #: dcim/forms/bulk_import.py:391
 msgid "Limit platform assignments to this manufacturer"
-msgstr ""
+msgstr "限制平台分配给此制造商"
 
 #: dcim/forms/bulk_import.py:413 tenancy/forms/bulk_import.py:106
 msgid "Assigned role"
-msgstr ""
+msgstr "分配的角色"
 
 #: dcim/forms/bulk_import.py:426
 msgid "Device type manufacturer"
-msgstr ""
+msgstr "设备类型制造商"
 
 #: dcim/forms/bulk_import.py:432
 msgid "Device type model"
-msgstr ""
+msgstr "设备类型型号"
 
 #: dcim/forms/bulk_import.py:439 virtualization/forms/bulk_import.py:126
 msgid "Assigned platform"
-msgstr ""
+msgstr "分配的平台"
 
 #: dcim/forms/bulk_import.py:447 dcim/forms/bulk_import.py:451
 #: dcim/forms/model_forms.py:461
 msgid "Virtual chassis"
-msgstr ""
+msgstr "虚拟机箱"
 
 #: dcim/forms/bulk_import.py:454 dcim/forms/model_forms.py:450
 #: dcim/tables/devices.py:231 extras/filtersets.py:501
@@ -3130,372 +3127,372 @@ msgstr ""
 #: virtualization/forms/model_forms.py:179
 #: virtualization/tables/virtualmachines.py:57
 msgid "Cluster"
-msgstr ""
+msgstr "集群"
 
 #: dcim/forms/bulk_import.py:458
 msgid "Virtualization cluster"
-msgstr ""
+msgstr "虚拟化集群"
 
 #: dcim/forms/bulk_import.py:487
 msgid "Assigned location (if any)"
-msgstr ""
+msgstr "分配的位置（如果有）"
 
 #: dcim/forms/bulk_import.py:494
 msgid "Assigned rack (if any)"
-msgstr ""
+msgstr "分配的机架（如果有）"
 
 #: dcim/forms/bulk_import.py:497
 msgid "Face"
-msgstr ""
+msgstr "面"
 
 #: dcim/forms/bulk_import.py:500
 msgid "Mounted rack face"
-msgstr ""
+msgstr "安装的机架面"
 
 #: dcim/forms/bulk_import.py:507
 msgid "Parent device (for child devices)"
-msgstr ""
+msgstr "父设备（对于子设备）"
 
 #: dcim/forms/bulk_import.py:510
 msgid "Device bay"
-msgstr ""
+msgstr "设备托盘"
 
 #: dcim/forms/bulk_import.py:514
 msgid "Device bay in which this device is installed (for child devices)"
-msgstr ""
+msgstr "此设备安装在其中的设备托盘（对于子设备）"
 
 #: dcim/forms/bulk_import.py:520
 msgid "Airflow direction"
-msgstr ""
+msgstr "空气流向"
 
 #: dcim/forms/bulk_import.py:581
 msgid "The device in which this module is installed"
-msgstr ""
+msgstr "安装此模块的设备"
 
 #: dcim/forms/bulk_import.py:584 dcim/forms/model_forms.py:562
 msgid "Module bay"
-msgstr ""
+msgstr "模块托盘"
 
 #: dcim/forms/bulk_import.py:587
 msgid "The module bay in which this module is installed"
-msgstr ""
+msgstr "此模块安装在的模块托盘"
 
 #: dcim/forms/bulk_import.py:593
 msgid "The type of module"
-msgstr ""
+msgstr "模块类型"
 
 #: dcim/forms/bulk_import.py:601 dcim/forms/model_forms.py:575
 msgid "Replicate components"
-msgstr ""
+msgstr "复制组件"
 
 #: dcim/forms/bulk_import.py:603
 msgid ""
 "Automatically populate components associated with this module type (enabled "
 "by default)"
-msgstr ""
+msgstr "自动填充与此模块类型相关联的组件（默认启用）"
 
 #: dcim/forms/bulk_import.py:606 dcim/forms/model_forms.py:581
 msgid "Adopt components"
-msgstr ""
+msgstr "采用组件"
 
 #: dcim/forms/bulk_import.py:608 dcim/forms/model_forms.py:584
 msgid "Adopt already existing components"
-msgstr ""
+msgstr "采用已存在的组件"
 
 #: dcim/forms/bulk_import.py:648 dcim/forms/bulk_import.py:674
 #: dcim/forms/bulk_import.py:700
 msgid "Port type"
-msgstr ""
+msgstr "端口类型"
 
 #: dcim/forms/bulk_import.py:656 dcim/forms/bulk_import.py:682
 msgid "Port speed in bps"
-msgstr ""
+msgstr "端口速度（以 bps 为单位）"
 
 #: dcim/forms/bulk_import.py:720
 msgid "Outlet type"
-msgstr ""
+msgstr "插座类型"
 
 #: dcim/forms/bulk_import.py:727
 msgid "Local power port which feeds this outlet"
-msgstr ""
+msgstr "供电此插座的本地电源端口"
 
 #: dcim/forms/bulk_import.py:730
 msgid "Feed lag"
-msgstr ""
+msgstr "供电连接汇聚"
 
 #: dcim/forms/bulk_import.py:733
 msgid "Electrical phase (for three-phase circuits)"
-msgstr ""
+msgstr "电流相位（对于三相电路）"
 
 #: dcim/forms/bulk_import.py:774 dcim/forms/model_forms.py:1114
 #: virtualization/forms/bulk_import.py:155
 #: virtualization/forms/model_forms.py:308
 msgid "Parent interface"
-msgstr ""
+msgstr "父接口"
 
 #: dcim/forms/bulk_import.py:781 dcim/forms/model_forms.py:1122
-#: virtualization/forms/bulk_import.py:162
+#: virtualization.forms/bulk_import.py:162
 #: virtualization/forms/model_forms.py:316
 msgid "Bridged interface"
-msgstr ""
+msgstr "桥接接口"
 
 #: dcim/forms/bulk_import.py:784
 msgid "Lag"
-msgstr ""
+msgstr "连接汇聚"
 
 #: dcim/forms/bulk_import.py:788
 msgid "Parent LAG interface"
-msgstr ""
+msgstr "父连接汇聚接口"
 
 #: dcim/forms/bulk_import.py:791
 msgid "Vdcs"
-msgstr ""
+msgstr "虚拟设备上下文"
 
 #: dcim/forms/bulk_import.py:796
 msgid "VDC names separated by commas, encased with double quotes. Example:"
-msgstr ""
+msgstr "以逗号分隔的 VDC 名称，用双引号括起来。示例："
 
 #: dcim/forms/bulk_import.py:802
 msgid "Physical medium"
-msgstr ""
+msgstr "物理介质"
 
 #: dcim/forms/bulk_import.py:805 dcim/forms/filtersets.py:1265
 msgid "Duplex"
-msgstr ""
+msgstr "双工"
 
 #: dcim/forms/bulk_import.py:810
 msgid "Poe mode"
-msgstr ""
+msgstr "PoE 模式"
 
 #: dcim/forms/bulk_import.py:816
 msgid "Poe type"
-msgstr ""
+msgstr "PoE 类型"
 
-#: dcim/forms/bulk_import.py:825 virtualization/forms/bulk_import.py:168
+#: dcim/forms/bulk_import.py:825
 msgid "IEEE 802.1Q operational mode (for L2 interfaces)"
-msgstr ""
+msgstr "IEEE 802.1Q 运行模式（用于 L2 接口）"
 
 #: dcim/forms/bulk_import.py:832 ipam/forms/bulk_import.py:160
 #: ipam/forms/bulk_import.py:246 ipam/forms/bulk_import.py:282
 #: ipam/forms/filtersets.py:196 ipam/forms/filtersets.py:266
 #: ipam/forms/filtersets.py:322 virtualization/forms/bulk_import.py:175
 msgid "Assigned VRF"
-msgstr ""
+msgstr "分配的 VRF"
 
 #: dcim/forms/bulk_import.py:835
 msgid "Rf role"
-msgstr ""
+msgstr "RF 角色"
 
 #: dcim/forms/bulk_import.py:838
 msgid "Wireless role (AP/station)"
-msgstr ""
+msgstr "无线角色（AP/站点）"
 
 #: dcim/forms/bulk_import.py:884 dcim/forms/model_forms.py:893
 #: dcim/forms/model_forms.py:1369 dcim/forms/object_import.py:122
 msgid "Rear port"
-msgstr ""
+msgstr "后置端口"
 
 #: dcim/forms/bulk_import.py:887
 msgid "Corresponding rear port"
-msgstr ""
+msgstr "对应的后置端口"
 
 #: dcim/forms/bulk_import.py:892 dcim/forms/bulk_import.py:933
 #: dcim/forms/bulk_import.py:1148
 msgid "Physical medium classification"
-msgstr ""
+msgstr "物理介质分类"
 
 #: dcim/forms/bulk_import.py:961 dcim/tables/devices.py:841
 msgid "Installed device"
-msgstr ""
+msgstr "已安装设备"
 
 #: dcim/forms/bulk_import.py:965
 msgid "Child device installed within this bay"
-msgstr ""
+msgstr "安装在此托盘内的子设备"
 
 #: dcim/forms/bulk_import.py:967
 msgid "Child device not found."
-msgstr ""
+msgstr "未找到子设备。"
 
 #: dcim/forms/bulk_import.py:1025
 msgid "Parent inventory item"
-msgstr ""
+msgstr "父库存项目"
 
 #: dcim/forms/bulk_import.py:1028
 msgid "Component type"
-msgstr ""
+msgstr "组件类型"
 
 #: dcim/forms/bulk_import.py:1032
 msgid "Component Type"
-msgstr ""
+msgstr "组件类型"
 
 #: dcim/forms/bulk_import.py:1035
 msgid "Compnent name"
-msgstr ""
+msgstr "组件名称"
 
 #: dcim/forms/bulk_import.py:1037
 msgid "Component Name"
-msgstr ""
+msgstr "组件名称"
 
 #: dcim/forms/bulk_import.py:1103
 msgid "Side A device"
-msgstr ""
+msgstr "A 端设备"
 
 #: dcim/forms/bulk_import.py:1106 dcim/forms/bulk_import.py:1124
 msgid "Device name"
-msgstr ""
+msgstr "设备名称"
 
 #: dcim/forms/bulk_import.py:1109
 msgid "Side A type"
-msgstr ""
+msgstr "A 端类型"
 
 #: dcim/forms/bulk_import.py:1112 dcim/forms/bulk_import.py:1130
 msgid "Termination type"
-msgstr ""
+msgstr "终端类型"
 
 #: dcim/forms/bulk_import.py:1115
 msgid "Side A name"
-msgstr ""
+msgstr "A 端名称"
 
 #: dcim/forms/bulk_import.py:1116 dcim/forms/bulk_import.py:1134
 msgid "Termination name"
-msgstr ""
+msgstr "终端名称"
 
 #: dcim/forms/bulk_import.py:1121
 msgid "Side B device"
-msgstr ""
+msgstr "B 端设备"
 
 #: dcim/forms/bulk_import.py:1127
 msgid "Side B type"
-msgstr ""
+msgstr "B 端类型"
 
 #: dcim/forms/bulk_import.py:1133
 msgid "Side B name"
-msgstr ""
+msgstr "B端名称"
 
 #: dcim/forms/bulk_import.py:1142 wireless/forms/bulk_import.py:86
 msgid "Connection status"
-msgstr ""
+msgstr "连接状态"
 
 #: dcim/forms/bulk_import.py:1221 dcim/forms/model_forms.py:689
 #: dcim/tables/devices.py:1028 templates/dcim/device.html:130
 #: templates/dcim/virtualchassis.html:28 templates/dcim/virtualchassis.html:60
 msgid "Master"
-msgstr ""
+msgstr "主设备"
 
 #: dcim/forms/bulk_import.py:1225
 msgid "Master device"
-msgstr ""
+msgstr "主设备"
 
 #: dcim/forms/bulk_import.py:1242
 msgid "Name of parent site"
-msgstr ""
+msgstr "父站点名称"
 
 #: dcim/forms/bulk_import.py:1276
 msgid "Upstream power panel"
-msgstr ""
+msgstr "上游电源面板"
 
 #: dcim/forms/bulk_import.py:1306
 msgid "Primary or redundant"
-msgstr ""
+msgstr "主要或冗余"
 
 #: dcim/forms/bulk_import.py:1311
 msgid "Supply type (AC/DC)"
-msgstr ""
+msgstr "供电类型（交流/直流）"
 
 #: dcim/forms/bulk_import.py:1316
 msgid "Single or three-phase"
-msgstr ""
+msgstr "单相或三相"
 
 #: dcim/forms/common.py:24 dcim/models/device_components.py:528
 #: templates/dcim/interface.html:58
 #: templates/virtualization/vminterface.html:58
 #: virtualization/forms/bulk_edit.py:224
 msgid "MTU"
-msgstr ""
+msgstr "最大传输单元（MTU）"
 
 #: dcim/forms/common.py:65
 #, python-brace-format
 msgid ""
 "The tagged VLANs ({vlans}) must belong to the same site as the interface's "
 "parent device/VM, or they must be global"
-msgstr ""
+msgstr "tagged VLAN（{vlans}）必须属于与接口的父设备/虚拟机相同的站点，或者它们必须是全局的"
 
 #: dcim/forms/common.py:110
 msgid ""
 "Cannot install module with placeholder values in a module bay with no "
 "position defined."
-msgstr ""
+msgstr "无法在没有定义位置的模块托盘中安装带有占位符值的模块。"
 
 #: dcim/forms/common.py:119
 #, python-brace-format
 msgid "Cannot adopt {model} {name} as it already belongs to a module"
-msgstr ""
+msgstr "无法采用 {model} {name}，因为它已经属于一个模块"
 
 #: dcim/forms/common.py:128
 #, python-brace-format
 msgid "A {model} named {name} already exists"
-msgstr ""
+msgstr "名为 {name} 的 {model} 已存在"
 
 #: dcim/forms/connections.py:45 dcim/tables/power.py:66
 #: templates/dcim/inc/cable_termination.html:37
 #: templates/dcim/powerfeed.html:27 templates/dcim/powerpanel.html:19
 #: templates/dcim/trace/powerpanel.html:4
 msgid "Power Panel"
-msgstr ""
+msgstr "电源面板"
 
 #: dcim/forms/connections.py:54 dcim/forms/model_forms.py:670
 #: templates/dcim/powerfeed.html:22 templates/dcim/powerport.html:84
 msgid "Power Feed"
-msgstr ""
+msgstr "电源供电"
 
 #: dcim/forms/connections.py:74
 msgid "Side"
-msgstr ""
+msgstr "端口"
 
 #: dcim/forms/filtersets.py:141
 msgid "Parent region"
-msgstr ""
+msgstr "父级区域"
 
 #: dcim/forms/filtersets.py:155 tenancy/forms/bulk_import.py:28
 #: tenancy/forms/bulk_import.py:62 tenancy/forms/filtersets.py:32
 #: tenancy/forms/filtersets.py:61 wireless/forms/bulk_import.py:25
 #: wireless/forms/filtersets.py:24
 msgid "Parent group"
-msgstr ""
+msgstr "父级组"
 
 #: dcim/forms/filtersets.py:246 dcim/forms/filtersets.py:331
 msgid "Function"
-msgstr ""
+msgstr "功能"
 
 #: dcim/forms/filtersets.py:418 dcim/forms/model_forms.py:308
 #: templates/inc/panels/image_attachments.html:5
 msgid "Images"
-msgstr ""
+msgstr "图片"
 
 #: dcim/forms/filtersets.py:419 dcim/forms/filtersets.py:544
 #: dcim/forms/filtersets.py:655
 msgid "Components"
-msgstr ""
+msgstr "组件"
 
 #: dcim/forms/filtersets.py:441
 msgid "Subdevice role"
-msgstr ""
+msgstr "子设备角色"
 
 #: dcim/forms/filtersets.py:717
 msgid "Model"
-msgstr ""
+msgstr "型号"
 
 #: dcim/forms/filtersets.py:768
 msgid "Virtual chassis member"
-msgstr ""
+msgstr "虚拟机箱成员"
 
 #: dcim/forms/filtersets.py:1123
 msgid "Cabled"
-msgstr ""
+msgstr "已接线"
 
 #: dcim/forms/filtersets.py:1130
 msgid "Occupied"
-msgstr ""
+msgstr "已占用"
 
 #: dcim/forms/filtersets.py:1155 dcim/forms/filtersets.py:1177
 #: dcim/forms/filtersets.py:1199 dcim/forms/filtersets.py:1216
@@ -3505,44 +3502,44 @@ msgstr ""
 #: templates/dcim/powerfeed.html:118 templates/dcim/poweroutlet.html:63
 #: templates/dcim/powerport.html:63 templates/dcim/rearport.html:70
 msgid "Connection"
-msgstr ""
+msgstr "连接"
 
 #: dcim/forms/filtersets.py:1245 dcim/forms/model_forms.py:1477
 #: templates/dcim/virtualdevicecontext.html:16
 msgid "Virtual Device Context"
-msgstr ""
+msgstr "虚拟设备上下文"
 
 #: dcim/forms/filtersets.py:1248 extras/forms/bulk_edit.py:315
 #: extras/forms/bulk_import.py:239 extras/forms/filtersets.py:479
 #: extras/forms/model_forms.py:548 extras/tables/tables.py:482
 #: templates/extras/journalentry.html:33
 msgid "Kind"
-msgstr ""
+msgstr "种类"
 
 #: dcim/forms/filtersets.py:1277
 msgid "Mgmt only"
-msgstr ""
+msgstr "仅管理"
 
 #: dcim/forms/filtersets.py:1289 dcim/forms/model_forms.py:1180
 #: dcim/models/device_components.py:630 templates/dcim/interface.html:134
 msgid "WWN"
-msgstr ""
+msgstr "WWN（世界范围名称）"
 
 #: dcim/forms/filtersets.py:1309
 msgid "Wireless channel"
-msgstr ""
+msgstr "无线信道"
 
 #: dcim/forms/filtersets.py:1313
 msgid "Channel frequency (MHz)"
-msgstr ""
+msgstr "信道频率（MHz）"
 
 #: dcim/forms/filtersets.py:1317
 msgid "Channel width (MHz)"
-msgstr ""
+msgstr "信道宽度（MHz）"
 
 #: dcim/forms/filtersets.py:1321 templates/dcim/interface.html:86
 msgid "Transmit power (dBm)"
-msgstr ""
+msgstr "发送功率（dBm）"
 
 #: dcim/forms/filtersets.py:1344 dcim/forms/filtersets.py:1366
 #: dcim/tables/devices.py:344 templates/dcim/cable.html:12
@@ -3551,60 +3548,60 @@ msgstr ""
 #: templates/dcim/inc/connection_endpoints.html:4
 #: templates/dcim/rearport.html:80 templates/dcim/trace/cable.html:7
 msgid "Cable"
-msgstr ""
+msgstr "电缆"
 
 #: dcim/forms/filtersets.py:1434 dcim/tables/devices.py:951
 msgid "Discovered"
-msgstr ""
+msgstr "已发现"
 
 #: dcim/forms/formsets.py:20
 #, python-brace-format
 msgid "A virtual chassis member already exists in position {vc_position}."
-msgstr ""
+msgstr "位置 {vc_position} 已存在虚拟机箱成员。"
 
 #: dcim/forms/model_forms.py:101 dcim/tables/devices.py:183
 #: templates/dcim/sitegroup.html:26
 msgid "Site Group"
-msgstr ""
+msgstr "站点组"
 
 #: dcim/forms/model_forms.py:142
 msgid "Contact Info"
-msgstr ""
+msgstr "联系信息"
 
 #: dcim/forms/model_forms.py:197 templates/dcim/rackrole.html:20
 msgid "Rack Role"
-msgstr ""
+msgstr "机架角色"
 
 #: dcim/forms/model_forms.py:248
 msgid ""
 "Comma-separated list of numeric unit IDs. A range may be specified using a "
 "hyphen."
-msgstr ""
+msgstr "用逗号分隔的数字单位ID列表。可以使用连字符指定范围。"
 
 #: dcim/forms/model_forms.py:259 dcim/tables/racks.py:133
 msgid "Reservation"
-msgstr ""
+msgstr "预留"
 
 #: dcim/forms/model_forms.py:297 dcim/forms/model_forms.py:380
 #: utilities/forms/fields/fields.py:47
 msgid "Slug"
-msgstr ""
+msgstr "标识"
 
 #: dcim/forms/model_forms.py:304 templates/dcim/devicetype.html:12
 msgid "Chassis"
-msgstr ""
+msgstr "机箱"
 
 #: dcim/forms/model_forms.py:356 templates/dcim/devicerole.html:24
 msgid "Device Role"
-msgstr ""
+msgstr "设备角色"
 
 #: dcim/forms/model_forms.py:424 dcim/models/devices.py:632
 msgid "The lowest-numbered unit occupied by the device"
-msgstr ""
+msgstr "设备占用的最低编号单位"
 
 #: dcim/forms/model_forms.py:469
 msgid "The position in the virtual chassis this device is identified by"
-msgstr ""
+msgstr "虚拟机箱中标识此设备的位置"
 
 #: dcim/forms/model_forms.py:473 templates/dcim/device.html:131
 #: templates/dcim/virtualchassis.html:61
@@ -3612,27 +3609,27 @@ msgstr ""
 #: templates/ipam/inc/panels/fhrp_groups.html:13 tenancy/forms/bulk_edit.py:146
 #: tenancy/forms/filtersets.py:109
 msgid "Priority"
-msgstr ""
+msgstr "优先级"
 
 #: dcim/forms/model_forms.py:474
 msgid "The priority of the device in the virtual chassis"
-msgstr ""
+msgstr "虚拟机箱中设备的优先级"
 
 #: dcim/forms/model_forms.py:578
 msgid "Automatically populate components associated with this module type"
-msgstr ""
+msgstr "自动填充与此模块类型相关联的组件"
 
 #: dcim/forms/model_forms.py:623
 msgid "Maximum length is 32767 (any unit)"
-msgstr ""
+msgstr "最大长度为32767（任何单位）"
 
 #: dcim/forms/model_forms.py:671
 msgid "Characteristics"
-msgstr ""
+msgstr "特性"
 
 #: dcim/forms/model_forms.py:1130
 msgid "LAG interface"
-msgstr ""
+msgstr "LAG 接口"
 
 #: dcim/forms/model_forms.py:1184 dcim/forms/model_forms.py:1345
 #: dcim/tables/connections.py:65 ipam/forms/bulk_import.py:317
@@ -3654,58 +3651,58 @@ msgstr ""
 #: vpn/forms/model_forms.py:439 vpn/tables/tunnels.py:87
 #: wireless/forms/model_forms.py:112 wireless/forms/model_forms.py:152
 msgid "Interface"
-msgstr ""
+msgstr "接口"
 
 #: dcim/forms/model_forms.py:1278
 msgid "Child Device"
-msgstr ""
+msgstr "子设备"
 
 #: dcim/forms/model_forms.py:1279
 msgid ""
 "Child devices must first be created and assigned to the site and rack of the "
 "parent device."
-msgstr ""
+msgstr "子设备必须首先创建并分配到父设备的站点和机架。"
 
 #: dcim/forms/model_forms.py:1321
 msgid "Console port"
-msgstr ""
+msgstr "控制台端口"
 
 #: dcim/forms/model_forms.py:1329
 msgid "Console server port"
-msgstr ""
+msgstr "控制台服务器端口"
 
 #: dcim/forms/model_forms.py:1337
 msgid "Front port"
-msgstr ""
+msgstr "前端口"
 
 #: dcim/forms/model_forms.py:1353
 msgid "Power outlet"
-msgstr ""
+msgstr "电源插座"
 
 #: dcim/forms/model_forms.py:1373 templates/dcim/inventoryitem.html:17
 #: templates/dcim/inventoryitem_edit.html:10
 msgid "Inventory Item"
-msgstr ""
+msgstr "库存项目"
 
 #: dcim/forms/model_forms.py:1425
 msgid "An InventoryItem can only be assigned to a single component."
-msgstr ""
+msgstr "一个库存项目只能分配给单个组件。"
 
 #: dcim/forms/model_forms.py:1439 templates/dcim/inventoryitemrole.html:15
 msgid "Inventory Item Role"
-msgstr ""
+msgstr "库存项目角色"
 
 #: dcim/forms/model_forms.py:1459 templates/dcim/device.html:195
 #: templates/dcim/virtualdevicecontext.html:33
 #: templates/virtualization/virtualmachine.html:51
 msgid "Primary IPv4"
-msgstr ""
+msgstr "主要 IPv4"
 
 #: dcim/forms/model_forms.py:1468 templates/dcim/device.html:211
 #: templates/dcim/virtualdevicecontext.html:44
 #: templates/virtualization/virtualmachine.html:67
 msgid "Primary IPv6"
-msgstr ""
+msgstr "主要 IPv6"
 
 #: dcim/forms/object_create.py:47 dcim/forms/object_create.py:198
 #: dcim/forms/object_create.py:354
@@ -3713,6 +3710,7 @@ msgid ""
 "Alphanumeric ranges are supported. (Must match the number of objects being "
 "created.)"
 msgstr ""
+"支持字母数字范围。（必须与正在创建的对象数量匹配。）"
 
 #: dcim/forms/object_create.py:67
 #, python-brace-format
@@ -3720,15 +3718,16 @@ msgid ""
 "The provided pattern specifies {value_count} values, but {pattern_count} are "
 "expected."
 msgstr ""
+"提供的模式指定了 {value_count} 个值，但需要 {pattern_count} 个。"
 
 #: dcim/forms/object_create.py:109 dcim/forms/object_create.py:270
 #: dcim/tables/devices.py:281
 msgid "Rear ports"
-msgstr ""
+msgstr "后端口"
 
 #: dcim/forms/object_create.py:110 dcim/forms/object_create.py:271
 msgid "Select one rear port assignment for each front port being created."
-msgstr ""
+msgstr "为每个要创建的前端口选择一个后端口分配。"
 
 #: dcim/forms/object_create.py:163
 #, python-brace-format
@@ -3736,6 +3735,7 @@ msgid ""
 "The number of front port templates to be created ({frontport_count}) must "
 "match the selected number of rear port positions ({rearport_count})."
 msgstr ""
+"要创建的前端口模板数量（{frontport_count}）必须与所选的后端口位置数量（{rearport_count}）匹配。"
 
 #: dcim/forms/object_create.py:250
 #, python-brace-format
@@ -3743,6 +3743,7 @@ msgid ""
 "The string <code>{module}</code> will be replaced with the position of the "
 "assigned module, if any."
 msgstr ""
+"字符串 <code>{module}</code> 将根据分配的模块的位置（如果有）替换。"
 
 #: dcim/forms/object_create.py:319
 #, python-brace-format
@@ -3750,83 +3751,85 @@ msgid ""
 "The number of front ports to be created ({frontport_count}) must match the "
 "selected number of rear port positions ({rearport_count})."
 msgstr ""
+"要创建的前端口数量（{frontport_count}）必须与所选的后端口位置数量（{rearport_count}）匹配。"
 
 #: dcim/forms/object_create.py:408 dcim/tables/devices.py:1034
 #: ipam/tables/fhrp.py:31 templates/dcim/virtualchassis.html:54
 #: templates/dcim/virtualchassis_edit.html:48 templates/ipam/fhrpgroup.html:39
 msgid "Members"
-msgstr ""
+msgstr "成员"
 
 #: dcim/forms/object_create.py:417
 msgid "Initial position"
-msgstr ""
+msgstr "初始位置"
 
 #: dcim/forms/object_create.py:420
 msgid ""
 "Position of the first member device. Increases by one for each additional "
 "member."
 msgstr ""
+"第一个成员设备的位置。每增加一个成员，位置增加一次。"
 
 #: dcim/forms/object_create.py:434
 msgid "A position must be specified for the first VC member."
-msgstr ""
+msgstr "必须为第一个VC成员指定位置。"
 
 #: dcim/models/cables.py:62 dcim/models/device_component_templates.py:55
 #: dcim/models/device_components.py:63 extras/models/customfields.py:108
 msgid "label"
-msgstr ""
+msgstr "标签"
 
 #: dcim/models/cables.py:71
 msgid "length"
-msgstr ""
+msgstr "长度"
 
 #: dcim/models/cables.py:78
 msgid "length unit"
-msgstr ""
+msgstr "长度单位"
 
 #: dcim/models/cables.py:93
 msgid "cable"
-msgstr ""
+msgstr "电缆"
 
 #: dcim/models/cables.py:94
 msgid "cables"
-msgstr ""
+msgstr "电缆"
 
 #: dcim/models/cables.py:190
 msgid "A and B terminations cannot connect to the same object."
-msgstr ""
+msgstr "A 和 B 端口不能连接到同一个对象。"
 
 #: dcim/models/cables.py:257 ipam/models/asns.py:37
 msgid "end"
-msgstr ""
+msgstr "结束"
 
 #: dcim/models/cables.py:310
 msgid "cable termination"
-msgstr ""
+msgstr "电缆终端"
 
 #: dcim/models/cables.py:311
 msgid "cable terminations"
-msgstr ""
+msgstr "电缆终端"
 
 #: dcim/models/cables.py:434 extras/models/configs.py:50
 msgid "is active"
-msgstr ""
+msgstr "活动状态"
 
 #: dcim/models/cables.py:438
 msgid "is complete"
-msgstr ""
+msgstr "已完成"
 
 #: dcim/models/cables.py:442
 msgid "is split"
-msgstr ""
+msgstr "已分割"
 
 #: dcim/models/cables.py:450
 msgid "cable path"
-msgstr ""
+msgstr "电缆路径"
 
 #: dcim/models/cables.py:451
 msgid "cable paths"
-msgstr ""
+msgstr "电缆路径"
 
 #: dcim/models/device_component_templates.py:46
 #, python-brace-format
@@ -3834,152 +3837,155 @@ msgid ""
 "{module} is accepted as a substitution for the module bay position when "
 "attached to a module type."
 msgstr ""
+"当附加到模块类型时，{module} 可作为模块插槽位置的替代项接受。"
 
 #: dcim/models/device_component_templates.py:58
 #: dcim/models/device_components.py:66
 msgid "Physical label"
-msgstr ""
+msgstr "物理标签"
 
 #: dcim/models/device_component_templates.py:103
 msgid "Component templates cannot be moved to a different device type."
-msgstr ""
+msgstr "组件模板无法移动到不同的设备类型。"
 
 #: dcim/models/device_component_templates.py:154
 msgid ""
 "A component template cannot be associated with both a device type and a "
 "module type."
 msgstr ""
+"组件模板不能同时与设备类型和模块类型关联。"
 
 #: dcim/models/device_component_templates.py:158
 msgid ""
 "A component template must be associated with either a device type or a "
 "module type."
 msgstr ""
+"组件模板必须与设备类型或模块类型中的一个关联。"
 
 #: dcim/models/device_component_templates.py:186
 msgid "console port template"
-msgstr ""
+msgstr "控制台端口模板"
 
 #: dcim/models/device_component_templates.py:187
 msgid "console port templates"
-msgstr ""
+msgstr "控制台端口模板"
 
 #: dcim/models/device_component_templates.py:220
 msgid "console server port template"
-msgstr ""
+msgstr "控制台服务器端口模板"
 
 #: dcim/models/device_component_templates.py:221
 msgid "console server port templates"
-msgstr ""
+msgstr "控制台服务器端口模板"
 
 #: dcim/models/device_component_templates.py:252
 #: dcim/models/device_components.py:353
 msgid "maximum draw"
-msgstr ""
+msgstr "最大功耗"
 
 #: dcim/models/device_component_templates.py:259
 #: dcim/models/device_components.py:360
 msgid "allocated draw"
-msgstr ""
+msgstr "分配功耗"
 
 #: dcim/models/device_component_templates.py:269
 msgid "power port template"
-msgstr ""
+msgstr "电源端口模板"
 
 #: dcim/models/device_component_templates.py:270
 msgid "power port templates"
-msgstr ""
+msgstr "电源端口模板"
 
 #: dcim/models/device_component_templates.py:289
 #: dcim/models/device_components.py:383
 #, python-brace-format
 msgid "Allocated draw cannot exceed the maximum draw ({maximum_draw}W)."
-msgstr ""
+msgstr "分配功耗不能超过最大功耗（{maximum_draw}W）。"
 
 #: dcim/models/device_component_templates.py:321
 #: dcim/models/device_components.py:478
 msgid "feed leg"
-msgstr ""
+msgstr "供电线路"
 
 #: dcim/models/device_component_templates.py:325
 #: dcim/models/device_components.py:482
 msgid "Phase (for three-phase feeds)"
-msgstr ""
+msgstr "相位（用于三相供电）"
 
 #: dcim/models/device_component_templates.py:331
 msgid "power outlet template"
-msgstr ""
+msgstr "电源插座模板"
 
 #: dcim/models/device_component_templates.py:332
 msgid "power outlet templates"
-msgstr ""
+msgstr "电源插座模板"
 
 #: dcim/models/device_component_templates.py:341
 #, python-brace-format
 msgid "Parent power port ({power_port}) must belong to the same device type"
-msgstr ""
+msgstr "父电源端口（{power_port}）必须属于相同的设备类型"
 
 #: dcim/models/device_component_templates.py:345
 #, python-brace-format
 msgid "Parent power port ({power_port}) must belong to the same module type"
-msgstr ""
+msgstr "父电源端口（{power_port}）必须属于相同的模块类型"
 
 #: dcim/models/device_component_templates.py:397
 #: dcim/models/device_components.py:612
 msgid "management only"
-msgstr ""
+msgstr "仅管理"
 
 #: dcim/models/device_component_templates.py:405
 #: dcim/models/device_components.py:551
 msgid "bridge interface"
-msgstr ""
+msgstr "桥接接口"
 
 #: dcim/models/device_component_templates.py:423
 #: dcim/models/device_components.py:637
 msgid "wireless role"
-msgstr ""
+msgstr "无线角色"
 
 #: dcim/models/device_component_templates.py:429
 msgid "interface template"
-msgstr ""
+msgstr "接口模板"
 
 #: dcim/models/device_component_templates.py:430
 msgid "interface templates"
-msgstr ""
+msgstr "接口模板"
 
 #: dcim/models/device_component_templates.py:437
 #: dcim/models/device_components.py:805
 #: virtualization/models/virtualmachines.py:398
 msgid "An interface cannot be bridged to itself."
-msgstr ""
+msgstr "接口不能与自己进行桥接。"
 
 #: dcim/models/device_component_templates.py:440
 #, python-brace-format
 msgid "Bridge interface ({bridge}) must belong to the same device type"
-msgstr ""
+msgstr "桥接接口（{bridge}）必须属于相同的设备类型"
 
 #: dcim/models/device_component_templates.py:444
 #, python-brace-format
 msgid "Bridge interface ({bridge}) must belong to the same module type"
-msgstr ""
+msgstr "桥接接口（{bridge}）必须属于相同的模块类型"
 
 #: dcim/models/device_component_templates.py:500
 #: dcim/models/device_components.py:985
 msgid "rear port position"
-msgstr ""
+msgstr "后端口位置"
 
 #: dcim/models/device_component_templates.py:525
 msgid "front port template"
-msgstr ""
+msgstr "前端口模板"
 
 #: dcim/models/device_component_templates.py:526
 msgid "front port templates"
-msgstr ""
+msgstr "前端口模板"
 
 #: dcim/models/device_component_templates.py:536
 #, python-brace-format
 msgid "Rear port ({name}) must belong to the same device type"
-msgstr ""
+msgstr "后端口（{name}）必须属于相同的设备类型"
 
 #: dcim/models/device_component_templates.py:542
 #, python-brace-format
@@ -3987,45 +3993,46 @@ msgid ""
 "Invalid rear port position ({position}); rear port {name} has only {count} "
 "positions"
 msgstr ""
+"无效的后置端口位置（{position}）；后置端口 {name} 仅有 {count} 个位置"
 
 #: dcim/models/device_component_templates.py:595
 #: dcim/models/device_components.py:1054
 msgid "positions"
-msgstr ""
+msgstr "位置"
 
 #: dcim/models/device_component_templates.py:606
 msgid "rear port template"
-msgstr ""
+msgstr "后置端口模板"
 
 #: dcim/models/device_component_templates.py:607
 msgid "rear port templates"
-msgstr ""
+msgstr "后置端口模板"
 
 #: dcim/models/device_component_templates.py:636
 #: dcim/models/device_components.py:1095
 msgid "position"
-msgstr ""
+msgstr "位置"
 
 #: dcim/models/device_component_templates.py:639
 #: dcim/models/device_components.py:1098
 msgid "Identifier to reference when renaming installed components"
-msgstr ""
+msgstr "在重命名已安装组件时引用的标识符"
 
 #: dcim/models/device_component_templates.py:645
 msgid "module bay template"
-msgstr ""
+msgstr "模块插槽模板"
 
 #: dcim/models/device_component_templates.py:646
 msgid "module bay templates"
-msgstr ""
+msgstr "模块插槽模板"
 
 #: dcim/models/device_component_templates.py:673
 msgid "device bay template"
-msgstr ""
+msgstr "设备插槽模板"
 
 #: dcim/models/device_component_templates.py:674
 msgid "device bay templates"
-msgstr ""
+msgstr "设备插槽模板"
 
 #: dcim/models/device_component_templates.py:687
 #, python-brace-format
@@ -4033,206 +4040,207 @@ msgid ""
 "Subdevice role of device type ({device_type}) must be set to \"parent\" to "
 "allow device bays."
 msgstr ""
+"设备类型的子设备角色（{device_type}）必须设置为“parent”才能允许设备插槽。"
 
 #: dcim/models/device_component_templates.py:742
 #: dcim/models/device_components.py:1224
 msgid "part ID"
-msgstr ""
+msgstr "零件标识"
 
 #: dcim/models/device_component_templates.py:744
 #: dcim/models/device_components.py:1226
 msgid "Manufacturer-assigned part identifier"
-msgstr ""
+msgstr "由制造商分配的零件标识符"
 
 #: dcim/models/device_component_templates.py:761
 msgid "inventory item template"
-msgstr ""
+msgstr "库存项模板"
 
 #: dcim/models/device_component_templates.py:762
 msgid "inventory item templates"
-msgstr ""
+msgstr "库存项模板"
 
 #: dcim/models/device_components.py:106
 msgid "Components cannot be moved to a different device."
-msgstr ""
+msgstr "组件不能移动到不同的设备。"
 
 #: dcim/models/device_components.py:145
 msgid "cable end"
-msgstr ""
+msgstr "电缆端"
 
 #: dcim/models/device_components.py:151
 msgid "mark connected"
-msgstr ""
+msgstr "标记为连接"
 
 #: dcim/models/device_components.py:153
 msgid "Treat as if a cable is connected"
-msgstr ""
+msgstr "视为已连接电缆"
 
 #: dcim/models/device_components.py:171
 msgid "Must specify cable end (A or B) when attaching a cable."
-msgstr ""
+msgstr "连接电缆时必须指定电缆端（A 或 B）。"
 
 #: dcim/models/device_components.py:175
 msgid "Cable end must not be set without a cable."
-msgstr ""
+msgstr "不能在没有电缆的情况下设置电缆端。"
 
 #: dcim/models/device_components.py:179
 msgid "Cannot mark as connected with a cable attached."
-msgstr ""
+msgstr "不能在连接电缆的情况下标记为已连接。"
 
 #: dcim/models/device_components.py:203
 #, python-brace-format
 msgid "{class_name} models must declare a parent_object property"
-msgstr ""
+msgstr "{class_name} 模型必须声明 parent_object 属性"
 
 #: dcim/models/device_components.py:288 dcim/models/device_components.py:317
 #: dcim/models/device_components.py:350 dcim/models/device_components.py:468
 msgid "Physical port type"
-msgstr ""
+msgstr "物理端口类型"
 
 #: dcim/models/device_components.py:291 dcim/models/device_components.py:320
 msgid "speed"
-msgstr ""
+msgstr "速度"
 
 #: dcim/models/device_components.py:295 dcim/models/device_components.py:324
 msgid "Port speed in bits per second"
-msgstr ""
+msgstr "端口速度，以每秒比特为单位"
 
 #: dcim/models/device_components.py:301
 msgid "console port"
-msgstr ""
+msgstr "控制台端口"
 
 #: dcim/models/device_components.py:302
 msgid "console ports"
-msgstr ""
+msgstr "控制台端口"
 
 #: dcim/models/device_components.py:330
 msgid "console server port"
-msgstr ""
+msgstr "控制台服务器端口"
 
 #: dcim/models/device_components.py:331
 msgid "console server ports"
-msgstr ""
+msgstr "控制台服务器端口"
 
 #: dcim/models/device_components.py:370
 msgid "power port"
-msgstr ""
+msgstr "电源端口"
 
 #: dcim/models/device_components.py:371
 msgid "power ports"
-msgstr ""
+msgstr "电源端口"
 
 #: dcim/models/device_components.py:488
 msgid "power outlet"
-msgstr ""
+msgstr "电源插座"
 
 #: dcim/models/device_components.py:489
 msgid "power outlets"
-msgstr ""
+msgstr "电源插座"
 
 #: dcim/models/device_components.py:500
 #, python-brace-format
 msgid "Parent power port ({power_port}) must belong to the same device"
-msgstr ""
+msgstr "父电源端口 ({power_port}) 必须属于同一设备"
 
 #: dcim/models/device_components.py:531 vpn/models/crypto.py:81
 #: vpn/models/crypto.py:214
 msgid "mode"
-msgstr ""
+msgstr "模式"
 
 #: dcim/models/device_components.py:535
 msgid "IEEE 802.1Q tagging strategy"
-msgstr ""
+msgstr "IEEE 802.1Q 标记策略"
 
 #: dcim/models/device_components.py:543
 msgid "parent interface"
-msgstr ""
+msgstr "父接口"
 
 #: dcim/models/device_components.py:603
 msgid "parent LAG"
-msgstr ""
+msgstr "父 LAG（链路聚合组）"
 
 #: dcim/models/device_components.py:613
 msgid "This interface is used only for out-of-band management"
-msgstr ""
+msgstr "此接口仅用于带外管理"
 
 #: dcim/models/device_components.py:618
 msgid "speed (Kbps)"
-msgstr ""
+msgstr "速度（Kbps）"
 
 #: dcim/models/device_components.py:621
 msgid "duplex"
-msgstr ""
+msgstr "双工"
 
 #: dcim/models/device_components.py:631
 msgid "64-bit World Wide Name"
-msgstr ""
+msgstr "64 位全球唯一名称（WWN）"
 
 #: dcim/models/device_components.py:643
 msgid "wireless channel"
-msgstr ""
+msgstr "无线信道"
 
 #: dcim/models/device_components.py:650
 msgid "channel frequency (MHz)"
-msgstr ""
+msgstr "信道频率（MHz）"
 
 #: dcim/models/device_components.py:651 dcim/models/device_components.py:659
 msgid "Populated by selected channel (if set)"
-msgstr ""
+msgstr "由所选信道填充（如果已设置）"
 
 #: dcim/models/device_components.py:665
 msgid "transmit power (dBm)"
-msgstr ""
+msgstr "发送功率（dBm）"
 
 #: dcim/models/device_components.py:690 wireless/models.py:116
 msgid "wireless LANs"
-msgstr ""
+msgstr "无线局域网（WLAN）"
 
 #: dcim/models/device_components.py:698
 #: virtualization/models/virtualmachines.py:328
 msgid "untagged VLAN"
-msgstr ""
+msgstr "untagged VLAN"
 
 #: dcim/models/device_components.py:704
 #: virtualization/models/virtualmachines.py:334
 msgid "tagged VLANs"
-msgstr ""
+msgstr "tagged VLANs"
 
 #: dcim/models/device_components.py:746
 #: virtualization/models/virtualmachines.py:370
 msgid "interface"
-msgstr ""
+msgstr "接口"
 
 #: dcim/models/device_components.py:747
 #: virtualization/models/virtualmachines.py:371
 msgid "interfaces"
-msgstr ""
+msgstr "接口"
 
 #: dcim/models/device_components.py:758
 #, python-brace-format
 msgid "{display_type} interfaces cannot have a cable attached."
-msgstr ""
+msgstr "{display_type} 接口不能连接电缆。"
 
 #: dcim/models/device_components.py:766
 #, python-brace-format
 msgid "{display_type} interfaces cannot be marked as connected."
-msgstr ""
+msgstr "{display_type} 接口不能标记为已连接。"
 
 #: dcim/models/device_components.py:775
 #: virtualization/models/virtualmachines.py:383
 msgid "An interface cannot be its own parent."
-msgstr ""
+msgstr "接口不能是其自身的父级。"
 
 #: dcim/models/device_components.py:779
 msgid "Only virtual interfaces may be assigned to a parent interface."
-msgstr ""
+msgstr "只有虚拟接口可以分配给父接口。"
 
 #: dcim/models/device_components.py:786
 #, python-brace-format
 msgid ""
 "The selected parent interface ({interface}) belongs to a different device "
 "({device})"
-msgstr ""
+msgstr "所选的父接口 ({interface}) 属于不同的设备 ({device})。"
 
 #: dcim/models/device_components.py:792
 #, python-brace-format
@@ -4240,13 +4248,14 @@ msgid ""
 "The selected parent interface ({interface}) belongs to {device}, which is "
 "not part of virtual chassis {virtual_chassis}."
 msgstr ""
+"所选的父接口 ({interface}) 属于 {device}，但不属于虚拟底座 {virtual_chassis}。"
 
 #: dcim/models/device_components.py:812
 #, python-brace-format
 msgid ""
 "The selected bridge interface ({bridge}) belongs to a different device "
 "({device})."
-msgstr ""
+msgstr "所选的桥接接口 ({bridge}) 属于不同的设备 ({device})。"
 
 #: dcim/models/device_components.py:818
 #, python-brace-format
@@ -4254,320 +4263,312 @@ msgid ""
 "The selected bridge interface ({interface}) belongs to {device}, which is "
 "not part of virtual chassis {virtual_chassis}."
 msgstr ""
+"所选的桥接接口 ({interface}) 属于 {device}，但不属于虚拟底座 {virtual_chassis}。"
 
 #: dcim/models/device_components.py:829
 msgid "Virtual interfaces cannot have a parent LAG interface."
-msgstr ""
+msgstr "虚拟接口不能具有父级 LAG（链路聚合组）接口。"
 
 #: dcim/models/device_components.py:833
 msgid "A LAG interface cannot be its own parent."
-msgstr ""
+msgstr "LAG（链路聚合组）接口不能是其自身的父级。"
 
 #: dcim/models/device_components.py:840
 #, python-brace-format
 msgid ""
 "The selected LAG interface ({lag}) belongs to a different device ({device})."
-msgstr ""
+msgstr "所选的 LAG（链路聚合组）接口 ({lag}) 属于不同的设备 ({device})。"
 
 #: dcim/models/device_components.py:846
 #, python-brace-format
-msgid ""
-"The selected LAG interface ({lag}) belongs to {device}, which is not part of "
-"virtual chassis {virtual_chassis}."
-msgstr ""
+msgid "The selected LAG interface ({lag}) belongs to {device}, which is not part of virtual chassis {virtual_chassis}."
+msgstr "所选的 LAG（链路聚合组）接口 ({lag}) 属于 {device}，但不属于虚拟底座 {virtual_chassis}。"
 
 #: dcim/models/device_components.py:857
 msgid "Virtual interfaces cannot have a PoE mode."
-msgstr ""
+msgstr "虚拟接口不能具有 PoE 模式。"
 
 #: dcim/models/device_components.py:861
 msgid "Virtual interfaces cannot have a PoE type."
-msgstr ""
+msgstr "虚拟接口不能具有 PoE 类型。"
 
 #: dcim/models/device_components.py:867
 msgid "Must specify PoE mode when designating a PoE type."
-msgstr ""
+msgstr "在指定 PoE 类型时必须指定 PoE 模式。"
 
 #: dcim/models/device_components.py:874
 msgid "Wireless role may be set only on wireless interfaces."
-msgstr ""
+msgstr "无线角色仅可在无线接口上设置。"
 
 #: dcim/models/device_components.py:876
 msgid "Channel may be set only on wireless interfaces."
-msgstr ""
+msgstr "信道仅可在无线接口上设置。"
 
 #: dcim/models/device_components.py:882
 msgid "Channel frequency may be set only on wireless interfaces."
-msgstr ""
+msgstr "信道频率仅可在无线接口上设置。"
 
 #: dcim/models/device_components.py:886
 msgid "Cannot specify custom frequency with channel selected."
-msgstr ""
+msgstr "不能在选择信道时指定自定义频率。"
 
 #: dcim/models/device_components.py:892
 msgid "Channel width may be set only on wireless interfaces."
-msgstr ""
+msgstr "信道宽度仅可在无线接口上设置。"
 
 #: dcim/models/device_components.py:894
 msgid "Cannot specify custom width with channel selected."
-msgstr ""
+msgstr "不能在选择信道时指定自定义宽度。"
 
 #: dcim/models/device_components.py:902
 #, python-brace-format
-msgid ""
-"The untagged VLAN ({untagged_vlan}) must belong to the same site as the "
-"interface's parent device, or it must be global."
-msgstr ""
+msgid "The untagged VLAN ({untagged_vlan}) must belong to the same site as the interface's parent device, or it must be global."
+msgstr "untagged VLAN ({untagged_vlan}) 必须属于与接口父设备相同的站点，或者必须是全局的。"
 
 #: dcim/models/device_components.py:991
 msgid "Mapped position on corresponding rear port"
-msgstr ""
+msgstr "映射到相应后置端口的位置"
 
 #: dcim/models/device_components.py:1007
 msgid "front port"
-msgstr ""
+msgstr "前置端口"
 
 #: dcim/models/device_components.py:1008
 msgid "front ports"
-msgstr ""
+msgstr "前置端口"
 
 #: dcim/models/device_components.py:1022
 #, python-brace-format
 msgid "Rear port ({rear_port}) must belong to the same device"
-msgstr ""
+msgstr "后置端口 ({rear_port}) 必须属于同一设备"
 
 #: dcim/models/device_components.py:1030
 #, python-brace-format
-msgid ""
-"Invalid rear port position ({rear_port_position}): Rear port {name} has only "
-"{positions} positions."
-msgstr ""
+msgid "Invalid rear port position ({rear_port_position}): Rear port {name} has only {positions} positions."
+msgstr "无效的后置端口位置 ({rear_port_position})：后置端口 {name} 仅有 {positions} 个位置。"
 
 #: dcim/models/device_components.py:1060
 msgid "Number of front ports which may be mapped"
-msgstr ""
+msgstr "可映射的前置端口数量"
 
 #: dcim/models/device_components.py:1065
 msgid "rear port"
-msgstr ""
+msgstr "后置端口"
 
 #: dcim/models/device_components.py:1066
 msgid "rear ports"
-msgstr ""
+msgstr "后置端口"
 
 #: dcim/models/device_components.py:1080
 #, python-brace-format
-msgid ""
-"The number of positions cannot be less than the number of mapped front ports "
-"({frontport_count})"
-msgstr ""
+msgid "The number of positions cannot be less than the number of mapped front ports ({frontport_count})"
+msgstr "位置数量不能少于已映射的前置端口数量 ({frontport_count})"
 
 #: dcim/models/device_components.py:1104
 msgid "module bay"
-msgstr ""
+msgstr "模块仓"
 
 #: dcim/models/device_components.py:1105
 msgid "module bays"
-msgstr ""
+msgstr "模块仓"
 
 #: dcim/models/device_components.py:1118
 msgid "parent_bay"
-msgstr ""
+msgstr "父仓"
 
 #: dcim/models/device_components.py:1126
 msgid "device bay"
-msgstr ""
+msgstr "设备仓"
 
 #: dcim/models/device_components.py:1127
 msgid "device bays"
-msgstr ""
+msgstr "设备仓"
 
 #: dcim/models/device_components.py:1137
 #, python-brace-format
 msgid "This type of device ({device_type}) does not support device bays."
-msgstr ""
+msgstr "此类型的设备 ({device_type}) 不支持设备仓。"
 
 #: dcim/models/device_components.py:1143
 msgid "Cannot install a device into itself."
-msgstr ""
+msgstr "不能将设备安装到自身。"
 
 #: dcim/models/device_components.py:1151
 #, python-brace-format
-msgid ""
-"Cannot install the specified device; device is already installed in {bay}."
-msgstr ""
+msgid "Cannot install the specified device; device is already installed in {bay}."
+msgstr "无法安装指定的设备；设备已安装在 {bay} 中。"
 
 #: dcim/models/device_components.py:1172
 msgid "inventory item role"
-msgstr ""
+msgstr "库存项角色"
 
 #: dcim/models/device_components.py:1173
 msgid "inventory item roles"
-msgstr ""
+msgstr "库存项角色"
 
 #: dcim/models/device_components.py:1230 dcim/models/devices.py:595
 #: dcim/models/devices.py:1173 dcim/models/racks.py:113
 msgid "serial number"
-msgstr ""
+msgstr "序列号"
 
 #: dcim/models/device_components.py:1238 dcim/models/devices.py:603
 #: dcim/models/devices.py:1180 dcim/models/racks.py:120
 msgid "asset tag"
-msgstr ""
+msgstr "资产标签"
 
 #: dcim/models/device_components.py:1239
 msgid "A unique tag used to identify this item"
-msgstr ""
+msgstr "用于标识此项的唯一标签"
 
 #: dcim/models/device_components.py:1242
 msgid "discovered"
-msgstr ""
+msgstr "已发现"
 
 #: dcim/models/device_components.py:1244
 msgid "This item was automatically discovered"
-msgstr ""
+msgstr "此项已自动发现"
 
 #: dcim/models/device_components.py:1262
 msgid "inventory item"
-msgstr ""
+msgstr "库存项"
 
 #: dcim/models/device_components.py:1263
 msgid "inventory items"
-msgstr ""
+msgstr "库存项"
 
 #: dcim/models/device_components.py:1274
 msgid "Cannot assign self as parent."
-msgstr ""
+msgstr "不能将自己分配为父项。"
 
 #: dcim/models/device_components.py:1282
 msgid "Parent inventory item does not belong to the same device."
-msgstr ""
+msgstr "父库存项不属于同一设备。"
 
 #: dcim/models/device_components.py:1288
 msgid "Cannot move an inventory item with dependent children"
-msgstr ""
+msgstr "不能移动具有依赖子项的库存项"
 
 #: dcim/models/device_components.py:1296
 msgid "Cannot assign inventory item to component on another device"
-msgstr ""
+msgstr "不能将库存项分配给另一设备上的组件"
 
 #: dcim/models/devices.py:54
 msgid "manufacturer"
-msgstr ""
+msgstr "制造商"
 
 #: dcim/models/devices.py:55
 msgid "manufacturers"
-msgstr ""
+msgstr "制造商"
 
 #: dcim/models/devices.py:82 dcim/models/devices.py:381
 msgid "model"
-msgstr ""
+msgstr "型号"
 
 #: dcim/models/devices.py:95
 msgid "default platform"
-msgstr ""
+msgstr "默认平台"
 
 #: dcim/models/devices.py:98 dcim/models/devices.py:385
 msgid "part number"
-msgstr ""
+msgstr "零件编号"
 
 #: dcim/models/devices.py:101 dcim/models/devices.py:388
 msgid "Discrete part number (optional)"
-msgstr ""
+msgstr "分离的零件编号（可选）"
 
 #: dcim/models/devices.py:107 dcim/models/racks.py:137
 msgid "height (U)"
-msgstr ""
+msgstr "高度（U）"
 
 #: dcim/models/devices.py:111
 msgid "exclude from utilization"
-msgstr ""
+msgstr "排除在利用率计算之外"
 
 #: dcim/models/devices.py:112
 msgid "Devices of this type are excluded when calculating rack utilization."
-msgstr ""
+msgstr "在计算机柜利用率时，排除此类型的设备。"
 
 #: dcim/models/devices.py:116
 msgid "is full depth"
-msgstr ""
+msgstr "全深度"
 
 #: dcim/models/devices.py:117
 msgid "Device consumes both front and rear rack faces."
-msgstr ""
+msgstr "设备同时占用前后机柜面。"
 
 #: dcim/models/devices.py:123
 msgid "parent/child status"
-msgstr ""
+msgstr "父/子状态"
 
 #: dcim/models/devices.py:124
 msgid ""
 "Parent devices house child devices in device bays. Leave blank if this "
 "device type is neither a parent nor a child."
-msgstr ""
+msgstr "父设备在设备仓中容纳子设备。如果此设备类型既不是父设备也不是子设备，请留空。"
 
 #: dcim/models/devices.py:128 dcim/models/devices.py:647
 msgid "airflow"
-msgstr ""
+msgstr "气流"
 
 #: dcim/models/devices.py:204
 msgid "device type"
-msgstr ""
+msgstr "设备类型"
 
 #: dcim/models/devices.py:205
 msgid "device types"
-msgstr ""
+msgstr "设备类型"
 
 #: dcim/models/devices.py:289
 msgid "U height must be in increments of 0.5 rack units."
-msgstr ""
+msgstr "U 高度必须以 0.5 机柜单元的增量计算。"
 
 #: dcim/models/devices.py:306
 #, python-brace-format
 msgid ""
 "Device {device} in rack {rack} does not have sufficient space to accommodate "
 "a height of {height}U"
-msgstr ""
+msgstr "机柜 {rack} 中的设备 {device} 没有足够的空间来容纳 {height}U 的高度"
 
 #: dcim/models/devices.py:321
 #, python-brace-format
 msgid ""
 "Unable to set 0U height: Found <a href=\"{url}\">{racked_instance_count} "
 "instances</a> already mounted within racks."
-msgstr ""
+msgstr "无法设置 0U 高度：发现机柜中已经安装了 {racked_instance_count} 个实例。"
 
 #: dcim/models/devices.py:330
 msgid ""
 "Must delete all device bay templates associated with this device before "
 "declassifying it as a parent device."
-msgstr ""
+msgstr "在取消将其标记为父设备之前，必须删除与此设备相关联的所有设备仓模板。"
 
 #: dcim/models/devices.py:336
 msgid "Child device types must be 0U."
-msgstr ""
+msgstr "子设备类型必须是 0U。"
 
 #: dcim/models/devices.py:404
 msgid "module type"
-msgstr ""
+msgstr "模块类型"
 
 #: dcim/models/devices.py:405
 msgid "module types"
-msgstr ""
+msgstr "模块类型"
 
 #: dcim/models/devices.py:473
 msgid "Virtual machines may be assigned to this role"
-msgstr ""
+msgstr "可以将虚拟机分配到此角色"
 
 #: dcim/models/devices.py:485
 msgid "device role"
-msgstr ""
+msgstr "设备角色"
 
 #: dcim/models/devices.py:486
 msgid "device roles"
-msgstr ""
+msgstr "设备角色"
 
 #: dcim/models/devices.py:503
 msgid "Optionally limit this platform to devices of a certain manufacturer"
-msgstr ""
+msgstr "可选择将此平台限制为某个制造商的设备"
 
 #: dcim/models/devices.py:515
 msgid "platform"
