@@ -580,7 +580,7 @@ msgstr "服务参数"
 #: vpn/forms/model_forms.py:146 vpn/forms/model_forms.py:404
 #: wireless/forms/model_forms.py:55 wireless/forms/model_forms.py:160
 msgid "Tenancy"
-msgstr "租赁"
+msgstr "租户"
 
 #: circuits/forms/bulk_import.py:38 circuits/forms/bulk_import.py:53
 #: circuits/forms/bulk_import.py:79
@@ -1325,7 +1325,7 @@ msgstr "文件上传"
 #: core/forms/model_forms.py:147 templates/core/configrevision.html:43
 #: templates/dcim/rack_elevation_list.html:6
 msgid "Rack Elevations"
-msgstr "机架高度"
+msgstr "机架立面视图"
 
 #: core/forms/model_forms.py:148 dcim/choices.py:1407
 #: dcim/forms/bulk_edit.py:859 dcim/forms/bulk_edit.py:1242
@@ -5040,7 +5040,7 @@ msgstr "机架预订"
 
 #: dcim/models/racks.py:549
 msgid "rack reservations"
-msgstr "机架预订"
+msgstr "机架预留"
 
 #: dcim/models/racks.py:566
 #, python-brace-format
@@ -5185,7 +5185,7 @@ msgstr "站点 B"
 #: templates/dcim/consoleserverport.html:75 templates/dcim/frontport.html:119
 #: templates/dcim/inventoryitem_edit.html:39
 msgid "Console Port"
-msgstr "管理端口"
+msgstr "控制台端口"
 
 #: dcim/tables/connections.py:31 dcim/tables/connections.py:50
 #: dcim/tables/connections.py:71
@@ -5262,11 +5262,11 @@ msgstr "位置（设备托架）"
 
 #: dcim/tables/devices.py:263
 msgid "Console ports"
-msgstr "管理端口"
+msgstr "控制台端口"
 
 #: dcim/tables/devices.py:266
 msgid "Console server ports"
-msgstr "管理服务器端口"
+msgstr "控制台服务器端口"
 
 #: dcim/tables/devices.py:269
 msgid "Power ports"
@@ -5447,7 +5447,7 @@ msgstr "实例"
 #: templates/dcim/devicetype/base.html:22 templates/dcim/module.html:22
 #: templates/dcim/moduletype/base.html:22
 msgid "Console Ports"
-msgstr "管理端口"
+msgstr "控制台端口"
 
 #: dcim/tables/devicetypes.py:116 dcim/views.py:957 dcim/views.py:1196
 #: dcim/views.py:1882 netbox/navigation/menu.py:86
@@ -5455,7 +5455,7 @@ msgstr "管理端口"
 #: templates/dcim/devicetype/base.html:25 templates/dcim/module.html:25
 #: templates/dcim/moduletype/base.html:25
 msgid "Console Server Ports"
-msgstr "管理服务器端口"
+msgstr "控制台服务器端口"
 
 #: dcim/tables/devicetypes.py:119 dcim/views.py:972 dcim/views.py:1211
 #: dcim/views.py:1897 netbox/navigation/menu.py:87
@@ -5554,7 +5554,7 @@ msgstr "已断开连接的 {count} {type}"
 
 #: dcim/views.py:692 netbox/navigation/menu.py:29
 msgid "Reservations"
-msgstr "预订"
+msgstr "预留"
 
 #: dcim/views.py:711
 msgid "Non-Racked Devices"
@@ -8511,7 +8511,7 @@ msgstr "机架单元高度"
 
 #: netbox/config/parameters.py:86
 msgid "Default unit height for rendered rack elevations"
-msgstr "渲染的机架高度的默认单元高度"
+msgstr "渲染的机架立面视图的默认单元高度"
 
 #: netbox/config/parameters.py:91
 msgid "Rack unit width"
@@ -8519,7 +8519,7 @@ msgstr "机架单元宽度"
 
 #: netbox/config/parameters.py:93
 msgid "Default unit width for rendered rack elevations"
-msgstr "渲染的机架高度的默认单元宽度"
+msgstr "渲染的机架立面视图的默认单元宽度"
 
 #: netbox/config/parameters.py:100
 msgid "Powerfeed voltage"
@@ -8699,7 +8699,7 @@ msgstr "机架角色"
 
 #: netbox/navigation/menu.py:32
 msgid "Elevations"
-msgstr "高度"
+msgstr "立面视图"
 
 #: netbox/navigation/menu.py:41
 msgid "Tenant Groups"
@@ -9818,11 +9818,11 @@ msgstr "添加组件"
 
 #: templates/dcim/device/consoleports.html:24
 msgid "Add Console Ports"
-msgstr "添加管理端口"
+msgstr "添加控制台端口"
 
 #: templates/dcim/device/consoleserverports.html:24
 msgid "Add Console Server Ports"
-msgstr "添加管理服务器端口"
+msgstr "添加控制台服务器端口"
 
 #: templates/dcim/device/devicebays.html:10
 msgid "Add Device Bays"
