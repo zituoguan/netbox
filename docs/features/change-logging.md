@@ -1,13 +1,13 @@
-# Change Logging
+# 变更日志
 
-Every time an object in NetBox is created, updated, or deleted, a serialized copy of that object taken both before and after the change is saved to the database, along with metadata including the current time and the user associated with the change. These records form a persistent record of changes both for each individual object as well as NetBox as a whole. The global change log can be viewed by navigating to Other > Change Log.
+每次在 NetBox 中创建、更新或删除对象时，都会将该对象在变更前后的序列化副本保存到数据库中，同时包括当前时间和与变更关联的用户等元数据。这些记录形成了对每个单独对象以及整个 NetBox 的持久变更记录。可以通过导航到 其他 > 变更日志 来查看全局变更日志。
 
-A serialized representation of the instance being modified is included in JSON format. This is similar to how objects are conveyed within the REST API, but does not include any nested representations. For instance, the `tenant` field of a site will record only the tenant's ID, not a representation of the tenant.
+在 JSON 格式中包含了被修改实例的序列化表示。这类似于对象在 REST API 中的传递方式，但不包括任何嵌套表示。例如，站点的 `tenant` 字段将仅记录租户的 ID，而不是租户的表示。
 
-When a request is made, a UUID is generated and attached to any change records resulting from that request. For example, editing three objects in bulk will create a separate change record for each  (three in total), and each of those objects will be associated with the same UUID. This makes it easy to identify all the change records resulting from a particular request.
+当发出请求时，将生成一个 UUID 并附加到该请求产生的任何变更记录上。例如，批量编辑三个对象将为每个对象创建一个单独的变更记录（总共三个），并且每个对象都将与同一个 UUID 关联。这使得很容易识别由特定请求产生的所有变更记录。
 
-Change records are exposed in the API via the read-only endpoint `/api/extras/object-changes/`. They may also be exported via the web UI in CSV format.
+变更记录通过只读端点 `/api/extras/object-changes/` 在 API 中暴露。它们也可以通过 Web UI 以 CSV 格式导出。
 
-## Correlating Changes by Request
+## 通过请求关联变更
 
-Every request made to NetBox is assigned a random unique ID that can be used to correlate change records. For example, if you change the status of three sites using the UI's bulk edit feature, you will see three new change records (one for each site) all referencing the same request ID. This shows that all three changes were made as part of the same request.
+对 NetBox 发出的每个请求都会被分配一个随机唯一 ID，可用于关联变更记录。例如，如果您使用 UI 的批量编辑功能更改三个站点的状态，您将看到三个新的变更记录（每个站点一个），所有这些记录都引用相同的请求 ID。这表明所有三个变更都是作为同一请求的一部分进行的。

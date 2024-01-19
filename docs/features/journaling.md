@@ -1,5 +1,5 @@
-# Journaling
+# 记录
 
-All primary and organizational models in NetBox support journaling. A journal is a collection of human-generated notes and comments about an object maintained for historical context. It supplements NetBox's change log to provide additional information about why changes have been made or to convey events which occur outside NetBox. Unlike the change log, in which records typically expire after a configurable period of time, journal entries persist for the life of their associated object.
+NetBox中的所有主要和组织模型都支持记录。日志是有关对象的人工生成的注释和评论的集合，用于保留历史上下文。它补充了NetBox的更改日志，提供了有关更改原因或传达在NetBox之外发生的事件的额外信息。与更改日志不同，在更改日志中，记录通常在可配置的一段时间后过期，而记录条目将在其关联对象的生命周期内持续存在。
 
-Each journal entry has a selectable kind (info, success, warning, or danger) and a user-populated `comments` field. Each entry automatically records the date, time, and associated user upon being created.
+每个记录条目都有可选择的类型（信息、成功、警告或危险）和用户填写的`注释`字段。每个条目在创建时会自动记录日期、时间和关联用户。

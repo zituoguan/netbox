@@ -1,35 +1,35 @@
-# Circuits
+# 电路
 
-NetBox is ideal for managing your network's transit and peering providers and circuits. It provides all the flexibility needed to model physical circuits in both data center and enterprise environments, and allows for "connecting" circuits directly to device interfaces via cables.
+NetBox 非常适合管理您网络的传输和对等互连提供商以及电路。它提供了建模数据中心和企业环境中物理电路所需的所有灵活性，并允许通过电缆直接将电路“连接”到设备接口。
 
 ```mermaid
 flowchart TD
-    ASN --> Provider
-    Provider --> ProviderNetwork & ProviderAccount & Circuit
-    ProviderAccount --> Circuit
-    CircuitType --> Circuit
+    ASN --> 服务提供商
+    服务提供商 --> 服务提供商网络 & 服务提供商账户 & 电路
+    服务提供商账户 --> 电路
+    电路类型 --> 电路
 
 click ASN "../../models/circuits/asn/"
-click Circuit "../../models/circuits/circuit/"
-click CircuitType "../../models/circuits/circuittype/"
-click Provider "../../models/circuits/provider/"
-click ProviderAccount "../../models/circuits/provideraccount/"
-click ProviderNetwork "../../models/circuits/providernetwork/"
+click 电路 "../../models/circuits/circuit/"
+click 电路类型 "../../models/circuits/circuittype/"
+click 服务提供商 "../../models/circuits/provider/"
+click 服务提供商账户 "../../models/circuits/provideraccount/"
+click 服务提供商网络 "../../models/circuits/providernetwork/"
 ```
 
-## Providers
+## 提供商
 
-A provider is any organization which provides Internet or private connectivity. Typically, these are large carriers, however they might also include regional providers or even internal services. Each provider can be assigned account and contact details, and may have one or more AS numbers assigned to it.
+提供商是提供互联网或私有连接的任何组织。通常，这些是大型运营商，但也可能包括区域提供商甚至内部服务。每个提供商都可以分配账户和联系详情，并且可能被分配一个或多个 AS 号码。
 
-Sometimes you'll need to model provider networks into which you don't have full visibility; these are typically represented on topology diagrams with cloud icons. NetBox facilitates this through its provider network model: A provider network represents a "black box" network to which your circuits can connect. A common example is a provider MPLS network connecting multiple sites.
+有时您需要对您没有完全可见性的提供商网络进行建模；这些通常在拓扑图上用云图标表示。NetBox 通过其提供商网络模型支持这一点：提供商网络代表了一个“黑盒”网络，您的电路可以连接到这个网络。一个常见的例子是连接多个站点的提供商 MPLS 网络。
 
-## Circuits
+## 电路
 
-A circuit is a physical connection between two points, which is installed and maintained by an external provider. For example, an Internet connection delivered as a fiber optic cable would be modeled as a circuit in NetBox.
+电路是由外部提供商安装和维护的两点间的物理连接。例如，以光纤电缆形式提供的互联网连接将在 NetBox 中被建模为一个电路。
 
-Each circuit is associated with a provider and assigned a circuit ID, which must be unique to that provider. A circuit is also assigned a user-defined type, operational status, and various other operating characteristics. Provider accounts can also be employed to further categorize circuits belonging to a common provider: These may represent different business units or technologies.
+每个电路都与一个提供商相关联，并被分配一个电路 ID，该 ID 必须对该提供商是唯一的。电路还被分配一个用户定义的类型、运行状态和各种其他运行特性。提供商账户也可以用来进一步分类属于共同提供商的电路：这些可能代表不同的业务单位或技术。
 
-Each circuit may have up to two terminations (A and Z) defined. Each termination can be associated with a particular site or provider network. In the case of the former, a cable can be connected between the circuit termination and a device component to map its physical connectivity.
+每个电路最多可以定义两个终端（A 和 Z）。每个终端可以与特定站点或提供商网络相关联。在前者的情况下，可以在电路终端和设备组件之间连接电缆，以映射其物理连接性。
 
-!!! warning "Physical vs. Virtual Circuits"
-    The circuit model in NetBox represents **physical** connections. Don't confuse these with _virtual_ circuits which may be offered by providers overlaid on physical infrastructure. (For example, a VLAN-tagged subinterface would be a virtual circuit.) A good rule of thumb: If you can't point to it, it's not a physical circuit.
+!!! 警告 "物理电路 vs. 虚拟电路"
+    NetBox 中的电路模型代表**物理**连接。不要将这些与提供商在物理基础设施上提供的_虚拟_电路混淆。（例如，带 VLAN 标记的子接口将是一个虚拟电路。）一个好的经验法则：如果您无法指出它，它就不是一个物理电路。

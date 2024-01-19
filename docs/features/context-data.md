@@ -1,6 +1,6 @@
-# Context Data
+# 上下文数据
 
-Configuration context data (or "config contexts" for short) is a powerful feature that enables users to define arbitrary data that applies to device and virtual machines based on certain characteristics. For example, suppose you want to define syslog servers for devices assigned to sites within a particular region. In NetBox, you can create a config context instance containing this data and apply it to the desired region. All devices within this region will now include this data when fetched via an API.
+配置上下文数据（简称为 "config contexts"）是一项强大的功能，它使用户能够根据某些特征定义适用于设备和虚拟机的任意数据。例如，假设您希望为分配给特定区域内站点的设备定义 syslog 服务器。在 NetBox 中，您可以创建一个包含此数据的配置上下文实例，并将其应用于所需区域。现在，通过 API 获取的该区域内的所有设备都将包含此数据。
 
 ```json
 {
@@ -11,33 +11,33 @@ Configuration context data (or "config contexts" for short) is a powerful featur
 }
 ```
 
-Context data can be consumed by remote API clients, or it can be employed natively to render [configuration templates](./configuration-rendering.md).
+上下文数据可以被远程 API 客户端使用，也可以原生地用于渲染[配置模板](./configuration-rendering.md)。
 
-Config contexts can be computed for objects based on the following criteria:
+根据以下标准计算对象的配置上下文：
 
-| Type          | Devices          | Virtual Machines |
+| 类型          | 设备               | 虚拟机           |
 |---------------|------------------|------------------|
-| Region        | :material-check: | :material-check: |
-| Site group    | :material-check: | :material-check: |
-| Site          | :material-check: | :material-check: |
-| Location      | :material-check: |                  |
-| Device type   | :material-check: |                  |
-| Role          | :material-check: | :material-check: |
-| Platform      | :material-check: | :material-check: |
-| Cluster type  |                  | :material-check: |
-| Cluster group |                  | :material-check: |
-| Cluster       |                  | :material-check: |
-| Tenant group  | :material-check: | :material-check: |
-| Tenant        | :material-check: | :material-check: |
-| Tag           | :material-check: | :material-check: |
+| 区域          | :material-check: | :material-check: |
+| 站点组        | :material-check: | :material-check: |
+| 站点          | :material-check: | :material-check: |
+| 位置          | :material-check: |                  |
+| 设备类型      | :material-check: |                  |
+| 角色          | :material-check: | :material-check: |
+| 平台          | :material-check: | :material-check: |
+| 集群类型      |                  | :material-check: |
+| 集群组        |                  | :material-check: |
+| 集群          |                  | :material-check: |
+| 租户组        | :material-check: | :material-check: |
+| 租户          | :material-check: | :material-check: |
+| 标签          | :material-check: | :material-check: |
 
-There are no restrictions around what data can be stored in a configuration context, so long as it can be expressed in JSON.
+配置上下文中可以存储任何数据，只要它可以用 JSON 表达。
 
-## Hierarchical Rendering
+## 层次化渲染
 
-While this is handy on its own, the real power of context data stems from its ability to be merged and overridden using multiple instances. For example, perhaps you need to define _different_ syslog servers within the region for a particular device role. You can create a second config context with the appropriate data and a higher weight, and apply it to the desired role. This will override the lower-weight data that applies to the entire region. As you can imagine, this flexibility can cater to many complex use cases.
+尽管上下文数据本身就很方便，但其真正的力量源自于它能够通过多个实例合并和重写的能力。例如，也许您需要在区域内为特定设备角色定义_不同的_ syslog 服务器。您可以创建一个具有适当数据和更高权重的第二个配置上下文，并将其应用于所需的角色。这将覆盖适用于整个区域的较低权重数据。如您所想，这种灵活性可以满足许多复杂的用例。
 
-For example, suppose we want to specify a set of syslog and NTP servers for all devices within a region. We could create a config context instance with a weight of 1000 assigned to the region, with the following JSON data:
+例如，假设我们想为区域内的所有设备指定一组 syslog 和 NTP 服务器。我们可以创建一个配置上下文实例，权重为 1000，分配给该区域，包含以下 JSON 数据：
 
 ```json
 {
@@ -52,7 +52,7 @@ For example, suppose we want to specify a set of syslog and NTP servers for all 
 }
 ```
 
-But suppose there's a problem at one particular site within this region preventing traffic from reaching the regional syslog server. Devices there need to use a local syslog server instead of the two defined above. We'll create a second config context assigned only to that site with a weight of 2000 and the following data:
+但假设该区域内的一个特定站点出现问题，阻止了流量到达区域 syslog 服务器。那里的设备需要使用本地 syslog 服务器，而不是上面定义的两个。我们将为该站点单独创建一个权重为 2000 的第二个配置上下文，并包含以下数据：
 
 ```json
 {
@@ -62,7 +62,7 @@ But suppose there's a problem at one particular site within this region preventi
 }
 ```
 
-When the context data for a device at this site is rendered, the second, higher-weight data overwrite the first, resulting in the following:
+当为该站点的设备渲染上下文数据时，第二个、权重更高的数据将覆盖第一个，结果如下：
 
 ```json
 {
@@ -76,11 +76,11 @@ When the context data for a device at this site is rendered, the second, higher-
 }
 ```
 
-Data from the higher-weight context overwrites conflicting data from the lower-weight context, while the non-conflicting portion of the lower-weight context (the list of NTP servers) is preserved.
+高权重上下文中的数据将覆盖低权重上下文中的冲突数据，同时保留低权重上下文中非冲突部分（NTP 服务器列表）。
 
-## Local Context Data
+## 本地上下文数据
 
-Devices and virtual machines may also have a local context data defined. This local context will _always_ take precedence over any separate config context objects which apply to the device/VM. This is useful in situations where we need to call out a specific deviation in the data for a particular object.
+设备和虚拟机也可以定义本地上下文数据。这个本地上下文将始终优先于适用于设备/VM 的任何单独配置上下文对象。这在我们需要针对特定对象调出数据中的特定偏差时非常有用。
 
-!!! warning
-    If you find that you're routinely defining local context data for many individual devices or virtual machines, [custom fields](./customization.md#custom-fields) may offer a more effective solution.
+!!! 警告
+    如果您发现自己经常为许多单个设备或虚拟机定义本地上下文数据，[自定义字段](./customization.md#custom-fields)可能提供更有效的解决方案。

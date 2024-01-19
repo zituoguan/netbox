@@ -1,17 +1,17 @@
-# Event Rules
+# 事件规则
 
-NetBox includes the ability to execute certain functions in response to internal object changes. These include:
+NetBox 包含了响应内部对象更改来执行某些功能的能力。这些功能包括：
 
-* [Scripts](../customization/custom-scripts.md) execution
-* [Webhooks](../integrations/webhooks.md) execution
+* [脚本](../customization/custom-scripts.md)执行
+* [Webhooks](../integrations/webhooks.md)执行
 
-For example, suppose you want to automatically configure a monitoring system to start monitoring a device when its operational status is changed to active, and remove it from monitoring for any other status. You can create a webhook in NetBox for the device model and craft its content and destination URL to effect the desired change on the receiving system. You can then associate an event rule with this webhook and the webhook will be sent automatically by NetBox whenever the configured constraints are met.
+例如，假设您想要在设备的操作状态更改为活跃时自动配置监控系统以开始监控设备，并在任何其他状态下将其从监控中移除。您可以在 NetBox 中为设备模型创建一个 webhook，并设计其内容和目标 URL 以在接收系统上实现所需的更改。然后，您可以将一个事件规则与此 webhook 关联，每当满足配置的约束条件时，NetBox 将自动发送此 webhook。
 
-Each event must be associated with at least one NetBox object type and at least one event (e.g. create, update, or delete).
+每个事件必须至少与一个 NetBox 对象类型和至少一个事件（例如创建、更新或删除）关联。
 
-## Conditional Event Rules
+## 条件事件规则
 
-An event rule may include a set of conditional logic expressed in JSON used to control whether an event triggers for a specific object. For example, you may wish to trigger an event for devices only when the `status` field of an object is "active":
+事件规则可能包括一组以 JSON 表达的条件逻辑，用于控制特定对象是否触发事件。例如，您可能希望仅在对象的 `status` 字段为 "active" 时触发设备的事件：
 
 ```json
 {
@@ -24,8 +24,8 @@ An event rule may include a set of conditional logic expressed in JSON used to c
 }
 ```
 
-For more detail, see the reference documentation for NetBox's [conditional logic](../reference/conditions.md).
+有关更多详细信息，请参阅 NetBox 的[条件逻辑](../reference/conditions.md)参考文档。
 
-## Event Rule Processing
+## 事件规则处理
 
-When a change is detected, any resulting events are placed into a Redis queue for processing. This allows the user's request to complete without needing to wait for the outgoing event(s) to be processed. The events are then extracted from the queue by the `rqworker` process. The current event queue and any failed events can be inspected in the admin UI under System > Background Tasks.
+当检测到更改时，任何产生的事件都会放入 Redis 队列进行处理。这允许用户的请求在不需要等待外发事件处理完成的情况下完成。然后由 `rqworker` 进程从队列中提取事件。当前事件队列和任何失败的事件可以在管理 UI 中的系统 > 后台任务下进行检查。

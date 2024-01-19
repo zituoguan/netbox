@@ -1,18 +1,18 @@
-# Configuration Rendering
+# 配置渲染
 
-One of the critical aspects of operating a network is ensuring that every network node is configured correctly. By leveraging configuration templates and [context data](./context-data.md), NetBox can render complete configuration files for each device on your network.
+操作网络的一个关键方面是确保每个网络节点都被正确配置。通过利用配置模板和[上下文数据](./context-data.md)，NetBox 可以为网络上的每个设备渲染完整的配置文件。
 
 ```mermaid
 flowchart TD
-    ConfigContext & ConfigTemplate --> Config{{Rendered configuration}}
+配置上下文 & 配置模板 --> 配置{{渲染配置}}
 
-click ConfigContext "../../models/extras/configcontext/"
-click ConfigTemplate "../../models/extras/configtemplate/"
+click 配置上下文 "../../models/extras/configcontext/"
+click 配置模板 "../../models/extras/configtemplate/"
 ```
 
-## Configuration Templates
+## 配置模板
 
-Configuration templates are written in the [Jinja2 templating language](https://jinja.palletsprojects.com/), and may be automatically populated from remote data sources. Context data is applied to a template during rendering to output a complete configuration file. Below is an example Jinja2 template which renders a simple network switch configuration file.
+配置模板使用 [Jinja2 模板语言](https://jinja.palletsprojects.com/)编写，并且可以从远程数据源自动填充。在渲染过程中，上下文数据被应用到模板中，以输出完整的配置文件。下面是一个使用 Jinja2 模板渲染简单网络交换机配置文件的示例。
 
 ```jinja2
 {% extends 'base.j2' %}
@@ -35,21 +35,21 @@ Configuration templates are written in the [Jinja2 templating language](https://
 {% endblock %}
 ```
 
-When rendered for a specific NetBox device, the template's `device` variable will be populated with the device instance, and `ntp_servers` will be pulled from the device's available context data. The resulting output will be a valid configuration segment that can be applied directly to a compatible network device.
+当为特定 NetBox 设备渲染时，模板的 `device` 变量将被填充设备实例，而 `ntp_servers` 将从设备的可用上下文数据中提取。生成的输出将是一个有效的配置段，可以直接应用于兼容的网络设备。
 
-### Context Data
+### 上下文数据
 
-The objet for which the configuration is being rendered is made available as template context as `device` or `virtualmachine` for devices and virtual machines, respectively. Additionally, NetBox model classes can be accessed by the app or plugin in which they reside. For example:
+作为模板上下文提供的对象，将分别作为 `device` 或 `virtualmachine` 用于设备和虚拟机。此外，NetBox 模型类可以通过它们所在的应用程序或插件访问。例如：
 
 ```
-There are {{ dcim.Site.objects.count() }} sites.
+共有 {{ dcim.Site.objects.count() }} 个站点。
 ```
 
-## Rendering Templates
+## 渲染模板
 
-### Device Configurations
+### 设备配置
 
-NetBox provides a REST API endpoint specifically for rendering the default configuration template for a specific device. This is accomplished by sending a POST request to the device's unique URL, optionally including additional context data.
+NetBox 提供了一个专门用于渲染特定设备默认配置模板的 REST API 端点。这是通过向设备的唯一 URL 发送 POST 请求来实现的，可选地包括额外的上下文数据。
 
 ```no-highlight
 curl -X POST \
@@ -62,17 +62,17 @@ http://netbox:8000/api/dcim/devices/123/render-config/ \
 }'
 ```
 
-This request will trigger resolution of the device's preferred config template in the following order:
+此请求将按以下顺序解析设备首选的配置模板：
 
-* The config template assigned to the individual device
-* The config template assigned to the device's role
-* The config template assigned to the device's platform
+* 分配给单个设备的配置模板
+* 分配给设备角色的配置模板
+* 分配给设备平台的配置模板
 
-If no config template has been assigned to any of these three objects, the request will fail.
+如果这三个对象中没有任何一个分配了配置模板，请求将失败。
 
-### General Purpose Use
+### 通用用途
 
-NetBox config templates can also be rendered without being tied to any specific device, using a separate general purpose REST API endpoint. Any data included with a POST request to this endpoint will be passed as context data for the template.
+NetBox 配置模板也可以在不绑定任何特定设备的情况下进行渲染，使用单独的通用 REST API 端点。发送到此端点的任何 POST 请求中包含的数据都将作为模板的上下文数据传递。
 
 ```no-highlight
 curl -X POST \

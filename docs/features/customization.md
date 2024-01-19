@@ -1,52 +1,52 @@
-# Customization
+# 自定义
 
-While NetBox strives to meet the needs of every network, the needs of users to cater to their own unique environments cannot be ignored. NetBox was built with this in mind, and can be customized in many ways to better suit your particular needs.
+虽然 NetBox 力求满足每个网络的需求，但用户的需求是为了适应他们独特的环境，这是不容忽视的。NetBox 以此为出发点而构建，可以通过多种方式进行自定义，以更好地适应您的特定需求。
 
-## Tags
+## 标签
 
-Most objects in NetBox can be assigned user-created tags to aid with organization and filtering. Tag values are completely arbitrary: They may be used to store data in key-value pairs, or they may be employed simply as labels against which objects can be filtered. Each tag can also be assigned a color for quicker differentiation in the user interface.
+NetBox 中的大多数对象都可以分配用户创建的标签，以帮助组织和过滤。标签值完全是任意的：它们可以用来存储键值对数据，或者仅作为可以过滤对象的标签使用。每个标签还可以分配颜色，以便在用户界面中更快地区分。
 
-Objects can be filtered by the tags they have applied. For example, the following API request will retrieve all devices tagged as "monitored":
+可以根据对象应用的标签来过滤对象。例如，以下 API 请求将检索所有标记为 "monitored" 的设备：
 
 ```no-highlight
 GET /api/dcim/devices/?tag=monitored
 ```
 
-The `tag` filter can be specified multiple times to match only objects which have _all_ the specified tags assigned:
+可以多次指定 `tag` 过滤器，以匹配只有_所有_指定标签的对象：
 
 ```no-highlight
 GET /api/dcim/devices/?tag=monitored&tag=deprecated
 ```
 
-## Bookmarks
+## 书签
 
-!!! info "This feature was introduced in NetBox v3.6."
+!!! 信息 "此功能在 NetBox v3.6 中引入。"
 
-Users can bookmark their most commonly visited objects for convenient access. Bookmarks are listed under a user's profile, and can be displayed with custom filtering and ordering on the user's personal dashboard.
+用户可以将他们最常访问的对象添加为书签，以便于访问。书签列在用户的个人资料下，并可以在用户的个人仪表板上显示自定义过滤和排序。
 
-## Custom Fields
+## 自定义字段
 
-While NetBox provides a rather extensive data model out of the box, the need may arise to store certain additional data associated with NetBox objects. For example, you might need to record the invoice ID alongside an installed device, or record an approving authority when creating a new IP prefix. NetBox administrators can create custom fields on built-in objects to meet these needs.
+虽然 NetBox 开箱即用提供了相当广泛的数据模型，但可能会出现需要存储与 NetBox 对象相关的某些额外数据的需求。例如，您可能需要在安装设备时记录发票 ID，或在创建新 IP 前缀时记录批准权威。NetBox 管理员可以在内置对象上创建自定义字段以满足这些需求。
 
-NetBox supports many types of custom field, from basic data types like strings and integers, to complex structures like selection lists or raw JSON. It's even possible to add a custom field which references other NetBox objects. Custom field data is stored directly alongside the object to which it is applied in the database, which ensures minimal performance impact. And custom field data can be written and read via the REST API, just like built-in fields.
+NetBox 支持许多类型的自定义字段，从基本数据类型（如字符串和整数）到复杂结构（如选择列表或原始 JSON）。甚至可以添加引用 NetBox 其他对象的自定义字段。自定义字段数据直接存储在与之关联的对象数据库中，确保了最小的性能影响。自定义字段数据可以通过 REST API 进行读写，就像内置字段一样。
 
-To learn more about this feature, check out the [custom field documentation](../customization/custom-fields.md).
+要了解更多关于此功能的信息，请查看[自定义字段文档](../customization/custom-fields.md)。
 
-## Custom Links
+## 自定义链接
 
-Custom links allow you to conveniently reference external resources related to NetBox objects from within the NetBox UI. For example, you might wish to link each virtual machine modeled in NetBox to its corresponding view in some orchestration application. You can do this by creating a templatized custom link for the virtual machine model, specifying something like the following for the link URL:
+自定义链接允许您方便地从 NetBox UI 中引用与 NetBox 对象相关的外部资源。例如，您可能希望将 NetBox 中建模的每个虚拟机链接到某些编排应用中的相应视图。您可以为虚拟机模型创建一个模板化的自定义链接，指定类似以下内容的链接 URL：
 
 ```no-highlight
 http://server.local/vms/?name={{ object.name }}
 ```
 
-Now, when viewing a virtual machine in NetBox, a user will see a handy button with the chosen title and link (complete with the name of the VM being viewed). Both the text and URL of custom links can be templatized in this manner, and custom links can be grouped together into dropdowns for more efficient display.
+现在，当在 NetBox 中查看虚拟机时，用户将看到一个带有所选标题和链接的便捷按钮（包括正在查看的 VM 的名称）。自定义链接的文本和 URL 都可以以这种方式模板化，自定义链接可以分组到下拉菜单中，以更有效地显示。
 
-To learn more about this feature, check out the [custom link documentation](../customization/custom-links.md).
+要了解更多关于此功能的信息，请查看[自定义链接文档](../customization/custom-links.md)。
 
-## Custom Validation
+## 自定义验证
 
-While NetBox employs robust built-in object validation to ensure the integrity of its database, you might wish to enforce additional rules governing the creation and modification of certain objects. For example, perhaps you require that every device defined in NetBox adheres to a particular naming scheme and includes an asset tag. You can configure a custom validation rule in NetBox to enforce these requirements for the device model:
+虽然 NetBox 采用强大的内置对象验证来确保其数据库的完整性，但您可能希望强制执行针对某些对象的创建和修改的额外规则。例如，您可能要求 NetBox 中定义的每台设备都遵循特定的命名方案并包含资产标签。您可以在 NetBox 中配置自定义验证规则以强制执行这些要求，针对设备模型：
 
 ```python
 CUSTOM_VALIDATORS = {
@@ -63,28 +63,28 @@ CUSTOM_VALIDATORS = {
 }
 ```
 
-To learn more about this feature, check out the [custom validation documentation](../customization/custom-validation.md).
+要了解更多关于此功能的信息，请查看[自定义验证文档](../customization/custom-validation.md)。
 
-## Export Templates
+## 导出模板
 
-Most NetBox objects can be exported in bulk in two built-in CSV formats: The current view (what the user currently sees in the objects list), or all available data. NetBox also provides the capability to define your own custom data export formats via export templates. An export template is essentially [Jinja2](https://jinja.palletsprojects.com/) template code associated with a particular object type. From the objects list in the NetBox UI, a user can select any of the created export templates to export the objects according to the template logic.
+大多数 NetBox 对象可以以两种内置的 CSV 格式批量导出：当前视图（用户当前在对象列表中看到的内容）或所有可用数据。NetBox 还提供了通过导出模板定义自己的自定义数据导出格式的功能。导出模板本质上是与特定对象类型相关联的 [Jinja2](https://jinja.palletsprojects.com/) 模板代码。从 NetBox UI 中的对象列表中，用户可以选择任何已创建的导出模板，根据模板逻辑导出对象。
 
-An export template doesn't have to render CSV data: Its output can be in any character-based format. For example, you might want to render data using tabs as delimiters, or even create DNS address records directly from the IP addresses list. Export templates are a great way to get the data you need in the format you need quickly.
+导出模板不必渲染 CSV 数据：其输出可以是任何基于字符的格式。例如，您可能希望使用制表符作为分隔符来渲染数据，甚至直接从 IP 地址列表中创建 DNS 地址记录。导出模板是一种快速获取所需数据和所需格式的好方法。
 
-To learn more about this feature, check out the [export template documentation](../customization/export-templates.md).
+要了解更多关于此功能的信息，请查看[导出模板文档](../customization/export-templates.md)。
 
-## Reports
+## 报告
 
-NetBox administrators can install custom Python scripts, known as _reports_, which run within NetBox and can be executed and analyzed within the NetBox UI. Reports are a great way to evaluate NetBox objects against a set of arbitrary rules. For example, you could write a report to check that every router has a loopback interface with an IP address assigned, or that every site has a minimum set of VLANs defined.
+NetBox 管理员可以安装自定义 Python 脚本，称为 _报告_，这些脚本在 NetBox 内运行，并可以在 NetBox UI 中执行和分析。报告是根据一组任意规则评估 NetBox 对象的好方法。例如，您可以编写一个报告来检查每台路由器是否具有分配了 IP 地址的环回接口，或每个站点是否定义了一组最小的 VLAN。
 
-When a report runs, its logs messages pertaining to the operations being performed, and will ultimately result in either a pass or fail. Reports can be executed via the UI, REST API, or CLI (as a management command). They can be run immediately or scheduled to run at a future time.
+当报告运行时，它记录有关正在执行的操作的日志消息，并最终结果为通过或失败。报告可以通过 UI、REST API 或 CLI（作为管理命令）执行。它们可以立即运行或计划在将来的时间运行。
 
-To learn more about this feature, check out the [documentation for reports](../customization/reports.md).
+要了解更多关于此功能的信息，请查看[报告文档](../customization/reports.md)。
 
-## Custom Scripts
+## 自定义脚本
 
-Custom scripts are similar to reports, but more powerful. A custom script can prompt the user for input via a form (or API data), and is built to do much more than just reporting. Custom scripts are generally used to automate tasks, such as the population of new objects in NetBox, or exchanging data with external systems. As with reports, they can be run via the UI, REST API, or CLI, and be scheduled to execute at a future time.
+自定义脚本与报告类似，但更强大。自定义脚本可以通过表单（或 API 数据）提示用户输入，并且建立在不仅仅是报告的基础上。自定义脚本通常用于自动化任务，如在 NetBox 中填充新对象，或与外部系统交换数据。与报告一样，它们可以通过 UI、REST API 或 CLI 运行，并且可以计划在将来的时间执行。
 
-The complete Python environment is available to a custom script, including all of NetBox's internal mechanisms: There are no artificial restrictions on what a script can do. As such, custom scripting is considered an advanced feature and requires sufficient familiarity with Python and NetBox's data model.
+自定义脚本可以使用完整的 Python 环境，包括 NetBox 的所有内部机制：脚本可以做的事情没有人为限制。因此，自定义脚本被视为高级功能，需要对 Python 和 NetBox 的数据模型有足够的熟悉。
 
-To learn more about this feature, check out the [documentation for custom scripts](../customization/custom-scripts.md).
+要了解更多关于此功能的信息，请查看[自定义脚本文档](../customization/custom-scripts.md)。

@@ -1,30 +1,30 @@
-# Search
+# 搜索
 
-## Global Search
+## 全局搜索
 
-NetBox includes a powerful global search engine, providing a single convenient interface to search across its complex data model. Relevant fields on each model are indexed according to their precedence, so that the most relevant results are returned first. When objects are created or modified, the search index is updated immediately, ensuring real-time accuracy.
+NetBox包含一个强大的全局搜索引擎，提供了一个方便的界面，用于搜索其复杂的数据模型。每个模型上的相关字段根据其优先级进行索引，以便首先返回最相关的结果。当对象被创建或修改时，搜索索引会立即更新，确保实时准确性。
 
-When entering a search query, the user can choose a specific lookup type: exact match, partial match, etc. When a partial match is found, the matching portion of the applicable field value is included with each result so that the user can easily determine its relevance.
+在输入搜索查询时，用户可以选择特定的查找类型：精确匹配、部分匹配等。当找到部分匹配时，将匹配部分适用字段值的结果与每个结果一起包括，以便用户可以轻松确定其相关性。
 
-Custom fields defined by NetBox administrators are also included in search results if configured with a search weight. Additionally, NetBox plugins can register their own custom models for inclusion alongside core models.
+如果由NetBox管理员定义了自定义字段并配置了搜索权重，还会在搜索结果中包括这些自定义字段。此外，NetBox插件可以注册自己的自定义模型，以与核心模型一起包括在搜索结果中。
 
-!!! note
-    NetBox does not index any static choice field's (including custom fields of type "Selection" or "Multiple selection").
+!!! 注意
+    NetBox不索引任何静态选择字段（包括类型为“选择”或“多项选择”的自定义字段）。
 
-## Saved Filters
+## 已保存的过滤器
 
-Each type of object in NetBox is accompanied by an extensive set of filters, each tied to a specific attribute, which enable the creation of complex queries. Often you'll find that certain queries are used routinely to apply some set of prescribed conditions to a query. Once a set of filters has been applied, NetBox offers the option to save it for future use.
+NetBox中的每种对象类型都附带一组广泛的过滤器，每个过滤器与特定属性相关联，可用于创建复杂的查询。通常，您会发现某些查询通常用于将某些规定的条件应用于查询。一旦应用了一组过滤器，NetBox提供了将其保存以供将来使用的选项。
 
-For example, suppose you often need to locate all planned devices of a certain type within a region. The applicable filters can be applied and then saved as custom named filter for reuse, such that
+例如，假设您经常需要查找某个区域内特定类型的所有计划设备。可以应用适用的过滤器，然后将其保存为自定义命名的过滤器以供重用，如下所示：
 
 ```
 ?status=planned&device_type_id=78&region_id=12
 ```
 
-becomes
+变成
 
 ```
 ?filter=my-custom-filter
 ```
 
-These saved filters can be used both within the UI and for API queries.
+这些已保存的过滤器可以在UI中和用于API查询中都使用。

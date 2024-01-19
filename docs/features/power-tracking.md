@@ -1,20 +1,20 @@
-# Power Tracking
+# 电力跟踪
 
-As part of its DCIM feature set, NetBox supports modeling facility power as discrete power panels and feeds. These are most commonly used to document power distribution within a data center, but can serve more traditional environments as well.
+作为其DCIM功能集的一部分，NetBox支持将设施电力建模为离散的电力面板和馈线。这些通常用于记录数据中心内的电力分配，但也可以用于更传统的环境。
 
-![Power distribution model](../media/power_distribution.png)
+![电力分配模型](../media/power_distribution.png)
 
-## Power Panels
+## 电力面板
 
-A power panel is the furthest upstream power element modeled in NetBox. It typically represents a power distribution panel (or breaker panel) where facility power is split into multiple discrete circuits, which are modeled as feeds.
+电力面板是在NetBox中建模的最上游电力元素。它通常表示电力配电面板（或断路器面板），其中设施电力分成多个离散电路，这些电路被建模为馈线。
 
-Each power panel is associated with a site, and may optionally be associated with a particular location within that site. There is no limit to how many power feeds a single panel can supply, however both of these object types should map to real-world objects.
+每个电力面板与一个站点相关联，并且可以选择与该站点内的特定位置相关联。单个面板可以提供多少电力馈线没有限制，但是这两种对象类型都应映射到现实世界的对象。
 
-## Power Feeds
+## 电力馈线
 
-A power feed represents a discrete power circuit originating from an upstream power panel. Each power feed can be assigned a name, operational status, and various electrical characteristics such as supply (AC or DC), voltage, amperage, and so on.
+电力馈线表示来自上游电力面板的离散电路。每个电力馈线可以分配一个名称、操作状态和各种电气特性，如供电（交流或直流）、电压、电流等。
 
-A device power port can be connected to a power feed via a cable. Only one port can be connected to a feed: Where multiple devices draw power from the same feed, a power distribution unit (PDU) must be modeled as an individual device mapping a power port to multiple power outlets to which the downstream devices can connect (as in the example above).
+设备电源端口可以通过电缆连接到电力馈线。每个电力馈线只能连接一个端口：当多个设备从同一电力馈线汲取电力时，必须建模电力分配单元（PDU）作为单独的设备，将电源端口映射到多个电源插座，下游设备可以连接到这些插座（如上面的示例）。
 
-!!! tip "Primary and Redundant Power"
-    Each power feed in NetBox is assigned a type: primary or redundant. This allows easily modeling redundant power distribution topologies. In scenarios involving only a single, non-redundant power supply, mark all power feeds as primary.
+!!! tip "主电源和备用电源"
+    NetBox中的每个电力馈线都分配了一个类型：主电源或备用电源。这允许轻松地建模冗余电力分配拓扑。在涉及仅单一、非冗余电源供应的情况下，将所有电力馈线标记为主电源。

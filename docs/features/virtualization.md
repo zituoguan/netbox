@@ -1,26 +1,26 @@
-# Virtualization
+# 虚拟化
 
-Virtual machines and clusters can be modeled in NetBox alongside physical infrastructure. IP addresses and other resources are assigned to these objects just like physical objects, providing a seamless integration between physical and virtual networks.
+虚拟机和集群可以在NetBox中与物理基础设施一起建模。IP地址和其他资源被分配给这些对象，就像分配给物理对象一样，为物理和虚拟网络之间提供了无缝集成。
 
 ```mermaid
 flowchart TD
-    ClusterGroup & ClusterType --> Cluster
-    Cluster --> VirtualMachine
-    Platform --> VirtualMachine
-    VirtualMachine --> VMInterface
+    集群组 & 集群类型 --> 集群
+    集群 --> 虚拟机
+    平台 --> 虚拟机
+    虚拟机 --> VM接口
 
-click Cluster "../../models/virtualization/cluster/"
-click ClusterGroup "../../models/virtualization/clustergroup/"
-click ClusterType "../../models/virtualization/clustertype/"
-click Platform "../../models/dcim/platform/"
-click VirtualMachine "../../models/virtualization/virtualmachine/"
-click VMInterface "../../models/virtualization/vminterface/"
+click 集群 "../../models/virtualization/cluster/"
+click 集群组 "../../models/virtualization/clustergroup/"
+click 集群类型 "../../models/virtualization/clustertype/"
+click 平台 "../../models/dcim/platform/"
+click 虚拟机 "../../models/virtualization/virtualmachine/"
+click VM接口 "../../models/virtualization/vminterface/"
 ```
 
-## Clusters
+## 集群
 
-A cluster is one or more physical host devices on which virtual machines can run. Each cluster must have a type and operational status, and may be assigned to a group. (Both types and groups are user-defined.) Each cluster may designate one or more devices as hosts, however this is optional.
+集群是一个或多个物理主机设备，可以在上面运行虚拟机。每个集群必须具有类型和运行状态，并可以分配到一个组。 （类型和组都是用户定义的。）每个集群可以指定一个或多个设备作为主机，但这是可选的。
 
-## Virtual Machines
+## 虚拟机
 
-A virtual machine is a virtualized compute instance. These behave in NetBox very similarly to device objects, but without any physical attributes. For example, a VM may have interfaces assigned to it with IP addresses and VLANs, however its interfaces cannot be connected via cables (because they are virtual). Each VM may also define its compute, memory, and storage resources as well.
+虚拟机是一个虚拟化的计算实例。在NetBox中，它们的行为与设备对象非常相似，但没有任何物理属性。例如，虚拟机可以分配给它的接口具有IP地址和VLAN，但它的接口不能通过电缆连接（因为它们是虚拟的）。每个虚拟机还可以定义其计算、内存和存储资源等。

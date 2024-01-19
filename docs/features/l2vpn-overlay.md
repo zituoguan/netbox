@@ -1,5 +1,5 @@
-# L2VPN & Overlay
+# L2VPN与覆盖网络
 
-L2VPN and overlay networks, such as VXLAN and EVPN, can be defined in NetBox and tied to interfaces and VLANs. This allows for easy tracking of overlay assets and their relationships with underlay resources.
+在NetBox中可以定义L2VPN和覆盖网络，例如VXLAN和EVPN，并将其与接口和VLAN绑定。这使得轻松跟踪覆盖网络资产及其与底层资源的关系成为可能。
 
-Each L2VPN instance has a type and optional unique identifier. Like VRFs, L2VPNs can also have import and export route targets assigned to them. Terminations can then be created to assign VLANs and/or device and virtual machine interfaces to the overlay.
+每个L2VPN实例都具有类型和可选的唯一标识符。与VRF一样，L2VPN也可以分配导入和导出路由目标。然后可以创建终结点来将VLAN和/或设备和虚拟机接口分配给覆盖网络。

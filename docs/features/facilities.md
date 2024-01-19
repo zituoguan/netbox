@@ -1,66 +1,66 @@
-# Facilities
+# 设施
 
-From global regions down to individual equipment racks, NetBox allows you to model your network's entire presence. This is accomplished through the use of several purpose-built models. The graph below illustrates these models and their relationships.
+从全球地区到单个设备机架，NetBox允许您对网络的整个存在进行建模。这是通过使用几个专门构建的模型来实现的。下面的图表说明了这些模型及其关系。
 
 ```mermaid
 flowchart TD
-    Region --> Region
-    SiteGroup --> SiteGroup
-    Region & SiteGroup --> Site
-    Site --> Location & Device
-    Location --> Location
-    Location --> Rack & Device
-    Rack --> Device
-    Site --> Rack
-    RackRole --> Rack
+    区域 --> 区域
+    站点组 --> 站点组
+    区域和站点组 --> 站点
+    站点 --> 位置和设备
+    位置 --> 位置
+    位置 --> 机架和设备
+    机架 --> 设备
+    站点 --> 机架
+    机架角色 --> 机架
 
-click Device "../../models/dcim/device/"
-click Location "../../models/dcim/location/"
-click Rack "../../models/dcim/rack/"
-click RackRole "../../models/dcim/rackrole/"
-click Region "../../models/dcim/region/"
-click Site "../../models/dcim/site/"
-click SiteGroup "../../models/dcim/sitegroup/"
+click 设备 "../../models/dcim/device/"
+click 位置 "../../models/dcim/location/"
+click 机架 "../../models/dcim/rack/"
+click 机架角色 "../../models/dcim/rackrole/"
+click 区域 "../../models/dcim/region/"
+click 站点 "../../models/dcim/site/"
+click 站点组 "../../models/dcim/sitegroup/"
 ```
 
-## Regions
+## 区域
 
-Regions represent geographic domains in which your network or its customers have a presence. These are typically used to model countries, states, and cities, although NetBox does not prescribe any precise uses and your needs may differ.
+区域代表您的网络或其客户存在的地理域。通常用于建模国家、州和城市，尽管NetBox不规定任何精确的用途，您的需求可能不同。
 
-Regions are self-nesting, so you can define child regions within a parent, and grandchildren within each child. For example, you might create a hierarchy like this:
+区域是自我嵌套的，因此您可以在父级内定义子区域，并在每个子区域内定义孙子区域。例如，您可以创建这样的层次结构：
 
-* Europe
-    * France
-    * Germany
-    * Spain
-* North America
-    * Canada
-    * United States
-        * California
-        * New York
-        * Texas
+* 欧洲
+    * 法国
+    * 德国
+    * 西班牙
+* 北美
+    * 加拿大
+    * 美国
+        * 加利福尼亚
+        * 纽约
+        * 德克萨斯
 
-Regions will always be listed alphabetically by name within each parent, and there is no maximum depth for the hierarchy.
+区域始终按名称在每个父级内按字母顺序列出，并且层次结构的深度没有最大限制。
 
-## Site Groups
+## 站点组
 
-Like regions, site groups can be arranged in a recursive hierarchy for grouping sites. However, whereas regions are intended for geographic organization, site groups may be used for functional grouping. For example, you might classify sites as corporate, branch, or customer sites in addition to where they are physically located.
+与区域一样，站点组可以按递归层次结构排列以对站点进行分组。然而，虽然区域用于地理组织，但站点组也可以用于功能分组。例如，除了站点的物理位置，您还可以将站点分类为公司、分支机构或客户站点。
 
-The use of both regions and site groups affords to independent but complementary dimensions across which sites can be organized.
+同时使用区域和站点组可以在站点可以组织的独立但互补的维度上提供便利。
 
-## Sites
+## 站点
 
-A site typically represents a building within a region and/or site group. Each site is assigned an operational status (e.g. active or planned), and can have a discrete mailing address and GPS coordinates assigned to it.
+站点通常代表区域和/或站点组内的建筑物。每个站点都被分配了操作状态（例如，活动或计划中），并且可以分配离散的邮寄地址和GPS坐标。
 
-## Locations
+## 位置
 
-A location can be any logical subdivision within a building, such as a floor or room. Like regions and site groups, locations can be nested into a self-recursive hierarchy for maximum flexibility. And like sites, each location has an operational status assigned to it.
+位置可以是建筑物内的任何逻辑细分，例如楼层或房间。与区域和站点组一样，位置可以嵌套到自我递归的层次结构中，以实现最大的灵活性。与站点一样，每个位置都有分配给它的操作状态。
 
-## Racks
+## 机架
 
-Finally, NetBox models each equipment rack as a discrete object within a site and location. These are physical objects into which devices are installed. Each rack can be assigned an operational status, type, facility ID, and other attributes related to inventory tracking. Each rack also must define a height (in rack units) and width, and may optionally specify its physical dimensions.
+最后，NetBox将每个设备机架建模为站点和位置内的离散对象。这些是设备安装的物理对象。每个机架可以分配操作状态、类型、设备ID和与库存跟踪相关的其他属性。每个机架还必须定义高度（以机架单元为单位）和宽度，并且可以选择指定其物理尺寸。
 
-Each rack must be associated to a site, but the assignment to a location within that site is optional. Users can also create custom roles to which racks can be assigned. NetBox supports tracking rack space in half-unit increments, so it's possible to mount devices at e.g. position 2.5 within a rack.
+每个机架必须与一个站点关联，但不是必须将其分配给该站点内的位置。用户还可以创建可分配给机架的自定义角色。NetBox支持以半单元增量跟踪机架空间，因此可以在机架内的位置2.5上安装设备，等等。
 
-!!! tip "Devices"
-    You'll notice in the diagram above that a device can be installed within a site, location, or rack. This approach affords plenty of flexibility as not all sites need to define child locations, and not all devices reside in racks.
+!!! 提示 "设备"
+    您会注意到上面的图表中，设备可以安装在站点、位置或机架内。这种方法提供了足够的灵活性，因为不是所有站点都需要定义子位置，而不是所有设备都驻留在机架内。

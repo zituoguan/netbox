@@ -1,49 +1,49 @@
-# Tunnels
+# 隧道
 
-NetBox can model private tunnels formed among virtual termination points across your network. Typical tunnel implementations include GRE, IP-in-IP, and IPSec. A tunnel may be terminated to two or more device or virtual machine interfaces. For convenient organization, tunnels may be assigned to user-defined groups.
+NetBox可以对网络中虚拟终结点之间形成的私有隧道进行建模。典型的隧道实现包括GRE、IP-in-IP和IPSec。一个隧道可以终止到两个或多个设备或虚拟机接口。为了方便组织，隧道可以分配给用户定义的组。
 
 ```mermaid
 flowchart TD
-    Termination1[TunnelTermination]
-    Termination2[TunnelTermination]
-    Interface1[Interface]
-    Interface2[Interface]
-    Tunnel --> Termination1 & Termination2
+    Termination1[隧道终止点]
+    Termination2[隧道终止点]
+    Interface1[接口]
+    Interface2[接口]
+    隧道 --> Termination1 & Termination2
     Termination1 --> Interface1
     Termination2 --> Interface2
-    Interface1 --> Device
-    Interface2 --> VirtualMachine
+    Interface1 --> 设备
+    Interface2 --> 虚拟机
 
-click Tunnel "../../models/vpn/tunnel/"
-click TunnelTermination1 "../../models/vpn/tunneltermination/"
-click TunnelTermination2 "../../models/vpn/tunneltermination/"
+click 隧道 "../../models/vpn/tunnel/"
+click 隧道终止点1 "../../models/vpn/tunneltermination/"
+click 隧道终止点2 "../../models/vpn/tunneltermination/"
 ```
 
-# IPSec & IKE
+# IPSec与IKE
 
-NetBox includes robust support for modeling IPSec & IKE policies. These are used to define encryption and authentication parameters for IPSec tunnels.
+NetBox包含对建模IPSec与IKE策略的强大支持。这些策略用于定义IPSec隧道的加密和认证参数。
 
 ```mermaid
 flowchart TD
-    subgraph IKEProposals[Proposals]
-    IKEProposal1[IKEProposal]
-    IKEProposal2[IKEProposal]
+    subgraph IKEProposals[提议]
+    IKEProposal1[IKE提议]
+    IKEProposal2[IKE提议]
     end
-    subgraph IPSecProposals[Proposals]
-    IPSecProposal1[IPSecProposal]
-    IPSecProposal2[IPSecProposal]
+    subgraph IPSecProposals[提议]
+    IPSecProposal1[IPSec提议]
+    IPSecProposal2[IPSec提议]
     end
-    IKEProposals --> IKEPolicy
-    IPSecProposals --> IPSecPolicy
-    IKEPolicy & IPSecPolicy--> IPSecProfile
-    IPSecProfile --> Tunnel
+    IKEProposals --> IKE策略
+    IPSecProposals --> IPSec策略
+    IKE策略 & IPSec策略--> IPSec配置文件
+    IPSec配置文件 --> 隧道
 
-click IKEProposal1 "../../models/vpn/ikeproposal/"
-click IKEProposal2 "../../models/vpn/ikeproposal/"
-click IKEPolicy "../../models/vpn/ikepolicy/"
-click IPSecProposal1 "../../models/vpn/ipsecproposal/"
-click IPSecProposal2 "../../models/vpn/ipsecproposal/"
-click IPSecPolicy "../../models/vpn/ipsecpolicy/"
-click IPSecProfile "../../models/vpn/ipsecprofile/"
-click Tunnel "../../models/vpn/tunnel/"
+click IKE提议1 "../../models/vpn/ikeproposal/"
+click IKE提议2 "../../models/vpn/ikeproposal/"
+click IKE策略 "../../models/vpn/ikepolicy/"
+click IPSec提议1 "../../models/vpn/ipsecproposal/"
+click IPSec提议2 "../../models/vpn/ipsecproposal/"
+click IPSec策略 "../../models/vpn/ipsecpolicy/"
+click IPSec配置文件 "../../models/vpn/ipsecprofile/"
+click 隧道 "../../models/vpn/tunnel/"
 ```

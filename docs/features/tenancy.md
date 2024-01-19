@@ -1,38 +1,38 @@
-# Tenancy
+# 租户
 
-Most core objects within NetBox's data model support _tenancy_. This is the association of an object with a particular tenant to convey ownership or dependency. For example, an enterprise might represent its internal business units as tenants, whereas a managed services provider might create a tenant in NetBox to represent each of its customers.
+NetBox数据模型中的大多数核心对象都支持租赁（tenancy）。这是将对象与特定租户关联，以传达所有权或依赖关系的方式。例如，一个企业可以将其内部业务单元表示为租户，而托管服务提供商可以在NetBox中创建一个租户来代表其每个客户。
 
 ```mermaid
 flowchart TD
-    TenantGroup --> TenantGroup & Tenant
-    Tenant --> Site & Device & Prefix & Circuit & ...
+    租户组 --> 租户组 & 租户
+    租户 --> 站点 & 设备 & 前缀 & 电路 & ...
 
-click Tenant "../../models/tenancy/tenant/"
-click TenantGroup "../../models/tenancy/tenantgroup/"
+click 租户 "../../models/tenancy/tenant/"
+click 租户组 "../../models/tenancy/tenantgroup/"
 ```
 
-## Tenant Groups
+## 租户组
 
-Tenants can be grouped by any logic that your use case demands, and groups can be nested recursively for maximum flexibility. For example, You might define a parent "Customers" group with child groups "Current" and "Past" within it. A tenant can be assigned to a group at any level within the hierarchy.
+租户可以根据您的用例需求按任何逻辑进行分组，并且可以递归嵌套组以获得最大的灵活性。例如，您可以在其中定义一个父级“客户”组，下面有“当前”和“过去”两个子组。租户可以分配到层次结构中的任何级别。
 
-## Tenants
+## 租户
 
-Typically, the tenant model is used to represent a customer or internal organization, however it can be used for whatever purpose meets your needs.
+通常，租户模型用于表示客户或内部组织，但它可以用于满足您需求的任何目的。
 
-Most core objects within NetBox can be assigned to particular tenant, so this model provides a very convenient way to correlate ownership across object types. For example, each of your customers might have its own racks, devices, IP addresses, circuits and so on: These can all be easily tracked via tenant assignment.
+NetBox中的大多数核心对象都可以分配给特定的租户，因此此模型提供了一种非常方便的方式来在对象类型之间相关所有权。例如，您的每个客户可能都有自己的机架、设备、IP地址、电路等：通过租户分配，可以轻松跟踪所有这些。
 
-The following objects can be assigned to tenants:
+以下对象可以分配给租户：
 
-* Sites
-* Racks
-* Rack reservations
-* Devices
-* VRFs
-* Prefixes
-* IP addresses
+* 站点
+* 机架
+* 机架预订
+* 设备
+* VRF
+* 前缀
+* IP地址
 * VLANs
-* Circuits
-* Clusters
-* Virtual machines
+* 电路
+* 集群
+* 虚拟机
 
-Tenant assignment is used to signify the ownership of an object in NetBox. As such, each object may only be owned by a single tenant. For example, if you have a firewall dedicated to a particular customer, you would assign it to the tenant which represents that customer. However, if the firewall serves multiple customers, it doesn't *belong* to any particular customer, so tenant assignment would not be appropriate.
+租户分配用于表示NetBox中对象的所有权。因此，每个对象只能由一个租户拥有。例如，如果有一个专门为某个客户的防火墙，您会将其分配给代表该客户的租户。但是，如果防火墙为多个客户提供服务，它就不属于任何特定的客户，因此不适合租户分配。

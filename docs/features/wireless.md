@@ -1,29 +1,29 @@
-# Wireless
+# 无线网络
 
-Just as NetBox provides robust modeling for physical cable plants, it also supports modeling wireless LANs and point-to-point links.
+与NetBox为物理电缆系统提供强大建模支持一样，它也支持对无线局域网和点对点链接进行建模。
 
-## Wireless LANs
+## 无线局域网
 
 ```mermaid
 flowchart TD
-    WirelessLANGroup --> WirelessLANGroup & WirelessLAN
+    无线局域网组 --> 无线局域网组 & 无线局域网
 
-click WirelessLAN "../../models/wireless/wirelesslan/"
-click WirelessLANGroup "../../models/wireless/wirelesslangroup/"
+click 无线局域网 "../../models/wireless/wirelesslan/"
+click 无线局域网组 "../../models/wireless/wirelesslangroup/"
 ```
 
-A wireless LAN is a multi-access network shared by multiple wireless clients, identified by a common service set identifier (SSID) and authentication parameters. Wireless LANs can be organized into self-nesting groups, and each wireless LAN may optionally be bound to a particular VLAN. This allows easily mapping wireless networks to their wired counterparts.
+无线局域网是由多个无线客户端共享的多接入网络，通过共同的服务集标识符（SSID）和认证参数进行识别。无线局域网可以组织成自嵌套组，并且每个无线局域网可以选择性地绑定到特定的虚拟局域网（VLAN）。这使得无线网络可以轻松地映射到它们有线对应物。
 
-Authentication attributes for wireless LANs include:
+无线局域网的认证属性包括：
 
-* **Type** - Open, WEP, WPA, etc.
-* **Cipher** - Auto, TKIP, or AES
-* **Pre-shared key (PSK)** - The secret key configured on all participating clients
+* **类型** - 开放、WEP、WPA等。
+* **加密方式** - 自动、TKIP或AES。
+* **预共享密钥（PSK）** - 配置在所有参与客户端上的秘密密钥。
 
-The definition of authentication parameters is optional.
+认证参数的定义是可选的。
 
-## Wireless Links
+## 无线链接
 
-Whereas a wireless LAN represents a physical multi-access segment with any number of clients, a wireless link is a point-to-point connection between exactly two stations. These links behave much like cables, but more accurately model the nature of wireless communications.
+与无线局域网代表具有任意数量客户端的物理多接入段不同，无线链接是精确连接两个站点的点对点连接。这些链接的行为类似于电缆，但更准确地建模了无线通信的性质。
 
-Like wireless LANs, wireless links also have an SSID and (optional) authentication attributes.
+与无线局域网一样，无线链接也具有SSID和（可选的）认证属性。
