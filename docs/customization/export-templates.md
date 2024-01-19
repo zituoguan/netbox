@@ -1,18 +1,18 @@
-# Export Templates
+# 导出模板
 
-NetBox allows users to define custom templates that can be used when exporting objects. To create an export template, navigate to Customization > Export Templates.
+NetBox允许用户定义自定义模板，用于在导出对象时使用。要创建导出模板，请导航到自定义 > 导出模板。
 
-Each export template is associated with a certain type of object. For instance, if you create an export template for VLANs, your custom template will appear under the "Export" button on the VLANs list. Each export template must have a name, and may optionally designate a specific export [MIME type](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types) and/or file extension.
+每个导出模板与某种类型的对象相关联。例如，如果您为VLAN创建一个导出模板，您的自定义模板将显示在VLAN列表的“导出”按钮下。每个导出模板必须有一个名称，并可以选择指定特定的导出[MIME类型](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types)和/或文件扩展名。
 
-Export templates must be written in [Jinja2](https://jinja.palletsprojects.com/).
+导出模板必须使用[Jinja2](https://jinja.palletsprojects.com/)编写。
 
 !!! note
-    The name `table` is reserved for internal use.
+    名称 `table` 保留供内部使用。
 
 !!! warning
-    Export templates are rendered using user-submitted code, which may pose security risks under certain conditions. Only grant permission to create or modify export templates to trusted users.
+    导出模板是使用用户提交的代码呈现的，根据某些条件可能存在安全风险。仅授予受信任的用户创建或修改导出模板的权限。
 
-The list of objects returned from the database when rendering an export template is stored in the `queryset` variable, which you'll typically want to iterate through using a `for` loop. Object properties can be access by name. For example:
+在渲染导出模板时，从数据库返回的对象列表存储在 `queryset` 变量中，通常您会使用 `for` 循环对其进行迭代。可以按名称访问对象属性。例如：
 
 ```jinja2
 {% for rack in queryset %}
@@ -22,9 +22,9 @@ Height: {{ rack.u_height }}U
 {% endfor %}
 ```
 
-To access custom fields of an object within a template, use the `cf` attribute. For example, `{{ obj.cf.color }}` will return the value (if any) for a custom field named `color` on `obj`.
+要在模板中访问对象的自定义字段，请使用 `cf` 属性。例如，`{{ obj.cf.color }}` 将返回 `obj` 上名为 `color` 的自定义字段的值（如果有的话）。
 
-If you need to use the config context data in an export template, you'll should use the function `get_config_context` to get all the config context data. For example:
+如果需要在导出模板中使用配置上下文数据，您应该使用函数 `get_config_context` 来获取所有配置上下文数据。例如：
 ```
 {% for server in queryset %}
 {% set data = server.get_config_context() %}
@@ -32,24 +32,24 @@ If you need to use the config context data in an export template, you'll should 
 {% endfor %}
 ```
 
-The `as_attachment` attribute of an export template controls its behavior when rendered. If true, the rendered content will be returned to the user as a downloadable file. If false, it will be displayed within the browser. (This may be handy e.g. for generating HTML content.)
+导出模板的 `as_attachment` 属性控制其在渲染时的行为。如果为 true，则渲染的内容将作为可下载文件返回给用户。如果为 false，则将在浏览器中显示它（例如，用于生成HTML内容时可能会很方便）。
 
-A MIME type and file extension can optionally be defined for each export template. The default MIME type is `text/plain`.
+每个导出模板可以选择定义一个MIME类型和文件扩展名。默认MIME类型为 `text/plain`。
 
 
-## REST API Integration
+## REST API 集成
 
-When it is necessary to provide authentication credentials (such as when [`LOGIN_REQUIRED`](../configuration/security.md#login_required) has been enabled), it is recommended to render export templates via the REST API. This allows the client to specify an authentication token. To render an export template via the REST API, make a `GET` request to the model's list endpoint and append the `export` parameter specifying the export template name. For example:
+当需要提供身份验证凭据（例如，当启用了 [`LOGIN_REQUIRED`](../configuration/security.md#login_required) 时）时，建议通过REST API呈现导出模板。这允许客户端指定身份验证令牌。要通过REST API呈现导出模板，请对模型的列表端点进行 `GET` 请求，并附加指定导出模板名称的 `export` 参数。例如：
 
 ```
 GET /api/dcim/sites/?export=MyTemplateName
 ```
 
-Note that the body of the response will contain only the rendered export template content, as opposed to a JSON object or list.
+请注意，响应的主体将仅包含已呈现的导出模板内容，而不是JSON对象或列表。
 
-## Example
+## 示例
 
-Here's an example device export template that will generate a simple Nagios configuration from a list of devices.
+以下是一个设备导出模板示例，将从设备列表生成一个简单的Nagios配置。
 
 ```
 {% for device in queryset %}{% if device.status and device.primary_ip %}define host{
@@ -60,7 +60,7 @@ Here's an example device export template that will generate a simple Nagios conf
 {% endif %}{% endfor %}
 ```
 
-The generated output will look something like this:
+生成的输出将类似于以下内容：
 
 ```
 define host{

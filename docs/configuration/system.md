@@ -1,10 +1,10 @@
-# System Parameters
+# 系统参数
 
 ## BASE_PATH
 
-Default: None
+默认值：None
 
-The base URL path to use when accessing NetBox. Do not include the scheme or domain name. For example, if installed at https://example.com/netbox/, set:
+访问NetBox时要使用的基本URL路径。不包括方案或域名。例如，如果安装在 https://example.com/netbox/，则设置为：
 
 ```python
 BASE_PATH = 'netbox/'
@@ -14,42 +14,42 @@ BASE_PATH = 'netbox/'
 
 ## DEFAULT_LANGUAGE
 
-Default: `en-us` (US English)
+默认值：`en-us`（美国英语）
 
-Defines the default preferred language/locale for requests that do not specify one. This is used to alter e.g. the display of dates and numbers to fit the user's locale. See [this list](http://www.i18nguy.com/unicode/language-identifiers.html) of standard language codes. (This parameter maps to Django's [`LANGUAGE_CODE`](https://docs.djangoproject.com/en/stable/ref/settings/#language-code) internal setting.)
+定义了未指定语言/区域设置的请求的默认首选语言/区域设置。这用于更改日期和数字的显示以适应用户的区域设置。参见标准语言代码的[列表](http://www.i18nguy.com/unicode/language-identifiers.html)。（此参数映射到Django的[`LANGUAGE_CODE`](https://docs.djangoproject.com/en/stable/ref/settings/#language-code)内部设置。）
 
-!!! note
-    Altering this parameter will *not* change the language used in NetBox. We hope to provide translation support in a future NetBox release.
+!!! 注意
+    更改此参数不会更改NetBox中使用的语言。我们希望在未来的NetBox版本中提供翻译支持。
 
 ---
 
 ## DOCS_ROOT
 
-Default: `$INSTALL_ROOT/docs/`
+默认值：`$INSTALL_ROOT/docs/`
 
-The filesystem path to NetBox's documentation. This is used when presenting context-sensitive documentation in the web UI. By default, this will be the `docs/` directory within the root NetBox installation path. (Set this to `None` to disable the embedded documentation.)
+NetBox文档的文件系统路径。在Web界面中提供上下文敏感文档时使用。默认情况下，这将是根NetBox安装路径内的`docs/`目录。（将其设置为`None`以禁用嵌入式文档。）
 
 ---
 
 ## EMAIL
 
-In order to send email, NetBox needs an email server configured. The following items can be defined within the `EMAIL` configuration parameter:
+为了发送电子邮件，NetBox需要配置电子邮件服务器。在`EMAIL`配置参数中，可以定义以下项：
 
-* `SERVER` - Hostname or IP address of the email server (use `localhost` if running locally)
-* `PORT` - TCP port to use for the connection (default: `25`)
-* `USERNAME` - Username with which to authenticate
-* `PASSWORD` - Password with which to authenticate
-* `USE_SSL` - Use SSL when connecting to the server (default: `False`)
-* `USE_TLS` - Use TLS when connecting to the server (default: `False`)
-* `SSL_CERTFILE` - Path to the PEM-formatted SSL certificate file (optional)
-* `SSL_KEYFILE` - Path to the PEM-formatted SSL private key file (optional)
-* `TIMEOUT` - Amount of time to wait for a connection, in seconds (default: `10`)
-* `FROM_EMAIL` - Sender address for emails sent by NetBox
+* `SERVER` - 电子邮件服务器的主机名或IP地址（如果在本地运行，请使用`localhost`）
+* `PORT` - 用于连接的TCP端口（默认值：`25`）
+* `USERNAME` - 用于身份验证的用户名
+* `PASSWORD` - 用于身份验证的密码
+* `USE_SSL` - 连接到服务器时是否使用SSL（默认值：`False`）
+* `USE_TLS` - 连接到服务器时是否使用TLS（默认值：`False`）
+* `SSL_CERTFILE` - PEM格式的SSL证书文件的路径（可选）
+* `SSL_KEYFILE` - PEM格式的SSL私钥文件的路径（可选）
+* `TIMEOUT` - 连接等待的时间，以秒为单位（默认值：`10`）
+* `FROM_EMAIL` - 由NetBox发送的电子邮件的发件人地址
 
-!!! note
-    The `USE_SSL` and `USE_TLS` parameters are mutually exclusive.
+!!! 注意
+    `USE_SSL` 和 `USE_TLS` 参数是互斥的。
 
-Email is sent from NetBox only for critical events or if configured for [logging](#logging). If you would like to test the email server configuration, Django provides a convenient [send_mail()](https://docs.djangoproject.com/en/stable/topics/email/#send-mail) function accessible within the NetBox shell:
+仅在出现关键事件或配置为[日志记录](#logging)时，NetBox才会发送电子邮件。如果要测试电子邮件服务器配置，Django提供了一个方便的[send_mail()](https://docs.djangoproject.com/en/stable/topics/email/#send-mail)函数，可以在NetBox shell中访问：
 
 ```no-highlight
 # python ./manage.py nbshell
@@ -67,25 +67,25 @@ Email is sent from NetBox only for critical events or if configured for [logging
 
 ## ENABLE_LOCALIZATION
 
-Default: False
+默认值：False
 
-Determines if localization features are enabled or not. This should only be enabled for development or testing purposes as netbox is not yet fully localized. Turning this on will localize numeric and date formats (overriding what is set for DATE_FORMAT) based on the browser locale as well as translate certain strings from third party modules.
+确定是否启用本地化功能。这应该只在开发或测试目的中启用，因为NetBox尚未完全本地化。启用此功能将根据浏览器的区域设置本地化数字和日期格式（覆盖了DATE_FORMAT的设置），以及翻译来自第三方模块的某些字符串。
 
 ---
 
 ## GIT_PATH
 
-Default: `git`
+默认值：`git`
 
-The system path to the `git` executable, used by the synchronization backend for remote git repositories.
+用于远程git存储库的同步后端使用的`git`可执行文件的系统路径。
 
 ---
 
 ## HTTP_PROXIES
 
-Default: None
+默认值：None
 
-A dictionary of HTTP proxies to use for outbound requests originating from NetBox (e.g. when sending webhook requests). Proxies should be specified by schema (HTTP and HTTPS) as per the [Python requests library documentation](https://requests.readthedocs.io/en/latest/user/advanced/#proxies). For example:
+用于从NetBox发出的出站请求（例如发送webhook请求）的HTTP代理的字典。代理应根据模式（HTTP和HTTPS）进行指定，如[Python请求库文档](https://requests.readthedocs.io/en/latest/user/advanced/#proxies)中所述。例如：
 
 ```python
 HTTP_PROXIES = {
@@ -98,19 +98,17 @@ HTTP_PROXIES = {
 
 ## INTERNAL_IPS
 
-Default: `('127.0.0.1', '::1')`
+默认值：`('127.0.0.1', '::1')`
 
-A list of IP addresses recognized as internal to the system, used to control the display of debugging output. For
-example, the debugging toolbar will be viewable only when a client is accessing NetBox from one of the listed IP
-addresses (and [`DEBUG`](#debug) is true).
+一组被视为系统内部的IP地址，用于控制调试输出的显示。例如，只有从列出的IP地址之一（并且[`DEBUG`](#debug)为true）的客户端访问NetBox时，调试工具栏才可见。
 
 ---
 
 ## JINJA2_FILTERS
 
-Default: `{}`
+默认值：`{}`
 
-A dictionary of custom jinja2 filters with the key being the filter name and the value being a callable. For more information see the [Jinja2 documentation](https://jinja.palletsprojects.com/en/3.1.x/api/#custom-filters). For example:
+带有键作为过滤器名称和值作为可调用函数的自定义jinja2过滤器的字典。有关更多信息，请参见[Jinja2文档](https://jinja.palletsprojects.com/en/3.1.x/api/#custom-filters)。例如：
 
 ```python
 def uppercase(x):
@@ -125,9 +123,9 @@ JINJA2_FILTERS = {
 
 ## LOGGING
 
-By default, all messages of INFO severity or higher will be logged to the console. Additionally, if [`DEBUG`](#debug) is False and email access has been configured, ERROR and CRITICAL messages will be emailed to the users defined in [`ADMINS`](#admins).
+默认情况下，将记录所有INFO级别或更高级别的消息到控制台。另外，如果[`DEBUG`](#debug)为False，并且已配置电子邮件访问，则会将ERROR和CRITICAL消息发送到[`ADMINS`](#admins)中定义的用户。
 
-The Django framework on which NetBox runs allows for the customization of logging format and destination. Please consult the [Django logging documentation](https://docs.djangoproject.com/en/stable/topics/logging/) for more information on configuring this setting. Below is an example which will write all INFO and higher messages to a local file:
+NetBox运行的Django框架允许自定义日志格式和目标。有关更多信息，请参阅[Django日志文档](https://docs.djangoproject.com/en/stable/topics/logging/)。以下是一个示例，将所有INFO和更高级别的消息写入本地文件：
 
 ```python
 LOGGING = {
@@ -149,65 +147,65 @@ LOGGING = {
 }
 ```
 
-### Available Loggers
+### 可用的日志记录器
 
-* `netbox.<app>.<model>` - Generic form for model-specific log messages
-* `netbox.auth.*` - Authentication events
-* `netbox.api.views.*` - Views which handle business logic for the REST API
-* `netbox.reports.*` - Report execution (`module.name`)
-* `netbox.scripts.*` - Custom script execution (`module.name`)
-* `netbox.views.*` - Views which handle business logic for the web UI
+* `netbox.<app>.<model>` - 用于模型特定日志消息的通用形式
+* `netbox.auth.*` - 身份验证事件
+* `netbox.api.views.*` - 处理REST API的业务逻辑的视图
+* `netbox.reports.*` - 报告执行（`module.name`）
+* `netbox.scripts.*` - 自定义脚本执行（`module.name`）
+* `netbox.views.*` - 处理Web UI的业务逻辑的视图
 
 ---
 
 ## MEDIA_ROOT
 
-Default: $INSTALL_ROOT/netbox/media/
+默认值：$INSTALL_ROOT/netbox/media/
 
-The file path to the location where media files (such as image attachments) are stored. By default, this is the `netbox/media/` directory within the base NetBox installation path.
+存储媒体文件（例如图像附件）的位置的文件路径。默认情况下，这是基本NetBox安装路径内的`netbox/media/`目录。
 
 ---
 
 ## REPORTS_ROOT
 
-Default: `$INSTALL_ROOT/netbox/reports/`
+默认值：`$INSTALL_ROOT/netbox/reports/`
 
-The file path to the location where [custom reports](../customization/reports.md) will be kept. By default, this is the `netbox/reports/` directory within the base NetBox installation path.
+[自定义报告](../customization/reports.md)的文件路径位置。默认情况下，这是基本NetBox安装路径内的`netbox/reports/`目录。
 
 ---
 
 ## SCRIPTS_ROOT
 
-Default: `$INSTALL_ROOT/netbox/scripts/`
+默认值：`$INSTALL_ROOT/netbox/scripts/`
 
-The file path to the location where [custom scripts](../customization/custom-scripts.md) will be kept. By default, this is the `netbox/scripts/` directory within the base NetBox installation path.
+[自定义脚本](../customization/custom-scripts.md)的文件路径位置。默认情况下，这是基本NetBox安装路径内的`netbox/scripts/`目录。
 
 ---
 
 ## SEARCH_BACKEND
 
-Default: `'netbox.search.backends.CachedValueSearchBackend'`
+默认值：`'netbox.search.backends.CachedValueSearchBackend'`
 
-The dotted path to the desired search backend class. `CachedValueSearchBackend` is currently the only search backend provided in NetBox, however this setting can be used to enable a custom backend. 
+所需搜索后端类的点路径。`CachedValueSearchBackend`是当前在NetBox中提供的唯一搜索后端，但可以使用此设置启用自定义后端。
 
 ---
 
 ## STORAGE_BACKEND
 
-Default: None (local storage)
+默认值：None（本地存储）
 
-The backend storage engine for handling uploaded files (e.g. image attachments). NetBox supports integration with the [`django-storages`](https://django-storages.readthedocs.io/en/stable/) package, which provides backends for several popular file storage services. If not configured, local filesystem storage will be used.
+用于处理上传文件（例如图像附件）的后端存储引擎。NetBox支持与[`django-storages`](https://django-storages.readthedocs.io/en/stable/)包集成，该包提供了多个流行的文件存储服务的后端。如果未配置，将使用本地文件系统存储。
 
-The configuration parameters for the specified storage backend are defined under the `STORAGE_CONFIG` setting.
+指定的存储后端的配置参数定义在`STORAGE_CONFIG`设置下。
 
 ---
 
 ## STORAGE_CONFIG
 
-Default: Empty
+默认值：空
 
-A dictionary of configuration parameters for the storage backend configured as `STORAGE_BACKEND`. The specific parameters to be used here are specific to each backend; see the [`django-storages` documentation](https://django-storages.readthedocs.io/en/stable/) for more detail.
+用于存储后端配置为`STORAGE_BACKEND`的配置参数的字典。要在此处使用的特定参数与每个后端特定;有关更多详细信息，请参见[`django-storages`文档](https://django-storages.readthedocs.io/en/stable/)。
 
-If `STORAGE_BACKEND` is not defined, this setting will be ignored.
+如果未定义`STORAGE_BACKEND`，则将忽略此设置。
 
 ---

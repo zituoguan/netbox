@@ -1,10 +1,10 @@
-# Data & Validation Parameters
+# 数据与验证参数
 
 ## CUSTOM_VALIDATORS
 
-!!! tip "Dynamic Configuration Parameter"
+!!! 提示 "动态配置参数"
 
-This is a mapping of models to [custom validators](../customization/custom-validation.md) that have been defined locally to enforce custom validation logic. An example is provided below:
+这是一个将模型映射到本地定义的[自定义验证器](../customization/custom-validation.md)以执行自定义验证逻辑的映射。下面提供了一个示例：
 
 ```python
 CUSTOM_VALIDATORS = {
@@ -27,11 +27,11 @@ CUSTOM_VALIDATORS = {
 
 ## FIELD_CHOICES
 
-Some static choice fields on models can be configured with custom values. This is done by defining `FIELD_CHOICES` as a dictionary mapping model fields to their choices. Each choice in the list must have a database value and a human-friendly label, and may optionally specify a color. (A list of available colors is provided below.)
+某些模型上的静态选择字段可以配置自定义值。这可以通过将`FIELD_CHOICES`定义为将模型字段映射到其选择的字典来完成。列表中的每个选择必须具有数据库值和友好的标签，并且可以可选地指定颜色（下面提供了可用颜色的列表）。
 
-The choices provided can either replace the stock choices provided by NetBox, or append to them. To _replace_ the available choices, specify the app, model, and field name separated by dots. For example, the site model would be referenced as `dcim.Site.status`. To _extend_ the available choices, append a plus sign to the end of this string (e.g. `dcim.Site.status+`).
+提供的选择可以替换NetBox提供的默认选择，也可以追加到默认选择中。要 _替换_ 可用的选择，请指定由点分隔的应用程序、模型和字段名称。例如，站点模型可以引用为`dcim.Site.status`。要 _扩展_ 可用的选择，请在该字符串末尾附加加号（例如`dcim.Site.status+`）。
 
-For example, the following configuration would replace the default site status choices with the options Foo, Bar, and Baz:
+例如，以下配置将使用选项Foo、Bar和Baz替换默认站点状态选择：
 
 ```python
 FIELD_CHOICES = {
@@ -43,7 +43,7 @@ FIELD_CHOICES = {
 }
 ```
 
-Appending a plus sign to the field identifier would instead _add_ these choices to the ones already offered:
+在字段标识符末尾添加加号将 _添加_ 这些选择到已经提供的选择中：
 
 ```python
 FIELD_CHOICES = {
@@ -53,7 +53,7 @@ FIELD_CHOICES = {
 }
 ```
 
-The following model fields support configurable choices:
+以下模型字段支持可配置的选择：
 
 * `circuits.Circuit.status`
 * `dcim.Device.status`
@@ -72,7 +72,7 @@ The following model fields support configurable choices:
 * `virtualization.VirtualMachine.status`
 * `wireless.WirelessLAN.status`
 
-The following colors are supported:
+支持以下颜色：
 
 * `blue`
 * `indigo`
@@ -92,9 +92,9 @@ The following colors are supported:
 
 ## PROTECTION_RULES
 
-!!! tip "Dynamic Configuration Parameter"
+!!! 提示 "动态配置参数"
 
-This is a mapping of models to [custom validators](../customization/custom-validation.md) against which an object is evaluated immediately prior to its deletion. If validation fails, the object is not deleted. An example is provided below:
+这是一个将模型映射到[自定义验证器](../customization/custom-validation.md)的映射，该验证器将在对象被删除之前立即评估该对象。如果验证失败，对象将不会被删除。下面提供了一个示例：
 
 ```python
 PROTECTION_RULES = {

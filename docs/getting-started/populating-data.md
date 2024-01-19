@@ -1,44 +1,44 @@
-# Populating Data
+# 数据填充
 
-This section covers the mechanisms which are available to populate data in NetBox.
+本节介绍了在NetBox中填充数据的可用机制。
 
-## Manual Object Creation
+## 手动创建对象
 
-The simplest and most direct way of populating data in NetBox is to use the object creation forms in the user interface.
+在NetBox中填充数据的最简单和最直接的方法是使用用户界面中的对象创建表单。
 
-!!! warning "Not Ideal for Large Imports"
-    While convenient and readily accessible to even novice users, creating objects one at a time by manually completing these forms obviously does not scale well. For large imports, you're generally best served by using one of the other methods discussed in this section.
+!!! 警告 "不适合大规模导入"
+    虽然对于即使是新手用户来说都很方便且易于访问，但通过手动完成这些表单中的一个来创建对象显然不适用于大规模导入。对于大规模导入，通常最好使用本节讨论的其他方法之一。
 
-To create a new object in NetBox, find the object type in the navigation menu and click the green "Add" button.
+要在NetBox中创建新对象，请在导航菜单中找到对象类型，然后单击绿色的“添加”按钮。
 
-!!! info "Missing Button?"
-    If you don't see an "add" button for certain object types, it's likely that your account does not have sufficient permission to create these types. Ask your NetBox administrator to grant the required permissions.
+!!! 信息 "找不到按钮？"
+    如果您对某些对象类型看不到“添加”按钮，那么可能是您的帐户没有足够的权限来创建这些类型。请向您的NetBox管理员请求授予所需的权限。
     
-    Also note that some object types, such as device components, cannot be created directly from the navigation menu. These must be created within the context of a parent object (such as a parent device).
+    还要注意，某些对象类型，例如设备组件，无法直接从导航菜单中创建。这些必须在父对象的上下文中创建（例如父设备）。
 
-<!-- TODO: Screenshot -->
+<!-- TODO: 截图 -->
 
-## Bulk Import (CSV/YAML)
+## 批量导入（CSV/YAML）
 
-NetBox supports the bulk import of new objects, and updating of existing objects using CSV-formatted data. This method can be ideal for importing spreadsheet data, which is very easy to convert to CSV data. CSV data can be imported either as raw text using the form field, or by uploading a properly formatted CSV file.
+NetBox支持使用CSV格式的数据批量导入新对象，并更新现有对象。这种方法非常适合导入电子表格数据，因为将其转换为CSV数据非常容易。CSV数据可以作为原始文本使用表单字段导入，也可以通过上传格式正确的CSV文件进行导入。
 
-When viewing the CSV import form for an object type, you'll notice that the headers for the required columns have been pre-populated. Each form has a table beneath it titled "CSV Field Options," which lists _all_ supported columns for your reference. (Generally, these map to the fields you see in the corresponding creation form for individual objects.)
+在查看对象类型的CSV导入表单时，您会注意到已经预填充了必需列的标题。每个表单下都有一个名为“CSV字段选项”的表格，其中列出了您可以参考的所有支持的列。（通常，这些映射到您在单个对象的创建表单中看到的字段。）
 
-<!-- TODO: Screenshot -->
+<!-- TODO: 截图 -->
 
-If an "id" field is added the data will be used to update existing records instead of importing new objects.
+如果添加了“id”字段，数据将用于更新现有记录，而不是导入新对象。
 
-Note that some models (namely device types and module types) do not support CSV import. Instead, they accept YAML-formatted data to facilitate the import of both the parent object as well as child components.
+请注意，一些模型（特别是设备类型和模块类型）不支持CSV导入。相反，它们接受YAML格式的数据，以便导入父对象以及子组件。
 
-## Scripting
+## 脚本
 
-Sometimes you'll find that data you need to populate in NetBox can be easily reduced to a pattern. For example, suppose you have one hundred branch sites and each site gets five VLANs, numbered 101 through 105. While it's certainly possible to explicitly define each of these 500 VLANs in a CSV file for import, it may be quicker to draft a simple custom script to automatically create these VLANs according to the pattern. This ensures a high degree of confidence in the validity of the data, since it's impossible for a script to "miss" a VLAN here or there.
+有时，您会发现在NetBox中填充的数据可以很容易地归纳为一种模式。例如，假设您有一百个分支站点，每个站点都有五个VLAN，编号从101到105。虽然可以通过明确定义每个这些500个VLAN来进行导入，但起草一个简单的自定义脚本来根据模式自动创建这些VLAN可能会更快。这确保了数据的有效性，因为脚本不可能在此处或那里“遗漏”一个VLAN。
 
-!!! tip "Reconstruct Existing Data with Scripts"
-    Sometimes, you might want to write a script to populate objects even if you have the necessary data ready for import. This is because using a script eliminates the need to manually verify existing data prior to import.
+!!! 提示 "使用脚本重新构建现有数据"
+    有时，即使您已准备好导入所需的数据，您可能也希望编写脚本来填充对象。这是因为使用脚本可以在导入之前消除手动验证现有数据的需要。
 
 ## REST API
 
-You can also use the REST API to facilitate the population of data in NetBox. The REST API offers full programmatic control over the creation of objects, subject to the same validation rules enforced by the UI forms. Additionally, the REST API supports the bulk creation of multiple objects using a single request.
+您还可以使用REST API来促进在NetBox中填充数据。REST API提供了对对象创建的全面编程控制，受到UI表单强制执行的相同验证规则的约束。此外，REST API支持使用单个请求批量创建多个对象。
 
-For more information about this option, see the [REST API documentation](../integrations/rest-api.md).
+有关此选项的更多信息，请参阅[REST API文档](../integrations/rest-api.md)。

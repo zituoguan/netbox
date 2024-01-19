@@ -1,19 +1,19 @@
-# Default Value Parameters
+# 默认值参数
 
 ## DEFAULT_DASHBOARD
 
-This parameter controls the content and layout of user's default dashboard. Once the dashboard has been created, the user is free to customize it as they please by adding, removing, and reconfiguring widgets.
+此参数控制用户默认仪表板的内容和布局。一旦创建了仪表板，用户可以自由地通过添加、删除和重新配置小部件来自定义它。
 
-This parameter must specify an iterable of dictionaries, each representing a discrete dashboard widget and its configuration. The follow widget attributes are supported:
+此参数必须指定一个字典的可迭代对象，每个字典表示一个独立的仪表板小部件及其配置。支持以下小部件属性：
 
-* `widget`: Dotted path to the Python class (required)
-* `width`: Default widget width (between 1 and 12, inclusive)
-* `height`: Default widget height, in rows
-* `title`: Widget title
-* `color`: Color of the widget's title bar, specified by name
-* `config`: Dictionary mapping of any widget configuration parameters
+* `widget`：Python类的点路径（必需）
+* `width`：默认小部件宽度（介于1和12之间，包括1和12）
+* `height`：默认小部件高度，以行为单位
+* `title`：小部件标题
+* `color`：小部件标题栏的颜色，以名称指定
+* `config`：任何小部件配置参数的字典映射
 
-A brief example configuration is provided below.
+下面提供了一个简要的示例配置。
 
 ```python
 DEFAULT_DASHBOARD = [
@@ -49,9 +49,9 @@ DEFAULT_DASHBOARD = [
 
 ## DEFAULT_USER_PREFERENCES
 
-!!! tip "Dynamic Configuration Parameter"
+!!! tip "动态配置参数"
 
-This is a dictionary defining the default preferences to be set for newly-created user accounts. For example, to set the default page size for all users to 100, define the following:
+这是一个字典，定义了要为新创建的用户帐户设置的默认首选项。例如，要将所有用户的默认页面大小设置为100，请定义以下内容：
 
 ```python
 DEFAULT_USER_PREFERENCES = {
@@ -61,64 +61,64 @@ DEFAULT_USER_PREFERENCES = {
 }
 ```
 
-For a complete list of available preferences, log into NetBox and navigate to `/user/preferences/`. A period in a preference name indicates a level of nesting in the JSON data. The example above maps to `pagination.per_page`.
+有关可用首选项的完整列表，请登录到NetBox，并导航到`/user/preferences/`。首选项名称中的句点表示JSON数据中的嵌套级别。上面的示例映射到`pagination.per_page`。
 
 ---
 
 ## PAGINATE_COUNT
 
-!!! tip "Dynamic Configuration Parameter"
+!!! tip "动态配置参数"
 
-Default: 50
+默认值：50
 
-The default maximum number of objects to display per page within each list of objects.
+每个对象列表中默认显示的最大对象数。
 
 ---
 
 ## POWERFEED_DEFAULT_AMPERAGE
 
-!!! tip "Dynamic Configuration Parameter"
+!!! tip "动态配置参数"
 
-Default: 15
+默认值：15
 
-The default value for the `amperage` field when creating new power feeds.
+创建新的电源馈线时，`amperage`字段的默认值。
 
 ---
 
 ## POWERFEED_DEFAULT_MAX_UTILIZATION
 
-!!! tip "Dynamic Configuration Parameter"
+!!! tip "动态配置参数"
 
-Default: 80
+默认值：80
 
-The default value (percentage) for the `max_utilization` field when creating new power feeds.
+创建新的电源馈线时，`max_utilization`字段的默认值（百分比）。
 
 ---
 
 ## POWERFEED_DEFAULT_VOLTAGE
 
-!!! tip "Dynamic Configuration Parameter"
+!!! tip "动态配置参数"
 
-Default: 120
+默认值：120
 
-The default value for the `voltage` field when creating new power feeds.
+创建新的电源馈线时，`voltage`字段的默认值。
 
 ---
 
 ## RACK_ELEVATION_DEFAULT_UNIT_HEIGHT
 
-!!! tip "Dynamic Configuration Parameter"
+!!! tip "动态配置参数"
 
-Default: 22
+默认值：22
 
-Default height (in pixels) of a unit within a rack elevation. For best results, this should be approximately one tenth of `RACK_ELEVATION_DEFAULT_UNIT_WIDTH`.
+机架标高中单位的默认高度（以像素为单位）。为了获得最佳效果，此值应大约是`RACK_ELEVATION_DEFAULT_UNIT_WIDTH`的十分之一。
 
 ---
 
 ## RACK_ELEVATION_DEFAULT_UNIT_WIDTH
 
-!!! tip "Dynamic Configuration Parameter"
+!!! tip "动态配置参数"
 
-Default: 220
+默认值：220
 
-Default width (in pixels) of a unit within a rack elevation.
+机架标高中单位的默认宽度（以像素为单位）。

@@ -1,92 +1,89 @@
-# Upgrading to a New NetBox Release
+# 升级到新的NetBox版本
 
-Upgrading NetBox to a new version is pretty simple, however users are cautioned to always review the release notes and save a backup of their current deployment prior to beginning an upgrade.
+将NetBox升级到新版本通常很简单，但用户在开始升级前务必仔细查看发布说明并备份当前部署。
 
-NetBox can generally be upgraded directly to any newer release with no interim steps, with the one exception being incrementing major versions. This can be done only from the most recent _minor_ release of the major version. For example, NetBox v2.11.8 can be upgraded to version 3.3.2 following the steps below. However, a deployment of NetBox v2.10.10 or earlier must first be upgraded to any v2.11 release, and then to any v3.x release. (This is to accommodate the consolidation of database schema migrations effected by a major version change).
+通常情况下，NetBox可以直接升级到任何更新版本，但唯一的例外是增加主版本号。只能从当前主版本的最新_次要_版本升级到新主版本。例如，NetBox v2.11.8可以按照下面的步骤升级到版本3.3.2。但是，NetBox v2.10.10或更早的版本必须首先升级到任何v2.11版本，然后再升级到任何v3.x版本。（这是为了适应由主版本更改引发的数据库模式迁移的合并）。
 
-[![Upgrade paths](../media/installation/upgrade_paths.png)](../media/installation/upgrade_paths.png)
+[![升级路径](../media/installation/upgrade_paths.png)](../media/installation/upgrade_paths.png)
 
-!!! warning "Perform a Backup"
-    Always be sure to save a backup of your current NetBox deployment prior to starting the upgrade process.
+!!! 警告 "执行备份操作"
+在开始升级过程之前，请务必保存当前NetBox部署的备份。
 
-## 1. Review the Release Notes
+## 1. 查看发布说明
 
-Prior to upgrading your NetBox instance, be sure to carefully review all [release notes](../release-notes/index.md) that have been published since your current version was released. Although the upgrade process typically does not involve additional work, certain releases may introduce breaking or backward-incompatible changes. These are called out in the release notes under the release in which the change went into effect.
+在升级NetBox实例之前，务必仔细查看自当前版本发布以来已发布的所有[发布说明](../release-notes/index.md)。尽管升级过程通常不涉及其他工作，但某些版本可能引入了破坏性或不兼容的更改。这些在发布说明中在生效的版本下会有特别标明。
 
-## 2. Update Dependencies to Required Versions
+## 2. 更新依赖项到所需版本
 
-NetBox requires the following dependencies:
+NetBox需要以下依赖项：
 
-| Dependency | Minimum Version |
-|------------|-----------------|
-| Python     | 3.8             |
-| PostgreSQL | 12              |
-| Redis      | 4.0             |
+| 依赖项     | 最低版本     |
+|------------|--------------|
+| Python     | 3.8           |
+| PostgreSQL | 12           |
+| Redis      | 4.0           |
 
-## 3. Install the Latest Release
+## 3. 安装最新版本
 
-As with the initial installation, you can upgrade NetBox by either downloading the latest release package or by cloning the `master` branch of the git repository. 
+与初始安装一样，您可以通过下载最新的发布包或克隆git存储库的`master`分支来升级NetBox。
 
-!!! warning
-    Use the same method as you used to install NetBox originally
+!!! 警告
+    使用与初始安装NetBox相同的方法
 
-If you are not sure how NetBox was installed originally, check with this command:
+如果不确定NetBox是如何最初安装的，请使用以下命令检查：
 
-```
+```shell
 ls -ld /opt/netbox /opt/netbox/.git
 ```
 
-If NetBox was installed from a release package, then `/opt/netbox` will be a
-symlink pointing to the current version, and `/opt/netbox/.git` will not
-exist.  If it was installed from git, then `/opt/netbox` and
-`/opt/netbox/.git` will both exist as normal directories.
+如果NetBox是从发布包安装的，那么`/opt/netbox`将是一个符号链接，指向当前版本，并且`/opt/netbox/.git`不存在。如果它是从git安装的，则`/opt/netbox`和`/opt/netbox/.git`都将存在作为正常的目录。
 
-### Option A: Download a Release
+### 选项A：下载发布版
 
-Download the [latest stable release](https://github.com/netbox-community/netbox/releases) from GitHub as a tarball or ZIP archive. Extract it to your desired path. In this example, we'll use `/opt/netbox`.
+从GitHub下载[最新的稳定发布版](https://github.com/netbox-community/netbox/releases)作为tarball或ZIP归档文件。将其解压缩到所需路径。在此示例中，我们将使用`/opt/netbox`。
 
-Download and extract the latest version:
+下载并提取最新版本：
 
 ```no-highlight
-# Set $NEWVER to the NetBox version being installed
+# 将$NEWVER设置为要安装的NetBox版本
 NEWVER=3.5.0
 wget https://github.com/netbox-community/netbox/archive/v$NEWVER.tar.gz
 sudo tar -xzf v$NEWVER.tar.gz -C /opt
 sudo ln -sfn /opt/netbox-$NEWVER/ /opt/netbox
 ```
 
-Copy `local_requirements.txt`, `configuration.py`, and `ldap_config.py` (if present) from the current installation to the new version:
+从当前安装中复制`local_requirements.txt`，`configuration.py`和`ldap_config.py`（如果存在）到新版本：
 
 ```no-highlight
-# Set $OLDVER to the NetBox version currently installed
+# 将$OLDVER设置为当前安装的NetBox版本
 OLDVER=3.4.9
 sudo cp /opt/netbox-$OLDVER/local_requirements.txt /opt/netbox/
 sudo cp /opt/netbox-$OLDVER/netbox/netbox/configuration.py /opt/netbox/netbox/netbox/
 sudo cp /opt/netbox-$OLDVER/netbox/netbox/ldap_config.py /opt/netbox/netbox/netbox/
 ```
 
-Be sure to replicate your uploaded media as well. (The exact action necessary will depend on where you choose to store your media, but in general moving or copying the media directory will suffice.)
+确保复制您上传的媒体。 （确切的操作取决于您选择存储媒体的位置，但通常情况下，移动或复制媒体目录就足够了。）
 
 ```no-highlight
 sudo cp -pr /opt/netbox-$OLDVER/netbox/media/ /opt/netbox/netbox/
 ```
 
-Also make sure to copy or link any custom scripts and reports that you've made. Note that if these are stored outside the project root, you will not need to copy them. (Check the `SCRIPTS_ROOT` and `REPORTS_ROOT` parameters in the configuration file above if you're unsure.)
+还要确保复制或链接任何自定义脚本和报告。请注意，如果这些文件存储在项目根目录之外，您将不需要复制它们。（如果不确定，请检查上面的配置文件中的`SCRIPTS_ROOT`和`REPORTS_ROOT`参数。）
 
 ```no-highlight
 sudo cp -r /opt/netbox-$OLDVER/netbox/scripts /opt/netbox/netbox/
 sudo cp -r /opt/netbox-$OLDVER/netbox/reports /opt/netbox/netbox/
 ```
 
-If you followed the original installation guide to set up gunicorn, be sure to copy its configuration as well:
+如果您按照原始安装指南设置了gunicorn，请确保复制其配置：
 
 ```no-highlight
 sudo cp /opt/netbox-$OLDVER/gunicorn.py /opt/netbox/
 ```
 
-### Option B: Clone the Git Repository
+### 选项B：克隆Git存储库
 
-This guide assumes that NetBox is installed at `/opt/netbox`. Pull down the most recent iteration of the master branch:
+本指南假设NetBox安装在`/opt/netbox`。拉取`master`分支的最新迭代：
 
 ```no-highlight
 cd /opt/netbox
@@ -94,59 +91,57 @@ sudo git checkout master
 sudo git pull origin master
 ```
 
-!!! info "Checking out an older release"
-    If you need to upgrade to an older version rather than the current stable release, you can check out any valid [git tag](https://github.com/netbox-community/netbox/tags), each of which represents a release. For example, to checkout the code for NetBox v2.11.11, do:
+!!! 信息 "检出旧版本"
+    如果需要升级到旧版本而不是当前的稳定版本，则可以检出任何有效的[git标签](https://github.com/netbox-community/netbox/tags)，每个标签都代表一个发布版本。例如，要检出NetBox v2.11.11的代码，请执行以下操作：
 
         sudo git checkout v2.11.11
 
-## 4. Run the Upgrade Script
+## 4. 运行升级脚本
 
-Once the new code is in place, verify that any optional Python packages required by your deployment (e.g. `django-auth-ldap`) are listed in `local_requirements.txt`. Then, run the upgrade script:
+一旦新代码准备就绪，请验证您的部署所需的任何可选Python包（例如`django-auth-ldap`）是否在`local_requirements.txt`中列出。然后运行升级脚本：
 
 ```no-highlight
 sudo ./upgrade.sh
 ```
 
-!!! warning
-    If the default version of Python is not at least 3.8, you'll need to pass the path to a supported Python version as an environment variable when calling the upgrade script. For example:
+!!! 警告
+    如果默认版本的Python不至少为3.8，则需要在调用升级脚本时将支持的Python版本的路径作为环境变量传递。例如：
 
     ```no-highlight
     sudo PYTHON=/usr/bin/python3.8 ./upgrade.sh
     ```
 
-This script performs the following actions:
+此脚本执行以下操作：
 
-* Destroys and rebuilds the Python virtual environment
-* Installs all required Python packages (listed in `requirements.txt`)
-* Installs any additional packages from `local_requirements.txt`
-* Applies any database migrations that were included in the release
-* Builds the documentation locally (for offline use)
-* Collects all static files to be served by the HTTP service
-* Deletes stale content types from the database
-* Deletes all expired user sessions from the database
+* 销毁并重建Python虚拟环境
+* 安装`requirements.txt`中列出的所有所需的Python包
+* 安装`local_requirements.txt`中的任何附加包
+* 应用包含在发布版中的任何数据库迁移
+* 本地生成文档（供离线使用）
+* 收集要由HTTP服务提供的所有静态文件
+* 从数据库中删除陈旧的内容类型
+* 从数据库中删除所有已过期的用户会话
 
-!!! note
-    If the upgrade script prompts a warning about unreflected database migrations, this indicates that some change has
-    been made to your local codebase and should be investigated. Never attempt to create new migrations unless you are
-    intentionally modifying the database schema.
+!!! 注意
+    如果升级脚本提示关于未反映的数据库迁移的警告，这表示对本地代码库进行了某些更改，应予调查。除非有意修改数据库模式，否则永远不要尝试创建新的迁移。
 
-## 5. Restart the NetBox Services
+## 5. 重启NetBox服务
 
-!!! warning
-    If you are upgrading from an installation that does not use a Python virtual environment (any release prior to v2.7.9), you'll need to update the systemd service files to reference the new Python and gunicorn executables before restarting the services. These are located in `/opt/netbox/venv/bin/`. See the example service files in `/opt/netbox/contrib/` for reference.
+!!! 警告
+    如果从不使用Python虚拟环境的安装升级（即v2.7.9之前的任何版本），则需要在重启服务之前更新systemd服务文件，以引用新的Python和gunicorn可执行文件。这些文件位于`/opt/netbox/venv/bin/`。有关参考信息，请参考`/opt/netbox/contrib/`中的示例服务文件。
 
-Finally, restart the gunicorn and RQ services:
+最后，重新启动gunicorn和RQ服务：
 
 ```no-highlight
 sudo systemctl restart netbox netbox-rq
 ```
 
-## 6. Verify Housekeeping Scheduling
+## 6. 验证清理计划
 
-If upgrading from a release prior to NetBox v3.0, check that a cron task (or similar scheduled process) has been configured to run NetBox's nightly housekeeping command. A shell script which invokes this command is included at `contrib/netbox-housekeeping.sh`. It can be linked from your system's daily cron task directory, or included within the crontab directly. (If NetBox has been installed in a nonstandard path, be sure to update the system paths within this script first.)
+如果从NetBox v3.0之前的版本升级，请检查是否已配置cron任务（或类似的计划进程）来运行NetBox的每晚清理命令。包含此命令的shell脚本位于`contrib/netbox-housekeeping.sh`中。它可以链接到系统的每日cron任务目录中，或直接包含在crontab中。（如果NetBox已安装在非标准路径中，请首先更新此脚本中的系统路径。）
 
 ```shell
 sudo ln -s /opt/netbox/contrib/netbox-housekeeping.sh /etc/cron.daily/netbox-housekeeping
 ```
 
-See the [housekeeping documentation](../administration/housekeeping.md) for further details.
+有关详细信息，请参阅[清理文档](../administration/housekeeping.md)。

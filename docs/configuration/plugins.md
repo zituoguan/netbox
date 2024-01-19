@@ -1,21 +1,21 @@
-# Plugin Parameters
+# 插件参数
 
 ## PLUGINS
 
-Default: Empty
+默认值：空
 
-A list of installed [NetBox plugins](../plugins/index.md) to enable. Plugins will not take effect unless they are listed here.
+一个已安装的[NetBox插件](../plugins/index.md)列表，以启用插件。插件只有在此处列出后才会生效。
 
 !!! warning
-    Plugins extend NetBox by allowing external code to run with the same access and privileges as NetBox itself. Only install plugins from trusted sources. The NetBox maintainers make absolutely no guarantees about the integrity or security of your installation with plugins enabled.
+    插件通过允许外部代码以与NetBox本身相同的访问权限和特权运行来扩展NetBox。仅安装来自受信任的来源的插件。NetBox维护人员绝对不会对启用插件的安装的完整性或安全性提供任何保证。
 
 ---
 
 ## PLUGINS_CONFIG
 
-Default: Empty
+默认值：空
 
-This parameter holds configuration settings for individual NetBox plugins. It is defined as a dictionary, with each key using the name of an installed plugin. The specific parameters supported are unique to each plugin: Reference the plugin's documentation to determine the supported parameters. An example configuration is shown below:
+此参数保存各个NetBox插件的配置设置。它被定义为一个字典，每个键都使用已安装插件的名称。支持的具体参数因插件而异：请参考插件的文档以确定支持的参数。下面是一个示例配置：
 
 ```python
 PLUGINS_CONFIG = {
@@ -29,7 +29,7 @@ PLUGINS_CONFIG = {
 }
 ```
 
-Note that a plugin must be listed in `PLUGINS` for its configuration to take effect.
+请注意，插件必须在`PLUGINS`中列出，其配置才会生效。
 
 ---
 

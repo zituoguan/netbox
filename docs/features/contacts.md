@@ -4,13 +4,13 @@
 
 ```mermaid
 flowchart TD
-    ContactGroup --> ContactGroup & Contact
-    ContactRole & Contact --> assignment([分配])
-    assignment --> Object
+    联系人 --> 联系人组 & 联系人
+    联系人角色 & 联系人 --> 分配([分配])
+    分配 --> 对象
 
-click Contact "../../models/tenancy/contact/"
-click ContactGroup "../../models/tenancy/contactgroup/"
-click ContactRole "../../models/tenancy/contactrole/"
+click 联系人 "../../models/tenancy/contact/"
+click 联系人组 "../../models/tenancy/contactgroup/"
+click 联系人角色 "../../models/tenancy/contactrole/"
 ```
 
 ## 联系人组

@@ -1,26 +1,26 @@
-# Security & Authentication Parameters
+# 安全性和身份验证参数
 
 ## ALLOW_TOKEN_RETRIEVAL
 
-Default: True
+默认值：True
 
-If disabled, the values of API tokens will not be displayed after each token's initial creation. A user **must** record the value of a token prior to its creation, or it will be lost. Note that this affects _all_ users, regardless of assigned permissions.
+如果禁用此选项，则API令牌的值将不会在每个令牌的初始创建后显示。用户在创建令牌之前**必须**记录令牌的值，否则将丢失。请注意，这会影响**所有**用户，不考虑分配的权限。
 
 ---
 
 ## ALLOWED_URL_SCHEMES
 
-!!! tip "Dynamic Configuration Parameter"
+!!! 提示 "动态配置参数"
 
-Default: `('file', 'ftp', 'ftps', 'http', 'https', 'irc', 'mailto', 'sftp', 'ssh', 'tel', 'telnet', 'tftp', 'vnc', 'xmpp')`
+默认值：`('file', 'ftp', 'ftps', 'http', 'https', 'irc', 'mailto', 'sftp', 'ssh', 'tel', 'telnet', 'tftp', 'vnc', 'xmpp')`
 
-A list of permitted URL schemes referenced when rendering links within NetBox. Note that only the schemes specified in this list will be accepted: If adding your own, be sure to replicate all the default values as well (excluding those schemes which are not desirable).
+这是一个允许在NetBox中呈现链接时引用的允许的URL方案列表。请注意，只有在此列表中指定的方案才会被接受：如果添加自己的方案，请确保复制所有默认值（不包括不希望的方案）。
 
 ---
 
 ## AUTH_PASSWORD_VALIDATORS
 
-This parameter acts as a pass-through for configuring Django's built-in password validators for local user accounts. If configured, these will be applied whenever a user's password is updated to ensure that it meets minimum criteria such as length or complexity. An example is provided below. For more detail on the available options, please see [the Django documentation](https://docs.djangoproject.com/en/stable/topics/auth/passwords/#password-validation).
+此参数作为配置Django内置密码验证器的通道，用于本地用户帐户。如果配置，每当用户的密码更新以确保满足最低要求（例如长度或复杂性）时，这些验证器将被应用。下面提供了一个示例。有关可用选项的更多详细信息，请参见[Django文档](https://docs.djangoproject.com/en/stable/topics/auth/passwords/#password-validation)。
 
 ```python
 AUTH_PASSWORD_VALIDATORS = [
@@ -37,9 +37,9 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ## CORS_ORIGIN_ALLOW_ALL
 
-Default: False
+默认值：False
 
-If True, cross-origin resource sharing (CORS) requests will be accepted from all origins. If False, a whitelist will be used (see below).
+如果为True，则将接受来自所有来源的跨源资源共享（CORS）请求。如果为False，则将使用白名单（见下文）。
 
 ---
 
@@ -47,9 +47,8 @@ If True, cross-origin resource sharing (CORS) requests will be accepted from all
 
 ## CORS_ORIGIN_REGEX_WHITELIST
 
-These settings specify a list of origins that are authorized to make cross-site API requests. Use
-`CORS_ORIGIN_WHITELIST` to define a list of exact hostnames, or `CORS_ORIGIN_REGEX_WHITELIST` to define a set of regular 
-expressions. (These settings have no effect if `CORS_ORIGIN_ALLOW_ALL` is True.) For example:
+这些设置指定了被授权进行跨站API请求的来源列表。使用
+`CORS_ORIGIN_WHITELIST` 来定义一个精确的主机名列表，或使用 `CORS_ORIGIN_REGEX_WHITELIST` 来定义一组正则表达式。 （如果 `CORS_ORIGIN_ALLOW_ALL` 为True，则这些设置无效。）例如：
 
 ```python
 CORS_ORIGIN_WHITELIST = [
@@ -61,25 +60,25 @@ CORS_ORIGIN_WHITELIST = [
 
 ## CSRF_COOKIE_NAME
 
-Default: `csrftoken`
+默认值：`csrftoken`
 
-The name of the cookie to use for the cross-site request forgery (CSRF) authentication token. See the [Django documentation](https://docs.djangoproject.com/en/stable/ref/settings/#csrf-cookie-name) for more detail.
+用于跨站请求伪造（CSRF）身份验证令牌的cookie的名称。有关更多详细信息，请参见[Django文档](https://docs.djangoproject.com/en/stable/ref/settings/#csrf-cookie-name)。
 
 ---
 
 ## CSRF_COOKIE_SECURE
 
-Default: False
+默认值：False
 
-If true, the cookie employed for cross-site request forgery (CSRF) protection will be marked as secure, meaning that it can only be sent across an HTTPS connection.
+如果为true，则用于跨站请求伪造（CSRF）保护的cookie将被标记为安全，这意味着它只能通过HTTPS连接发送。
 
 ---
 
 ## CSRF_TRUSTED_ORIGINS
 
-Default: `[]`
+默认值：`[]`
 
-Defines a list of trusted origins for unsafe (e.g. `POST`) requests. This is a pass-through to Django's [`CSRF_TRUSTED_ORIGINS`](https://docs.djangoproject.com/en/4.0/ref/settings/#std:setting-CSRF_TRUSTED_ORIGINS) setting. Note that each host listed must specify a scheme (e.g. `http://` or `https://).
+定义不安全（例如 `POST`）请求的受信任来源列表。这是传递给Django的 [`CSRF_TRUSTED_ORIGINS`](https://docs.djangoproject.com/en/4.0/ref/settings/#std:setting-CSRF_TRUSTED_ORIGINS) 设置。请注意，列出的每个主机必须指定一个方案（例如 `http://` 或 `https://`）。
 
 ```python
 CSRF_TRUSTED_ORIGINS = (
@@ -92,9 +91,9 @@ CSRF_TRUSTED_ORIGINS = (
 
 ## DEFAULT_PERMISSIONS
 
-!!! info "This parameter was introduced in NetBox v3.6."
+!!! 信息 "此参数在NetBox v3.6中引入。"
 
-Default:
+默认值：
 
 ```python
 {
@@ -105,9 +104,9 @@ Default:
 }
 ```
 
-This parameter defines object permissions that are applied automatically to _any_ authenticated user, regardless of what permissions have been defined in the database. By default, this parameter is defined to allow all users to manage their own API tokens, however it can be overriden for any purpose.
+此参数定义了自动应用于**任何**经过身份验证的用户的对象权限，而不考虑数据库中定义的权限。默认情况下，此参数被定义为允许所有用户管理自己的API令牌，但可以用于任何目的进行覆盖。
 
-For example, to allow all users to create a device role beginning with the word "temp," you could configure the following:
+例如，要允许所有用户创建以单词“temp”开头的设备角色，您可以配置如下：
 
 ```python
 DEFAULT_PERMISSIONS = {
@@ -117,18 +116,18 @@ DEFAULT_PERMISSIONS = {
 }
 ```
 
-!!! warning
-    Setting a custom value for this parameter will overwrite the default permission mapping shown above. If you want to retain the default mapping, be sure to reproduce it in your custom configuration.
+!!! 警告
+    为此参数设置自定义值将覆盖上面显示的默认权限映射。如果要保留默认映射，请确保在自定义配置中重现它。
 
 ---
 
 ## EXEMPT_VIEW_PERMISSIONS
 
-Default: Empty list
+默认值：空列表
 
-A list of NetBox models to exempt from the enforcement of view permissions. Models listed here will be viewable by all users, both authenticated and anonymous.
+一个免除视图权限执行的NetBox模型列表。列在此处的模型将被所有用户（包括经过身份验证和匿名用户）查看。
 
-List models in the form `<app>.<model>`. For example:
+以 `<app>.<model>` 的形式列出模型。例如：
 
 ```python
 EXEMPT_VIEW_PERMISSIONS = [
@@ -138,80 +137,82 @@ EXEMPT_VIEW_PERMISSIONS = [
 ]
 ```
 
-To exempt _all_ models from view permission enforcement, set the following. (Note that `EXEMPT_VIEW_PERMISSIONS` must be an iterable.)
+要免除**所有**模型的视图权限执行，请设置以下内容。 （请注意，`EXEMPT_VIEW_PERMISSIONS` 必须是可迭代的。）
 
 ```python
 EXEMPT_VIEW_PERMISSIONS = ['*']
 ```
 
-!!! note
-    Using a wildcard will not affect certain potentially sensitive models, such as user permissions. If there is a need to exempt these models, they must be specified individually.
+!!! 注意
+    使用通配符不会影响某些可能敏感的模型，例如用户权限。如果需要免除这些模型，必须单独指定它们。
 
 ---
 
 ## LOGIN_PERSISTENCE
 
-Default: False
+默认值：False
 
-If true, the lifetime of a user's authentication session will be automatically reset upon each valid request. For example, if [`LOGIN_TIMEOUT`](#login_timeout) is configured to 14 days (the default), and a user whose session is due to expire in five days makes a NetBox request (with a valid session cookie), the session's lifetime will be reset to 14 days.
+如果为true，则每个有效请求后，将自动重置用户身份验证会话的生存期。例如，如果 [`LOGIN_TIMEOUT`](#login_timeout) 配置为14天（默认值），并且一个会话在五天后到期的用户发出了一个NetBox请求（带有有效的会话cookie），会话的生存期将被重置为14天。
 
-Note that enabling this setting causes NetBox to update a user's session in the database (or file, as configured per [`SESSION_FILE_PATH`](#session_file_path)) with each request, which may introduce significant overhead in very active environments. It also permits an active user to remain authenticated to NetBox indefinitely.
+请注意，启用此设置会导致NetBox在每个请求中更新用户会话在数据库中（或根据[`SESSION_FILE_PATH`](#session_file_path)的配置在文件
+
+中），这可能会在非常活跃的环境中引入重大开销。它还允许活跃用户无限期地保持对NetBox的身份验证。
 
 ---
 
 ## LOGIN_REQUIRED
 
-Default: False
+默认值：False
 
-Setting this to True will permit only authenticated users to access any part of NetBox. By default, anonymous users are permitted to access most data in NetBox but not make any changes.
+将此设置为True将只允许经过身份验证的用户访问NetBox的任何部分。默认情况下，匿名用户被允许访问NetBox中的大多数数据，但不能进行任何更改。
 
 ---
 
 ## LOGIN_TIMEOUT
 
-Default: 1209600 seconds (14 days)
+默认值：1209600秒（14天）
 
-The lifetime (in seconds) of the authentication cookie issued to a NetBox user upon login.
+在登录时为NetBox用户发放的身份验证cookie的生命周期（以秒为单位）。
 
 ---
 
 ## LOGOUT_REDIRECT_URL
 
-Default: `'home'`
+默认值：`'home'`
 
-The view name or URL to which a user is redirected after logging out.
+用户注销后重定向到的视图名称或URL。
 
 ---
 
 ## SECURE_SSL_REDIRECT
 
-Default: False
+默认值：False
 
-If true, all non-HTTPS requests will be automatically redirected to use HTTPS.
+如果为true，则将自动重定向所有非HTTPS请求以使用HTTPS。
 
-!!! warning
-    Ensure that your frontend HTTP daemon has been configured to forward the HTTP scheme correctly before enabling this option. An incorrectly configured frontend may result in a looping redirect.
+!!! 警告
+    在启用此选项之前，请确保您的前端HTTP守护程序已正确配置以正确转发HTTP方案。不正确配置的前端可能导致无限循环重定向。
 
 ---
 
 ## SESSION_COOKIE_NAME
 
-Default: `sessionid`
+默认值：`sessionid`
 
-The name used for the session cookie. See the [Django documentation](https://docs.djangoproject.com/en/stable/ref/settings/#session-cookie-name) for more detail.
+用于会话身份验证的会话cookie的名称。有关更多详细信息，请参见[Django文档](https://docs.djangoproject.com/en/stable/ref/settings/#session-cookie-name)。
 
 ---
 
 ## SESSION_COOKIE_SECURE
 
-Default: False
+默认值：False
 
-If true, the cookie employed for session authentication will be marked as secure, meaning that it can only be sent across an HTTPS connection.
+如果为true，则用于会话身份验证的cookie将被标记为安全，这意味着它只能通过HTTPS连接发送。
 
 ---
 
 ## SESSION_FILE_PATH
 
-Default: None
+默认值：None
 
-HTTP session data is used to track authenticated users when they access NetBox. By default, NetBox stores session data in its PostgreSQL database. However, this inhibits authentication to a standby instance of NetBox without write access to the database. Alternatively, a local file path may be specified here and NetBox will store session data as files instead of using the database. Note that the NetBox system user must have read and write permissions to this path.
+在用户访问NetBox时，会话数据用于跟踪经过身份验证的用户。默认情况下，NetBox将会话数据存储在其PostgreSQL数据库中。但是，这会阻止对没有写入数据库访问权限的NetBox备用实例进行身份验证。或者，可以在此处指定本地文件路径，NetBox将会将会话数据存储为文件而不是使用数据库。请注意，NetBox系统用户必须对此路径具有读写权限。

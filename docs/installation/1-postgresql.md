@@ -1,11 +1,11 @@
-# PostgreSQL Database Installation
+# PostgreSQL数据库安装
 
-This section entails the installation and configuration of a local PostgreSQL database. If you already have a PostgreSQL database service in place, skip to [the next section](2-redis.md).
+本节介绍如何安装和配置本地的PostgreSQL数据库。如果您已经有一个PostgreSQL数据库服务，请跳转到[下一节](2-redis.md)。
 
-!!! warning "PostgreSQL 12 or later required"
-    NetBox requires PostgreSQL 12 or later. Please note that MySQL and other relational databases are **not** supported.
+!!! warning "需要PostgreSQL 12或更高版本"
+    NetBox需要PostgreSQL 12或更高版本。请注意，不支持MySQL和其他关系数据库。
 
-## Installation
+## 安装
 
 === "Ubuntu"
 
@@ -21,53 +21,53 @@ This section entails the installation and configuration of a local PostgreSQL da
     sudo postgresql-setup --initdb
     ```
 
-    CentOS configures ident host-based authentication for PostgreSQL by default. Because NetBox will need to authenticate using a username and password, modify `/var/lib/pgsql/data/pg_hba.conf` to support MD5 authentication by changing `ident` to `md5` for the lines below:
+    CentOS默认为PostgreSQL配置了基于ident的主机认证。由于NetBox将需要使用用户名和密码进行身份验证，请修改`/var/lib/pgsql/data/pg_hba.conf`文件，将以下行的`ident`更改为`md5`以支持MD5身份验证：
 
     ```no-highlight
     host    all             all             127.0.0.1/32            md5
     host    all             all             ::1/128                 md5
     ```
 
-    Once PostgreSQL has been installed, start the service and enable it to run at boot:
+    安装完PostgreSQL后，启动服务并启用它在启动时运行：
 
     ```no-highlight
     sudo systemctl start postgresql
     sudo systemctl enable postgresql
     ```
 
-Before continuing, verify that you have installed PostgreSQL 12 or later:
+在继续之前，请验证您已安装了PostgreSQL 12或更高版本：
 
 ```no-highlight
 psql -V
 ```
 
-## Database Creation
+## 创建数据库
 
-At a minimum, we need to create a database for NetBox and assign it a username and password for authentication. Start by invoking the PostgreSQL shell as the system Postgres user.
+至少，我们需要为NetBox创建一个数据库，并为其分配一个用于身份验证的用户名和密码。首先，以系统Postgres用户身份调用PostgreSQL shell。
 
 ```no-highlight
 sudo -u postgres psql
 ```
 
-Within the shell, enter the following commands to create the database and user (role), substituting your own value for the password:
+在shell中，输入以下命令来创建数据库和用户（角色），替换您自己的密码值：
 
 ```postgresql
 CREATE DATABASE netbox;
 CREATE USER netbox WITH PASSWORD 'J5brHrAXFLQSif0K';
 ALTER DATABASE netbox OWNER TO netbox;
--- the next two commands are needed on PostgreSQL 15 and later
+-- 下面两个命令在PostgreSQL 15及更高版本上需要
 \connect netbox;
 GRANT CREATE ON SCHEMA public TO netbox;
 ```
 
-!!! danger "Use a strong password"
-    **Do not use the password from the example.** Choose a strong, random password to ensure secure database authentication for your NetBox installation.
+!!! danger "使用强密码"
+    **不要使用示例中的密码。**选择一个强密码以确保NetBox安装的数据库身份验证安全。
 
-Once complete, enter `\q` to exit the PostgreSQL shell.
+完成后，输入`\q`退出PostgreSQL shell。
 
-## Verify Service Status
+## 验证服务状态
 
-You can verify that authentication works by executing the `psql` command and passing the configured username and password. (Replace `localhost` with your database server if using a remote database.)
+您可以通过执行`psql`命令并传递配置的用户名和密码来验证身份验证是否有效。（如果使用远程数据库，请将`localhost`替换为您的数据库服务器。）
 
 ```no-highlight
 $ psql --username netbox --password --host localhost netbox
@@ -82,4 +82,4 @@ SSL connection (protocol: TLSv1.3, cipher: TLS_AES_256_GCM_SHA384, bits: 256, co
 netbox=> \q
 ```
 
-If successful, you will enter a `netbox` prompt. Type `\conninfo` to confirm your connection, or type `\q` to exit.
+如果成功，您将进入`netbox`提示符。键入`\conninfo`以确认您的连接，或键入`\q`以退出。

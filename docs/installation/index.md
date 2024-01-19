@@ -1,33 +1,33 @@
-# Installation
+# 安装
 
 !!! info "NetBox Cloud"
-    The instructions below are for installing NetBox as a standalone, self-hosted application. For a Cloud-delivered solution, check out [NetBox Cloud](https://netboxlabs.com/netbox-cloud/) by NetBox Labs.
+    以下说明适用于将NetBox安装为独立的、自托管的应用程序。如果需要云交付解决方案，请查看NetBox Labs的[NetBox Cloud](https://netboxlabs.com/netbox-cloud/)。
 
-The installation instructions provided here have been tested to work on Ubuntu 22.04 and CentOS 8.3. The particular commands needed to install dependencies on other distributions may vary significantly. Unfortunately, this is outside the control of the NetBox maintainers. Please consult your distribution's documentation for assistance with any errors.
+这里提供的安装说明已经在Ubuntu 22.04和CentOS 8.3上进行了测试。在其他发行版上安装依赖所需的特定命令可能会有很大的差异。不幸的是，这不在NetBox维护者的控制范围内。请查阅您的发行版文档以获取有关解决任何错误的帮助。
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/_y5JRiW_PLM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="//player.bilibili.com/player.html?aid=581442080&bvid=BV1p64y1A78u&cid=1411844506&p=1" title="Bilibili视频播放器" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-The following sections detail how to set up a new instance of NetBox:
+以下部分详细介绍了如何设置一个新的NetBox实例：
 
-1. [PostgreSQL database](1-postgresql.md)
-1. [Redis](2-redis.md)
-3. [NetBox components](3-netbox.md)
+1. [PostgreSQL数据库](1-postgresql.md)
+2. [Redis](2-redis.md)
+3. [NetBox组件](3-netbox.md)
 4. [Gunicorn](4-gunicorn.md)
-5. [HTTP server](5-http-server.md)
-6. [LDAP authentication](6-ldap.md) (optional)
+5. [HTTP服务器](5-http-server.md)
+6. [LDAP认证](6-ldap.md)（可选）
 
-## Requirements
+## 要求
 
-| Dependency | Minimum Version |
-|------------|-----------------|
-| Python     | 3.8             |
-| PostgreSQL | 12              |
-| Redis      | 4.0             |
+| 依赖项     | 最低版本 |
+|------------|-----------|
+| Python     | 3.8       |
+| PostgreSQL | 12        |
+| Redis      | 4.0       |
 
-Below is a simplified overview of the NetBox application stack for reference:
+以下是NetBox应用程序栈的简化概述，供参考：
 
-![NetBox UI as seen by a non-authenticated user](../media/installation/netbox_application_stack.png)
+![非经过身份验证用户看到的NetBox UI](../media/installation/netbox_application_stack.png)
 
-## Upgrading
+## 升级
 
-If you are upgrading from an existing installation, please consult the [upgrading guide](upgrading.md).
+如果您要从现有的安装中升级，请参阅[升级指南](upgrading.md)。

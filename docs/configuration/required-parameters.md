@@ -1,21 +1,21 @@
-# Required Configuration Settings
+# 必需的配置设置
 
 ## ALLOWED_HOSTS
 
-This is a list of valid fully-qualified domain names (FQDNs) and/or IP addresses that can be used to reach the NetBox service. Usually this is the same as the hostname for the NetBox server, but can also be different; for example, when using a reverse proxy serving the NetBox website under a different FQDN than the hostname of the NetBox server. To help guard against [HTTP Host header attackes](https://docs.djangoproject.com/en/3.0/topics/security/#host-headers-virtual-hosting), NetBox will not permit access to the server via any other hostnames (or IPs).
+这是一个有效的完全合格域名（FQDN）和/或IP地址列表，可用于访问NetBox服务。通常，这与NetBox服务器的主机名相同，但也可以不同；例如，当使用反向代理在不同于NetBox服务器主机名的FQDN下提供NetBox网站时。为了防止[HTTP主机标头攻击](https://docs.djangoproject.com/en/3.0/topics/security/#host-headers-virtual-hosting)，NetBox不允许通过任何其他主机名（或IP）访问服务器。
 
 !!! note
-    This parameter must always be defined as a list or tuple, even if only a single value is provided.
+    此参数必须始终定义为列表或元组，即使只提供单个值。
 
-The value of this option is also used to set `CSRF_TRUSTED_ORIGINS`, which restricts POST requests to the same set of hosts (more about this [here](https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-CSRF_TRUSTED_ORIGINS)). Keep in mind that NetBox, by default, sets `USE_X_FORWARDED_HOST` to true, which means that if you're using a reverse proxy, it's the FQDN used to reach that reverse proxy which needs to be in this list (more about this [here](https://docs.djangoproject.com/en/stable/ref/settings/#allowed-hosts)).
+此选项的值还用于设置`CSRF_TRUSTED_ORIGINS`，该选项将POST请求限制为同一组主机（有关更多信息，请参见[此处](https://docs.djangoproject.com/en/stable/ref/settings/#std:setting-CSRF_TRUSTED_ORIGINS)）。请注意，默认情况下，NetBox将`USE_X_FORWARDED_HOST`设置为true，这意味着如果您使用反向代理，需要在此列表中添加用于访问该反向代理的FQDN（有关更多信息，请参见[此处](https://docs.djangoproject.com/en/stable/ref/settings/#allowed-hosts)）。
 
-Example:
+示例：
 
 ```
 ALLOWED_HOSTS = ['netbox.example.com', '192.0.2.123']
 ```
 
-If you are not yet sure what the domain name and/or IP address of the NetBox installation will be, and are comfortable accepting the risks in doing so, you can set this to a wildcard (asterisk) to allow all host values:
+如果您还不确定NetBox安装的域名和/或IP地址是什么，并且愿意接受这样做的风险，您可以将其设置为通配符（星号）以允许所有主机值：
 
 ```
 ALLOWED_HOSTS = ['*']
@@ -25,53 +25,53 @@ ALLOWED_HOSTS = ['*']
 
 ## DATABASE
 
-NetBox requires access to a PostgreSQL 12 or later database service to store data. This service can run locally on the NetBox server or on a remote system. The following parameters must be defined within the `DATABASE` dictionary:
+NetBox需要访问一个PostgreSQL 12或更高版本的数据库服务来存储数据。该服务可以在NetBox服务器上本地运行，也可以在远程系统上运行。在`DATABASE`字典中必须定义以下参数：
 
-* `NAME` - Database name
-* `USER` - PostgreSQL username
-* `PASSWORD` - PostgreSQL password
-* `HOST` - Name or IP address of the database server (use `localhost` if running locally)
-* `PORT` - TCP port of the PostgreSQL service; leave blank for default port (TCP/5432)
-* `CONN_MAX_AGE` - Lifetime of a [persistent database connection](https://docs.djangoproject.com/en/stable/ref/databases/#persistent-connections), in seconds (300 is the default)
-* `ENGINE` - The database backend to use; must be a PostgreSQL-compatible backend (e.g. `django.db.backends.postgresql`)
+* `NAME` - 数据库名称
+* `USER` - PostgreSQL用户名
+* `PASSWORD` - PostgreSQL密码
+* `HOST` - 数据库服务器的名称或IP地址（如果在本地运行，则使用`localhost`）
+* `PORT` - PostgreSQL服务的TCP端口；保留默认端口时留空（TCP/5432）
+* `CONN_MAX_AGE` - [持久数据库连接](https://docs.djangoproject.com/en/stable/ref/databases/#persistent-connections)的生命周期，以秒为单位（默认为300）
+* `ENGINE` - 要使用的数据库后端；必须是与PostgreSQL兼容的后端（例如`django.db.backends.postgresql`）
 
-Example:
+示例：
 
 ```python
 DATABASE = {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': 'netbox',               # Database name
-    'USER': 'netbox',               # PostgreSQL username
-    'PASSWORD': 'J5brHrAXFLQSif0K', # PostgreSQL password
-    'HOST': 'localhost',            # Database server
-    'PORT': '',                     # Database port (leave blank for default)
-    'CONN_MAX_AGE': 300,            # Max database connection age
+    'NAME': 'netbox',               # 数据库名称
+    'USER': 'netbox',               # PostgreSQL用户名
+    'PASSWORD': 'J5brHrAXFLQSif0K', # PostgreSQL密码
+    'HOST': 'localhost',            # 数据库服务器
+    'PORT': '',                     # 数据库端口（保留默认值）
+    'CONN_MAX_AGE': 300,            # 最大数据库连接时长
 }
 ```
 
 !!! note
-    NetBox supports all PostgreSQL database options supported by the underlying Django framework. For a complete list of available parameters, please see [the Django documentation](https://docs.djangoproject.com/en/stable/ref/settings/#databases).
+    NetBox支持由底层Django框架支持的所有PostgreSQL数据库选项。有关可用参数的完整列表，请参阅[Django文档](https://docs.djangoproject.com/en/stable/ref/settings/#databases)。
 
 !!! warning
-    Make sure to use a PostgreSQL-compatible backend for the ENGINE setting. If you don't specify an ENGINE, the default will be django.db.backends.postgresql.
+    请确保在ENGINE设置中使用与PostgreSQL兼容的后端。如果不指定ENGINE，默认值将为django.db.backends.postgresql。
 
 ---
 
 ## REDIS
 
-[Redis](https://redis.io/) is a lightweight in-memory data store similar to memcached. NetBox employs Redis for background task queuing and other features.
+[Redis](https://redis.io/)是类似于memcached的轻量级内存数据存储。NetBox使用Redis进行后台任务排队和其他功能。
 
-Redis is configured using a configuration setting similar to `DATABASE` and these settings are the same for both of the `tasks` and `caching` subsections:
+Redis的配置与`DATABASE`类似，对于`tasks`和`caching`两个子部分的设置是相同的：
 
-* `HOST` - Name or IP address of the Redis server (use `localhost` if running locally)
-* `PORT` - TCP port of the Redis service; leave blank for default port (6379)
-* `USERNAME` - Redis username (if set)
-* `PASSWORD` - Redis password (if set)
-* `DATABASE` - Numeric database ID
-* `SSL` - Use SSL connection to Redis
-* `INSECURE_SKIP_TLS_VERIFY` - Set to `True` to **disable** TLS certificate verification (not recommended)
+* `HOST` - Redis服务器的名称或IP地址（如果在本地运行，则使用`localhost`）
+* `PORT` - Redis服务的TCP端口；保留默认端口时留空（6379）
+* `USERNAME` - Redis用户名（如果设置）
+* `PASSWORD` - Redis密码（如果设置）
+* `DATABASE` - 数字数据库ID
+* `SSL` - 使用SSL连接到Redis
+* `INSECURE_SKIP_TLS_VERIFY` - 将其设置为`True`以**禁用**TLS证书验证（不推荐使用）
 
-An example configuration is provided below:
+以下是示例配置：
 
 ```python
 REDIS = {
@@ -95,26 +95,20 @@ REDIS = {
 ```
 
 !!! note
-    If you are upgrading from a NetBox release older than v2.7.0, please note that the Redis connection configuration
-    settings have changed. Manual modification to bring the `REDIS` section inline with the above specification is
-    necessary
+    如果您正在升级NetBox版本，而版本低于v2.7.0，请注意Redis连接配置设置已更改。需要手动修改以使`REDIS`部分与上述规范保持一致。
 
 !!! warning
-    It is highly recommended to keep the task and cache databases separate. Using the same database number on the
-    same Redis instance for both may result in queued background tasks being lost during cache flushing events.
+    强烈建议将任务和缓存数据库保持分开。在相同的Redis实例上使用相同的数据库号码来进行排队的后台任务可能会在缓存刷新事件期间丢失。
 
-### Using Redis Sentinel
+### 使用Redis Sentinel
 
-If you are using [Redis Sentinel](https://redis.io/topics/sentinel) for high-availability purposes, there is minimal 
-configuration necessary to convert NetBox to recognize it. It requires the removal of the `HOST` and `PORT` keys from 
-above and the addition of three new keys.
+如果您使用[Redis Sentinel](https://redis.io/topics/sentinel)以实现高可用性，需要进行最少的配置以使NetBox能够识别它。需要从上述中删除`HOST`和`PORT`键，并添加三个新键。
 
-* `SENTINELS`: List of tuples or tuple of tuples with each inner tuple containing the name or IP address 
-of the Redis server and port for each sentinel instance to connect to
-* `SENTINEL_SERVICE`: Name of the master / service to connect to
-* `SENTINEL_TIMEOUT`: Connection timeout, in seconds
+* `SENTINELS`：元组列表或元组，每个内部元组包含要连接到的每个Sentinel实例的Redis服务器的名称或IP地址和端口
+* `SENTINEL_SERVICE`：要连接到的主/服务的名称
+* `SENTINEL_TIMEOUT`：连接超时，以秒为单位
 
-Example:
+示例：
 
 ```python
 REDIS = {
@@ -140,12 +134,12 @@ REDIS = {
 ```
 
 !!! note
-    It is permissible to use Sentinel for only one database and not the other.
+    可以使用Sentinel只为一个数据库，而不是另一个数据库。
 
 ---
 
 ## SECRET_KEY
 
-This is a secret, pseudorandom string used to assist in the creation new cryptographic hashes for passwords and HTTP cookies. The key defined here should not be shared outside the configuration file. `SECRET_KEY` can be changed at any time without impacting stored data, however be aware that doing so will invalidate all existing user sessions. NetBox deployments comprising multiple nodes must have the same secret key configured on all nodes.
+`SECRET_KEY`是一个秘密的伪随机字符串，用于辅助创建用于密码和HTTP Cookie的新加密哈希。在配置文件之外不应共享此处定义的密钥。`SECRET_KEY`可以随时更改而不影响存储的数据，但请注意这样做会使所有现有用户会话无效。由多个节点组成的NetBox部署必须在所有节点上配置相同的秘密密钥。
 
-`SECRET_KEY` **must** be at least 50 characters in length, and should contain a mix of letters, digits, and symbols. The script located at `$INSTALL_ROOT/netbox/generate_secret_key.py` may be used to generate a suitable key. Please note that this key is **not** used directly for hashing user passwords or for the encrypted storage of secret data in NetBox.
+`SECRET_KEY` **必须**至少为50个字符，并且应包含字母、数字和符号的混合。位于`$INSTALL_ROOT/netbox/generate_secret_key.py`的脚本可以用于生成适当的密钥。请注意，此密钥**不**直接用于对用户密码进行哈希处理或用于NetBox中秘密数据的加密存储。

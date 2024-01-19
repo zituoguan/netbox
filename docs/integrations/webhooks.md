@@ -1,39 +1,39 @@
 # Webhooks
 
-NetBox can be configured via [Event Rules](../features/event-rules.md) to transmit outgoing webhooks to remote systems in response to internal object changes. The receiver can act on the data in these webhook messages to perform related tasks.
+NetBox可以通过[事件规则](../features/event-rules.md)配置，以响应内部对象更改而向远程系统传输出站Webhook。接收方可以根据这些Webhook消息中的数据执行相关任务。
 
-For example, suppose you want to automatically configure a monitoring system to start monitoring a device when its operational status is changed to active, and remove it from monitoring for any other status. You can create a webhook in NetBox for the device model and craft its content and destination URL to effect the desired change on the receiving system. Webhooks will be sent automatically by NetBox whenever the configured constraints are met.
+例如，假设您希望在设备的操作状态更改为活动时自动配置监控系统开始监控设备，并在其他状态下将其从监控中删除。您可以在NetBox中为设备模型创建一个Webhook，并制定其内容和目标URL以在接收系统上实现所需的更改。只要满足配置的约束条件，NetBox将自动发送Webhook。
 
-!!! warning "Security Notice"
-    Webhooks support the inclusion of user-submitted code to generate the URL, custom headers, and payloads, which may pose security risks under certain conditions. Only grant permission to create or modify webhooks to trusted users.
+!!! 警告 "安全通知"
+    Webhooks支持包含用户提交的代码以生成URL、自定义标头和有效负载，这在某些情况下可能存在安全风险。只授予可信用户创建或修改Webhook的权限。
 
-## Jinja2 Template Support
+## Jinja2模板支持
 
-[Jinja2 templating](https://jinja.palletsprojects.com/) is supported for the `URL`, `additional_headers` and `body_template` fields. This enables the user to convey object data in the request headers as well as to craft a customized request body. Request content can be crafted to enable the direct interaction with external systems by ensuring the outgoing message is in a format the receiver expects and understands.
+支持[Jinja2模板](https://jinja.palletsprojects.com/)用于`URL`、`additional_headers`和`body_template`字段。这使用户能够在请求标头中传递对象数据，以及制定定制的请求正文。可以通过制定请求内容来启用与外部系统的直接交互，确保出站消息以接收方期望和理解的格式进行。
 
-For example, you might create a NetBox webhook to [trigger a Slack message](https://api.slack.com/messaging/webhooks) any time an IP address is created. You can accomplish this using the following configuration:
+例如，您可以创建一个NetBox Webhook，以便在创建IP地址时自动触发Slack消息。您可以通过以下配置来实现：
 
-* Object type: IPAM > IP address
-* HTTP method: `POST`
-* URL: Slack incoming webhook URL
-* HTTP content type: `application/json`
-* Body template: `{"text": "IP address {{ data['address'] }} was created by {{ username }}!"}`
+* 对象类型：IPAM > IP地址
+* HTTP方法：`POST`
+* URL：Slack入站Webhook URL
+* HTTP内容类型：`application/json`
+* 正文模板：`{"text": "已创建IP地址{{ data['address'] }}由{{ username }}!"}`
 
-### Available Context
+### 可用上下文
 
-The following data is available as context for Jinja2 templates:
+以下数据在Jinja2模板的上下文中可用：
 
-* `event` - The type of event which triggered the webhook: created, updated, or deleted.
-* `model` - The NetBox model which triggered the change.
-* `timestamp` - The time at which the event occurred (in [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format).
-* `username` - The name of the user account associated with the change.
-* `request_id` - The unique request ID. This may be used to correlate multiple changes associated with a single request.
-* `data` - A detailed representation of the object in its current state. This is typically equivalent to the model's representation in NetBox's REST API.
-* `snapshots` - Minimal "snapshots" of the object state both before and after the change was made; provided as a dictionary with keys named `prechange` and `postchange`. These are not as extensive as the fully serialized representation, but contain enough information to convey what has changed.
+* `event` - 触发Webhook的事件类型：created、updated或deleted。
+* `model` - 触发更改的NetBox模型。
+* `timestamp` - 事件发生的时间（以[ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)格式）。
+* `username` - 与更改相关的用户帐户的名称。
+* `request_id` - 唯一的请求ID。这可以用于关联与单个请求相关的多个更改。
+* `data` - 对象的当前状态的详细表示。这通常等同于NetBox的REST API中模型的表示。
+* `snapshots` - 更改之前和之后对象状态的最小“快照”；以`prechange`和`postchange`命名的字典键提供。虽然不如完全序列化的表示详尽，但包含足够的信息来传达发生了什么变化。
 
-### Default Request Body
+### 默认请求正文
 
-If no body template is specified, the request body will be populated with a JSON object containing the context data. For example, a newly created site might appear as follows:
+如果未指定正文模板，则请求正文将填充一个包含上下文数据的JSON对象。例如，新创建的站点可能如下所示：
 
 ```json
 {
@@ -44,7 +44,7 @@ If no body template is specified, the request body will be populated with a JSON
     "request_id": "fdbca812-3142-4783-b364-2e2bd5c16c6a",
     "data": {
         "id": 19,
-        "name": "Site 1",
+        "name": "站点 1",
         "slug": "site-1",
         "status": 
             "value": "active",
@@ -59,7 +59,7 @@ If no body template is specified, the request body will be populated with a JSON
         "postchange": {
             "created": "2021-03-09",
             "last_updated": "2021-03-09T17:55:33.851Z",
-            "name": "Site 1",
+            "name": "站点 1",
             "slug": "site-1",
             "status": "active",
             ...
@@ -68,31 +68,31 @@ If no body template is specified, the request body will be populated with a JSON
 }
 ```
 
-!!! note
-    The setting of conditional webhooks has been moved to [Event Rules](../features/event-rules.md) since NetBox 3.7
+!!! 注意
+    从NetBox 3.7开始，设置条件Webhook已被移至[事件规则](../features/event-rules.md)中。
 
-## Webhook Processing
+## Webhook处理
 
-Using [Event Rules](../features/event-rules.md), when a change is detected, any resulting webhooks are placed into a Redis queue for processing. This allows the user's request to complete without needing to wait for the outgoing webhook(s) to be processed. The webhooks are then extracted from the queue by the `rqworker` process and HTTP requests are sent to their respective destinations. The current webhook queue and any failed webhooks can be inspected in the admin UI under System > Background Tasks.
+使用[事件规则](../features/event-rules.md)，当检测到更改时，任何结果的Webhook都将被放入Redis队列以进行处理。这使得用户的请求可以在无需等待出站Webhook处理完成的情况下完成。然后，`rqworker`进程从队列中提取Webhook并将HTTP请求发送到其各自的目标。可以在系统 > 后台任务下的NetBox管理UI中检查当前的Webhook队列和任何失败的Webhook。
 
-A request is considered successful if the response has a 2XX status code; otherwise, the request is marked as having failed. Failed requests may be retried manually via the admin UI.
+如果响应具有2XX状态代码，则请求被视为成功；否则，请求将被标记为失败。失败的请求可以通过管理UI手动重试。
 
-## Troubleshooting
+## 故障排除
 
-To assist with verifying that the content of outgoing webhooks is rendered correctly, NetBox provides a simple HTTP listener that can be run locally to receive and display webhook requests. First, modify the target URL of the desired webhook to `http://localhost:9000/`. This will instruct NetBox to send the request to the local server on TCP port 9000. Then, start the webhook receiver service from the NetBox root directory:
+为了帮助验证出站Webhook的内容是否被正确呈现，NetBox提供了一个简单的HTTP监听器，可以在本地运行以接收并显示Webhook请求。首先，将所需Webhook的目标URL修改为`http://localhost:9000/`。这将指示NetBox将请求发送到TCP端口9000上的本地服务器。然后，从NetBox根目录启动Webhook接收器服务：
 
 ```no-highlight
 $ python netbox/manage.py webhook_receiver
 Listening on port http://localhost:9000. Stop with CONTROL-C.
 ```
 
-You can test the receiver itself by sending any HTTP request to it. For example:
+您可以通过向其发送任何HTTP请求来测试接收器本身。例如：
 
 ```no-highlight
 $ curl -X POST http://localhost:9000 --data '{"foo": "bar"}'
 ```
 
-The server will print output similar to the following:
+服务器将打印类似以下的输出：
 
 ```no-highlight
 [1] Tue, 07 Apr 2020 17:44:02 GMT 127.0.0.1 "POST / HTTP/1.1" 200 -
@@ -106,6 +106,6 @@ Content-Type: application/x-www-form-urlencoded
 ------------
 ```
 
-Note that `webhook_receiver` does not actually _do_ anything with the information received: It merely prints the request headers and body for inspection.
+请注意，`webhook_receiver`实际上不会对接收到的信息执行任何操作：它只会打印请求标头和正文以供检查。
 
-Now, when the NetBox webhook is triggered and processed, you should see its headers and content appear in the terminal where the webhook receiver is listening. If you don't, check that the `rqworker` process is running and that webhook events are being placed into the queue (visible under the NetBox admin UI).
+现在，当NetBox触发并处理Webhook时，您应该在Webhook接收程序正在侦听的终端中看到其标头和内容。如果没有，请检查`rqworker`进程是否正在运行以及Webhook事件是否被放入队列（在NetBox管理UI中可见）。
