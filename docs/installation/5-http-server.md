@@ -1,15 +1,15 @@
-# HTTP Server Setup
+# HTTP服务器设置
 
-This documentation provides example configurations for both [nginx](https://www.nginx.com/resources/wiki/) and [Apache](https://httpd.apache.org/docs/current/), though any HTTP server which supports WSGI should be compatible.
+此文档提供了针对[nginx](https://www.nginx.com/resources/wiki/)和[Apache](https://httpd.apache.org/docs/current/)的示例配置，但任何支持WSGI的HTTP服务器都应该兼容。
 
 !!! info
-    For the sake of brevity, only Ubuntu 20.04 instructions are provided here. These tasks are not unique to NetBox and should carry over to other distributions with minimal changes. Please consult your distribution's documentation for assistance if needed.
+    为了简洁起见，这里仅提供了Ubuntu 20.04的说明。这些任务与NetBox无关，应该在其他发行版上进行最小的更改。如果需要帮助，请查阅您的发行版文档。
 
-## Obtain an SSL Certificate
+## 获取SSL证书
 
-To enable HTTPS access to NetBox, you'll need a valid SSL certificate. You can purchase one from a trusted commercial provider, obtain one for free from [Let's Encrypt](https://letsencrypt.org/getting-started/), or generate your own (although self-signed certificates are generally untrusted). Both the public certificate and private key files need to be installed on your NetBox server in a location that is readable by the `netbox` user.
+要启用对NetBox的HTTPS访问，您需要一个有效的SSL证书。您可以从受信任的商业提供商购买一个，从[Let's Encrypt](https://letsencrypt.org/getting-started/)免费获取一个，或者生成自己的证书（尽管自签名证书通常不受信任）。公共证书和私钥文件都需要安装在您的NetBox服务器上，以供`netbox`用户读取。
 
-The command below can be used to generate a self-signed certificate for testing purposes, however it is strongly recommended to use a certificate from a trusted authority in production. Two files will be created: the public certificate (`netbox.crt`) and the private key (`netbox.key`). The certificate is published to the world, whereas the private key must be kept secret at all times.
+以下命令可用于生成用于测试目的的自签名证书，但强烈建议在生产中使用来自受信任机构的证书。将创建两个文件：公共证书（`netbox.crt`）和私钥（`netbox.key`）。证书是向世界发布的，而私钥必须始终保密。
 
 ```no-highlight
 sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
@@ -17,52 +17,52 @@ sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
 -out /etc/ssl/certs/netbox.crt
 ```
 
-The above command will prompt you for additional details of the certificate; all of these are optional.
+上述命令将提示您提供证书的其他详细信息；所有这些信息都是可选的。
 
-## HTTP Server Installation
+## 安装HTTP服务器
 
-### Option A: nginx
+### 选项A：nginx
 
-Begin by installing nginx:
+首先安装nginx：
 
 ```no-highlight
 sudo apt install -y nginx
 ```
 
-Once nginx is installed, copy the nginx configuration file provided by NetBox to `/etc/nginx/sites-available/netbox`. Be sure to replace `netbox.example.com` with the domain name or IP address of your installation. (This should match the value configured for `ALLOWED_HOSTS` in `configuration.py`.)
+安装nginx后，将NetBox提供的nginx配置文件复制到`/etc/nginx/sites-available/netbox`。确保将`netbox.example.com`替换为您的安装的域名或IP地址（这应该与`configuration.py`中配置的`ALLOWED_HOSTS`的值匹配）。
 
 ```no-highlight
 sudo cp /opt/netbox/contrib/nginx.conf /etc/nginx/sites-available/netbox
 ```
 
-Then, delete `/etc/nginx/sites-enabled/default` and create a symlink in the `sites-enabled` directory to the configuration file you just created.
+然后，删除`/etc/nginx/sites-enabled/default`并在`sites-enabled`目录中创建一个到刚刚创建的配置文件的符号链接。
 
 ```no-highlight
 sudo rm /etc/nginx/sites-enabled/default
 sudo ln -s /etc/nginx/sites-available/netbox /etc/nginx/sites-enabled/netbox
 ```
 
-Finally, restart the `nginx` service to use the new configuration.
+最后，重新启动`nginx`服务以使用新的配置。
 
 ```no-highlight
 sudo systemctl restart nginx
 ```
 
-### Option B: Apache
+### 选项B：Apache
 
-Begin by installing Apache:
+首先安装Apache：
 
 ```no-highlight
 sudo apt install -y apache2
 ```
 
-Next, copy the default configuration file to `/etc/apache2/sites-available/`. Be sure to modify the `ServerName` parameter appropriately.
+接下来，将默认配置文件复制到`/etc/apache2/sites-available/`。确保适当修改`ServerName`参数。
 
 ```no-highlight
 sudo cp /opt/netbox/contrib/apache.conf /etc/apache2/sites-available/netbox.conf
 ```
 
-Finally, ensure that the required Apache modules are enabled, enable the `netbox` site, and reload Apache:
+最后，确保启用了所需的Apache模块，启用`netbox`站点并重新加载Apache：
 
 ```no-highlight
 sudo a2enmod ssl proxy proxy_http headers rewrite
@@ -70,25 +70,25 @@ sudo a2ensite netbox
 sudo systemctl restart apache2
 ```
 
-## Confirm Connectivity
+## 确认连接
 
-At this point, you should be able to connect to the HTTPS service at the server name or IP address you provided.
+此时，您应该能够连接到您提供的服务器名称或IP地址的HTTPS服务。
 
 !!! info
-    Please keep in mind that the configurations provided here are bare minimums required to get NetBox up and running. You may want to make adjustments to better suit your production environment.
+    请记住，这里提供的配置是为了使NetBox能够运行所需的最低限度。您可能希望进行调整，以更好地适应您的生产环境。
 
 !!! warning
-    Certain components of NetBox (such as the display of rack elevation diagrams) rely on the use of embedded objects. Ensure that your HTTP server configuration does not override the `X-Frame-Options` response header set by NetBox.
+    NetBox的某些组件（例如机架高度图的显示）依赖于嵌入式对象的使用。确保您的HTTP服务器配置不会覆盖NetBox设置的`X-Frame-Options`响应头。
 
-## Troubleshooting
+## 故障排除
 
-If you are unable to connect to the HTTP server, check that:
+如果无法连接到HTTP服务器，请检查以下内容：
 
-* Nginx/Apache is running and configured to listen on the correct port.
-* Access is not being blocked by a firewall somewhere along the path. (Try connecting locally from the server itself.)
+* Nginx/Apache正在运行并配置为侦听正确的端口。
+* 访问没有被沿途的防火墙阻止。（尝试从服务器本身本地连接。）
 
-If you are able to connect but receive a 502 (bad gateway) error, check the following:
+如果能够连接但收到502（坏的网关）错误，请检查以下内容：
 
-* The WSGI worker processes (gunicorn) are running (`systemctl status netbox` should show a status of "active (running)")
-* Nginx/Apache is configured to connect to the port on which gunicorn is listening (default is 8001).
-* SELinux is not preventing the reverse proxy connection. You may need to allow HTTP network connections with the command `setsebool -P httpd_can_network_connect 1`
+* WSGI工作进程（gunicorn）正在运行（`systemctl status netbox`应显示“active (running)”状态）。
+* Nginx/Apache已配置为连接到gunicorn正在侦听的端口（默认为8001）。
+* SELinux没有阻止反向代理连接。您可能需要使用命令`setsebool -P httpd_can_network_connect 1`允许HTTP网络连接。

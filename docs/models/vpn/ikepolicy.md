@@ -1,25 +1,25 @@
-# IKE Policies
+# IKE策略
 
-An [Internet Key Exhcnage (IKE)](https://en.wikipedia.org/wiki/Internet_Key_Exchange) policy defines an IKE version, mode, and set of [proposals](./ikeproposal.md) to be used in IKE negotiation. These policies are referenced by [IPSec profiles](./ipsecprofile.md).
+[IKE（Internet Key Exchange）](https://en.wikipedia.org/wiki/Internet_Key_Exchange)策略定义了在IKE协商中要使用的IKE版本、模式和一组[提议](./ikeproposal.md)。这些策略由[IPSec配置文件](./ipsecprofile.md)引用。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The unique user-assigned name for the policy.
+策略的唯一用户分配的名称。
 
-### Version
+### 版本
 
-The IKE version employed (v1 or v2).
+使用的IKE版本（v1或v2）。
 
-### Mode
+### 模式
 
-The IKE mode employed (main or aggressive).
+使用的IKE模式（主要或积极）。
 
-### Proposals
+### 提议
 
-One or more [IKE proposals](./ikeproposal.md) supported for use by this policy.
+支持此策略使用的一个或多个[IKE提议](./ikeproposal.md)。
 
-### Pre-shared Key
+### 预共享密钥
 
-A pre-shared secret key associated with this policy (optional).
+与此策略关联的预共享秘密密钥（可选）。

@@ -1,17 +1,17 @@
-# REST API Overview
+# REST API概述
 
-## What is a REST API?
+## 什么是REST API？
 
-REST stands for [representational state transfer](https://en.wikipedia.org/wiki/Representational_state_transfer). It's a particular type of API which employs HTTP requests and [JavaScript Object Notation (JSON)](https://www.json.org/) to facilitate create, retrieve, update, and delete (CRUD) operations on objects within an application. Each type of operation is associated with a particular HTTP verb:
+REST代表[表征状态传输](https://en.wikipedia.org/wiki/Representational_state_transfer)。它是一种特定类型的API，它使用HTTP请求和[JavaScript对象表示法（JSON）](https://www.json.org/)来促进对应用程序中对象的创建、检索、更新和删除（CRUD）操作。每种操作都与特定的HTTP动词关联：
 
-* `GET`: Retrieve an object or list of objects
-* `POST`: Create an object
-* `PUT` / `PATCH`: Modify an existing object. `PUT` requires all mandatory fields to be specified, while `PATCH` only expects the field that is being modified to be specified.
-* `DELETE`: Delete an existing object
+* `GET`：检索对象或对象列表
+* `POST`：创建对象
+* `PUT` / `PATCH`：修改现有对象。`PUT`需要指定所有强制字段，而`PATCH`只需要指定正在修改的字段。
+* `DELETE`：删除现有对象
 
-Additionally, the `OPTIONS` verb can be used to inspect a particular REST API endpoint and return all supported actions and their available parameters.
+此外，`OPTIONS`动词可以用于检查特定的REST API端点，并返回所有支持的操作及其可用的参数。
 
-One of the primary benefits of a REST API is its human-friendliness. Because it utilizes HTTP and JSON, it's very easy to interact with NetBox data on the command line using common tools. For example, we can request an IP address from NetBox and output the JSON using `curl` and `jq`. The following command makes an HTTP `GET` request for information about a particular IP address, identified by its primary key, and uses `jq` to present the raw JSON data returned in a more human-friendly format. (Piping the output through `jq` isn't strictly required but makes it much easier to read.)
+REST API的主要好处之一是其人性化。因为它使用HTTP和JSON，所以可以使用常见工具在命令行上与NetBox数据进行交互。例如，我们可以使用`curl`和`jq`从NetBox请求一个IP地址并输出JSON。以下命令使用`curl`和`jq`向NetBox发出HTTP `GET`请求，请求有关特定IP地址的信息，该IP地址由其主键标识，并使用`jq`以更人性化的格式呈现返回的原始JSON数据。 （通过`jq`传递输出不是严格要求的，但可以使其更容易阅读。）
 
 ```no-highlight
 curl -s http://netbox/api/ipam/ip-addresses/2954/ | jq '.'
@@ -59,43 +59,43 @@ curl -s http://netbox/api/ipam/ip-addresses/2954/ | jq '.'
 }
 ```
 
-Each attribute of the IP address is expressed as an attribute of the JSON object. Fields may include their own nested objects, as in the case of the `assigned_object` field above. Every object includes a primary key named `id` which uniquely identifies it in the database.
+IP地址的每个属性都表示为JSON对象的属性。字段可以包括自己的嵌套对象，就像上面的`assigned_object`字段一样。每个对象都包括一个名为`id`的主键，该主键在数据库中唯一标识它。
 
-## Interactive Documentation
+## 交互式文档
 
-Comprehensive, interactive documentation of all REST API endpoints is available on a running NetBox instance at `/api/schema/swagger-ui/`. This interface provides a convenient sandbox for researching and experimenting with specific endpoints and request types. The API itself can also be explored using a web browser by navigating to its root at `/api/`.
+在运行中的NetBox实例上，全面的REST API端点的交互式文档位于`/api/schema/swagger-ui/`。此界面提供了一个方便的沙箱，用于研究和实验特定的端点和请求类型。API本身也可以通过Web浏览器来探索，方法是导航到其根目录`/api/`。
 
-## Endpoint Hierarchy
+## 端点层次结构
 
-NetBox's entire REST API is housed under the API root at `https://<hostname>/api/`. The URL structure is divided at the root level by application: circuits, DCIM, extras, IPAM, plugins, tenancy, users, and virtualization. Within each application exists a separate path for each model. For example, the provider and circuit objects are located under the "circuits" application:
+NetBox的整个REST API位于API根目录下，即`https://<hostname>/api/`。URL结构在根级别上按应用程序划分：circuits、DCIM、extras、IPAM、plugins、tenancy、users和virtualization。在每个应用程序中，都存在一个单独的路径用于每个模型。例如，提供程序和电路对象位于“circuits”应用程序下：
 
 * `/api/circuits/providers/`
 * `/api/circuits/circuits/`
 
-Likewise, the site, rack, and device objects are located under the "DCIM" application:
+同样，站点、机架和设备对象位于“DCIM”应用程序下：
 
 * `/api/dcim/sites/`
 * `/api/dcim/racks/`
 * `/api/dcim/devices/`
 
-The full hierarchy of available endpoints can be viewed by navigating to the API root in a web browser.
+可用端点的完整层次结构可以通过在Web浏览器中导航到API根目录来查看。
 
-Each model generally has two views associated with it: a list view and a detail view. The list view is used to retrieve a list of multiple objects and to create new objects. The detail view is used to retrieve, update, or delete an single existing object. All objects are referenced by their numeric primary key (`id`).
+每个模型通常都有与之关联的两个视图：列表视图和详细视图。列表视图用于检索多个对象的列表并创建新对象。详细视图用于检索、更新或删除单个现有对象。所有对象都通过其数字主键（`id`）引用。
 
-* `/api/dcim/devices/` - List existing devices or create a new device
-* `/api/dcim/devices/123/` - Retrieve, update, or delete the device with ID 123
+* `/api/dcim/devices/` - 列出现有设备或创建新设备
+* `/api/dcim/devices/123/` - 检索、更新或删除ID为123的设备
 
-Lists of objects can be filtered using a set of query parameters. For example, to find all interfaces belonging to the device with ID 123:
+可以使用一组查询参数来过滤对象的列表。例如，要查找属于ID为123的设备的所有接口：
 
 ```
 GET /api/dcim/interfaces/?device_id=123
 ```
 
-See the [filtering documentation](../reference/filtering.md) for more details.
+有关详细信息，请参阅[过滤文档](../reference/filtering.md)。
 
-## Serialization
+## 序列化
 
-The REST API employs two types of serializers to represent model data: base serializers and nested serializers. The base serializer is used to present the complete view of a model. This includes all database table fields which comprise the model, and may include additional metadata. A base serializer includes relationships to parent objects, but **does not** include child objects. For example, the `VLANSerializer` includes a nested representation its parent VLANGroup (if any), but does not include any assigned Prefixes.
+REST API使用两种类型的序列化器来表示模型数据：基本序列化器和嵌套序列化器。基本序列化器用于呈现模型的完整视图。这包括组成模型的所有数据库表字段，可能包括附加元数据。基本序列化器包括对父对象的关系，但**不包括**子对象。例如，`VLANSerializer`包括其父VLANGroup（如果有的话）的嵌套表示，但不包括任何分配的前缀。
 
 ```json
 {
@@ -131,11 +131,11 @@ The REST API employs two types of serializers to represent model data: base seri
 }
 ```
 
-### Related Objects
+### 关联对象
 
-Related objects (e.g. `ForeignKey` fields) are represented using nested serializers. A nested serializer provides a minimal representation of an object, including only its direct URL and enough information to display the object to a user. When performing write API actions (`POST`, `PUT`, and `PATCH`), related objects may be specified by either numeric ID (primary key), or by a set of attributes sufficiently unique to return the desired object.
+关联对象（例如`ForeignKey`字段）使用嵌套序列化器表示。嵌套序列化器提供了一个对象的最小表示，仅包括其直接URL以及足够的信息以向用户显示对象。在执行写API操作（`POST`、`PUT`和`PATCH`）时，可以通过数字ID（主键）或足够唯一以返回所需对象的一组属性来指定相关对象。
 
-For example, when creating a new device, its rack can be specified by NetBox ID (PK):
+例如，在创建新设备时，可以通过NetBox ID（PK）指定其机架：
 
 ```json
 {
@@ -145,7 +145,7 @@ For example, when creating a new device, its rack can be specified by NetBox ID 
 }
 ```
 
-Or by a set of nested attributes which uniquely identify the rack:
+或通过一组足够唯一标识机架的嵌套属性：
 
 ```json
 {
@@ -160,16 +160,16 @@ Or by a set of nested attributes which uniquely identify the rack:
 }
 ```
 
-Note that if the provided parameters do not return exactly one object, a validation error is raised.
+请注意，如果提供的参数不能返回完全一个对象，将引发验证错误。
 
-### Generic Relations
+### 通用关系
 
-Some objects within NetBox have attributes which can reference an object of multiple types, known as _generic relations_. For example, an IP address can be assigned to either a device interface _or_ a virtual machine interface. When making this assignment via the REST API, we must specify two attributes:
+NetBox中的一些对象具有可以引用多种类型对象的属性，称为通用关系。例如，IP地址可以分配给设备接口或虚拟机接口。在通过REST API进行此分配时，我们必须指定两个属性：
 
-* `assigned_object_type` - The content type of the assigned object, defined as `<app>.<model>`
-* `assigned_object_id` - The assigned object's unique numeric ID
+* `assigned_object_type` - 已分配对象的内容类型，定义为`<app>.<model>`
+* `assigned_object_id` - 分配对象的唯一数字ID
 
-Together, these values identify a unique object in NetBox. The assigned object (if any) is represented by the `assigned_object` attribute on the IP address model.
+这些值一起在NetBox中标识一个唯一的对象。分配的对象（如果有）由IP地址模型上的`assigned_object`属性表示。
 
 ```no-highlight
 curl -X POST \
@@ -207,11 +207,11 @@ http://netbox/api/ipam/ip-addresses/ \
 }
 ```
 
-If we wanted to assign this IP address to a virtual machine interface instead, we would have set `assigned_object_type` to `virtualization.vminterface` and updated the object ID appropriately.
+如果您希望将此IP地址分配给虚拟机接口，您将设置`assigned_object_type`为`virtualization.vminterface`，并相应地更新对象ID。
 
-### Brief Format
+### 简要格式
 
-Most API endpoints support an optional "brief" format, which returns only a minimal representation of each object in the response. This is useful when you need only a list of available objects without any related data, such as when populating a drop-down list in a form. As an example, the default (complete) format of an IP address looks like this:
+大多数API端点支持可选的“简要”格式，该格式仅返回响应中每个对象的最小表示。当您只需要一个可用对象的列表而无需任何相关数据时，这非常有用，例如在填写表单中填充下拉列表时。例如，IP地址的默认（完整）格式如下：
 
 ```
 GET /api/ipam/prefixes/13980/
@@ -252,7 +252,7 @@ GET /api/ipam/prefixes/13980/
 }
 ```
 
-The brief format is much more terse:
+简要格式要简洁得多：
 
 ```
 GET /api/ipam/prefixes/13980/?brief=1
@@ -265,22 +265,22 @@ GET /api/ipam/prefixes/13980/?brief=1
 }
 ```
 
-The brief format is supported for both lists and individual objects.
+简要格式适用于列表和单个对象。
 
-### Excluding Config Contexts
+### 排除配置上下文
 
-When retrieving devices and virtual machines via the REST API, each will include its rendered [configuration context data](../features/context-data.md) by default. Users with large amounts of context data will likely observe suboptimal performance when returning multiple objects, particularly with very high page sizes. To combat this, context data may be excluded from the response data by attaching the query parameter `?exclude=config_context` to the request. This parameter works for both list and detail views.
+在通过REST API检索设备和虚拟机时，默认情况下，每个对象都会包括其渲染的[配置上下文数据](../features/context-data.md)。具有大量上下文数据的用户在返回多个对象时可能会观察到性能不佳，特别是在页面大小非常大的情况下。为了解决这个问题，可以通过将查询参数`?exclude=config_context`附加到请求中来从响应数据中排除上下文数据。此参数适用于列表视图和详细视图。
 
-## Pagination
+## 分页
 
-API responses which contain a list of many objects will be paginated for efficiency. The root JSON object returned by a list endpoint contains the following attributes:
+包含许多对象的API响应将进行分页以提高效率。列表端点返回的根JSON对象包含以下属性：
 
-* `count`: The total number of all objects matching the query
-* `next`: A hyperlink to the next page of results (if applicable)
-* `previous`: A hyperlink to the previous page of results (if applicable)
-* `results`: The list of objects on the current page
+* `count`：与查询匹配的所有对象的总数
+* `next`：指向下一页结果的超链接（如果适用）
+* `previous`：指向上一页结果的超链接（如果适用）
+* `results`：当前页面上的对象列表
 
-Here is an example of a paginated response:
+以下是分页响应的示例：
 
 ```
 HTTP 200 OK
@@ -308,13 +308,13 @@ Vary: Accept
 }
 ```
 
-The default page is determined by the [`PAGINATE_COUNT`](../configuration/default-values.md#paginate_count) configuration parameter, which defaults to 50. However, this can be overridden per request by specifying the desired `offset` and `limit` query parameters. For example, if you wish to retrieve a hundred devices at a time, you would make a request for:
+默认页面由 [`PAGINATE_COUNT`](../configuration/default-values.md#paginate_count) 配置参数确定，默认为 50。但是，可以通过在请求中指定所需的 `offset` 和 `limit` 查询参数来覆盖此设置。例如，如果您希望一次检索一百个设备，您可以发出以下请求：
 
 ```
 http://netbox/api/dcim/devices/?limit=100
 ```
 
-The response will return devices 1 through 100. The URL provided in the `next` attribute of the response will return devices 101 through 200:
+响应将返回第 1 到第 100 个设备。响应中的 `next` 属性提供的 URL 将返回第 101 到第 200 个设备：
 
 ```json
 {
@@ -325,16 +325,16 @@ The response will return devices 1 through 100. The URL provided in the `next` a
 }
 ```
 
-The maximum number of objects that can be returned is limited by the [`MAX_PAGE_SIZE`](../configuration/miscellaneous.md#max_page_size) configuration parameter, which is 1000 by default. Setting this to `0` or `None` will remove the maximum limit. An API consumer can then pass `?limit=0` to retrieve _all_ matching objects with a single request.
+最多可以返回的对象数量由 [`MAX_PAGE_SIZE`](../configuration/miscellaneous.md#max_page_size) 配置参数限制，默认为 1000。将其设置为 `0` 或 `None` 将取消最大限制。然后，API 使用者可以传递 `?limit=0` 以单个请求检索 _所有_ 匹配的对象。
 
-!!! warning
-    Disabling the page size limit introduces a potential for very resource-intensive requests, since one API request can effectively retrieve an entire table from the database.
+!!! 警告
+    禁用页面大小限制会导致潜在的非常耗费资源的请求，因为一个 API 请求可以有效地检索整个数据库中的整个表。
 
-## Interacting with Objects
+## 与对象互动
 
-### Retrieving Multiple Objects
+### 检索多个对象
 
-To query NetBox for a list of objects, make a `GET` request to the model's _list_ endpoint. Objects are listed under the response object's `results` parameter.
+要查询 NetBox 的对象列表，请向模型的 _list_ 终端发出 `GET` 请求。对象列在响应对象的 `results` 参数下。
 
 ```no-highlight
 curl -s -X GET http://netbox/api/ipam/ip-addresses/ | jq '.'
@@ -366,12 +366,12 @@ curl -s -X GET http://netbox/api/ipam/ip-addresses/ | jq '.'
 }
 ```
 
-### Retrieving a Single Object
+### 检索单个对象
 
-To query NetBox for a single object, make a `GET` request to the model's _detail_ endpoint specifying its unique numeric ID.
+要查询 NetBox 的单个对象，请发出 `GET` 请求到模型的 _detail_ 终端，指定其唯一的数字 ID。
 
-!!! note
-    Note that the trailing slash is required. Omitting this will return a 302 redirect.
+!!! 注意
+    需要注意的是，需要包括结尾的斜杠。如果省略此斜杠，将返回 302 重定向。
 
 ```no-highlight
 curl -s -X GET http://netbox/api/ipam/ip-addresses/5618/ | jq '.'
@@ -385,9 +385,9 @@ curl -s -X GET http://netbox/api/ipam/ip-addresses/5618/ | jq '.'
 }
 ```
 
-### Creating a New Object
+### 创建新对象
 
-To create a new object, make a `POST` request to the model's _list_ endpoint with JSON data pertaining to the object being created. Note that a REST API token is required for all write operations; see the [authentication section](#authenticating-to-the-api) for more information. Also be sure to set the `Content-Type` HTTP header to `application/json`.
+要创建一个新对象，请发出 `POST` 请求到模型的 _list_ 终端，其中包含与要创建的对象相关的 JSON 数据。请注意，所有写操作都需要使用 REST API 令牌；有关更多信息，请参阅[身份验证部分](#authenticating-to-the-api)。还要确保将 `Content-Type` HTTP 标头设置为 `application/json`。
 
 ```no-highlight
 curl -s -X POST \
@@ -429,9 +429,9 @@ http://netbox/api/ipam/prefixes/ \
 }
 ```
 
-### Creating Multiple Objects
+### 创建多个对象
 
-To create multiple instances of a model using a single request, make a `POST` request to the model's _list_ endpoint with a list of JSON objects representing each instance to be created. If successful, the response will contain a list of the newly created instances. The example below illustrates the creation of three new sites.
+要使用单个请求创建模型的多个实例，请发出 `POST` 请求到模型的 _list_ 终端，其中包含表示要创建的每个实例的 JSON 对象列表。如果成功，响应将包含新创建实例的列表。下面的示例说明了创建三个新站点的过程。
 
 ```no-highlight
 curl -X POST -H "Authorization: Token $TOKEN" \
@@ -468,9 +468,9 @@ http://netbox/api/dcim/sites/ \
 ]
 ```
 
-### Updating an Object
+### 更新对象
 
-To modify an object which has already been created, make a `PATCH` request to the model's _detail_ endpoint specifying its unique numeric ID. Include any data which you wish to update on the object. As with object creation, the `Authorization` and `Content-Type` headers must also be specified.
+要修改已创建的对象，请发出 `PATCH` 请求到模型的 _detail_ 终端，指定其唯一的数值 ID。包括您希望在对象上更新的任何数据。与对象创建一样，还必须指定 `Authorization` 和 `Content-Type` 头。
 
 ```no-highlight
 curl -s -X PATCH \
@@ -512,12 +512,12 @@ http://netbox/api/ipam/prefixes/18691/ \
 }
 ```
 
-!!! note "PUT versus PATCH"
-    The NetBox REST API support the use of either `PUT` or `PATCH` to modify an existing object. The difference is that a `PUT` request requires the user to specify a _complete_ representation of the object being modified, whereas a `PATCH` request need include only the attributes that are being updated. For most purposes, using `PATCH` is recommended.
+!!! 注意 "PUT 与 PATCH"
+    NetBox REST API 支持使用 `PUT` 或 `PATCH` 来修改现有对象。不同之处在于 `PUT` 请求要求用户指定正在修改的对象的 _完整_ 表示，而 `PATCH` 请求只需包括要更新的属性。对于大多数情况，建议使用 `PATCH`。
 
-### Updating Multiple Objects
+### 更新多个对象
 
-Multiple objects can be updated simultaneously by issuing a `PUT` or `PATCH` request to a model's list endpoint with a list of dictionaries specifying the numeric ID of each object to be deleted and the attributes to be updated. For example, to update sites with IDs 10 and 11 to a status of "active", issue the following request:
+可以通过向模型的列表端点发出 `PUT` 或 `PATCH` 请求，并提供一个包含要删除的每个对象的数值 ID 和要更新的属性的字典列表，同时更新多个对象。例如，要将 ID 为 10 和 11 的站点更新为 "active" 状态，请发出以下请求：
 
 ```no-highlight
 curl -s -X PATCH \
@@ -527,14 +527,14 @@ http://netbox/api/dcim/sites/ \
 --data '[{"id": 10, "status": "active"}, {"id": 11, "status": "active"}]'
 ```
 
-Note that there is no requirement for the attributes to be identical among objects. For instance, it's possible to update the status of one site along with the name of another in the same request.
+请注意，对象之间的属性无需相同。例如，可以在同一个请求中更新一个站点的状态以及另一个站点的名称。
 
-!!! note
-    The bulk update of objects is an all-or-none operation, meaning that if NetBox fails to successfully update any of the specified objects (e.g. due a validation error), the entire operation will be aborted and none of the objects will be updated.
+!!! 注意
+    对象的批量更新是一个全或无操作，这意味着如果NetBox无法成功更新指定的任何对象（例如由于验证错误），则整个操作将被中止，不会更新任何对象。
 
-### Deleting an Object
+### 删除对象
 
-To delete an object from NetBox, make a `DELETE` request to the model's _detail_ endpoint specifying its unique numeric ID. The `Authorization` header must be included to specify an authorization token, however this type of request does not support passing any data in the body.
+要从NetBox中删除对象，请发出 `DELETE` 请求到模型的 _detail_ 端点，指定其唯一的数值 ID。必须包括 `Authorization` 头来指定授权令牌，但此类请求不支持在请求体中传递任何数据。
 
 ```no-highlight
 curl -s -X DELETE \
@@ -542,14 +542,14 @@ curl -s -X DELETE \
 http://netbox/api/ipam/prefixes/18691/
 ```
 
-Note that `DELETE` requests do not return any data: If successful, the API will return a 204 (No Content) response.
+请注意，`DELETE` 请求不返回任何数据：如果成功，API 将返回 204（无内容）响应。
 
-!!! note
-    You can run `curl` with the verbose (`-v`) flag to inspect the HTTP response codes.
+!!! 注意
+    您可以使用带有详细信息（`-v`）标志的 `curl` 来检查 HTTP 响应代码。
 
-### Deleting Multiple Objects
+### 删除多个对象
 
-NetBox supports the simultaneous deletion of multiple objects of the same type by issuing a `DELETE` request to the model's list endpoint with a list of dictionaries specifying the numeric ID of each object to be deleted. For example, to delete sites with IDs 10, 11, and 12, issue the following request:
+NetBox 支持通过向模型的列表端点发出 `DELETE` 请求，同时删除同一类型的多个对象，方法是提供一个包含要删除的每个对象的数值 ID 的字典列表。例如，要删除具有 ID 10、11 和 12 的站点，请发出以下请求：
 
 ```no-highlight
 curl -s -X DELETE \
@@ -559,44 +559,44 @@ http://netbox/api/dcim/sites/ \
 --data '[{"id": 10}, {"id": 11}, {"id": 12}]'
 ```
 
-!!! note
-    The bulk deletion of objects is an all-or-none operation, meaning that if NetBox fails to delete any of the specified objects (e.g. due a dependency by a related object), the entire operation will be aborted and none of the objects will be deleted.
+!!! 注意
+    批量删除对象是一种全有或全无的操作，这意味着如果 NetBox 无法删除任何指定的对象（例如由相关对象的依赖引起的），整个操作将被中止，不会删除任何对象。
 
-## Authentication
+## 身份验证
 
-The NetBox REST API primarily employs token-based authentication. For convenience, cookie-based authentication can also be used when navigating the browsable API.
+NetBox REST API 主要采用基于令牌的身份验证。为方便起见，当访问可浏览的 API 时，也可以使用基于 cookie 的身份验证。
 
-### Tokens
+### 令牌
 
-A token is a unique identifier mapped to a NetBox user account. Each user may have one or more tokens which he or she can use for authentication when making REST API requests. To create a token, navigate to the API tokens page under your user profile.
+令牌是映射到 NetBox 用户帐户的唯一标识符。每个用户可以拥有一个或多个令牌，用于在进行 REST API 请求时进行身份验证。要创建令牌，请转到您的用户配置文件下的 API 令牌页面。
 
-By default, all users can create and manage their own REST API tokens under the user control panel in the UI or via the REST API. This ability can be disabled by overriding the [`DEFAULT_PERMISSIONS`](../configuration/security.md#default_permissions) configuration parameter.
+默认情况下，所有用户都可以在用户控制面板中或通过 REST API 创建和管理自己的 REST API 令牌。可以通过覆盖 [`DEFAULT_PERMISSIONS`](../configuration/security.md#default_permissions) 配置参数来禁用此功能。
 
-Each token contains a 160-bit key represented as 40 hexadecimal characters. When creating a token, you'll typically leave the key field blank so that a random key will be automatically generated. However, NetBox allows you to specify a key in case you need to restore a previously deleted token to operation.
+每个令牌包含一个 160 位密钥，表示为 40 个十六进制字符。创建令牌时，通常会将密钥字段留空，以便自动生成一个随机密钥。但是，NetBox 允许您指定密钥，以防需要将先前删除的令牌恢复到运行状态。
 
-Additionally, a token can be set to expire at a specific time. This can be useful if an external client needs to be granted temporary access to NetBox.
+此外，可以将令牌设置为在特定时间到期。如果外部客户端需要临时访问 NetBox，则可以使用此功能。
 
-!!! info "Restricting Token Retrieval"
-    The ability to retrieve the key value of a previously-created API token can be restricted by disabling the [`ALLOW_TOKEN_RETRIEVAL`](../configuration/security.md#allow_token_retrieval) configuration parameter.
+!!! info "限制令牌检索"
+    可以通过禁用 [`ALLOW_TOKEN_RETRIEVAL`](../configuration/security.md#allow_token_retrieval) 配置参数来限制检索先前创建的 API 令牌的密钥值的能力。
 
-### Restricting Write Operations
+### 限制写操作
 
-By default, a token can be used to perform all actions via the API that a user would be permitted to do via the web UI. Deselecting the "write enabled" option will restrict API requests made with the token to read operations (e.g. GET) only.
+默认情况下，可以使用令牌执行通过 API 执行的所有用户可以通过 Web UI 执行的操作。取消选择“启用写操作”选项将限制使用令牌进行 API 请求仅限于读操作（例如 GET）。
 
-#### Client IP Restriction
+#### 客户端 IP 限制
 
-Each API token can optionally be restricted by client IP address. If one or more allowed IP prefixes/addresses is defined for a token, authentication will fail for any client connecting from an IP address outside the defined range(s). This enables restricting the use a token to a specific client. (By default, any client IP address is permitted.)
+可以选择通过客户端 IP 地址对每个 API 令牌进行限制。如果为令牌定义了一个或多个允许的 IP 前缀/地址，则对于从定义的范围之外的 IP 地址连接的任何客户端，身份验证将失败。这允许将令牌的使用限制为特定客户端。（默认情况下，允许任何客户端 IP 地址。）
 
-#### Creating Tokens for Other Users
+#### 为其他用户创建令牌
 
-It is possible to provision authentication tokens for other users via the REST API. To do, so the requesting user must have the `users.grant_token` permission assigned. While all users have inherent permission by default to create their own tokens, this permission is required to enable the creation of tokens for other users.
+可以通过 REST API 为其他用户提供身份验证令牌。为此，请求用户必须分配 `users.grant_token` 权限。虽然所有用户默认情况下都具有创建自己令牌的权限，但此权限是为了允许为其他用户创建令牌。
 
-!!! warning "Exercise Caution"
-    The ability to create tokens on behalf of other users enables the requestor to access the created token. This ability is intended e.g. for the provisioning of tokens by automated services, and should be used with extreme caution to avoid a security compromise.
+!!! warning "行使谨慎"
+    代表其他用户创建令牌的能力使请求者能够访问已创建的令牌。此功能旨在用于自动化服务的令牌配置，并应极度谨慎使用，以避免安全威胁。
 
-### Authenticating to the API
+### 身份验证到 API
 
-An authentication token is attached to a request by setting the `Authorization` header to the string `Token` followed by a space and the user's token:
+通过将 `Authorization` 头设置为字符串 `Token` 后跟空格和用户的令牌，将身份验证令牌附加到请求中：
 
 ```
 $ curl -H "Authorization: Token $TOKEN" \
@@ -610,7 +610,7 @@ https://netbox/api/dcim/sites/
 }
 ```
 
-A token is not required for read-only operations which have been exempted from permissions enforcement (using the [`EXEMPT_VIEW_PERMISSIONS`](../configuration/security.md#exempt_view_permissions) configuration parameter). However, if a token _is_ required but not present in a request, the API will return a 403 (Forbidden) response:
+一个令牌对于已被豁免权限执行的只读操作是不需要的（使用 [`EXEMPT_VIEW_PERMISSIONS`](../configuration/security.md#exempt_view_permissions) 配置参数）。但是，如果需要一个令牌但在请求中不存在，API 将返回 403（禁止）响应：
 
 ```
 $ curl https://netbox/api/dcim/sites/
@@ -619,16 +619,16 @@ $ curl https://netbox/api/dcim/sites/
 }
 ```
 
-When a token is used to authenticate a request, its `last_updated` time updated to the current time if its last use was recorded more than 60 seconds ago (or was never recorded). This allows users to determine which tokens have been active recently.
+当使用令牌进行身份验证时，如果其上一次使用的时间距离现在已经超过60秒（或者从未记录过），它的`last_updated`时间将被更新为当前时间。这允许用户确定最近活跃的令牌是哪些。
 
-!!! note
-    The "last used" time for tokens will not be updated while maintenance mode is enabled.
+!!! 注意
+    在维护模式启用时，令牌的“上次使用”时间将不会更新。
 
-### Initial Token Provisioning
+### 初始令牌分配
 
-Ideally, each user should provision his or her own API token(s) via the web UI. However, you may encounter a scenario where a token must be created by a user via the REST API itself. NetBox provides a special endpoint to provision tokens using a valid username and password combination. (Note that the user must have permission to create API tokens regardless of the interface used.)
+理想情况下，每个用户应该通过 Web UI 自行分配他或她自己的 API 令牌。但是，您可能会遇到一种情况，其中一个令牌必须由用户本身通过 REST API 创建。NetBox 提供了一个特殊的端点，使用有效的用户名和密码组合来分配令牌。 （请注意，无论使用的接口如何，用户必须具有创建 API 令牌的权限。）
 
-To provision a token via the REST API, make a `POST` request to the `/api/users/tokens/provision/` endpoint:
+要通过 REST API 分配令牌，请将 `POST` 请求发送到 `/api/users/tokens/provision/` 端点：
 
 ```
 $ curl -X POST \
@@ -641,7 +641,7 @@ https://netbox/api/users/tokens/provision/ \
 }'
 ```
 
-Note that we are _not_ passing an existing REST API token with this request. If the supplied credentials are valid, a new REST API token will be automatically created for the user. Note that the key will be automatically generated, and write ability will be enabled.
+请注意，在此请求中，我们 _不_ 传递现有的 REST API 令牌。如果提供的凭据有效，将会为用户自动生成一个新的 REST API 令牌。请注意，密钥将会自动生成，并且写入权限将会启用。
 
 ```json
 {
@@ -662,25 +662,25 @@ Note that we are _not_ passing an existing REST API token with this request. If 
 }
 ```
 
-## HTTP Headers
+## HTTP 头部
 
 ### `API-Version`
 
-This header specifies the API version in use. This will always match the version of NetBox installed. For example, NetBox v3.4.2 will report an API version of `3.4`.
+此头部指定了正在使用的 API 版本。它将始终与安装的 NetBox 版本匹配。例如，NetBox v3.4.2 将报告 API 版本为 `3.4`。
 
 ### `X-Request-ID`
 
-This header specifies the unique ID assigned to the received API request. It can be very handy for correlating a request with change records. For example, after creating several new objects, you can filter against the object changes API endpoint to retrieve the resulting change records:
+此头部指定了分配给接收到的 API 请求的唯一 ID。它对于将请求与更改记录相关联非常有用。例如，在创建多个新对象之后，您可以根据请求的 ID 过滤对象更改 API 端点以检索结果的更改记录：
 
 ```
 GET /api/extras/object-changes/?request_id=e39c84bc-f169-4d5f-bc1c-94487a1b18b5
 ```
 
-The request ID can also be used to filter many objects directly, to return those created or updated by a certain request:
+请求 ID 也可以用于直接过滤许多对象，以返回由特定请求创建或更新的对象：
 
 ```
 GET /api/dcim/sites/?created_by_request=e39c84bc-f169-4d5f-bc1c-94487a1b18b5
 ```
 
-!!! note
-    This header is included with _all_ NetBox responses, although it is most practical when working with an API.
+!!! 注意
+    此头部包含在 _所有_ NetBox 响应中，尽管在使用 API 时最为实用。

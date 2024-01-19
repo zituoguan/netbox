@@ -1,13 +1,13 @@
-# NetBox Installation
+# NetBox安装
 
-This section of the documentation discusses installing and configuring the NetBox application itself.
+本部分文档讨论安装和配置NetBox应用程序本身。
 
-## Install System Packages
+## 安装系统包
 
-Begin by installing all system packages required by NetBox and its dependencies.
+首先安装NetBox及其依赖的所有系统包。
 
-!!! warning "Python 3.8 or later required"
-    NetBox requires Python 3.8, 3.9, 3.10 or 3.11.
+!!! warning "需要Python 3.8或更高版本"
+    NetBox需要Python 3.8、3.9、3.10或3.11。
 
 === "Ubuntu"
 
@@ -21,19 +21,19 @@ Begin by installing all system packages required by NetBox and its dependencies.
     sudo yum install -y gcc libxml2-devel libxslt-devel libffi-devel libpq-devel openssl-devel redhat-rpm-config
     ```
 
-Before continuing, check that your installed Python version is at least 3.8:
+在继续之前，请检查您安装的Python版本是否至少为3.8：
 
 ```no-highlight
 python3 -V
 ```
 
-## Download NetBox
+## 下载NetBox
 
-This documentation provides two options for installing NetBox: from a downloadable archive, or from the git repository. Installing from a package (option A below) requires manually fetching and extracting the archive for every future update, whereas installation via git (option B) allows for seamless upgrades by re-pulling the `master` branch.
+本文档提供两种安装NetBox的选项：从可下载的存档文件安装，或从Git存储库安装。从软件包安装（选项A）需要手动获取并解压存档文件，以进行每次更新，而通过Git安装（选项B）可以通过重新拉取`master`分支来实现无缝升级。
 
-### Option A: Download a Release Archive
+### 选项A：下载发行版存档
 
-Download the [latest stable release](https://github.com/netbox-community/netbox/releases) from GitHub as a tarball or ZIP archive and extract it to your desired path. In this example, we'll use `/opt/netbox` as the NetBox root.
+从GitHub下载[最新的稳定版本](https://github.com/netbox-community/netbox/releases)作为tarball或ZIP存档文件，并将其提取到所需的路径。在本示例中，我们将使用`/opt/netbox`作为NetBox根目录。
 
 ```no-highlight
 sudo wget https://github.com/netbox-community/netbox/archive/refs/tags/vX.Y.Z.tar.gz
@@ -42,18 +42,18 @@ sudo ln -s /opt/netbox-X.Y.Z/ /opt/netbox
 ```
 
 !!! note
-    It is recommended to install NetBox in a directory named for its version number. For example, NetBox v3.0.0 would be installed into `/opt/netbox-3.0.0`, and a symlink from `/opt/netbox/` would point to this location. (You can verify this configuration with the command `ls -l /opt | grep netbox`.) This allows for future releases to be installed in parallel without interrupting the current installation. When changing to the new release, only the symlink needs to be updated.
+    建议将NetBox安装在以其版本号命名的目录中。例如，NetBox v3.0.0将安装在`/opt/netbox-3.0.0`中，并且从`/opt/netbox/`将指向此位置的符号链接。这允许将来的版本并行安装，而不会中断当前安装。在切换到新版本时，只需更新符号链接。
 
-### Option B: Clone the Git Repository
+### 选项B：克隆Git存储库
 
-Create the base directory for the NetBox installation. For this guide, we'll use `/opt/netbox`.
+创建NetBox安装的基本目录。在本指南中，我们将使用`/opt/netbox`。
 
 ```no-highlight
 sudo mkdir -p /opt/netbox/
 cd /opt/netbox/
 ```
 
-If `git` is not already installed, install it:
+如果尚未安装`git`，请安装它：
 
 === "Ubuntu"
 
@@ -67,16 +67,16 @@ If `git` is not already installed, install it:
     sudo yum install -y git
     ```
 
-Next, clone the **master** branch of the NetBox GitHub repository into the current directory. (This branch always holds the current stable release.)
+接下来，将NetBox GitHub存储库的**master**分支克隆到当前目录中。 （此分支始终包含当前的稳定发布版本。）
 
 ```no-highlight
 sudo git clone -b master --depth 1 https://github.com/netbox-community/netbox.git .
 ```
 
 !!! note
-    The `git clone` command above utilizes a "shallow clone" to retrieve only the most recent commit. If you need to download the entire history, omit the `--depth 1` argument.
+    上面的`git clone`命令使用“浅克隆”以获取最近的提交。如果需要下载整个历史记录，请省略`--depth 1`参数。
 
-The `git clone` command should generate output similar to the following:
+`git clone`命令应生成类似于以下内容的输出：
 
 ```
 Cloning into '.'...
@@ -89,11 +89,11 @@ Resolving deltas: 100% (148/148), done.
 ```
 
 !!! note
-    Installation via git also allows you to easily try out different versions of NetBox. To check out a [specific NetBox release](https://github.com/netbox-community/netbox/releases), use the `git checkout` command with the desired release tag. For example, `git checkout v3.0.8`.
+    通过git安装还允许您轻松尝试不同版本的NetBox。要检出[特定的NetBox版本](https://github.com/netbox-community/netbox/releases)，请使用所需的发行标签运行`git checkout`命令。例如，`git checkout v3.0.8`。
 
-## Create the NetBox System User
+## 创建NetBox系统用户
 
-Create a system user account named `netbox`. We'll configure the WSGI and HTTP services to run under this account. We'll also assign this user ownership of the media directory. This ensures that NetBox will be able to save uploaded files.
+创建名为`netbox`的系统用户帐户。我们将配置WSGI和HTTP服务以在此帐户下运行。我们还将分配此用户对媒体目录的所有权。这确保了NetBox能够保存上传的文件。
 
 === "Ubuntu"
 
@@ -114,16 +114,16 @@ Create a system user account named `netbox`. We'll configure the WSGI and HTTP s
     sudo chown --recursive netbox /opt/netbox/netbox/scripts/
     ```
 
-## Configuration
+## 配置
 
-Move into the NetBox configuration directory and make a copy of `configuration_example.py` named `configuration.py`. This file will hold all of your local configuration parameters.
+进入NetBox配置目录，并复制`configuration_example.py`为`configuration.py`。此文件将保存所有本地配置参数。
 
 ```no-highlight
 cd /opt/netbox/netbox/netbox/
 sudo cp configuration_example.py configuration.py
 ```
 
-Open `configuration.py` with your preferred editor to begin configuring NetBox. NetBox offers [many configuration parameters](../configuration/index.md), but only the following four are required for new installations:
+使用您喜欢的编辑器打开`configuration.py`以开始配置NetBox。NetBox提供[许多配置参数](../configuration/index.md)，但只有以下四个对新安装是必需的：
 
 * `ALLOWED_HOSTS`
 * `DATABASE`
@@ -132,13 +132,15 @@ Open `configuration.py` with your preferred editor to begin configuring NetBox. 
 
 ### ALLOWED_HOSTS
 
-This is a list of the valid hostnames and IP addresses by which this server can be reached. You must specify at least one name or IP address. (Note that this does not restrict the locations from which NetBox may be accessed: It is merely for [HTTP host header validation](https://docs.djangoproject.com/en/3.0/topics/security/#host-headers-virtual-hosting).)
+这是允许此服务器
+
+通过的有效主机名和IP地址列表。您必须至少指定一个名称或IP地址。（请注意，这不会限制可以访问NetBox的位置：它仅用于[HTTP主机标头验证](https://docs.djangoproject.com/en/3.0/topics/security/#host-headers-virtual-hosting)。）
 
 ```python
 ALLOWED_HOSTS = ['netbox.example.com', '192.0.2.123']
 ```
 
-If you are not yet sure what the domain name and/or IP address of the NetBox installation will be, you can set this to a wildcard (asterisk) to allow all host values:
+如果您尚未确定NetBox安装的域名和/或IP地址，可以将其设置为通配符（星号）以允许所有主机值：
 
 ```python
 ALLOWED_HOSTS = ['*']
@@ -146,39 +148,39 @@ ALLOWED_HOSTS = ['*']
 
 ### DATABASE
 
-This parameter holds the database configuration details. You must define the username and password used when you configured PostgreSQL. If the service is running on a remote host, update the `HOST` and `PORT` parameters accordingly. See the [configuration documentation](../configuration/required-parameters.md#database) for more detail on individual parameters.
+此参数保存数据库配置详细信息。您必须定义在配置PostgreSQL时使用的用户名和密码。如果服务在远程主机上运行，请相应地更新`HOST`和`PORT`参数。有关单个参数的更多详细信息，请参阅[配置文档](../configuration/required-parameters.md#database)。
 
 ```python
 DATABASE = {
-    'NAME': 'netbox',               # Database name
-    'USER': 'netbox',               # PostgreSQL username
-    'PASSWORD': 'J5brHrAXFLQSif0K', # PostgreSQL password
-    'HOST': 'localhost',            # Database server
-    'PORT': '',                     # Database port (leave blank for default)
-    'CONN_MAX_AGE': 300,            # Max database connection age (seconds)
+    'NAME': 'netbox',               # 数据库名称
+    'USER': 'netbox',               # PostgreSQL用户名
+    'PASSWORD': 'J5brHrAXFLQSif0K', # PostgreSQL密码
+    'HOST': 'localhost',            # 数据库服务器
+    'PORT': '',                     # 数据库端口（留空使用默认值）
+    'CONN_MAX_AGE': 300,            # 最大数据库连接时间（秒）
 }
 ```
 
 ### REDIS
 
-Redis is a in-memory key-value store used by NetBox for caching and background task queuing. Redis typically requires minimal configuration; the values below should suffice for most installations. See the [configuration documentation](../configuration/required-parameters.md#redis) for more detail on individual parameters.
+Redis是NetBox用于缓存和后台任务排队的内存中的键值存储。Redis通常需要最少的配置；下面的值应对大多数安装足够。有关各个参数的更多详细信息，请参阅[配置文档](../configuration/required-parameters.md#redis)。
 
-Note that NetBox requires the specification of two separate Redis databases: `tasks` and `caching`. These may both be provided by the same Redis service, however each should have a unique numeric database ID.
+请注意，NetBox需要指定两个单独的Redis数据库：`tasks`和`caching`。这两者都可以由同一个Redis服务提供，但是每个都应具有唯一的数字数据库ID。
 
 ```python
 REDIS = {
     'tasks': {
-        'HOST': 'localhost',      # Redis server
-        'PORT': 6379,             # Redis port
-        'PASSWORD': '',           # Redis password (optional)
-        'DATABASE': 0,            # Database ID
-        'SSL': False,             # Use SSL (optional)
+        'HOST': 'localhost',      # Redis服务器
+        'PORT': 6379,             # Redis端口
+        'PASSWORD': '',           # Redis密码（可选）
+        'DATABASE': 0,            # 数据库ID
+        'SSL': False,             # 使用SSL（可选）
     },
     'caching': {
         'HOST': 'localhost',
         'PORT': 6379,
         'PASSWORD': '',
-        'DATABASE': 1,            # Unique ID for second database
+        'DATABASE': 1,            # 第二个数据库的唯一ID
         'SSL': False,
     }
 }
@@ -186,125 +188,125 @@ REDIS = {
 
 ### SECRET_KEY
 
-This parameter must be assigned a randomly-generated key employed as a salt for hashing and related cryptographic functions. (Note, however, that it is _never_ directly used in the encryption of secret data.) This key must be unique to this installation and is recommended to be at least 50 characters long. It should not be shared outside the local system.
+此参数必须分配一个随机生成的键，用作哈希和相关加密函数的盐（注意，它绝不直接用于加密秘密数据）。此密钥必须对此安装是唯一的，并建议至少50个字符长。不要在本地系统外共享它。
 
-A simple Python script named `generate_secret_key.py` is provided in the parent directory to assist in generating a suitable key:
+在父目录中提供了一个名为`generate_secret_key.py`的简单Python脚本，以帮助生成合适的密钥：
 
 ```no-highlight
 python3 ../generate_secret_key.py
 ```
 
-!!! warning "SECRET_KEY values must match"
-    In the case of a highly available installation with multiple web servers, `SECRET_KEY` must be identical among all servers in order to maintain a persistent user session state.
+!!! warning "SECRET_KEY的值必须匹配"
+    在具有多个Web服务器的高可用性安装中，`SECRET_KEY`必须在所有服务器上相同，以保持持久的用户会话状态。
 
-When you have finished modifying the configuration, remember to save the file.
+完成修改配置后，请记得保存文件。
 
-## Optional Requirements
+## 可选要求
 
-All Python packages required by NetBox are listed in `requirements.txt` and will be installed automatically. NetBox also supports some optional packages. If desired, these packages must be listed in `local_requirements.txt` within the NetBox root directory.
+NetBox所需的所有Python包都列在`requirements.txt`中，将自动安装。NetBox还支持一些可选的包。如果需要，这些包必须在NetBox根目录中的`local_requirements.txt`中列出。
 
-### Remote File Storage
+### 远程文件存储
 
-By default, NetBox will use the local filesystem to store uploaded files. To use a remote filesystem, install the [`django-storages`](https://django-storages.readthedocs.io/en/stable/) library and configure your [desired storage backend](../configuration/system.md#storage_backend) in `configuration.py`.
+默认情况下，NetBox将使用本地文件系统来存储上传的文件。要使用远程文件系统，请安装[`django-storages`](https://django-storages.readthedocs.io/en/stable/)库，并在`configuration.py`中配置您的[所需存储后端](../configuration/system.md#storage_backend)。
 
 ```no-highlight
 sudo sh -c "echo 'django-storages' >> /opt/netbox/local_requirements.txt"
 ```
 
-### Remote Data Sources
+### 远程数据源
 
-NetBox supports integration with several remote data sources via configurable backends. Each of these requires the installation of one or more additional libraries.
+NetBox支持通过可配置的后端与几个远程数据源集成。每个都需要安装一个或多个附加库。
 
-* Amazon S3: [`boto3`](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
-* Git: [`dulwich`](https://www.dulwich.io/)
+* Amazon S3：[`boto3`](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html)
+* Git：[`dulwich`](https://www.dulwich.io/)
 
-For example, to enable the Amazon S3 backend, add `boto3` to your local requirements file:
+例如，要启用Amazon S3后端，请将`boto3`添加到您的本地要求文件中：
 
 ```no-highlight
 sudo sh -c "echo 'boto3' >> /opt/netbox/local_requirements.txt"
 ```
 
 !!! info
-    These packages were previously required in NetBox v3.5 but now are optional.
+    这些包在NetBox v3.5中以前是必需的，但现在是可选的。
 
-### Sentry Integration
+### Sentry集成
 
-NetBox may be configured to send error reports to [Sentry](../administration/error-reporting.md) for analysis. This integration requires installation of the `sentry-sdk` Python library.
+NetBox可以配置为将错误报告发送到[Sentry](../administration/error-reporting.md)以进行分析。此集成需要安装`sentry-sdk` Python库。
 
 ```no-highlight
 sudo sh -c "echo 'sentry-sdk' >> /opt/netbox/local_requirements.txt"
 ```
 
 !!! info
-    Sentry integration was previously included by default in NetBox v3.6 but is now optional.
+    在NetBox v3.6中，默认情况下包括了Sentry集成，但现在是可选的。
 
-## Run the Upgrade Script
+## 运行升级脚本
 
-Once NetBox has been configured, we're ready to proceed with the actual installation. We'll run the packaged upgrade script (`upgrade.sh`) to perform the following actions:
+一旦NetBox已配置完成，我们就可以继续进行实际的安装。我们将运行打包的升级脚本（`upgrade.sh`）来执行以下操作：
 
-* Create a Python virtual environment
-* Installs all required Python packages
-* Run database schema migrations
-* Builds the documentation locally (for offline use)
-* Aggregate static resource files on disk
+* 创建Python虚拟环境
+* 安装所有必需的Python包
+* 运行数据库模式迁移
+* 本地构建文档（供离线使用）
+* 在磁盘上汇总静态资源文件
 
 !!! warning
-    If you still have a Python virtual environment active from a previous installation step, disable it now by running the `deactivate` command. This will avoid errors on systems where `sudo` has been configured to preserve the user's current environment.
+    如果您仍然有来自前面安装步骤的Python虚拟环境，请现在通过运行`deactivate`命令将其禁用。这将避免在已配置为保留用户当前环境的系统上发生错误。
 
 ```no-highlight
 sudo /opt/netbox/upgrade.sh
 ```
 
-Note that **Python 3.8 or later is required** for NetBox v3.2 and later releases. If the default Python installation on your server is set to a lesser version,  pass the path to the supported installation as an environment variable named `PYTHON`. (Note that the environment variable must be passed _after_ the `sudo` command.)
+请注意，NetBox v3.2及更高版本需要**Python 3.8或更高版本**。如果服务器上的默认Python安装设置为较低版本，请将受支持的安装路径作为名为`PYTHON`的环境变量传递。（请注意，在`sudo`命令之后必须传递环境变量。）
 
 ```no-highlight
 sudo PYTHON=/usr/bin/python3.8 /opt/netbox/upgrade.sh
 ```
 
 !!! note
-    Upon completion, the upgrade script may warn that no existing virtual environment was detected. As this is a new installation, this warning can be safely ignored.
+    完成后，升级脚本可能会警告未检测到现有的虚拟环境。由于这是一个新安装，可以安全地忽略此警告。
 
-## Create a Super User
+## 创建超级用户
 
-NetBox does not come with any predefined user accounts. You'll need to create a super user (administrative account) to be able to log into NetBox. First, enter the Python virtual environment created by the upgrade script:
+NetBox没有预定义的用户帐户。您需要创建一个超级用户（管理帐户）以便能够登录NetBox。首先，进入由升级脚本创建的Python虚拟环境：
 
 ```no-highlight
 source /opt/netbox/venv/bin/activate
 ```
 
-Once the virtual environment has been activated, you should notice the string `(venv)` prepended to your console prompt.
+一旦虚拟环境已激活，您应该会注意到在控制台提示之前添加了字符串`(venv)`。
 
-Next, we'll create a superuser account using the `createsuperuser` Django management command (via `manage.py`). Specifying an email address for the user is not required, but be sure to use a very strong password.
+接下来，我们将使用`createsuperuser` Django管理命令（通过`manage.py`）创建一个超级用户帐户。不需要为用户指定电子邮件地址，但请确保使用非常强的密码。
 
 ```no-highlight
 cd /opt/netbox/netbox
 python3 manage.py createsuperuser
 ```
 
-## Schedule the Housekeeping Task
+## 配置定期任务
 
-NetBox includes a `housekeeping` management command that handles some recurring cleanup tasks, such as clearing out old sessions and expired change records. Although this command may be run manually, it is recommended to configure a scheduled job using the system's `cron` daemon or a similar utility.
+NetBox包括一个`housekeeping`管理命令，用于处理一些定期清理任务，例如清除旧会话和过期的更改记录。虽然可以手动运行此命令，但建议使用系统的`cron`守护程序或类似的实用程序配置定期任务。
 
-A shell script which invokes this command is included at `contrib/netbox-housekeeping.sh`. It can be copied to or linked from your system's daily cron task directory, or included within the crontab directly. (If installing NetBox into a nonstandard path, be sure to update the system paths within this script first.)
+可以在`contrib/netbox-housekeeping.sh`中找到调用此命令的shell脚本。可以将它复制到系统的每日cron任务目录中，或直接包含在crontab中。(如果将NetBox安装到非标准路径，请确保首先在此脚本中更新系统路径。)
 
 ```shell
 sudo ln -s /opt/netbox/contrib/netbox-housekeeping.sh /etc/cron.daily/netbox-housekeeping
 ```
 
-See the [housekeeping documentation](../administration/housekeeping.md) for further details.
+有关更多详细信息，请参阅[housekeeping文档](../administration/housekeeping.md)。
 
-## Test the Application
+## 测试应用程序
 
-At this point, we should be able to run NetBox's development server for testing. We can check by starting a development instance locally.
+此时，我们应该能够运行NetBox的开发服务器进行测试。我们可以通过在本地启动开发实例来检查。
 
-!!! tip
-    Check that the Python virtual environment is still active before attempting to run the server.
+!!! 提示
+    在尝试运行服务器之前，请检查Python虚拟环境是否仍然处于活动状态。
 
 ```no-highlight
 python3 manage.py runserver 0.0.0.0:8000 --insecure
 ```
 
-If successful, you should see output similar to the following:
+如果成功，您应该会看到类似以下的输出：
 
 ```no-highlight
 Watching for file changes with StatReloader
@@ -317,19 +319,19 @@ Starting development server at http://127.0.0.1:8000/
 Quit the server with CONTROL-C.
 ```
 
-Next, connect to the name or IP of the server (as defined in `ALLOWED_HOSTS`) on port 8000; for example, <http://127.0.0.1:8000/>. You should be greeted with the NetBox home page. Try logging in using the username and password specified when creating a superuser.
+接下来，连接到服务器的名称或IP地址（如`ALLOWED_HOSTS`中定义）的端口8000；例如，<http://127.0.0.1:8000/>。您应该会看到NetBox的首页。尝试使用创建超级用户时指定的用户名和密码登录。
 
-!!! note
-    By default RHEL based distros will likely block your testing attempts with firewalld. The development server port can be opened with `firewall-cmd` (add `--permanent` if you want the rule to survive server restarts):
+!!! 注意
+    默认情况下，基于RHEL的发行版可能会使用firewalld阻止您的测试尝试。可以使用`firewall-cmd`打开开发服务器端口（如果要使规则在服务器重启后保持生效，请添加`--permanent`）：
 
     ```no-highlight
     firewall-cmd --zone=public --add-port=8000/tcp
     ```
 
-!!! danger "Not for production use"
-    The development server is for development and testing purposes only. It is neither performant nor secure enough for production use. **Do not use it in production.**
+!!! 危险 "不适用于生产环境"
+    开发服务器仅用于开发和测试目的。它既不足够高性能也不足够安全，不能用于生产环境。**不要在生产环境中使用它。**
 
-!!! warning
-    If the test service does not run, or you cannot reach the NetBox home page, something has gone wrong. Do not proceed with the rest of this guide until the installation has been corrected.
+!!! 警告
+    如果测试服务未运行，或者无法访问NetBox首页，说明出现了问题。在修复安装之前，请不要继续阅读本指南的其余部分。
 
-Type `Ctrl+c` to stop the development server.
+使用`Ctrl+c`停止开发服务器。

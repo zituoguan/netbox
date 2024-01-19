@@ -1,10 +1,10 @@
-# Error Reporting Settings
+# 错误报告设置
 
-## SENTRY_DSN
+## Sentry数据源名称 (SENTRY_DSN)
 
-Default: None
+默认值: 无
 
-Defines a Sentry data source name (DSN) for automated error reporting. `SENTRY_ENABLED` must be True for this parameter to take effect. For example:
+定义了一个Sentry数据源名称（DSN），用于自动错误报告。要使此参数生效，必须将`SENTRY_ENABLED`设置为True。例如：
 
 ```
 SENTRY_DSN = "https://examplePublicKey@o0.ingest.sentry.io/0"
@@ -12,28 +12,28 @@ SENTRY_DSN = "https://examplePublicKey@o0.ingest.sentry.io/0"
 
 ---
 
-## SENTRY_ENABLED
+## 启用Sentry (SENTRY_ENABLED)
 
-Default: False
+默认值: False
 
-Set to True to enable automatic error reporting via [Sentry](https://sentry.io/).
+设置为True以通过[Sentry](https://sentry.io/)启用自动错误报告。
 
-!!! note
-    The `sentry-sdk` Python package is required to enable Sentry integration.
-
----
-
-## SENTRY_SAMPLE_RATE
-
-Default: 1.0 (all)
-
-The sampling rate for errors. Must be a value between 0 (disabled) and 1.0 (report on all errors).
+!!! 注意
+    启用Sentry集成需要安装`sentry-sdk` Python包。
 
 ---
 
-## SENTRY_TAGS
+## 错误采样率 (SENTRY_SAMPLE_RATE)
 
-An optional dictionary of tag names and values to apply to Sentry error reports.For example:
+默认值: 1.0 (全部)
+
+用于错误报告的采样率。必须是介于0（禁用）和1.0（报告所有错误）之间的值。
+
+---
+
+## Sentry标签 (SENTRY_TAGS)
+
+一个可选的标签名称和值字典，用于应用于Sentry错误报告。例如：
 
 ```
 SENTRY_TAGS = {
@@ -42,16 +42,16 @@ SENTRY_TAGS = {
 }
 ```
 
-!!! warning "Reserved tag prefixes"
-    Avoid using any tag names which begin with `netbox.`, as this prefix is reserved by the NetBox application.
+!!! 警告 "保留的标签前缀"
+    避免使用以`netbox.`开头的任何标签名称，因为此前缀被NetBox应用程序保留。
 
 ---
 
-## SENTRY_TRACES_SAMPLE_RATE
+## 事务采样率 (SENTRY_TRACES_SAMPLE_RATE)
 
-Default: 0 (disabled)
+默认值: 0 (禁用)
 
-The sampling rate for transactions. Must be a value between 0 (disabled) and 1.0 (report on all transactions).
+用于事务的采样率。必须是介于0（禁用）和1.0（报告所有事务）之间的值。
 
-!!! warning "Consider performance implications"
-    A high sampling rate for transactions can induce significant performance penalties. If transaction reporting is desired, it is recommended to use a relatively low sample rate of 10% to 20% (0.1 to 0.2).
+!!! 警告 "考虑性能影响"
+    对事务的高采样率可能导致显着的性能损失。如果需要事务报告，建议使用相对较低的采样率，例如10%到20%（0.1到0.2）。

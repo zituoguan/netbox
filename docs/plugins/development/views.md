@@ -1,10 +1,10 @@
-# Views
+# 视图
 
-## Writing Views
+## 编写视图
 
-If your plugin will provide its own page or pages within the NetBox web UI, you'll need to define views. A view is a piece of business logic which performs an action and/or renders a page when a request is made to a particular URL. HTML content is rendered using a [template](./templates.md). Views are typically defined in `views.py`, and URL patterns in `urls.py`.
+如果您的插件将在NetBox Web界面中提供自己的页面或页面，您需要定义视图。视图是一段业务逻辑，当对特定URL发出请求时，它执行操作和/或呈现页面。HTML内容是使用[模板](./templates.md)呈现的。视图通常在`views.py`中定义，URL模式在`urls.py`中定义。
 
-As an example, let's write a view which displays a random animal and the sound it makes. We'll use Django's generic `View` class to minimize the amount of boilerplate code needed.
+例如，让我们编写一个视图，该视图显示一个随机动物和它发出的声音。我们将使用Django的通用`View`类来最小化需要的样板代码量。
 
 ```python
 from django.shortcuts import render
@@ -22,13 +22,13 @@ class RandomAnimalView(View):
         })
 ```
 
-This view retrieves a random Animal instance from the database and passes it as a context variable when rendering a template named `animal.html`. HTTP `GET` requests are handled by the view's `get()` method, and `POST` requests are handled by its `post()` method.
+这个视图从数据库中检索一个随机的Animal实例，并在呈现名为`animal.html`的模板时将其作为上下文变量传递。HTTP `GET`请求由视图的`get()`方法处理，`POST`请求由其`post()`方法处理。
 
-Our example above is extremely simple, but views can do just about anything. They are generally where the core of your plugin's functionality will reside. Views also are not limited to returning HTML content: A view could return a CSV file or image, for instance. For more information on views, see the [Django documentation](https://docs.djangoproject.com/en/stable/topics/class-based-views/).
+我们上面的示例非常简单，但视图可以做几乎任何事情。通常情况下，您的插件的核心功能将驻留在视图中。视图也不仅限于返回HTML内容：视图可以返回CSV文件或图像，例如。有关视图的更多信息，请参阅[Django文档](https://docs.djangoproject.com/en/stable/topics/class-based-views/)。
 
-### URL Registration
+### URL注册
 
-To make the view accessible to users, we need to register a URL for it. We do this in `urls.py` by defining a `urlpatterns` variable containing a list of paths.
+要使视图对用户可访问，我们需要在`urls.py`中注册一个URL。我们通过定义包含路径列表的`urlpatterns`变量来实现这一点。
 
 ```python
 from django.urls import path
@@ -39,33 +39,33 @@ urlpatterns = [
 ]
 ```
 
-A URL pattern has three components:
+URL模式有三个组成部分：
 
-* `route` - The unique portion of the URL dedicated to this view
-* `view` - The view itself
-* `name` - A short name used to identify the URL path internally
+* `route` - 专用于此视图的唯一URL部分
+* `view` - 视图本身
+* `name` - 用于在内部识别URL路径的短名称
 
-This makes our view accessible at the URL `/plugins/animal-sounds/random/`. (Remember, our `AnimalSoundsConfig` class sets our plugin's base URL to `animal-sounds`.) Viewing this URL should show the base NetBox template with our custom content inside it.
+这使我们的视图可在URL `/plugins/animal-sounds/random/`上访问。 （请记住，我们的`AnimalSoundsConfig`类将插件的基本URL设置为`animal-sounds`。）访问此URL应该显示具有我们自定义内容的基本NetBox模板。
 
-### View Classes
+### 视图类
 
-NetBox provides several generic view classes (documented below) to facilitate common operations, such as creating, viewing, modifying, and deleting objects. Plugins can subclass these views for their own use.
+NetBox提供了几个通用视图类（下面的文档中有详细说明），用于执行常见操作，例如创建、查看、修改和删除对象。插件可以子类化这些视图以供其自己使用。
 
-| View Class           | Description                                            |
-|----------------------|--------------------------------------------------------|
-| `ObjectView`         | View a single object                                   |
-| `ObjectEditView`     | Create or edit a single object                         |
-| `ObjectDeleteView`   | Delete a single object                                 |
-| `ObjectChildrenView` | A list of child objects within the context of a parent |
-| `ObjectListView`     | View a list of objects                                 |
-| `BulkImportView`     | Import a set of new objects                            |
-| `BulkEditView`       | Edit multiple objects                                  |
-| `BulkDeleteView`     | Delete multiple objects                                |
+| 视图类            | 描述                        |
+|-------------------|----------------------------|
+| `ObjectView`      | 查看单个对象                |
+| `ObjectEditView`  | 创建或编辑单个对象          |
+| `ObjectDeleteView`| 删除单个对象                |
+| `ObjectChildrenView` | 父对象上下文中的子对象列表 |
+| `ObjectListView`  | 查看对象列表                |
+| `BulkImportView`  | 导入一组新对象              |
+| `BulkEditView`    | 同时编辑多个对象            |
+| `BulkDeleteView`  | 同时删除多个对象            |
 
 !!! warning
-    Please note that only the classes which appear in this documentation are currently supported. Although other classes may be present within the `views.generic` module, they are not yet supported for use by plugins.
+    请注意，目前仅支持此文档中出现的类。虽然`views.generic`模块中可能存在其他类，但它们尚不支持供插件使用。
 
-#### Example Usage
+#### 示例用法
 
 ```python
 # views.py
@@ -77,9 +77,9 @@ class ThingEditView(ObjectEditView):
     template_name = 'myplugin/thing.html'
     ...
 ```
-## Object Views
+## 对象视图
 
-Below are the class definitions for NetBox's object views. These views handle CRUD actions for individual objects. The view, add/edit, and delete views each inherit from `BaseObjectView`, which is not intended to be used directly.
+以下是NetBox对象视图的类定义。这些视图处理单个对象的CRUD操作。视图、添加/编辑和删除视图都继承自`BaseObjectView`，不打算直接使用它。
 
 ::: netbox.views.generic.base.BaseObjectView
     options:
@@ -108,9 +108,9 @@ Below are the class definitions for NetBox's object views. These views handle CR
         - get_children
         - prep_table_data
 
-## Multi-Object Views
+## 多对象视图
 
-Below are the class definitions for NetBox's multi-object views. These views handle simultaneous actions for sets objects. The list, import, edit, and delete views each inherit from `BaseMultiObjectView`, which is not intended to be used directly.
+以下是NetBox的多对象视图的类定义。这些视图处理一组对象的同时操作。列表、导入、编辑和删除视图都继承自`BaseMultiObjectView`，不打算直接使用它。
 
 ::: netbox.views.generic.base.BaseMultiObjectView
     options:
@@ -139,9 +139,9 @@ Below are the class definitions for NetBox's multi-object views. These views han
       members:
         - get_form
 
-## Feature Views
+## 功能视图
 
-These views are provided to enable or enhance certain NetBox model features, such as change logging or journaling. These typically do not need to be subclassed: They can be used directly e.g. in a URL path.
+提供这些视图以启用或增强NetBox模型功能，例如更改日志记录或日志记录。通常不需要对其进行子类化：它们可以直接使用，例如在URL路径中使用。
 
 ::: netbox.views.generic.ObjectChangeLogView
     options:
@@ -153,11 +153,11 @@ These views are provided to enable or enhance certain NetBox model features, suc
       members:
         - get_form
 
-## Extending Core Views
+## 扩展核心视图
 
-### Additional Tabs
+### 额外的选项卡
 
-Plugins can "attach" a custom view to a core NetBox model by registering it with `register_model_view()`. To include a tab for this view within the NetBox UI, declare a TabView instance named `tab`:
+插件可以通过使用`register_model_view()`将自定义视图注册到核心NetBox模型中，以将其"附加"到核心NetBox模型。要在NetBox UI中包含此视图的选项卡，请声明一个名为`tab`的TabView实例：
 
 ```python
 from dcim.models import Site
@@ -179,31 +179,31 @@ class MyView(generic.ObjectView):
 
 ::: utilities.views.ViewTab
 
-### Extra Template Content
+### 额外的模板内容
 
-Plugins can inject custom content into certain areas of core NetBox views. This is accomplished by subclassing `PluginTemplateExtension`, designating a particular NetBox model, and defining the desired method(s) to render custom content. Five methods are available:
+插件可以将自定义内容注入到核心NetBox视图的某些区域。这是通过子类化`PluginTemplateExtension`、指定特定的NetBox模型，并定义要呈现自定义内容的所需方法来实现的。有五种方法可用：
 
-| Method              | View        | Description                                         |
-|---------------------|-------------|-----------------------------------------------------|
-| `left_page()`       | Object view | Inject content on the left side of the page         |
-| `right_page()`      | Object view | Inject content on the right side of the page        |
-| `full_width_page()` | Object view | Inject content across the entire bottom of the page |
-| `buttons()`         | Object view | Add buttons to the top of the page                  |
-| `list_buttons()`    | List view   | Add buttons to the top of the page                  |
+| 方法              | 视图        | 描述                                   |
+|-------------------|-------------|----------------------------------------|
+| `left_page()`     | 对象视图    | 注入页面左侧的内容                    |
+| `right_page()`    | 对象视图    | 注入页面右侧的内容                    |
+| `full_width_page()`| 对象视图   | 注入整个页面底部的内容                |
+| `buttons()`       | 对象视图    | 在页面顶部添加按钮                    |
+| `list_buttons()`  | 列表视图    | 在页面顶部添加按钮                    |
 
-Additionally, a `render()` method is available for convenience. This method accepts the name of a template to render, and any additional context data you want to pass. Its use is optional, however.
+此外，还提供了一个`render()`方法，以方便起见。此方法接受要呈现的模板名称以及要传递的任何其他上下文数据。它的使用是可选的。
 
-When a PluginTemplateExtension is instantiated, context data is assigned to `self.context`. Available data include:
+当实例化PluginTemplateExtension时，上下文数据分配给`self.context`。可用数据包括：
 
-* `object` - The object being viewed (object views only)
-* `model` - The model of the list view (list views only)
-* `request` - The current request
-* `settings` - Global NetBox settings
-* `config` - Plugin-specific configuration parameters
+* `object` - 正在查看的对象（仅限对象视图）
+* `model` - 列表视图的模型（仅限列表视图）
+* `request` - 当前请求
+* `settings` - 全局NetBox设置
+* `config` - 插件特定的配置参数
 
-For example, accessing `{{ request.user }}` within a template will return the current user.
+例如，在模板中访问`{{ request.user }}`将返回当前用户。
 
-Declared subclasses should be gathered into a list or tuple for integration with NetBox. By default, NetBox looks for an iterable named `template_extensions` within a `template_content.py` file. (This can be overridden by setting `template_extensions` to a custom value on the plugin's PluginConfig.) An example is below.
+声明的子类应该被收集到一个列表或元组中，以与NetBox集成。默认情况下，NetBox在`template_content.py`文件中查找名为`template_extensions`的可迭代对象。 （这可以通过在插件的PluginConfig上设置`template_extensions`为自定义值来覆盖。）以下是一个示例。
 
 ```python
 from netbox.plugins import PluginTemplateExtension

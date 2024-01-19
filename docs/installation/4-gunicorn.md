@@ -1,43 +1,43 @@
 # Gunicorn
 
-Like most Django applications, NetBox runs as a [WSGI application](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface) behind an HTTP server. This documentation shows how to install and configure [gunicorn](http://gunicorn.org/) (which is automatically installed with NetBox) for this role, however other WSGI servers are available and should work similarly well. [uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/) is a popular alternative.
+与大多数Django应用程序一样，NetBox在HTTP服务器后面作为[WSGI应用程序](https://en.wikipedia.org/wiki/Web_Server_Gateway_Interface)运行。此文档介绍如何安装和配置[gunicorn](http://gunicorn.org/)（它会自动与NetBox一起安装）来执行此任务，不过还有其他WSGI服务器可用，应该同样有效。[uWSGI](https://uwsgi-docs.readthedocs.io/en/latest/)是一个常见的替代方案。
 
-## Configuration
+## 配置
 
-NetBox ships with a default configuration file for gunicorn. To use it, copy `/opt/netbox/contrib/gunicorn.py` to `/opt/netbox/gunicorn.py`. (We make a copy of this file rather than pointing to it directly to ensure that any local changes to it do not get overwritten by a future upgrade.)
+NetBox附带了一个用于gunicorn的默认配置文件。要使用它，请将`/opt/netbox/contrib/gunicorn.py`复制到`/opt/netbox/gunicorn.py`。（我们复制此文件而不是直接指向它，以确保将来的升级不会覆盖对其的任何本地更改。）
 
 ```no-highlight
 sudo cp /opt/netbox/contrib/gunicorn.py /opt/netbox/gunicorn.py
 ```
 
-While the provided configuration should suffice for most initial installations, you may wish to edit this file to change the bound IP address and/or port number, or to make performance-related adjustments. See [the Gunicorn documentation](https://docs.gunicorn.org/en/stable/configure.html) for the available configuration parameters.
+虽然提供的配置对于大多数初始安装应该足够了，但您可能希望编辑此文件以更改绑定的IP地址和/或端口号，或进行性能相关的调整。请参阅[Gunicorn文档](https://docs.gunicorn.org/en/stable/configure.html)以获取可用的配置参数。
 
-## systemd Setup
+## systemd设置
 
-We'll use systemd to control both gunicorn and NetBox's background worker process. First, copy `contrib/netbox.service` and `contrib/netbox-rq.service` to the `/etc/systemd/system/` directory and reload the systemd daemon.
+我们将使用systemd来控制gunicorn和NetBox的后台工作进程。首先，将`contrib/netbox.service`和`contrib/netbox-rq.service`复制到`/etc/systemd/system/`目录并重新加载systemd守护程序。
 
-!!! warning "Check user & group assignment"
-    The stock service configuration files packaged with NetBox assume that the service will run with the `netbox` user and group names. If these differ on your installation, be sure to update the service files accordingly.
+!!! 警告 "检查用户和组的分配"
+    NetBox打包的标准服务配置文件假定服务将使用`netbox`用户和组名称运行。如果这些在您的安装中不同，请确保相应地更新服务文件。
 
 ```no-highlight
 sudo cp -v /opt/netbox/contrib/*.service /etc/systemd/system/
 sudo systemctl daemon-reload
 ```
 
-Then, start the `netbox` and `netbox-rq` services and enable them to initiate at boot time:
+然后，启动`netbox`和`netbox-rq`服务并将它们设置为在启动时启动：
 
 ```no-highlight
 sudo systemctl start netbox netbox-rq
 sudo systemctl enable netbox netbox-rq
 ```
 
-You can use the command `systemctl status netbox` to verify that the WSGI service is running:
+您可以使用命令`systemctl status netbox`来验证WSGI服务是否正在运行：
 
 ```no-highlight
 systemctl status netbox.service
 ```
 
-You should see output similar to the following:
+您应该会看到类似以下的输出：
 
 ```no-highlight
 ● netbox.service - NetBox WSGI Service
@@ -54,7 +54,7 @@ You should see output similar to the following:
 ...
 ```
 
-!!! note
-    If the NetBox service fails to start, issue the command `journalctl -eu netbox` to check for log messages that may indicate the problem.
+!!! 注意
+    如果NetBox服务启动失败，请使用命令`journalctl -eu netbox`检查可能指示问题的日志消息。
 
-Once you've verified that the WSGI workers are up and running, move on to HTTP server setup.
+一旦验证了WSGI工作者正在运行，就可以继续进行HTTP服务器设置。

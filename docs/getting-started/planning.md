@@ -1,180 +1,180 @@
-# Planning Your Move
+# 计划您的迁移
 
-This guide outlines the steps necessary for planning a successful migration to NetBox. Although it is written under the context of a completely new installation, the general approach outlined here works just as well for adding new data to existing NetBox deployments.
+本指南概述了计划成功迁移到NetBox所需的步骤。虽然它是在全新安装的背景下编写的，但在现有NetBox部署中添加新数据时，这里概述的一般方法同样适用。
 
-## Identify Current Sources of Truth
+## 确定当前的真实来源
 
-Before beginning to use NetBox for your own data, it's crucial to first understand where your existing sources of truth reside. A "source of truth" is really just any repository of data that is authoritative for a given domain. For example, you may have a spreadsheet which tracks all IP prefixes in use on your network. So long as everyone involved agrees that this spreadsheet is _authoritative_ for the entire network, it is your source of truth for IP prefixes.
+在开始使用NetBox管理自己的数据之前，首先要了解您当前的真实来源。 "真实来源" 实际上只是指某个数据的仓库，它在给定领域中具有权威性。例如，您可能有一个跟踪网络上所有IP前缀使用情况的电子表格。只要涉及的每个人都同意这个电子表格是整个网络的_权威_数据，它就是您的IP前缀的真实来源。
 
-Anything can be a source of truth, provided it meets two conditions:
+任何东西都可以是真实来源，只要满足以下两个条件：
 
-1. It is agreed upon by all relevant parties that this source of data is correct.
-2. The domain to which it applies is well-defined.
+1. 所有相关方都同意此数据源是正确的。
+2. 适用于该数据源的领域已明确定义。
 
 <!-- TODO: Example SoT -->
 
-Dedicate some time to take stock of your own sources of truth for your infrastructure. Upon attempting to catalog these, you're very likely to encounter some challenges, such as:
+花些时间来清点您的基础设施的真实来源。在尝试对其进行编目时，您很可能会遇到一些挑战，例如：
 
-* **Multiple conflicting sources** for a given domain. For example, there may be multiple versions of a spreadsheet circulating, each of which asserts a conflicting set of data.
-* **Sources with no domain defined.** You may encounter that different teams within your organization use different tools for the same purpose, with no normal definition of when either should be used.
-* **Inaccessible data formatting.** Some tools are better suited for programmatic usage than others. For example, spreadsheets are generally very easy to parse and export, however free-form notes on wiki or similar application are much more difficult to consume.
-* **There is no source of truth.** Sometimes you'll find that a source of truth simply doesn't exist for a domain. For example, when assigning IP addresses, operators may be just using any (presumed) available IP from a subnet without ever recording its usage.
+* 为给定领域存在多个冲突的来源。例如，可能有多个版本的电子表格在流通，每个版本都声称有一组冲突的数据。
+* 没有定义领域的数据源。您可能会发现组织内的不同团队使用不同的工具执行相同的任务，而没有正常的定义何时应该使用其中之一。
+* 不可访问的数据格式。有些工具比其他工具更适合进行编程使用。例如，电子表格通常非常容易解析和导出，但wiki或类似应用程序上的自由格式注释则更难消耗。
+* 没有真实来源。有时，您会发现领域的真实来源根本不存在。例如，当分配IP地址时，操作员可能只是使用子网中的任何（假定的）可用IP，而不会记录其使用情况。
 
-See if you can identify each domain of infrastructure data for your organization, and the source of truth for each. Once you have these compiled, you'll need to determine what belongs in NetBox.
+看看您是否可以识别组织的每个基础设施数据领域以及每个领域的真实来源。一旦编制了这些清单，您将需要确定哪些数据应该放入NetBox。
 
-## Determine What to Move
+## 确定要迁移的内容
 
-The general rule when determining what data to put into NetBox is this: If there's a model for it, it belongs in NetBox. For instance, NetBox has purpose-built models for racks, devices, cables, IP prefixes, VLANs, and so on. These are very straightforward to use. However, you'll inevitably reach the limits of NetBox's data model and question what additional data might make sense to record in NetBox. For example, you might wonder whether NetBox should function as the source of truth for infrastructure DNS records or DHCP scopes.
+在确定要将哪些数据迁移到NetBox时，通常的规则是：如果有一个模型适用于它，那么它就应该放入NetBox。例如，NetBox专门为机架、设备、电缆、IP前缀、VLAN等提供了内置模型。这些非常容易使用。然而，您最终会达到NetBox数据模型的极限，并且会质疑是否有必要在NetBox中记录其他数据。例如，您可能会想知道NetBox是否应该作为基础设施DNS记录或DHCP范围的真实来源。
 
-NetBox provides two core mechanisms for extending its data model. The first is custom fields: Most models in NetBox support the addition of custom fields to hold additional data for which a built-in field does not exist. For example, you might wish to add an "inventory ID" field to the device model. The second mechanism is plugins. Users can create their own plugins to introduce entirely new models, views, and API endpoints in NetBox. This can be incredibly powerful, as it enables rapid development and tight integration with core models.
+NetBox提供了两种扩展其数据模型的核心机制。第一个是自定义字段：NetBox中的大多数模型都支持添加自定义字段，以存储没有内置字段的附加数据。例如，您可能希望为设备模型添加一个“库存ID”字段。第二个机制是插件。用户可以创建自己的插件，以在NetBox中引入全新的模型、视图和API端点。这可以非常强大，因为它支持快速开发和与核心模型的紧密集成。
 
-That said, it doesn't always make sense to migrate a domain of data to NetBox. For example, many organizations opt to use only the IPAM components or only the DCIM components of NetBox, and integrate with other sources of truth for different domains. This is an entirely valid approach (so long as everyone involved agrees which tool is authoritative for each domain). Ultimately, you'll need to weigh the value of having non-native data models in NetBox against the effort required to define and maintain those models.
+尽管如此，将数据领域迁移到NetBox并不总是有意义。例如，许多组织选择仅使用NetBox的IPAM组件或仅使用NetBox的DCIM组件，并与其他真实来源集成不同领域。这是一个完全有效的方法（只要涉及的每个人都同意哪个工具是每个领域的权威）。最终，您需要权衡将非本机数据模型放入NetBox与定义和维护这些模型所需的工作之间的价值。
 
-Consider also that NetBox is under constant development. Although the current release might not support a particular type of object, there may be plans to add support for it in a future release. (And if there aren't, consider submitting a feature request citing your use case.)
+还要考虑到NetBox正在不断发展。尽管当前版本可能不支持特定类型的对象，但可能会计划在将来的版本中添加对其的支持。 （如果没有，考虑提交一个引用您的用例的功能请求。）
 
-## Validate Existing Data
+## 验证现有数据
 
-The last step before migrating data to NetBox is the most crucial: **validation**. The GIGO (garbage in, garbage out) principle is in full effect: Your source of truth is only as good as the data it holds. While NetBox has very powerful data validation tools (including support for custom validation rules), ultimately the onus falls to a human operator to assert what is correct and what is not. For example, NetBox can validate the connection of a cable between two interfaces, but it cannot say whether the cable _should_ be there.
+迁移数据到NetBox之前的最后一步是最关键的：**验证**。垃圾进垃圾出的原则完全适用：您的真实来源只有其包含的数据一样好。虽然NetBox具有非常强大的数据验证工具（包括对自定义验证规则的支持），但最终还是由人操作员来断定什么是正确的，什么是不正确的。例如，NetBox可以验证两个接口之间的电缆连接，但它无法说这根电缆是否应该在那里。
 
-Here are some tips to help ensure you're only importing valid data into NetBox:
+以下是一些有助于确保您仅将有效数据导入NetBox的提示：
 
-* Ensure you're starting with complete, well-formatted data. JSON or CSV is highly recommended for the best portability.
-* Consider defining custom validation rules in NetBox prior to import. (For example, to enforce device naming schemes.)
-* Use custom scripts to automatically populate patterned data. (For example, to automatically create a set of standard VLANs for each site.)
+* 确保您从完整、格式良好的数据开始。强烈建议使用JSON或CSV以获得最佳可移植性。
+* 考虑在导入之前在NetBox中定义自定义验证规则。 （例如，强制执行设备命名方案。）
+* 使用自定义脚本自动填充模式化数据。 （例如，自动为每个站点创建一组标准的VLAN。）
 
-There are several methods available to import data into NetBox, which we'll cover in the next section.
+有几种方法可用于将数据导入NetBox，我们将在下一节中介绍这些方法。
 
-## Order of Operations
+## 操作顺序
 
-When starting with a completely empty database, it might not be immediately clear where to begin. Many models in NetBox rely on the advance creation of other types. For example, you cannot create a device type until after you have created its manufacturer.
+当从一个完全空白的数据库开始时，可能不会立即清楚从哪里开始。NetBox中的许多模型依赖于其他类型的高级创建。例如，只有在创建了制造商之后，才能创建设备类型。
 
-Below is the (rough) recommended order in which NetBox objects should be created or imported. While it is not required to follow this exact order, doing so will help ensure the smoothest workflow.
+以下是应创建或导入NetBox对象的（粗略）建议顺序。虽然不需要按照这个确切的顺序进行操作，但这样做将有助于确保工作流程最顺畅。
 
-1. Tenant groups and tenants
-2. Regions, site groups, sites, and locations
-3. Rack roles and racks
-4. Manufacturers, device types, and module types
-5. Platforms and device roles
-6. Devices and modules
-7. Providers, provider accounts, and provider networks
-8. Circuit types and circuits
-9. Wireless LAN groups and wireless LANs
-10. Route targets and VRFs
-11. RIRs and aggregates
-12. IP/VLAN roles
-13. Prefixes, IP ranges, and IP addresses
-14. VLAN groups and VLANs
-15. Cluster types, cluster groups, and clusters
-16. Virtual machines and VM interfaces
+1. 租户组和租户
+2. 区域、站点组、站点和位置
+3. 机架角色和机架
+4. 制造商、设备类型和模块类型
+5. 平台和设备角色
+6. 设备和模块
+7. 提供商、提供商帐户和提供商网络
+8. 电路类型和电路
+9. 无线局域网组和无线局域网
+10. 路由目标和VRF
+11. RIR和汇总
+12. IP/VLAN角色
+13. 前缀、IP范围和IP地址
+14. VLAN组和VLAN
+15. 集群类型、集群组和集群
+16. 虚拟机和虚拟机接口
 
-This is not a comprehensive list, but should suffice for the initial data imports. Beyond these, it the order in which objects are added doesn't have much if any impact.
+这不是一个详尽无遗的清单，但对于初始数据导入来说应该足够了。在这些之外，对象的添加顺序没有太大的影响。
 
-The graphs below illustrate some of the core dependencies among different models in NetBox for your reference.
+下面的图表为您提供了NetBox不同模型之间的一些核心依赖关系的参考。
 
-!!! note "Self-Nesting Models"
-    Each model in the graphs below which show a looping arrow pointing back to itself can be nested in a recursive hierarchy. For example, you can have regions representing both countries and cities, with the latter nested underneath the former.
+!!! 注意 "自我嵌套模型"
+    在下面的图表中，每个模型都显示了一个指向自身的循环箭头，表示该模型可以嵌套在递归层次结构中。例如，您可以有代表国家和城市的区域，后者嵌套在前者之下。
 
-### Tenancy
+### 租户
 
 ```mermaid
 flowchart TD
-    TenantGroup --> TenantGroup & Tenant
-    Tenant --> Site & Device & Prefix & VLAN & ...
+    租户组 --> 租户组 & 租户
+    租户 --> 站点 & 设备 & 前缀 & VLAN & ...
 
-click Device "../../models/dcim/device/"
-click Prefix "../../models/ipam/prefix/"
-click Site "../../models/dcim/site/"
-click Tenant "../../models/tenancy/tenant/"
-click TenantGroup "../../models/tenancy/tenantgroup/"
+click 设备 "../../models/dcim/device/"
+click 前缀 "../../models/ipam/prefix/"
+click 站点 "../../models/dcim/site/"
+click 租户 "../../models/tenancy/tenant/"
+click 租户组 "../../models/tenancy/tenantgroup/"
 click VLAN "../../models/ipam/vlan/"
 ```
 
-### Sites, Racks, and Devices
+### 站点、机架和设备
 
 ```mermaid
 flowchart TD
-    Region --> Region
-    SiteGroup --> SiteGroup
-    DeviceRole & Platform --> Device
-    Region & SiteGroup --> Site
-    Site --> Location & Device
-    Location --> Location
-    Location --> Rack & Device
-    Rack --> Device
-    Manufacturer --> DeviceType & ModuleType
-    DeviceType  --> Device
-    Device & ModuleType ---> Module
-    Device & Module --> Interface
+    区域 --> 区域
+    站点组 --> 站点组
+    设备角色 & 平台 --> 设备
+    区域 & 站点组 --> 站点
+    站点 --> 位置 & 设备
+    位置 --> 位置
+    位置 --> 机架 & 设备
+    机架 --> 设备
+    制造商 --> 设备类型 & 模块类型
+    设备类型  --> 设备
+    设备 & 模块类型 ---> 模块
+    设备 & 模块 --> 接口
 
-click Device "../../models/dcim/device/"
-click DeviceRole "../../models/dcim/devicerole/"
-click DeviceType "../../models/dcim/devicetype/"
-click Interface "../../models/dcim/interface/"
-click Location "../../models/dcim/location/"
-click Manufacturer "../../models/dcim/manufacturer/"
-click Module "../../models/dcim/module/"
-click ModuleType "../../models/dcim/moduletype/"
-click Platform "../../models/dcim/platform/"
-click Rack "../../models/dcim/rack/"
-click RackRole "../../models/dcim/rackrole/"
-click Region "../../models/dcim/region/"
-click Site "../../models/dcim/site/"
-click SiteGroup "../../models/dcim/sitegroup/"
+click 设备 "../../models/dcim/device/"
+click 设备角色 "../../models/dcim/devicerole/"
+click 设备类型 "../../models/dcim/devicetype/"
+click 接口 "../../models/dcim/interface/"
+click 位置 "../../models/dcim/location/"
+click 制造商 "../../models/dcim/manufacturer/"
+click 模块 "../../models/dcim/module/"
+click 模块类型 "../../models/dcim/moduletype/"
+click 平台 "../../models/dcim/platform/"
+click 机架 "../../models/dcim/rack/"
+click 机架角色 "../../models/dcim/rackrole/"
+click 区域 "../../models/dcim/region/"
+click 站点 "../../models/dcim/site/"
+click 站点组 "../../models/dcim/sitegroup/"
 ```
 
-### VRFs, Prefixes, IP Addresses, and VLANs
+### VRF、前缀、IP地址和VLAN
 
 ```mermaid
 flowchart TD
-    VLANGroup --> VLAN
-    Role --> VLAN & IPRange & Prefix
-    RIR --> Aggregate
-    RouteTarget --> VRF
-    Aggregate & VRF --> Prefix
-    VRF --> IPRange & IPAddress
-    Prefix --> VLAN & IPRange & IPAddress
+    VLAN组 --> VLAN
+    角色 --> VLAN & IP范围 & 前缀
+    RIR --> 聚合
+    路由目标 --> VRF
+    汇总 & VRF --> 前缀
+    VRF --> IP范围 & IP地址
+    前缀 --> VLAN & IP范围 & IP地址
 
-click Aggregate "../../models/ipam/aggregate/"
-click IPAddress "../../models/ipam/ipaddress/"
-click IPRange "../../models/ipam/iprange/"
-click Prefix "../../models/ipam/prefix/"
+click Aggr聚合egate "../../models/ipam/aggregate/"
+click IP地址 "../../models/ipam/ipaddress/"
+click IP范围 "../../models/ipam/iprange/"
+click 前缀 "../../models/ipam/prefix/"
 click RIR "../../models/ipam/rir/"
-click Role "../../models/ipam/role/"
+click 角色 "../../models/ipam/role/"
 click VLAN "../../models/ipam/vlan/"
-click VLANGroup "../../models/ipam/vlangroup/"
+click VLAN组 "../../models/ipam/vlangroup/"
 click VRF "../../models/ipam/vrf/"
 ```
 
-### Circuits
+### 电路
 
 ```mermaid
 flowchart TD
-    Provider & CircuitType --> Circuit
-    Provider --> ProviderNetwork
-    Circuit --> CircuitTermination
+    提供商 & 电路类型 --> 电路
+    提供商 --> 提供商网络
+    电路 --> 电路终止
 
-click Circuit "../../models/circuits/circuit/"
-click CircuitTermination "../../models/circuits/circuittermination/"
-click CircuitType "../../models/circuits/circuittype/"
-click Provider "../../models/circuits/provider/"
-click ProviderNetwork "../../models/circuits/providernetwork/"
+click 电路 "../../models/circuits/circuit/"
+click 电路终止点 "../../models/circuits/circuittermination/"
+click 电路类型 "../../models/circuits/circuittype/"
+click 提供商 "../../models/circuits/provider/"
+click 提供商网络 "../../models/circuits/providernetwork/"
 ```
 
-### Clusters and Virtual Machines
+### 集群和虚拟机
 
 ```mermaid
 flowchart TD
-    ClusterGroup & ClusterType --> Cluster
-    Cluster --> VirtualMachine
-    Site --> Cluster & VirtualMachine
-    Device & Platform --> VirtualMachine
-    VirtualMachine --> VMInterface
+    集群组 & 集群类型 --> 集群
+    集群 --> 虚拟机
+    站点 --> 集群 & 虚拟机
+    设备 & 平台 --> 虚拟机
+    虚拟机 --> VM接口
 
-click Cluster "../../models/virtualization/cluster/"
-click ClusterGroup "../../models/virtualization/clustergroup/"
-click ClusterType "../../models/virtualization/clustertype/"
-click Device "../../models/dcim/device/"
-click Platform "../../models/dcim/platform/"
-click VirtualMachine "../../models/virtualization/virtualmachine/"
-click VMInterface "../../models/virtualization/vminterface/"
+click 集群 "../../models/virtualization/cluster/"
+click 集群组 "../../models/virtualization/clustergroup/"
+click 集群类型 "../../models/virtualization/clustertype/"
+click 设备 "../../models/dcim/device/"
+click 平台 "../../models/dcim/platform/"
+click 虚拟机 "../../models/virtualization/virtualmachine/"
+click VM接口 "../../models/virtualization/vminterface/"
 ```

@@ -1,79 +1,79 @@
-# Style Guide
+# 风格指南
 
-NetBox generally follows the [Django style guide](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/coding-style/), which is itself based on [PEP 8](https://www.python.org/dev/peps/pep-0008/). [Pycodestyle](https://github.com/pycqa/pycodestyle) is used to validate code formatting, ignoring certain violations.
+NetBox通常遵循[Django风格指南](https://docs.djangoproject.com/en/stable/internals/contributing/writing-code/coding-style/)，这本身是基于[PEP 8](https://www.python.org/dev/peps/pep-0008/)的。[Pycodestyle](https://github.com/pycqa/pycodestyle)用于验证代码格式，忽略某些违规情况。
 
-## Code
+## 代码
 
-### General Guidance
+### 一般指导
 
-* When in doubt, remain consistent: It is better to be consistently incorrect than inconsistently correct. If you notice in the course of unrelated work a pattern that should be corrected, continue to follow the pattern for now and submit a separate bug report so that the entire code base can be evaluated at a later point.
+* 如果有疑虑，保持一致性：保持一致性不正确总是比不一致性正确要好。如果在无关的工作中注意到应该纠正的模式，请继续遵循当前的模式，并提交一个单独的错误报告，以便在以后的某个时间点评估整个代码库。
 
-* Prioritize readability over concision. Python is a very flexible language that typically offers several multiple options for expressing a given piece of logic, but some may be more friendly to the reader than others. (List comprehensions are particularly vulnerable to over-optimization.) Always remain considerate of the future reader who may need to interpret your code without the benefit of the context within which you are writing it.
+* 优先考虑可读性而不是简洁性。Python是一种非常灵活的语言，通常提供了多种表达给定逻辑的选项，但有些可能对读者更友好。 （列表理解特别容易被过度优化。）始终要考虑到未来的读者可能需要在没有您编写代码的上下文的情况下解释您的代码。
 
-* Include a newline at the end of every file.
+* 在每个文件的末尾包含一个换行符。
 
-* No easter eggs. While they can be fun, NetBox must be considered as a business-critical tool. The potential, however minor, for introducing a bug caused by unnecessary code is best avoided entirely.
+* 没有彩蛋。虽然它们可能很有趣，但NetBox必须被视为一种业务关键的工具。不必要代码引入错误的潜力（尽管很小），最好完全避免。
 
-* Constants (variables which do not change) should be declared in `constants.py` within each app. Wildcard imports from the file are acceptable.
+* 常量（不变的变量）应在每个应用的`constants.py`中声明。从文件进行通配符导入是可以接受的。
 
-* Every model must have a [docstring](https://peps.python.org/pep-0257/). Every custom method should include an explanation of its function.
+* 每个模型必须有[文档字符串](https://peps.python.org/pep-0257/)。每个自定义方法都应包含其功能的解释。
 
-* Nested API serializers generate minimal representations of an object. These are stored separately from the primary serializers to avoid circular dependencies. Always import nested serializers from other apps directly. For example, from within the DCIM app you would write `from ipam.api.nested_serializers import NestedIPAddressSerializer`.
+* 嵌套API序列化器生成对象的最小表示。这些存储在主要序列化器之外，以避免循环依赖。始终直接从其他应用程序导入嵌套的序列化器。例如，从DCIM应用程序中，您会编写`from ipam.api.nested_serializers import NestedIPAddressSerializer`。
 
-### PEP 8 Exceptions
+### PEP 8的例外
 
-NetBox ignores certain PEP8 assertions. These are listed below.
+NetBox忽略了某些PEP8断言。这些列在下面。
 
-#### Wildcard Imports
+#### 通配符导入
 
-Wildcard imports (for example, `from .constants import *`) are acceptable under any of the following conditions:
+通配符导入（例如，`from .constants import *`）在满足以下任何条件时都是可以接受的：
 
-* The library being import contains only constant declarations (e.g. `constants.py`)
-* The library being imported explicitly defines `__all__`
+* 被导入的库仅包含常量声明（例如，`constants.py`）
+* 被导入的库显式定义`__all__`
 
-#### Maximum Line Length (E501)
+#### 最大行长度（E501）
 
-NetBox does not restrict lines to a maximum length of 79 characters. We use a maximum line length of 120 characters, however this is not enforced by CI. The maximum length does not apply to HTML templates or to automatically generated code (e.g. database migrations).
+NetBox不限制行的最大长度为79个字符。我们使用最大行长度为120个字符，但CI不强制执行此限制。最大长度不适用于HTML模板或自动生成的代码（例如，数据库迁移）。
 
-#### Line Breaks Following Binary Operators (W504)
+#### 二元运算符后面的换行符（W504）
 
-Line breaks are permitted following binary operators.
+允许在二元运算符后面换行。
 
-### Enforcing Code Style
+### 强制执行代码样式
 
-The [`pycodestyle`](https://pypi.org/project/pycodestyle/) utility (formerly `pep8`) is used by the CI process to enforce code style. A [pre-commit hook](./getting-started.md#2-enable-pre-commit-hooks) which runs this automatically is included with NetBox. To invoke `pycodestyle` manually, run:
+CI过程使用[`pycodestyle`](https://pypi.org/project/pycodestyle/)工具（以前是`pep8`）来强制执行代码样式。NetBox附带了一个[pre-commit钩子](./getting-started.md#2-enable-pre-commit-hooks)，用于自动运行此操作。要手动调用`pycodestyle`，请运行：
 
 ```
 pycodestyle --ignore=W504,E501 netbox/
 ```
 
-### Introducing New Dependencies
+### 引入新依赖项
 
-The introduction of a new dependency is best avoided unless it is absolutely necessary. For small features, it's generally preferable to replicate functionality within the NetBox code base rather than to introduce reliance on an external project. This reduces both the burden of tracking new releases and our exposure to outside bugs and supply chain attacks.
+最好避免引入新的依赖项，除非绝对必要。对于小功能，通常最好在NetBox代码库内部复制功能，而不是引入对外部项目的依赖。这减少了跟踪新版本和暴露于外部错误和供应链攻击的风险。
 
-If there's a strong case for introducing a new dependency, it must meet the following criteria:
+如果有充分的理由引入新的依赖项，它必须满足以下条件：
 
-* Its complete source code must be published and freely accessible without registration.
-* Its license must be conducive to inclusion in an open source project.
-* It must be actively maintained, with no longer than one year between releases.
-* It must be available via the [Python Package Index](https://pypi.org/) (PyPI).
+* 其完整的源代码必须已发布，并且可在无需注册的情况下免费访问。
+* 其许可证必须有助于包含在开源项目中。
+* 它必须得到积极维护，发布之间的时间不能超过一年。
+* 它必须通过[Python包索引](https://pypi.org/)（PyPI）提供。
 
-When adding a new dependency, a short description of the package and the URL of its code repository must be added to `base_requirements.txt`. Additionally, a line specifying the package name pinned to the current stable release must be added to `requirements.txt`. This ensures that NetBox will install only the known-good release.
+在添加新依赖项时，必须将该软件包的简短描述和其代码存储库的URL添加到`base_requirements.txt`中。此外，必须在`requirements.txt`中添加一行，指定将包名称固定到当前稳定版本。这确保NetBox仅安装已知的好版本。
 
-## Written Works
+## 文档
 
-### General Guidance
+### 一般指导
 
-* Written material must always meet a reasonable professional standard, with proper grammar, spelling, and punctuation.
+* 书面材料必须始终符合合理的专业标准，具有正确的语法、拼写和标点符号。
 
-* Use two line breaks between paragraphs.
+* 段落之间使用两个换行符。
 
-* Use only a single space between sentences.
+* 在句子之间只使用一个空格。
 
-* All documentation is to be written in [Markdown](../reference/markdown.md), with modest amounts of HTML permitted where needed to overcome technical limitations.
+* 所有文档必须以[Markdown](../reference/markdown.md)编写，其中允许在需要时使用适度的HTML来克服技术限制。
 
-### Branding
+### 品牌
 
-* When referring to NetBox in writing, use the proper form "NetBox," with the letters N and B capitalized. The lowercase form "netbox" should be used in code, filenames, etc. but never "Netbox" or any other deviation.
+* 在书写时，引用NetBox时，请使用正确的形式“NetBox”，其中N和B大写。小写形式“netbox”应用于代码、文件名等，但永远不要使用“Netbox”或其他任何偏差。
 
-* There is an SVG form of the NetBox logo at [docs/netbox_logo.svg](../netbox_logo.svg). It is preferred to use this logo for all purposes as it scales to arbitrary sizes without loss of resolution. If a raster image is required, the SVG logo should be converted to a PNG image of the prescribed size.
+* NetBox的标志有一个SVG形式，位于[docs/netbox_logo.svg](../netbox_logo.svg)。最好为所有目的使用此标志，因为它可以在不损失分辨率的情况下缩放到任意大小。如果需要栅格图像，则应将SVG标志转换为规定大小的PNG图像。

@@ -1,15 +1,15 @@
-# Bookmarks
+# 书签
 
-!!! info "This feature was introduced in NetBox v3.6."
+!!! info "此功能在 NetBox v3.6 中引入。"
 
-A user can bookmark individual objects for convenient access. Bookmarks are listed under a user's profile and can be displayed using a dashboard widget.
+用户可以为了方便访问而收藏个别对象。书签在用户的个人资料下列出，并可以使用仪表板小部件显示。
 
-## Fields
+## 字段
 
-### User
+### 用户
 
-The user to whom the bookmark belongs.
+书签所属的用户。
 
-### Object
+### 对象
 
-The bookmarked object.
+被收藏的对象。

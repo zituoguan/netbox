@@ -14,9 +14,9 @@ NetBox使用多个对象类型来表示IP资源的层次结构：
 ```mermaid
 flowchart TD
     RIR --> 聚合
-    聚合和角色 --> 前缀
+    聚合 & 角色 --> 前缀
     前缀 --> 前缀
-    前缀 --> IP范围和IP地址
+    前缀 --> IP范围 & IP地址
 
 click 聚合 "../../models/ipam/aggregate/"
 click IP地址 "../../models/ipam/ipaddress/"

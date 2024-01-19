@@ -1,47 +1,47 @@
-# Internationalization
+# 国际化
 
-Beginning with NetBox v4.0, NetBox will leverage [Django's automatic translation](https://docs.djangoproject.com/en/stable/topics/i18n/translation/) to support languages other than English. This page details the areas of the project which require special attention to ensure functioning translation support. Briefly, these include:
+从NetBox v4.0开始，NetBox将利用[Django的自动翻译](https://docs.djangoproject.com/en/stable/topics/i18n/translation/)来支持除英语以外的语言。本页详细介绍了需要特别注意以确保翻译支持正常工作的项目部分。简要来说，这些项目包括：
 
-* The `verbose_name` and `verbose_name_plural` Meta attributes for each model
-* The `verbose_name` and (if defined) `help_text` for each model field
-* The `label` for each form field
-* Headers for `fieldsets` on each form class
-* The `verbose_name` for each table column
-* All human-readable strings within templates must be wrapped with `{% trans %}` or `{% blocktrans %}`
+* 每个模型的`verbose_name`和`verbose_name_plural`元属性
+* 每个模型字段的`verbose_name`和（如果已定义）`help_text`
+* 每个表单字段的`label`
+* 每个表单类的`fieldsets`头部
+* 每个表格列的`verbose_name`
+* 模板中的所有可读字符串必须用`{% trans %}`或`{% blocktrans %}`包装起来
 
-The rest of this document elaborates on each of the items above.
+本文其余部分详细阐述了上述每一项。
 
-## General Guidance
+## 一般指导
 
-* Wrap human-readable strings with Django's `gettext()` or `gettext_lazy()` utility functions to enable automatic translation. Generally, `gettext_lazy()` is preferred (and sometimes required) to defer translation until the string is displayed.
+* 使用Django的`gettext()`或`gettext_lazy()`实用工具函数包装可读字符串，以启用自动翻译。通常，首选`gettext_lazy()`（有时必需）以推迟翻译，直到显示字符串。
 
-* By convention, the preferred translation function is typically imported as an underscore (`_`) to minimize boilerplate code. Thus, you will often see translation as e.g. `_("Some text")`. It is still an option to import and use alternative translation functions (e.g. `pgettext()` and `ngettext()`) normally as needed.
+* 根据约定，首选的翻译函数通常被导入为下划线（`_`），以最小化样板代码。因此，您通常会看到翻译如`_("Some text")`。仍然可以导入和使用替代翻译函数（例如`pgettext()`和`ngettext()`）根据需要正常使用。
 
-* Avoid passing markup and other non-natural language where possible. Everything wrapped by a translation function gets exported to a messages file for translation by a human.
+* 在可能的情况下避免传递标记和其他非自然语言。通过翻译函数包装的所有内容都会导出到消息文件中，供人工翻译使用。
 
-* Where the intended meaning of the translated string may not be obvious, use `pgettext()` or `pgettext_lazy()` to include assisting context for the translator. For example:
+* 对于翻译的字符串的意图可能不明显的情况，使用`pgettext()`或`pgettext_lazy()`包含协助上下文以供翻译人员使用。例如：
 
     ```python
-    # Context, string
-    pgettext("month name", "May")
+    # 上下文，字符串
+    pgettext("月份名称", "五月")
     ```
 
-* **Format strings do not support translation.** Avoid "f" strings for messages that must support translation. Instead, use `format()` to accomplish variable replacement:
+* **格式字符串不支持翻译。** 对于必须支持翻译的消息，避免使用"f"字符串。而是使用`format()`来实现变量替换：
 
     ```python
-    # Translation will not work
-    f"There are {count} objects"
+    # 翻译不会起作用
+    f"有{count}个对象"
     
-    # Do this instead
-    "There are {count} objects".format(count=count)
+    # 改用以下方式
+    "有{count}个对象".format(count=count)
     ```
 
-## Models
+## 模型
 
-1. Import `gettext_lazy` as `_`.
-2. Ensure both `verbose_name` and `verbose_name_plural` are defined under the model's `Meta` class and wrapped with the `gettext_lazy()` shortcut.
-3. Ensure each model field specifies a `verbose_name` wrapped with `gettext_lazy()`.
-4. Ensure any `help_text` attributes on model fields are also wrapped with `gettext_lazy()`.
+1. 导入`gettext_lazy`为`_`。
+2. 确保在模型的`Meta`类下定义`verbose_name`和`verbose_name_plural`并用`gettext_lazy()`快捷方式包装。
+3. 确保每个模型字段指定用`gettext_lazy()`包装的`verbose_name`。
+4. 确保在模型字段上的任何`help_text`属性也用`gettext_lazy()`包装。
 
 ```python
 from django.utils.translation import gettext_lazy as _
@@ -58,11 +58,11 @@ class Circuit(PrimaryModel):
         verbose_name_plural = _('circuits')
 ```
 
-## Forms
+## 表单
 
-1. Import `gettext_lazy` as `_`.
-2. All form fields must specify a `label` wrapped with `gettext_lazy()`.
-3. All headers under a form's `fieldsets` property must be wrapped with `gettext_lazy()`.
+1. 导入`gettext_lazy`为`_`。
+2. 所有表单字段必须指定用`gettext_lazy()`包装的`label`。
+3. 在表单的`fieldsets`属性下的所有标题必须用`gettext_lazy()`包装。
 
 ```python
 from django.utils.translation import gettext_lazy as _
@@ -78,10 +78,10 @@ class CircuitBulkEditForm(NetBoxModelBulkEditForm):
     )
 ```
 
-## Tables
+## 表格
 
-1. Import `gettext_lazy` as `_`.
-2. All table columns must specify a `verbose_name` wrapped with `gettext_lazy()`.
+1. 导入`gettext_lazy`为`_`。
+2. 所有表格列必须指定用`gettext_lazy()`包装的`verbose_name`。
 
 ```python
 from django.utils.translation import gettext_lazy as _
@@ -93,30 +93,30 @@ class CircuitTable(TenancyColumnsMixin, ContactsColumnMixin, NetBoxTable):
     )
 ```
 
-## Templates
+## 模板
 
-1. Ensure translation support is enabled by including `{% load i18n %}` at the top of the template.
-2. Use the [`{% trans %}`](https://docs.djangoproject.com/en/stable/topics/i18n/translation/#translate-template-tag) tag (short for "translate") to wrap short strings.
-3. Longer strings may be enclosed between [`{% blocktrans %}`](https://docs.djangoproject.com/en/stable/topics/i18n/translation/#blocktranslate-template-tag) and `{% endblocktrans %}` tags to improve readability and to enable variable replacement. (Remember to include the `trimmed` argument to trim whitespace between the tags.)
-4. Avoid passing HTML within translated strings where possible, as this can complicate the work needed of human translators to develop message maps.
+1. 确保在模板顶部包含`{% load i18n %}`以启用翻译支持。
+2. 使用[`{% trans %}`](https://docs.djangoproject.com/en/stable/topics/i18n/translation/#translate-template-tag)标签（简称为“translate”）包装短字符串。
+3. 可以使用[`{% blocktrans %}`](https://docs.djangoproject.com/en/stable/topics/i18n/translation/#blocktranslate-template-tag)标签和`{% endblocktrans %}`标签包围较长的字符串，以提高可读性并启用变量替换。 （记得包括`trimmed`参数以在标签之间修剪空格。）
+4. 在可能的情况下，避免在翻译字符串中传递HTML，因为这可能会增加翻译人员需要开发消息映射的工作量。
 
 ```
 {% load i18n %}
 
-{# A short string #}
+{# 短字符串 #}
 <h5 class="card-header">{% trans "Circuit List" %}</h5>
 
-{# A longer string with a context variable #}
+{# 带有上下文变量的较长字符串 #}
 {% blocktrans trimmed with count=object.circuits.count %}
-  There are {count} circuits. Would you like to continue?
+  有{count}个电路。您想继续吗？
 {% endblocktrans %}
 ```
 
-!!! warning
-    The `{% blocktrans %}` tag supports only **limited variable replacement**, comparable to the `format()` method on Python strings. It does not permit access to object attributes or the use of other template tags or filters inside it. Ensure that any necessary context is passed as simple variables.
+!!! 警告
+    `{% blocktrans %}`标签仅支持**有限的变量替换**，与Python字符串上的`format()`方法相当。它不允许访问对象属性或在其中使用其他模板标签或过滤器。确保将任何必要的上下文作为简单变量传递。
 
-!!! info
-    The `{% trans %}` and `{% blocktrans %}` support the inclusion of contextual hints for translators using the `context` argument:
+!!! 信息
+    `{% trans %}`和`{% blocktrans %}`支持使用`context`参数包括翻译者使用的上下文提示：
 
     ```nohighlight
     {% trans "May" context "month name" %}

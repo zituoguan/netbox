@@ -1,18 +1,18 @@
-# git Cheat Sheet
+# Git 速查表
 
-This cheat sheet serves as a convenient reference for NetBox contributors who already somewhat familiar with using git. For a general introduction to the tooling and workflows involved, please see GitHub's guide [Getting started with git](https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git).
+这个速查表为已经对使用 git 有一定了解的 NetBox 贡献者提供了方便的参考。有关工具和工作流程的一般介绍，请参阅 GitHub 的指南 [Getting started with git](https://docs.github.com/en/get-started/getting-started-with-git/setting-your-username-in-git)。
 
-## Common Operations
+## 常用操作
 
-### Clone a Repo
+### 克隆存储库
 
-This copies a remote git repository (e.g. from GitHub) to your local workstation. It will create a new directory bearing the repo's name in the current path.
+这将复制一个远程 git 存储库（例如来自 GitHub）到您的本地工作站。它将在当前路径下创建一个以存储库名称命名的新目录。
 
-``` title="Command"
+``` title="命令"
 git clone https://github.com/$org-name/$repo-name
 ```
 
-``` title="Example"
+``` title="示例"
 $ git clone https://github.com/netbox-community/netbox
 Cloning into 'netbox'...
 remote: Enumerating objects: 95112, done.
@@ -23,15 +23,15 @@ Receiving objects: 100% (95112/95112), 60.40 MiB | 45.82 MiB/s, done.
 Resolving deltas: 100% (74979/74979), done.
 ```
 
-### Pull New Commits
+### 拉取新提交
 
-To update your local branch with any recent upstream commits, run `git pull`.
+要使用任何最近的上游提交更新您的本地分支，请运行 `git pull`。
 
-``` title="Command"
+``` title="命令"
 git pull
 ```
 
-``` title="Example"
+``` title="示例"
 $ git pull
 remote: Enumerating objects: 1, done.
 remote: Counting objects: 100% (1/1), done.
@@ -46,15 +46,15 @@ Fast-forward
  2 files changed, 2 insertions(+)
 ```
 
-### List Branches
+### 列出分支
 
-`git branch` lists all local branches. Appending `-a` to this command will list both local (green) and remote (red) branches.
+`git branch` 列出所有本地分支。将 `-a` 添加到此命令将列出本地（绿色）和远程（红色）分支。
 
-``` title="Command"
+``` title="命令"
 git branch -a
 ```
 
-``` title="Example"
+``` title="示例"
 $ git branch -a
 * develop
   remotes/origin/10170-changelog
@@ -64,42 +64,42 @@ $ git branch -a
   remotes/origin/master
 ```
 
-### Switch Branches
+### 切换分支
 
-To switch to a different branch, use the `checkout` command.
+要切换到不同的分支，请使用 `checkout` 命令。
 
-``` title="Command"
+``` title="命令"
 git checkout $branchname
 ```
 
-``` title="Example"
+``` title="示例"
 $ git checkout feature
 Branch 'feature' set up to track remote branch 'feature' from 'origin'.
 Switched to a new branch 'feature'
 ```
 
-### Create a New Branch
+### 创建新分支
 
-Use the `-b` argument with `checkout` to create a new _local_ branch from the current branch.
+使用 `checkout` 命令的 `-b` 参数可以从当前分支创建一个新的 _本地_ 分支。
 
-``` title="Command"
+``` title="命令"
 git checkout -b $newbranch
 ```
 
-``` title="Example"
+``` title="示例"
 $ git checkout -b 123-fix-foo
 Switched to a new branch '123-fix-foo'
 ```
 
-### Rename a Branch
+### 重命名分支
 
-To rename the current branch, use the `git branch` command with the `-m` argument (for "modify").
+要重命名当前分支，请使用带有 `-m` 参数（用于 "修改"）的 `git branch` 命令。
 
-``` title="Command"
+``` title="命令"
 git branch -m $newname
 ```
 
-``` title="Example"
+``` title="示例"
 $ git branch -m jstretch-testing
 $ git branch
   develop
@@ -107,15 +107,15 @@ $ git branch
 * jstretch-testing
 ```
 
-### Merge a Branch
+### 合并分支
 
-To merge one branch into another, use the `git merge` command. Start by checking out the _destination_ branch, and merge the _source_ branch into it.
+要将一个分支合并到另一个分支，请使用 `git merge` 命令。首先切换到 _目标_ 分支，然后将 _源_ 分支合并到其中。
 
-``` title="Command"
+``` title="命令"
 git merge $sourcebranch
 ```
 
-``` title="Example"
+``` title="示例"
 $ git checkout testing 
 Switched to branch 'testing'
 Your branch is up to date with 'origin/testing'.
@@ -127,18 +127,18 @@ Fast-forward
  create mode 100644 newfile.py
 ```
 
-!!! warning "Avoid Merging Remote Branches"
-    You generally want to avoid merging branches that exist on the remote (upstream) repository, such as `develop` and `feature`: Merges into these branches should be done via a pull request on GitHub. Only merge branches when it is necessary to consolidate work you've done locally.
+!!! warning "避免合并远程分支"
+    通常情况下，您应该避免合并存在于远程（上游）存储库的分支，比如 `develop` 和 `feature`：合并到这些分支应该通过 GitHub 上的拉取请求完成。只有在需要整合您在本地完成的工作时才合并分支。
 
-### Show Pending Changes
+### 显示待处理更改
 
-After making changes to files in the repo, `git status` will display a summary of created, modified, and deleted files.
+在对存储库中的文件进行更改后，`git status` 将显示已创建、已修改和已删除文件的摘要。
 
-``` title="Command"
+``` title="命令"
 git status
 ```
 
-``` title="Example"
+``` title="示例"
 $ git status
 On branch 123-fix-foo
 Changes not staged for commit:
@@ -155,15 +155,15 @@ Untracked files:
 no changes added to commit (use "git add" and/or "git commit -a")
 ```
 
-### Stage Changed Files
+### 暂存已更改的文件
 
-Before creating a new commit, modified files must be staged. This is typically done with the `git add` command. You can specify a particular path, or just append `-A` to automatically staged _all_ changed files within the current directory. Run `git status` again to verify what files have been staged.
+在创建新提交之前，必须暂存已修改的文件。通常使用 `git add` 命令来完成此操作。您可以指定特定路径，或者只需附加 `-A` 来自动暂存当前目录中的所有已更改文件。再次运行 `git status` 来验证哪些文件已被暂存。
 
-``` title="Command"
+``` title="命令"
 git add -A
 ```
 
-``` title="Example"
+``` title="示例"
 $ git add -A
 $ git status
 On branch 123-fix-foo
@@ -175,9 +175,9 @@ Changes to be committed:
 
 ```
 
-### Review Staged Files
+### 查看已暂存的文件
 
-It's a good idea to thoroughly review all staged changes immediately prior to creating a new commit. This can be done using the `git diff` command. Appending the `--staged` argument will show staged changes; omitting it will show changes that have not yet been staged.
+在创建新提交之前，彻底检查所有已暂存的更改是个好主意。可以使用 `git diff` 命令来完成此操作。附加 `--staged` 参数将显示已暂存的更改；省略它将显示尚未暂存的更改。
 
 ``` title="Command"
 git diff --staged
@@ -203,33 +203,33 @@ new file mode 100644
 index 000000000..e69de29bb
 ```
 
-### Create a New Commit
+### 创建新提交
 
-The `git commit` command records your changes to the current branch. Specify a commit message with the `-m` argument. (If omitted, a file editor will be opened to provide a message.
+`git commit` 命令记录了您对当前分支的更改。使用 `-m` 参数指定提交消息。（如果省略，将打开文件编辑器以提供消息。）
 
-``` title="Command"
-git commit -m "Fixes #123: Fixed the thing that was broken"
+``` title="命令"
+git commit -m "修复 #123：修复了出现问题的东西"
 ```
 
-``` title="Example"
-$ git commit -m "Fixes #123: Fixed the thing that was broken"
-[123-fix-foo 9a12b5b5f] Fixes #123: Fixed the thing that was broken
+``` title="示例"
+$ git commit -m "修复 #123：修复了出现问题的东西"
+[123-fix-foo 9a12b5b5f] 修复 #123：修复了出现问题的东西
  2 files changed, 5 insertions(+)
  create mode 100644 foo.py
 ```
 
-!!! tip "Automatically Closing Issues"
-    GitHub will [automatically close](https://github.blog/2013-01-22-closing-issues-via-commit-messages/) any issues referenced in a commit message by `Fixes:` or `Closes:` when the commit is merged into the repository's default branch. Contributors are strongly encouraged to follow this convention when forming commit messages. (Use "Closes" for feature requests and "Fixes" for bugs.)
+!!! tip "自动关闭问题"
+    GitHub 将根据提交消息中的 `Fixes:` 或 `Closes:` 来自动关闭引用的任何问题，当提交合并到存储库的默认分支时。鼓励贡献者在形成提交消息时遵循这种约定。（对于功能请求使用 "Closes"，对于错误使用 "Fixes"。）
 
-### Push a Commit Upstream
+### 推送提交到上游
 
-Once you've made a commit locally, it needs to be pushed upstream to the _remote_ repository (typically called "origin"). This is done with the `git push` command. If this is a new branch that doesn't yet exist on the remote repository, you'll need to set the upstream for it when pushing.
+一旦您在本地进行了提交，它就需要被推送到 _远程_ 存储库（通常称为 "origin"）。这可以使用 `git push` 命令来完成。如果这是一个尚不存在于远程存储库的新分支，那么在推送时需要为其设置上游。
 
-``` title="Command"
+``` title="命令"
 git push -u origin $branchname
 ```
 
-``` title="Example"
+``` title="示例"
 $ git push -u origin testing
 Counting objects: 3, done.
 Delta compression using up to 16 threads.
@@ -247,61 +247,61 @@ Branch 'testing' set up to track remote branch 'testing' from 'origin'.
 ```
 
 !!! tip
-    You can apply the following git configuration to automatically set the upstream for all new branches. This obviates the need to specify `-u origin`.
+    您可以应用以下 git 配置来自动为所有新分支设置上游。这样就不需要指定 `-u origin`。
     
     ```
     git config --global push.default current
     ```
 
-## The GitHub CLI Client
+## GitHub CLI 客户端
 
-GitHub provides a [free CLI client](https://cli.github.com/) to simplify many aspects of interacting with GitHub repositories. Note that this utility is separate from `git`, and must be [installed separately](https://github.com/cli/cli#installation).
+GitHub 提供了一个[免费的 CLI 客户端](https://cli.github.com/)，可以简化与 GitHub 存储库的许多交互方面。请注意，此实用程序与 `git` 分开，并且必须[单独安装](https://github.com/cli/cli#installation)。
 
-This guide provides some examples of common operations, but be sure to check out the [GitHub CLI manual](https://cli.github.com/manual/) for a complete accounting of available commands.
+本指南提供了一些常见操作的示例，但请务必查看[GitHub CLI 手册](https://cli.github.com/manual/)以获取可用命令的完整列表。
 
-### List Open Pull Requests
+### 列出打开的拉取请求
 
-``` title="Command"
+``` title="命令"
 gh pr list
 ```
 
-``` title="Example"
+``` title="示例"
 $ gh pr list
 
-Showing 3 of 3 open pull requests in netbox-community/netbox
+在 netbox-community/netbox 中显示了 3 个打开的拉取请求中的 3 个
 
 #10223  #7503 API Bulk-Create of Devices does not check Rack-Space  7503-bulkdevice             about 17 hours ago
 #9716   Closes #9599: Add cursor pagination mode                    lyuyangh:cursor-pagination  about 1 month ago
 #9498   Adds replication and adoption for module import             sleepinggenius2:issue_9361  about 2 months ago
 ```
 
-### Check Out a PR
+### 检出拉取请求
 
-This command will automatically check out the remote branch associated with an open pull request.
+此命令将自动检出与打开拉取请求关联的远程分支。
 
-``` title="Command"
+``` title="命令"
 gh pr checkout $number
 ```
 
-``` title="Example"
+``` title="示例"
 $ gh pr checkout 10223
 Branch '7503-bulkdevice' set up to track remote branch '7503-bulkdevice' from 'origin'.
 Switched to a new branch '7503-bulkdevice'
 ```
 
-## Fixing Mistakes
+## 修复错误
 
-### Modify the Previous Commit
+### 修改先前的提交
 
-Sometimes you'll find that you've overlooked a necessary change and need to commit again. If you haven't pushed your most recent commit and just need to make a small tweak or two, you can _amend_ your most recent commit instead of creating a new one.
+有时您会发现自己忽略了必要的更改，需要重新提交。如果您尚未推送最近的提交并且只需要进行一两次小的修改，那么可以使用 `--amend` 参数而不是创建新提交来修改最近的提交。
 
-First, stage the desired files with `git add` and verify the changes, the issue the `git commit` command with the `--amend` argument. You can also append the `--no-edit` argument if you would like to keep the previous commit message.
+首先，使用 `git add` 暂存所需的文件，并验证更改，然后使用 `git commit` 命令以 `--amend` 参数。您还可以附加 `--no-edit` 参数，如果希望保留以前的提交消息。
 
-``` title="Command"
+``` title="命令"
 git commit --amend --no-edit
 ```
 
-``` title="Example"
+``` title="示例"
 $ git add -A
 $ git diff --staged
 $ git commit --amend --no-edit
@@ -311,39 +311,41 @@ $ git commit --amend --no-edit
  create mode 100644 newfile.py
 ```
 
-!!! danger "Don't Amend After Pushing"
-    Never amend a commit you've already pushed upstream unless you're **certain** no one else is working on the same branch. Force-pushing will overwrite the change history, which will break any commits from other contributors. When in doubt, create a new commit instead.
+!!! danger "不要在推送后进行修改"
+    除非您**确定**没有其他人正在处理相同的分支，否则不要修改已经推送到上游的提交。强制推送会
 
-### Undo the Last Commit
+覆盖更改历史记录，这会破坏其他贡献者的提交。当有疑问时，请创建一个新的提交。
 
-The `git reset` command can be used to undo the most recent commit. (`HEAD~` is equivalent to `HEAD~1` and references the commit prior to the current HEAD.) After making and staging your changes, commit using `-c ORIG_HEAD` to replace the erroneous commit.
+### 撤消最后一个提交
 
-``` title="Command"
+`git reset` 命令可用于撤消最近的提交。 (`HEAD~` 等效于 `HEAD~1`，引用了当前 HEAD 之前的提交。) 在进行更改并暂存更改后，使用 `-c ORIG_HEAD` 来替换错误的提交。
+
+``` title="命令"
 git reset HEAD~
 ```
 
-``` title="Example"
+``` title="示例"
 $ git add -A
-$ git commit -m "Erroneous commit"
-[testing 09ce06736] Erroneous commit
+$ git commit -m "错误的提交"
+[testing 09ce06736] 错误的提交
  Date: Mon Aug 29 15:20:04 2022 -0400
  1 file changed, 1 insertion(+)
  create mode 100644 BADCHANGE
 $ git reset HEAD~
 $ rm BADFILE
 $ git add -A
-$ git commit -m "Fixed commit"
-[testing c585709f3] Fixed commit
+$ git commit -m "修复提交"
+[testing c585709f3] 修复提交
  Date: Mon Aug 29 15:22:38 2022 -0400
  1 file changed, 65 insertions(+), 20 deletions(-)
 ```
 
-!!! danger "Don't Reset After Pushing"
-    Resetting only works until you've pushed your local changes upstream. If you've already pushed upstream, use `git revert` instead. This will create a _new_ commit that reverts the erroneous one, but ensures that the git history remains intact.
+!!! danger "不要在推送后重置"
+    重置仅适用于尚未推送到上游的本地更改。如果您已经向上游推送，使用 `git revert` 代替。这将创建一个_新的_提交，以撤销错误的提交，但确保保持 git 历史记录的完整性。
 
-### Rebase from Upstream
+### 从上游进行变基
 
-If a change has been pushed to the upstream branch since you most recently pulled it, attempting to push a new local commit will fail:
+如果自从您最近拉取它以来，已将更改推送到上游分支，则尝试推送新的本地提交将失败：
 
 ```
 $ git push
@@ -357,14 +359,14 @@ hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 
-To resolve this, first fetch the upstream branch to update your local copy, and then [rebase](https://git-scm.com/book/en/v2/Git-Branching-Rebasing) your local branch to include the new changes. Once the rebase has completed, you can push your local commits upstream.
+要解决此问题，首先获取上游分支以更新本地副本，然后[变基](https://git-scm.com/book/en/v2/Git-Branching-Rebasing)本地分支以包括新的更改。完成变基后，可以将本地提交推送到上游。
 
-``` title="Commands"
+``` title="命令"
 git fetch
 git rebase origin/$branchname
 ```
 
-``` title="Example"
+``` title="示例"
 $ git fetch
 remote: Enumerating objects: 1, done.
 remote: Counting objects: 100% (1/1), done.

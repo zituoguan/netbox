@@ -1,17 +1,17 @@
-# Service Templates
+# 服务模版
 
-Service templates can be used to instantiate [services](./service.md) on [devices](../dcim/device.md) and [virtual machines](../virtualization/virtualmachine.md).
+服务模板可用于在[设备](../dcim/device.md)和[虚拟机](../virtualization/virtualmachine.md)上实例化[服务](./service.md)。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A service or protocol name.
+服务或协议名称。
 
-### Protocol
+### 协议
 
-The wire protocol on which the service runs. Choices include UDP, TCP, and SCTP.
+服务运行的传输协议。选项包括UDP、TCP和SCTP。
 
-### Ports
+### 端口
 
-One or more numeric ports to which the service is bound. Multiple ports can be expressed using commas and/or hyphens. For example, `80,8001-8003` specifies ports 80, 8001, 8002, and 8003.
+服务绑定到的一个或多个数字端口。可以使用逗号和/或连字符表示多个端口。例如，`80,8001-8003`指定了端口80、8001、8002和8003。

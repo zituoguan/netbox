@@ -1,35 +1,35 @@
-# EventRule
+# 事件规则
 
-An event rule is a mechanism for automatically taking an action (such as running a script or sending a webhook) in response to an event in NetBox. For example, you may want to notify a monitoring system whenever the status of a device is updated in NetBox. This can be done by creating an event for device objects and designating a webhook to be transmitted. When NetBox detects a change to a device, an HTTP request containing the details of the change and who made it be sent to the specified receiver.
+事件规则是一种机制，用于自动在NetBox中的事件发生时采取操作（例如运行脚本或发送Webhook）。例如，您可能希望在NetBox中更新设备的状态时通知监控系统。这可以通过为设备对象创建事件并指定要传输的Webhook来完成。当NetBox检测到设备的更改时，将发送包含更改详情和执行更改的人的HTTP请求到指定的接收器。
 
-See the [event rules documentation](../../features/event-rules.md)  for more information.
+有关更多信息，请参阅[事件规则文档](../../features/event-rules.md)。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好名称。
 
-### Content Types
+### 内容类型
 
-The type(s) of object in NetBox that will trigger the rule.
+将触发规则的NetBox对象类型。
 
-### Enabled
+### 启用
 
-If not selected, the event rule will not be processed.
+如果未选中，事件规则将不会被处理。
 
-### Events
+### 事件
 
-The events which will trigger the rule. At least one event type must be selected.
+触发规则的事件。必须至少选择一种事件类型。
 
-| Name       | Description                          |
-|------------|--------------------------------------|
-| Creations  | A new object has been created        |
-| Updates    | An existing object has been modified |
-| Deletions  | An object has been deleted           |
-| Job starts | A job for an object starts           |
-| Job ends   | A job for an object terminates       |
+| 名称        | 描述                             |
+|-------------|----------------------------------|
+| 创建        | 创建了一个新对象                 |
+| 更新        | 修改了现有对象                   |
+| 删除        | 删除了一个对象                   |
+| 作业开始    | 为一个对象启动了一个作业           |
+| 作业结束    | 为一个对象结束了一个作业           |
 
-### Conditions
+### 条件
 
-A set of [prescribed conditions](../../reference/conditions.md) against which the triggering object will be evaluated. If the conditions are defined but not met by the object, no action will be taken. An event rule that does not define any conditions will _always_ trigger.
+对触发对象进行评估的一组[规定条件](../../reference/conditions.md)。如果对象定义了条件但未满足条件，则不会执行任何操作。如果事件规则没有定义任何条件，将始终触发。

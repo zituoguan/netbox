@@ -1,12 +1,12 @@
-# Synchronized Data
+# 同步数据
 
-Some NetBox models support automatic synchronization of certain attributes from remote [data sources](../models/core/datasource.md), such as a git repository hosted on GitHub or GitLab. Data from the authoritative remote source is synchronized locally in NetBox as [data files](../models/core/datafile.md).
+某些NetBox模型支持从远程[数据源](../models/core/datasource.md)自动同步特定属性，例如托管在GitHub或GitLab上的git仓库。来自权威远程源的数据在NetBox中作为[数据文件](../models/core/datafile.md)同步到本地。
 
-!!! note "Permissions"
-    A user must be assigned the `core.sync_datasource` permission in order to synchronize local files from a remote data source. This is accomplished by creating a permission for the "Core > Data Source" object type with the `sync` action, and assigning it to the desired user and/or group.
+!!! 注意 "权限"
+    用户必须被分配`core.sync_datasource`权限，以便从远程数据源同步本地文件。这可以通过为“Core > 数据源”对象类型创建一个包含`sync`操作的权限并将其分配给所需的用户和/或组来实现。
 
-The following features support the use of synchronized data:
+以下功能支持使用同步数据：
 
-* [Configuration templates](../features/configuration-rendering.md)
-* [Configuration context data](../features/context-data.md)
-* [Export templates](../customization/export-templates.md)
+* [配置模板](../features/configuration-rendering.md)
+* [配置上下文数据](../features/context-data.md)
+* [导出模板](../customization/export-templates.md)

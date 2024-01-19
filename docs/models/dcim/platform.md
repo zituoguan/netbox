@@ -1,25 +1,25 @@
-# Platforms
+# 平台
 
-A platform defines the type of software running on a [device](./device.md) or [virtual machine](../virtualization/virtualmachine.md). This can be helpful to model when it is necessary to distinguish between different versions or feature sets. Note that two devices of the same type may be assigned different platforms: For example, one Juniper MX240 might run Junos 14 while another runs Junos 15.
+平台定义了运行在[设备](./device.md)或[虚拟机](../virtualization/virtualmachine.md)上的软件类型。当需要区分不同版本或功能集时，这可能会有所帮助。请注意，相同类型的两个设备可能分配了不同的平台：例如，一个Juniper MX240可能运行Junos 14，而另一个运行Junos 15。
 
-Platforms may optionally be limited by [manufacturer](./manufacturer.md): If a platform is assigned to a particular manufacturer, it can only be assigned to devices with a type belonging to that manufacturer.
+平台可以选择由[制造商](./manufacturer.md)限制：如果将平台分配给特定制造商，它只能分配给属于该制造商的设备类型。
 
-The assignment of platforms to devices is an optional feature, and may be disregarded if not desired.
+平台分配给设备是一个可选功能，如果不需要可以忽略。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的、用户友好的名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的、URL友好的标识符。（此值可用于过滤。）
 
-### Manufacturer
+### 制造商
 
-If designated, this platform will be available for use only to devices assigned to this [manufacturer](./manufacturer.md). This can be handy e.g. for limiting network operating systems to use on hardware produced by the relevant vendor. However, it should not be used when defining general-purpose software platforms.
+如果指定，此平台只能供分配给此[制造商](./manufacturer.md)的设备使用。这对于限制网络操作系统仅用于由相关供应商生产的硬件非常有用。但是，在定义通用软件平台时不应使用它。
 
-### Configuration Template
+### 配置模板
 
-The default [configuration template](../extras/configtemplate.md) for devices assigned to this platform.
+分配给此平台的设备的默认[配置模板](../extras/configtemplate.md)。

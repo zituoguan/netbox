@@ -1,30 +1,30 @@
-# Remote Authentication Settings
+# 远程认证设置
 
-The configuration parameters listed here control remote authentication for NetBox. Note that `REMOTE_AUTH_ENABLED` must be true in order for these settings to take effect.
+以下列出的配置参数控制NetBox的远程认证。请注意，必须将`REMOTE_AUTH_ENABLED`设置为true，以使这些设置生效。
 
 ---
 
 ## REMOTE_AUTH_AUTO_CREATE_GROUPS
 
-Default: `False`
+默认值：`False`
 
-If true, NetBox will automatically create groups specified in the `REMOTE_AUTH_GROUP_HEADER` header if they don't already exist. (Requires `REMOTE_AUTH_ENABLED`.)
+如果为true，NetBox将在`REMOTE_AUTH_GROUP_HEADER`头中指定的组如果不存在将自动创建。（需要`REMOTE_AUTH_ENABLED`。）
 
 ---
 
 ## REMOTE_AUTH_AUTO_CREATE_USER
 
-Default: `False`
+默认值：`False`
 
-If true, NetBox will automatically create local accounts for users authenticated via a remote service. (Requires `REMOTE_AUTH_ENABLED`.)
+如果为true，NetBox将自动为通过远程服务认证的用户创建本地帐户。（需要`REMOTE_AUTH_ENABLED`。）
 
 ---
 
 ## REMOTE_AUTH_BACKEND
 
-Default: `'netbox.authentication.RemoteUserBackend'`
+默认值：`'netbox.authentication.RemoteUserBackend'`
 
-This is the Python path to the custom [Django authentication backend](https://docs.djangoproject.com/en/stable/topics/auth/customizing/) to use for external user authentication. NetBox provides two built-in backends (listed below), though custom authentication backends may also be provided by other packages or plugins. Provide a string for a single backend, or an iterable for multiple backends, which will be attempted in the order given.
+这是用于外部用户认证的自定义[Django身份验证后端](https://docs.djangoproject.com/en/stable/topics/auth/customizing/)的Python路径。NetBox提供了两个内置后端（如下所示），但其他包或插件也可以提供自定义身份验证后端。为单个后端提供字符串，或为多个后端提供可迭代的后端，将按给定的顺序尝试。
 
 * `netbox.authentication.RemoteUserBackend`
 * `netbox.authentication.LDAPBackend`
@@ -33,110 +33,110 @@ This is the Python path to the custom [Django authentication backend](https://do
 
 ## REMOTE_AUTH_DEFAULT_GROUPS
 
-Default: `[]` (Empty list)
+默认值：`[]`（空列表）
 
-The list of groups to assign a new user account when created using remote authentication. (Requires `REMOTE_AUTH_ENABLED`.)
+在使用远程认证创建新用户帐户时分配的组列表。（需要`REMOTE_AUTH_ENABLED`。）
 
 ---
 
 ## REMOTE_AUTH_DEFAULT_PERMISSIONS
 
-Default: `{}` (Empty dictionary)
+默认值：`{}`（空字典）
 
-A mapping of permissions to assign a new user account when created using remote authentication. Each key in the dictionary should be set to a dictionary of the attributes to be applied to the permission, or `None` to allow all objects. (Requires `REMOTE_AUTH_ENABLED` as True and `REMOTE_AUTH_GROUP_SYNC_ENABLED` as False.)
+在使用远程认证创建新用户帐户时分配的权限的映射。字典中的每个键都应设置为要应用于权限的属性的字典，或设置为`None`以允许所有对象。（需要`REMOTE_AUTH_ENABLED`为True和`REMOTE_AUTH_GROUP_SYNC_ENABLED`为False。）
 
 ---
 
 ## REMOTE_AUTH_ENABLED
 
-Default: `False`
+默认值：`False`
 
-NetBox can be configured to support remote user authentication by inferring user authentication from an HTTP header set by the HTTP reverse proxy (e.g. nginx or Apache). Set this to `True` to enable this functionality. (Local authentication will still take effect as a fallback.) (`REMOTE_AUTH_DEFAULT_GROUPS` will not function if `REMOTE_AUTH_ENABLED` is disabled)
+NetBox可以配置为支持远程用户认证，通过推断由HTTP反向代理（例如nginx或Apache）设置的HTTP头来进行用户认证。将此设置为`True`以启用此功能。（本地认证仍然会生效作为后备。）（如果禁用`REMOTE_AUTH_ENABLED`，`REMOTE_AUTH_DEFAULT_GROUPS`将不起作用）
 
 ---
 
 ## REMOTE_AUTH_GROUP_HEADER
 
-Default: `'HTTP_REMOTE_USER_GROUP'`
+默认值：`'HTTP_REMOTE_USER_GROUP'`
 
-When remote user authentication is in use, this is the name of the HTTP header which informs NetBox of the currently authenticated user. For example, to use the request header `X-Remote-User-Groups` it needs to be set to `HTTP_X_REMOTE_USER_GROUPS`. (Requires `REMOTE_AUTH_ENABLED` and `REMOTE_AUTH_GROUP_SYNC_ENABLED` )
+在使用远程用户认证时，这是通知NetBox当前已认证用户的HTTP头的名称。例如，要使用请求头`X-Remote-User-Groups`，需要将其设置为`HTTP_X_REMOTE_USER_GROUPS`。（需要`REMOTE_AUTH_ENABLED`和`REMOTE_AUTH_GROUP_SYNC_ENABLED`）
 
 ---
 
 ## REMOTE_AUTH_GROUP_SEPARATOR
 
-Default: `|` (Pipe)
+默认值：`|`（管道符）
 
-The Seperator upon which `REMOTE_AUTH_GROUP_HEADER` gets split into individual Groups. This needs to be coordinated with your authentication Proxy. (Requires `REMOTE_AUTH_ENABLED` and `REMOTE_AUTH_GROUP_SYNC_ENABLED` )
+`REMOTE_AUTH_GROUP_HEADER`拆分为单个组的分隔符。这需要与您的认证代理协调。（需要`REMOTE_AUTH_ENABLED`和`REMOTE_AUTH_GROUP_SYNC_ENABLED`）
 
 ---
 
 ## REMOTE_AUTH_GROUP_SYNC_ENABLED
 
-Default: `False`
+默认值：`False`
 
-NetBox can be configured to sync remote user groups by inferring user authentication from an HTTP header set by the HTTP reverse proxy (e.g. nginx or Apache). Set this to `True` to enable this functionality. (Local authentication will still take effect as a fallback.) (Requires `REMOTE_AUTH_ENABLED`.)
+NetBox可以配置为通过推断由HTTP反向代理（例如nginx或Apache）设置的HTTP头来同步远程用户组的用户认证。将此设置为`True`以启用此功能。（本地认证仍然会生效作为后备。）（需要`REMOTE_AUTH_ENABLED`。）
 
 ---
 
 ## REMOTE_AUTH_HEADER
 
-Default: `'HTTP_REMOTE_USER'`
+默认值：`'HTTP_REMOTE_USER'`
 
-When remote user authentication is in use, this is the name of the HTTP header which informs NetBox of the currently authenticated user. For example, to use the request header `X-Remote-User` it needs to be set to `HTTP_X_REMOTE_USER`. (Requires `REMOTE_AUTH_ENABLED`.)
+在使用远程用户认证时，这是通知NetBox当前已认证用户的HTTP头的名称。例如，要使用请求头`X-Remote-User`，需要将其设置为`HTTP_X_REMOTE_USER`。（需要`REMOTE_AUTH_ENABLED`。）
 
 ---
 
 ## REMOTE_AUTH_USER_EMAIL
 
-Default: `'HTTP_REMOTE_USER_EMAIL'`
+默认值：`'HTTP_REMOTE_USER_EMAIL'`
 
-When remote user authentication is in use, this is the name of the HTTP header which informs NetBox of the email address of the currently authenticated user. For example, to use the request header `X-Remote-User-Email` it needs to be set to `HTTP_X_REMOTE_USER_EMAIL`. (Requires `REMOTE_AUTH_ENABLED`.)
+在使用远程用户认证时，这是通知NetBox当前已认证用户的电子邮件地址的HTTP头的名称。例如，要使用请求头`X-Remote-User-Email`，需要将其设置为`HTTP_X_REMOTE_USER_EMAIL`。（需要`REMOTE_AUTH_ENABLED`。）
 
 ---
 
 ## REMOTE_AUTH_USER_FIRST_NAME
 
-Default: `'HTTP_REMOTE_USER_FIRST_NAME'`
+默认值：`'HTTP_REMOTE_USER_FIRST_NAME'`
 
-When remote user authentication is in use, this is the name of the HTTP header which informs NetBox of the first name of the currently authenticated user. For example, to use the request header `X-Remote-User-First-Name` it needs to be set to `HTTP_X_REMOTE_USER_FIRST_NAME`. (Requires `REMOTE_AUTH_ENABLED`.)
+在使用远程用户认证时，这是通知NetBox当前已认证用户的名字的HTTP头的名称。例如，要使用请求头`X-Remote-User-First-Name`，需要将其设置为`HTTP_X_REMOTE_USER_FIRST_NAME`。（需要`REMOTE_AUTH_ENABLED`。）
 
 ---
 
 ## REMOTE_AUTH_USER_LAST_NAME
 
-Default: `'HTTP_REMOTE_USER_LAST_NAME'`
+默认值：`'HTTP_REMOTE_USER_LAST_NAME'`
 
-When remote user authentication is in use, this is the name of the HTTP header which informs NetBox of the last name of the currently authenticated user. For example, to use the request header `X-Remote-User-Last-Name` it needs to be set to `HTTP_X_REMOTE_USER_LAST_NAME`. (Requires `REMOTE_AUTH_ENABLED`.)
+在使用远程用户认证时，这是通知NetBox当前已认证用户的姓氏的HTTP头的名称。例如，要使用请求头`X-Remote-User-Last-Name`，需要将其设置为`HTTP_X_REMOTE_USER_LAST_NAME`。（需要`REMOTE_AUTH_ENABLED`。）
 
 ---
 
 ## REMOTE_AUTH_SUPERUSER_GROUPS
 
-Default: `[]` (Empty list)
+默认值：`[]`（空列表）
 
-The list of groups that promote an remote User to Superuser on Login. If group isn't present on next Login, the Role gets revoked. (Requires `REMOTE_AUTH_ENABLED` and `REMOTE_AUTH_GROUP_SYNC_ENABLED` )
+将远程用户提升为超级用户的组列表。如果在下次登录时组不在列表中，角色将被撤销。（需要`REMOTE_AUTH_ENABLED`和`REMOTE_AUTH_GROUP_SYNC_ENABLED`）
 
 ---
 
 ## REMOTE_AUTH_SUPERUSERS
 
-Default: `[]` (Empty list)
+默认值：`[]`（空列表）
 
-The list of users that get promoted to Superuser on Login. If user isn't present in list on next Login, the Role gets revoked. (Requires `REMOTE_AUTH_ENABLED` and `REMOTE_AUTH_GROUP_SYNC_ENABLED` )
+在登录时提升为超级用户的用户列表。如果下次登录时用户不在列表中，角色将被撤销。（需要`REMOTE_AUTH_ENABLED`和`REMOTE_AUTH_GROUP_SYNC_ENABLED`）
 
 ---
 
 ## REMOTE_AUTH_STAFF_GROUPS
 
-Default: `[]` (Empty list)
+默认值：`[]`（空列表）
 
-The list of groups that promote an remote User to Staff on Login. If group isn't present on next Login, the Role gets revoked. (Requires `REMOTE_AUTH_ENABLED` and `REMOTE_AUTH_GROUP_SYNC_ENABLED` )
+将远程用户提升为工作人员的组列表。如果在下次登录时组不在列表中，角色将被撤销。（需要`REMOTE_AUTH_ENABLED`和`REMOTE_AUTH_GROUP_SYNC_ENABLED`）
 
 ---
 
 ## REMOTE_AUTH_STAFF_USERS
 
-Default: `[]` (Empty list)
+默认值：`[]`（空列表）
 
-The list of users that get promoted to Staff on Login. If user isn't present in list on next Login, the Role gets revoked. (Requires `REMOTE_AUTH_ENABLED` and `REMOTE_AUTH_GROUP_SYNC_ENABLED` )
+在登录时提升为工作人员的用户列表。如果下次登录时用户不在列表中，角色将被撤销。（需要`REMOTE_AUTH_ENABLED`和`REMOTE_AUTH_GROUP_SYNC_ENABLED`）

@@ -1,21 +1,21 @@
-# NetBox Configuration
+# NetBox配置
 
-## Configuration File
+## 配置文件
 
-NetBox's configuration file contains all the important parameters which control how NetBox functions: database settings, security controls, user preferences, and so on. While the default configuration suffices out of the box for most use cases, there are a few [required parameters](./required-parameters.md) which **must** be defined during installation. 
+NetBox的配置文件包含了控制NetBox功能的所有重要参数：数据库设置、安全控制、用户首选项等等。尽管默认配置对于大多数用例都足够，但在安装过程中必须定义一些[必需的参数](./required-parameters.md)。
 
-The configuration file is loaded from `$INSTALL_ROOT/netbox/netbox/configuration.py` by default. An example configuration is provided at `configuration_example.py`, which you may copy to use as your default config. Note that a configuration file must be defined; NetBox will not run without one.
+默认情况下，配置文件从`$INSTALL_ROOT/netbox/netbox/configuration.py`加载。示例配置位于`configuration_example.py`中，您可以复制它并用作默认配置。请注意，必须定义一个配置文件；没有配置文件，NetBox将无法运行。
 
-!!! info "Customizing the Configuration Module"
-    A custom configuration module may be specified by setting the `NETBOX_CONFIGURATION` environment variable. This must be a dotted path to the desired Python module. For example, a file named `my_config.py` in the same directory as `settings.py` would be referenced as `netbox.my_config`.
+!!! info "自定义配置模块"
+    可以通过设置`NETBOX_CONFIGURATION`环境变量来指定自定义配置模块。这必须是指向所需Python模块的点分路径。例如，与`settings.py`位于同一目录中的名为`my_config.py`的文件可以引用为`netbox.my_config`。
 
-    To keep things simple, the NetBox documentation refers to the configuration file simply as `configuration.py`.
+    为简单起见，NetBox文档简单地将配置文件称为`configuration.py`。
 
-Some configuration parameters may alternatively be defined either in `configuration.py` or within the administrative section of the user interface. Settings which are "hard-coded" in the configuration file take precedence over those defined via the UI.
+在文档中适用的情况下，某些配置参数可以在`configuration.py`中定义，也可以在用户界面的管理部分内定义。在配置文件中“硬编码”的设置优先于通过UI定义的设置。
 
-## Dynamic Configuration Parameters
+## 动态配置参数
 
-Some configuration parameters are primarily controlled via NetBox's admin interface (under Admin > Extras > Configuration Revisions). These are noted where applicable in the documentation. These settings may also be overridden in `configuration.py` to prevent them from being modified via the UI. A complete list of supported parameters is provided below:
+一些配置参数主要通过NetBox的管理界面（在Admin > Extras > Configuration Revisions下）进行控制。在文档中适用的地方进行了相应的注释。这些设置也可以在`configuration.py`中进行覆盖，以防止通过UI进行修改。以下是支持的参数的完整列表：
 
 * [`ALLOWED_URL_SCHEMES`](./security.md#allowed_url_schemes)
 * [`BANNER_BOTTOM`](./miscellaneous.md#banner_bottom)
@@ -38,12 +38,12 @@ Some configuration parameters are primarily controlled via NetBox's admin interf
 * [`RACK_ELEVATION_DEFAULT_UNIT_HEIGHT`](./default-values.md#rack_elevation_default_unit_height)
 * [`RACK_ELEVATION_DEFAULT_UNIT_WIDTH`](./default-values.md#rack_elevation_default_unit_width)
 
-## Modifying the Configuration
+## 修改配置
 
-The configuration file may be modified at any time. However, the WSGI service (e.g. Gunicorn) must be restarted before these changes will take effect:
+可以随时修改配置文件。但是，在这些更改生效之前，必须重新启动WSGI服务（例如Gunicorn）：
 
 ```no-highlight
 $ sudo systemctl restart netbox
 ```
 
-Configuration parameters which are set via the admin UI (those listed under "dynamic settings") take effect immediately.
+通过管理UI设置的配置参数（在“动态设置”下列出的参数）会立即生效。

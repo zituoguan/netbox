@@ -1,8 +1,6 @@
-# Redis Installation
+# Redis安装
 
-## Install Redis
-
-[Redis](https://redis.io/) is an in-memory key-value store which NetBox employs for caching and queuing. This section entails the installation and configuration of a local Redis instance. If you already have a Redis service in place, skip to [the next section](3-netbox.md).
+[Redis](https://redis.io/)是一个内存中的键值存储，NetBox用它来进行缓存和队列操作。本节介绍如何安装和配置本地的Redis实例。如果您已经有一个Redis服务，请跳转到[下一节](3-netbox.md)。
 
 === "Ubuntu"
 
@@ -18,20 +16,20 @@
     sudo systemctl enable redis
     ```
 
-Before continuing, verify that your installed version of Redis is at least v4.0:
+在继续之前，请验证您安装的Redis版本至少为v4.0：
 
 ```no-highlight
 redis-server -v
 ```
 
-You may wish to modify the Redis configuration at `/etc/redis.conf` or `/etc/redis/redis.conf`, however in most cases the default configuration is sufficient.
+您可以在`/etc/redis.conf`或`/etc/redis/redis.conf`中修改Redis配置，但在大多数情况下，默认配置已经足够了。
 
-## Verify Service Status
+## 验证服务状态
 
-Use the `redis-cli` utility to ensure the Redis service is functional:
+使用`redis-cli`工具来确保Redis服务正常运行：
 
 ```no-highlight
 redis-cli ping
 ```
 
-If successful, you should receive a `PONG` response from the server.
+如果成功，您应该会收到来自服务器的`PONG`响应。

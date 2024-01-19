@@ -1,45 +1,45 @@
-# Wireless LANs
+# 无线局域网
 
-A wireless LAN is a set of interfaces connected via a common wireless channel, identified by its SSID and authentication parameters. Wireless [interfaces](../dcim/interface.md) can be associated with wireless LANs to model multi-acess wireless segments.
+无线局域网是一组通过共同的无线信道连接的接口，由其SSID和认证参数进行标识。无线[接口](../dcim/interface.md)可以与无线局域网关联，以建模多接入无线段。
 
-## Fields
+## 字段
 
 ### SSID
 
-The service set identifier (SSID) for the wireless network.
+无线网络的服务集标识符（SSID）。
 
-### Group
+### 组
 
-The [wireless LAN group](./wirelesslangroup.md) to which this wireless LAN is assigned (if any).
+分配给该无线局域网的[无线局域网组](./wirelesslangroup.md)（如果有）。
 
-### Status
+### 状态
 
-The operational status of the wireless network.
+无线网络的运行状态。
 
-!!! tip
-    Additional statuses may be defined by setting `WirelessLAN.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
+!!! 提示
+    通过在配置参数[`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices)下设置`WirelessLAN.status`可以定义其他状态。
 
 ### VLAN
 
-Each wireless LAN can optionally be mapped to a [VLAN](../ipam/vlan.md), to model a bridge between wired and wireless segments.
+每个无线局域网可以选择映射到一个[VLAN](../ipam/vlan.md)，以建模有线和无线段之间的桥接。
 
-### Authentication Type
+### 认证类型
 
-The type of wireless authentication in use. Options include:
+正在使用的无线认证类型。选项包括：
 
-* Open
+* 开放
 * WEP
-* WPA Personal (PSK)
-* WPA Enterprise
+* WPA个人（PSK）
+* WPA企业
 
-### Authentication Cipher
+### 认证密码
 
-The security cipher used to apply wireless authentication. Options include:
+用于应用无线认证的安全密码。选项包括：
 
-* Auto (automatic)
+* 自动（自动）
 * TKIP
 * AES
 
-### Pre-Shared Key
+### 预共享密钥
 
-The security key configured on each client to grant access to the secured wireless LAN. This applies only to certain authentication types.
+配置在每个客户端上的安全密钥，以授予对受保护的无线局域网的访问权限。这仅适用于某些认证类型。

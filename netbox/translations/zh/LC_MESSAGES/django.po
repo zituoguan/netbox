@@ -207,11 +207,11 @@ msgstr "提供商网络 (ID)"
 
 #: circuits/filtersets.py:166
 msgid "Circuit type (ID)"
-msgstr "线路类型 (ID)"
+msgstr "电路类型 (ID)"
 
 #: circuits/filtersets.py:172
 msgid "Circuit type (slug)"
-msgstr "线路类型  (slug)"
+msgstr "电路类型  (slug)"
 
 #: circuits/filtersets.py:207 circuits/filtersets.py:244 dcim/filtersets.py:205
 #: dcim/filtersets.py:280 dcim/filtersets.py:352 dcim/filtersets.py:905
@@ -244,7 +244,7 @@ msgstr "搜索"
 #: templates/dcim/inc/cable_termination.html:55
 #: templates/dcim/trace/circuit.html:4
 msgid "Circuit"
-msgstr "线路"
+msgstr "电路"
 
 #: circuits/filtersets.py:254
 msgid "ProviderNetwork (ID)"
@@ -599,7 +599,7 @@ msgstr "指定的提供商账户"
 
 #: circuits/forms/bulk_import.py:92
 msgid "Type of circuit"
-msgstr "线路类型"
+msgstr "电路类型"
 
 #: circuits/forms/bulk_import.py:97 dcim/forms/bulk_import.py:89
 #: dcim/forms/bulk_import.py:148 dcim/forms/bulk_import.py:196
@@ -770,7 +770,7 @@ msgstr "提供商网络"
 
 #: circuits/forms/model_forms.py:78 templates/circuits/circuittype.html:20
 msgid "Circuit Type"
-msgstr "线路类型"
+msgstr "电路类型"
 
 #: circuits/models/circuits.py:25 dcim/models/cables.py:67
 #: dcim/models/device_component_templates.py:491
@@ -783,19 +783,19 @@ msgstr "颜色"
 
 #: circuits/models/circuits.py:34
 msgid "circuit type"
-msgstr "线路类型"
+msgstr "电路类型"
 
 #: circuits/models/circuits.py:35
 msgid "circuit types"
-msgstr "线路类型"
+msgstr "电路类型"
 
 #: circuits/models/circuits.py:46
 msgid "circuit ID"
-msgstr "线路ID"
+msgstr "电路ID"
 
 #: circuits/models/circuits.py:47
 msgid "Unique circuit ID"
-msgstr "唯一线路 ID"
+msgstr "唯一电路 ID"
 
 #: circuits/models/circuits.py:67 core/models/data.py:54 core/models/jobs.py:85
 #: dcim/models/cables.py:49 dcim/models/devices.py:641
@@ -827,11 +827,11 @@ msgstr "已承诺的速率"
 
 #: circuits/models/circuits.py:135
 msgid "circuit"
-msgstr "线路"
+msgstr "电路"
 
 #: circuits/models/circuits.py:136
 msgid "circuits"
-msgstr "线路"
+msgstr "电路"
 
 #: circuits/models/circuits.py:169
 msgid "termination"
@@ -843,7 +843,7 @@ msgstr "端口速度（Kbps）"
 
 #: circuits/models/circuits.py:189
 msgid "Physical circuit speed"
-msgstr "物理线路速度"
+msgstr "物理电路速度"
 
 #: circuits/models/circuits.py:194
 msgid "upstream speed (Kbps)"
@@ -884,11 +884,11 @@ msgstr "描述"
 
 #: circuits/models/circuits.py:223
 msgid "circuit termination"
-msgstr "线路端点"
+msgstr "电路端点"
 
 #: circuits/models/circuits.py:224
 msgid "circuit terminations"
-msgstr "线路端点"
+msgstr "电路端点"
 
 #: circuits/models/providers.py:22 circuits/models/providers.py:66
 #: circuits/models/providers.py:104 core/models/data.py:41
@@ -1051,11 +1051,11 @@ msgstr "名称"
 #: templates/circuits/provideraccount.html:46
 #: templates/circuits/providernetwork.html:54
 msgid "Circuits"
-msgstr "线路"
+msgstr "电路"
 
 #: circuits/tables/circuits.py:52 templates/circuits/circuit.html:27
 msgid "Circuit ID"
-msgstr "线路 ID"
+msgstr "电路 ID"
 
 #: circuits/tables/circuits.py:65 wireless/forms/model_forms.py:157
 msgid "Side A"
@@ -3909,7 +3909,7 @@ msgstr "分配功耗不能超过最大功耗（{maximum_draw}W）。"
 #: dcim/models/device_component_templates.py:321
 #: dcim/models/device_components.py:478
 msgid "feed leg"
-msgstr "供电线路"
+msgstr "供电电路"
 
 #: dcim/models/device_component_templates.py:325
 #: dcim/models/device_components.py:482
@@ -9363,12 +9363,12 @@ msgstr "终止日期"
 
 #: templates/circuits/circuit_terminations_swap.html:4
 msgid "Swap Circuit Terminations"
-msgstr "交换线路端点"
+msgstr "交换电路端点"
 
 #: templates/circuits/circuit_terminations_swap.html:8
 #, python-format
 msgid "Swap these terminations for circuit %(circuit)s?"
-msgstr "为线路 %(circuit)s 交换这些端点?"
+msgstr "为电路 %(circuit)s 交换这些端点?"
 
 #: templates/circuits/circuit_terminations_swap.html:14
 msgid "A side"
@@ -9383,7 +9383,7 @@ msgstr "Z 端"
 #: templates/dcim/frontport.html:128 templates/dcim/interface.html:199
 #: templates/dcim/rearport.html:118
 msgid "Circuit Termination"
-msgstr "线路端点"
+msgstr "电路端点"
 
 #: templates/circuits/circuittermination_edit.html:41
 msgid "Termination Details"
@@ -9391,7 +9391,7 @@ msgstr "端点详细信息"
 
 #: templates/circuits/circuittype.html:10
 msgid "Add Circuit"
-msgstr "添加线路"
+msgstr "添加电路"
 
 #: templates/circuits/inc/circuit_termination.html:9
 #: templates/dcim/devicetype/component_templates.html:30
@@ -9451,11 +9451,11 @@ msgstr "跟踪"
 
 #: templates/circuits/inc/circuit_termination.html:62
 msgid "Edit cable"
-msgstr "编辑线路"
+msgstr "编辑电缆"
 
 #: templates/circuits/inc/circuit_termination.html:67
 msgid "Remove cable"
-msgstr "删除线路"
+msgstr "删除电缆"
 
 #: templates/circuits/inc/circuit_termination.html:68
 #: templates/dcim/bulk_disconnect.html:5
@@ -10209,7 +10209,7 @@ msgstr "A"
 
 #: templates/dcim/poweroutlet.html:51
 msgid "Feed Leg"
-msgstr "电源线路"
+msgstr "电源电路"
 
 #: templates/dcim/powerpanel.html:77
 msgid "Add Power Feeds"

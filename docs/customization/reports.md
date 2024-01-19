@@ -1,35 +1,35 @@
-# NetBox Reports
+# NetBox报告
 
-A NetBox report is a mechanism for validating the integrity of data within NetBox. Running a report allows the user to verify that the objects defined within NetBox meet certain arbitrary conditions. For example, you can write reports to check that:
+NetBox报告是验证NetBox中数据完整性的机制。运行报告允许用户验证在NetBox中定义的对象是否满足某些任意条件。例如，您可以编写报告来检查以下内容：
 
-* All top-of-rack switches have a console connection
-* Every router has a loopback interface with an IP address assigned
-* Each interface description conforms to a standard format
-* Every site has a minimum set of VLANs defined
-* All IP addresses have a parent prefix
+* 所有顶部交换机是否具有控制台连接
+* 每个路由器是否具有具有分配IP地址的环回接口
+* 每个接口描述是否符合标准格式
+* 每个站点是否定义了一组最小VLAN
+* 所有IP地址是否具有父前缀
 
-...and so on. Reports are completely customizable, so there's practically no limit to what you can test for.
+......等等。报告是完全可定制的，因此您几乎可以测试任何内容。
 
-## Writing Reports
+## 编写报告
 
-Reports must be saved as files in the [`REPORTS_ROOT`](../configuration/system.md#reports_root) path (which defaults to `netbox/reports/`). Each file created within this path is considered a separate module. Each module holds one or more reports (Python classes), each of which performs a certain function. The logic of each report is broken into discrete test methods, each of which applies a small portion of the logic comprising the overall test.
+报告必须保存为文件，位于 [`REPORTS_ROOT`](../configuration/system.md#reports_root) 路径中（默认为 `netbox/reports/`）。在此路径中创建的每个文件都被视为单独的模块。每个模块包含一个或多个报告（Python类），每个报告执行特定的功能。每个报告的逻辑被分解成离散的测试方法，每个方法应用于构成整个测试的一部分。
 
 !!! warning
-    The reports path includes a file named `__init__.py`, which registers the path as a Python module. Do not delete this file.
+    报告路径包括一个名为 `__init__.py` 的文件，该文件将该路径注册为Python模块。不要删除此文件。
 
-For example, we can create a module named `devices.py` to hold all of our reports which pertain to devices in NetBox. Within that module, we might define several reports. Each report is defined as a Python class inheriting from `extras.reports.Report`.
+例如，我们可以创建一个名为 `devices.py` 的模块，用于保存与NetBox中的设备相关的所有报告。在该模块中，我们可以定义多个报告。每个报告都定义为继承自 `extras.reports.Report` 的Python类。
 
 ```
 from extras.reports import Report
 
 class DeviceConnectionsReport(Report):
-    description = "Validate the minimum physical connections for each device"
+    description = "验证每个设备的最低物理连接"
 
 class DeviceIPsReport(Report):
-    description = "Check that every device has a primary IP address assigned"
+    description = "检查每个设备是否分配了主要IP地址"
 ```
 
-Within each report class, we'll create a number of test methods to execute our report's logic. In DeviceConnectionsReport, for instance, we want to ensure that every live device has a console connection, an out-of-band management connection, and two power connections.
+在每个报告类中，我们将创建多个测试方法来执行报告的逻辑。例如，在DeviceConnectionsReport中，我们希望确保每个活动设备都具有控制台连接、带外管理连接和两个电源连接。
 
 ```
 from dcim.choices import DeviceStatusChoices
@@ -38,29 +38,29 @@ from extras.reports import Report
 
 
 class DeviceConnectionsReport(Report):
-    description = "Validate the minimum physical connections for each device"
+    description = "验证每个设备的最低物理连接"
 
     def test_console_connection(self):
 
-        # Check that every console port for every active device has a connection defined.
+        # 检查每个活动设备的每个控制台端口是否定义了连接。
         active = DeviceStatusChoices.STATUS_ACTIVE
         for console_port in ConsolePort.objects.prefetch_related('device').filter(device__status=active):
             if not console_port.connected_endpoints:
                 self.log_failure(
                     console_port.device,
-                    "No console connection defined for {}".format(console_port.name)
+                    "未为{}定义控制台连接".format(console_port.name)
                 )
             elif not console_port.connection_status:
                 self.log_warning(
                     console_port.device,
-                    "Console connection for {} marked as planned".format(console_port.name)
+                    "{}的控制台连接标记为已计划".format(console_port.name)
                 )
             else:
                 self.log_success(console_port.device)
 
     def test_power_connections(self):
 
-        # Check that every active device has at least two connected power supplies.
+        # 检查每个活动设备是否至少有两个已连接的电源供应。
         for device in Device.objects.filter(status=DeviceStatusChoices.STATUS_ACTIVE):
             connected_ports = 0
             for power_port in PowerPort.objects.filter(device=device):
@@ -69,39 +69,39 @@ class DeviceConnectionsReport(Report):
                     if not power_port.path.is_active:
                         self.log_warning(
                             device,
-                            "Power connection for {} marked as planned".format(power_port.name)
+                            "{}的电源连接标记为已计划".format(power_port.name)
                         )
             if connected_ports < 2:
                 self.log_failure(
                     device,
-                    "{} connected power supplies found (2 needed)".format(connected_ports)
+                    "找到{}个已连接的电源供应（需要2个）".format(connected_ports)
                 )
             else:
                 self.log_success(device)
 ```
 
-As you can see, reports are completely customizable. Validation logic can be as simple or as complex as needed. Also note that the `description` attribute support markdown syntax. It will be rendered in the report list page.
+正如您所看到的，报告是完全可定制的。验证逻辑可以简单或复杂，视情况而定。还请注意，`description` 属性支持Markdown语法，它将在报告列表页中呈现。
 
 !!! warning
-    Reports should never alter data: If you find yourself using the `create()`, `save()`, `update()`, or `delete()` methods on objects within reports, stop and re-evaluate what you're trying to accomplish. Note that there are no safeguards against the accidental alteration or destruction of data.
+    报告永远不应更改数据：如果发现自己在报告中使用 `create()`、`save()`、`update()` 或 `delete()` 方法来更改对象，请停止并重新评估您想要实现的目标。请注意，没有防止意外更改或销毁数据的保护措施。
 
-## Report Attributes
+## 报告属性
 
 ### `description`
 
-A human-friendly description of what your report does.
+报告功能的人类友好描述。
 
 ### `scheduling_enabled`
 
-By default, a report can be scheduled for execution at a later time. Setting `scheduling_enabled` to False disables this ability: Only immediate execution will be possible. (This also disables the ability to set a recurring execution interval.)
+默认情况下，报告可以计划在以后执行。将 `scheduling_enabled` 设置为 False 将禁用此功能：只能进行立即执行。 （这还将禁用设置定期执行间隔的能力。）
 
 ### `job_timeout`
 
-Set the maximum allowed runtime for the report. If not set, `RQ_DEFAULT_TIMEOUT` will be used.
+设置报告的最大允许运行时间。如果未设置，将使用 `RQ_DEFAULT_TIMEOUT`。
 
-## Logging
+## 记录
 
-The following methods are available to log results within a report:
+以下方法可用于在报告中记录结果：
 
 * log(message)
 * log_success(object, message=None)
@@ -109,59 +109,59 @@ The following methods are available to log results within a report:
 * log_warning(object, message)
 * log_failure(object, message)
 
-The recording of one or more failure messages will automatically flag a report as failed. It is advised to log a success for each object that is evaluated so that the results will reflect how many objects are being reported on. (The inclusion of a log message is optional for successes.) Messages recorded with `log()` will appear in a report's results but are not associated with a particular object or status. Log messages also support using markdown syntax and will be rendered on the report result page.
+记录一个或多个失败消息将自动将报告标记为失败。建议为每个要评估的对象记录一个成功，以便结果反映正在报告的对象数量。（成功时包含日志消息是可选的。）使用 `log()` 记录的消息将显示在报告的结果中，但不与特定对象或状态相关联。日志消息还支持使用Markdown语法，并将呈现在报告结果页上。
 
-To perform additional tasks, such as sending an email or calling a webhook, before or after a report is run, extend the `pre_run()` and/or `post_run()` methods, respectively.
+要在报告运行之前或之后执行其他任务（例如发送电子邮件或调用Webhook），请扩展 `pre_run()` 和/或 `post_run()` 方法。
 
-By default, reports within a module are ordered alphabetically in the reports list page. To return reports in a specific order, you can define the `report_order` variable at the end of your module. The `report_order` variable is a tuple which contains each Report class in the desired order. Any reports that are omitted from this list will be listed last.
+默认情况下，模块内的报告在报告列表页中按字母顺序排列。要以特定顺序返回报告，可以在模块的末尾定义 `report_order` 变量。`report_order` 变量是一个包含每个报告类的元组，按所需的顺序排列。从此列表中省略的任何报告将在最后列出。
 
-```
+```python
 from extras.reports import Report
 
-class DeviceConnectionsReport(Report)
+class DeviceConnectionsReport(Report):
     pass
 
-class DeviceIPsReport(Report)
+class DeviceIPsReport(Report):
     pass
 
 report_order = (DeviceIPsReport, DeviceConnectionsReport)
 ```
 
-Once you have created a report, it will appear in the reports list. Initially, reports will have no results associated with them. To generate results, run the report.
+创建报告后，它将出现在报告列表中。最初，报告不会关联任何结果。要生成结果，请运行报告。
 
-## Running Reports
+## 运行报告
 
 !!! note
-    To run a report, a user must be assigned via permissions for `Extras > Report`, `Extras > ReportModule`, and `Core > ManagedFile` objects. They must also be assigned the `extras.run_report` permission. This is achieved by assigning the user (or group) a permission on the Report object and specifying the `run` action in the admin UI as shown below.
+    要运行报告，用户必须通过对 `Extras > 报告`、`Extras > 报告模块` 和 `Core > 管理文件` 对象进行权限分配。还必须为用户（或用户组）分配 `extras.run_report` 权限。通过在管理界面中为报告对象分配权限并指定 `运行` 操作来实现这一点，如下图所示。
 
-    ![Adding the run action to a permission](../media/admin_ui_run_permission.png)
+    ![将运行操作添加到权限](../media/admin_ui_run_permission.png)
 
-### Via the Web UI
+### 通过Web界面
 
-Reports can be run via the web UI by navigating to the report and clicking the "run report" button at top right. Once a report has been run, its associated results will be included in the report view. It is possible to schedule a report to be executed at specified time in the future. A scheduled report can be canceled by deleting the associated job result object.
+可以通过导航到报告并单击右上角的 "运行报告" 按钮来在Web界面上运行报告。运行报告后，其相关的结果将包含在报告视图中。可以计划在将来的指定时间执行报告。可以通过删除相关的作业结果对象来取消计划报告。
 
-### Via the API
+### 通过API
 
-To run a report via the API, simply issue a POST request to its `run` endpoint. Reports are identified by their module and class name.
+要通过API运行报告，只需向其 `运行` 端点发送POST请求。报告由其模块和类名标识。
 
 ```
     POST /api/extras/reports/<module>.<name>/run/
 ```
 
-Our example report above would be called as:
+我们上面的示例报告将被调用为：
 
 ```
     POST /api/extras/reports/devices.DeviceConnectionsReport/run/
 ```
 
-Optionally `schedule_at` can be passed in the form data with a datetime string to schedule a script at the specified date and time.
+还可以在表单数据中可选地传递 `schedule_at`，其中包含日期时间字符串，以在指定的日期和时间安排脚本。
 
-### Via the CLI
+### 通过CLI
 
-Reports can be run on the CLI by invoking the management command:
+可以通过调用管理命令来在CLI上运行报告：
 
 ```
 python3 manage.py runreport <module>
 ```
 
-where ``<module>`` is the name of the python file in the ``reports`` directory without the ``.py`` extension.  One or more report modules may be specified.
+其中 `<module>` 是 `reports` 目录中的python文件的名称，不包含 `.py` 扩展名。可以指定一个或多个报告模块。

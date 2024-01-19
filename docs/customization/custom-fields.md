@@ -1,90 +1,90 @@
-# Custom Fields
+# 自定义字段
 
-Each model in NetBox is represented in the database as a discrete table, and each attribute of a model exists as a column within its table. For example, sites are stored in the `dcim_site` table, which has columns named `name`, `facility`, `physical_address`, and so on. As new attributes are added to objects throughout the development of NetBox, tables are expanded to include new rows.
+NetBox中的每个模型都表示为数据库中的一个单独表，模型的每个属性都存在于其表内作为列。例如，站点存储在`dcim_site`表中，该表具有列名`name`、`facility`、`physical_address`等等。随着在NetBox的开发过程中向对象添加新属性，表会扩展以包含新的行。
 
-However, some users might want to store additional object attributes that are somewhat esoteric in nature, and that would not make sense to include in the core NetBox database schema. For instance, suppose your organization needs to associate each device with a ticket number correlating it with an internal support system record. This is certainly a legitimate use for NetBox, but it's not a common enough need to warrant including a field for _every_ NetBox installation. Instead, you can create a custom field to hold this data.
+然而，一些用户可能希望存储一些性质有点奇特的额外对象属性，这些属性不应包含在核心NetBox数据库模式中并不合理。例如，假设您的组织需要将每个设备与与内部支持系统记录相关的工单号关联起来。这当然是NetBox的合法用途，但不足以包含在每个NetBox安装中都添加字段。相反，您可以创建一个自定义字段来保存这些数据。
 
-Within the database, custom fields are stored as JSON data directly alongside each object. This alleviates the need for complex queries when retrieving objects.
+在数据库中，自定义字段存储为与每个对象直接一起存储的JSON数据。这消除了在检索对象时进行复杂查询的需要。
 
-## Creating Custom Fields
+## 创建自定义字段
 
-Custom fields may be created by navigating to Customization > Custom Fields. NetBox supports many types of custom field:
+可以通过导航到Customization > Custom Fields来创建自定义字段。NetBox支持许多类型的自定义字段：
 
-* Text: Free-form text (intended for single-line use)
-* Long text: Free-form of any length; supports Markdown rendering
-* Integer: A whole number (positive or negative)
-* Decimal: A fixed-precision decimal number (4 decimal places)
-* Boolean: True or false
-* Date: A date in ISO 8601 format (YYYY-MM-DD)
-* Date & time: A date and time in ISO 8601 format (YYYY-MM-DD HH:MM:SS)
-* URL: This will be presented as a link in the web UI
-* JSON: Arbitrary data stored in JSON format
-* Selection: A selection of one of several pre-defined custom choices
-* Multiple selection: A selection field which supports the assignment of multiple values
-* Object: A single NetBox object of the type defined by `object_type`
-* Multiple object: One or more NetBox objects of the type defined by `object_type`
+* 文本：自由文本（用于单行使用）
+* 长文本：任意长度的自由文本；支持Markdown渲染
+* 整数：整数（正数或负数）
+* 十进制：定点小数（4位小数）
+* 布尔值：真或假
+* 日期：ISO 8601格式的日期（YYYY-MM-DD）
+* 日期和时间：ISO 8601格式的日期和时间（YYYY-MM-DD HH:MM:SS）
+* URL：在Web界面中呈现为链接
+* JSON：以JSON格式存储的任意数据
+* 选择：预定义自定义选择中的一个选择
+* 多重选择：支持分配多个值的选择字段
+* 对象：由`object_type`定义的类型的单个NetBox对象
+* 多个对象：由`object_type`定义的类型的一个或多个NetBox对象
 
-Each custom field must have a name. This should be a simple database-friendly string (e.g. `tps_report`) and may contain only alphanumeric characters and underscores. You may also assign a corresponding human-friendly label (e.g. "TPS report"); the label will be displayed on web forms. A weight is also required: Higher-weight fields will be ordered lower within a form. (The default weight is 100.) If a description is provided, it will appear beneath the field in a form.
+每个自定义字段必须有一个名称。这应该是一个简单的适合数据库的字符串（例如`tps_report`），只能包含字母数字字符和下划线。您还可以分配相应的人类友好标签（例如"TPS报告"）；标签将显示在Web表单中。还需要权重：具有较高权重的字段将在表单内排在较低位置。（默认权重为100。）如果提供了描述，它将出现在表单中字段下方。
 
-Marking a field as required will force the user to provide a value for the field when creating a new object or when saving an existing object. A default value for the field may also be provided. Use "true" or "false" for boolean fields, or the exact value of a choice for selection fields.
+将字段标记为必填字段将强制用户在创建新对象或保存现有对象时为字段提供值。还可以提供字段的默认值。对于布尔字段，请使用"true"或"false"，对于选择字段，请使用选择的确切值。
 
-A custom field must be assigned to one or more object types, or models, in NetBox. Once created, custom fields will automatically appear as part of these models in the web UI and REST API. Note that not all models support custom fields.
+自定义字段必须分配给一个或多个NetBox中的对象类型或模型。一旦创建，自定义字段将自动出现在Web界面和REST API中的这些模型中。请注意，并非所有模型都支持自定义字段。
 
-### Filtering
+### 过滤
 
-The filter logic controls how values are matched when filtering objects by the custom field. Loose filtering (the default) matches on a partial value, whereas exact matching requires a complete match of the given string to a field's value. For example, exact filtering with the string "red" will only match the exact value "red", whereas loose filtering will match on the values "red", "red-orange", or "bored". Setting the filter logic to "disabled" disables filtering by the field entirely.
+过滤逻辑控制在过滤对象时如何匹配值。松散过滤（默认）在部分值上匹配，而精确匹配需要将给定的字符串完全匹配到字段的值。例如，使用字符串"red"的精确过滤将仅匹配精确值"red"，而松散过滤将匹配值"red"、"red-orange"或"bored"。将过滤逻辑设置为"disabled"将完全禁用按字段进行过滤。
 
-### Grouping
+### 分组
 
-Related custom fields can be grouped together within the UI by assigning each the same group name. When at least one custom field for an object type has a group defined, it will appear under the group heading within the custom fields panel under the object view. All custom fields with the same group name will appear under that heading. (Note that the group names must match exactly, or each will appear as a separate heading.)
+相关的自定义字段可以在UI中通过分配相同的组名称进行分组。当一个对象类型的至少一个自定义字段定义了分组时，它将出现在对象视图下的自定义字段面板下的组标题下。所有具有相同组名称的自定义字段将出现在该标题下。（请注意，组名称必须完全匹配，否则每个组将作为单独的标题显示。）
 
-This parameter has no effect on the API representation of custom field data.
+此参数对自定义字段数据的API表示没有影响。
 
-### Visibility & Editing
+### 可见性和编辑
 
-!!! info "This feature was improved in NetBox v3.7."
+!!! 信息 "此功能在NetBox v3.7中得到改进。"
 
-When creating a custom field, users can control the conditions under which it may be displayed and edited within the NetBox user interface. The following choices are available for controlling the display of a custom field on an object:
+在创建自定义字段时，用户可以控制在NetBox用户界面中何时显示和编辑自定义字段的条件。以下选择用于控制在对象上显示自定义字段的方式：
 
-* **Always** (default): The custom field is included when viewing an object.
-* **If Set**: The custom field is included only if a value has been defined for the object.
-* **Hidden**: The custom field will never be displayed within the UI. This option is recommended for fields which are not intended for use by human users.
+* **始终**（默认）：在查看对象时包括自定义字段。
+* **如果设置**：仅当为对象定义了值时才包括自定义字段。
+* **隐藏**：自定义字段永远不会显示在用户界面内。建议将此选项用于不适用于人类用户使用的字段。
 
-Additionally, the following options are available for controlling whether custom field values can be altered within the NetBox UI:
+此外，以下选项可用于控制是否可以在NetBox UI内更改自定义字段值：
 
-* **Yes** (default): The custom field's value may be modified when editing an object.
-* **No**: The custom field is displayed for reference when editing an object, but its value may not be modified.
-* **Hidden**: The custom field is not displayed when editing an object.
+* **是**（默认）：在编辑对象时可以修改自定义字段的值。
+* **否**：在编辑对象时会显示自定义字段供参考，但其值不可更改。
+* **隐藏**：在编辑对象时不显示自定义字段。
 
-Note that this setting has no impact on the REST or GraphQL APIs: Custom field data will always be available via either API.
+请注意，此设置不会影响REST或GraphQL API：自定义字段数据将始终可通过任一API获取。
 
-### Validation
+### 验证
 
-NetBox supports limited custom validation for custom field values. Following are the types of validation enforced for each field type:
+NetBox支持有限的自定义字段值验证。以下是每个字段类型所强制执行的验证类型：
 
-* Text: Regular expression (optional)
-* Integer: Minimum and/or maximum value (optional)
-* Selection: Must exactly match one of the prescribed choices
+* 文本：正则表达式（可选）
+* 整数：最小值和/或最大值（可选）
+* 选择：必须完全匹配预定义选择中的一个选择
 
-### Custom Selection Fields
+### 自定义选择字段
 
-Each custom selection field must designate a [choice set](../models/extras/customfieldchoiceset.md) containing at least two choices. These are specified as a comma-separated list.
+每个自定义选择字段必须指定一个包含至少两个选择的[选择集](../models/extras/customfieldchoiceset.md)。这些选择被指定为逗号分隔的列表。
 
-If a default value is specified for a selection field, it must exactly match one of the provided choices. The value of a multiple selection field will always return a list, even if only one value is selected.
+如果为选择字段指定了默认值，它必须与提供的选择之一完
 
-### Custom Object Fields
+全匹配。多重选择字段的值将始终返回一个列表，即使只选择了一个值。
 
-An object or multi-object custom field can be used to refer to a particular NetBox object or objects as the "value" for a custom field. These custom fields must define an `object_type`, which determines the type of object to which custom field instances point.
+### 自定义对象字段
 
-## Custom Fields in Templates
+对象或多对象自定义字段可用于将特定NetBox对象或多个NetBox对象用作自定义字段的“值”。这些自定义字段必须定义一个`object_type`，用于确定自定义字段实例指向的对象类型。
 
-Several features within NetBox, such as export templates and webhooks, utilize Jinja2 templating. For convenience, objects which support custom field assignment expose custom field data through the `cf` property. This is a bit cleaner than accessing custom field data through the actual field (`custom_field_data`).
+## 模板中的自定义字段
 
-For example, a custom field named `foo123` on the Site model is accessible on an instance as `{{ site.cf.foo123 }}`.
+NetBox中的一些功能，如导出模板和Webhook，使用Jinja2模板。为了方便起见，支持自定义字段分配的对象通过`cf`属性公开自定义字段数据。这比通过实际字段（`custom_field_data`）访问自定义字段数据要更干净一些。例如，站点模型上的名为`foo123`的自定义字段在实例上可访问为`{{ site.cf.foo123 }}`。
 
-## Custom Fields and the REST API
+## 自定义字段和REST API
 
-When retrieving an object via the REST API, all of its custom data will be included within the `custom_fields` attribute. For example, below is the partial output of a site with two custom fields defined:
+在通过REST API检索对象时，所有自定义数据都将包含在`custom_fields`属性内。例如，下面是一个带有两个自定义字段定义的站点的部分输出：
 
 ```json
 {
@@ -99,7 +99,7 @@ When retrieving an object via the REST API, all of its custom data will be inclu
     ...
 ```
 
-To set or change these values, simply include nested JSON data. For example:
+要设置或更改这些值，只需包含嵌套的JSON数据。例如：
 
 ```json
 {

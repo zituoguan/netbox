@@ -1,14 +1,14 @@
-# Background Tasks
+# 背景任务
 
-NetBox supports the queuing of tasks that need to be performed in the background, decoupled from the request-response cycle, using the [Python RQ](https://python-rq.org/) library. Three task queues of differing priority are defined by default:
+NetBox 支持使用 [Python RQ](https://python-rq.org/) 库，将需要在后台执行的任务排队，与请求-响应周期解耦。默认情况下，定义了三个不同优先级的任务队列：
 
-* High
-* Default
-* Low
+* 高优先级
+* 默认优先级
+* 低优先级
 
-Any tasks in the "high" queue are completed before the default queue is checked, and any tasks in the default queue are completed before those in the "low" queue.
+在检查默认队列之前，任何在“高优先级”队列中的任务都将被完成，并且在“默认”队列中的任务完成之前，将完成“低”队列中的任务。
 
-Plugins can also add custom queues for their own needs by setting the `queues` attribute under the PluginConfig class. An example is included below:
+插件还可以通过在 PluginConfig 类下设置 `queues` 属性来为其自己的需求添加自定义队列。下面包含一个示例：
 
 ```python
 class MyPluginConfig(PluginConfig):
@@ -20,10 +20,10 @@ class MyPluginConfig(PluginConfig):
     ]
 ```
 
-The PluginConfig above creates two custom queues with the following names `my_plugin.foo` and `my_plugin.bar`. (The plugin's name is prepended to each queue to avoid conflicts between plugins.)
+上面的 PluginConfig 创建了两个具有以下名称的自定义队列 `my_plugin.foo` 和 `my_plugin.bar`。（插件的名称会在每个队列前面添加，以避免插件之间的冲突。）
 
-!!! warning "Configuring the RQ worker process"
-    By default, NetBox's RQ worker process only services the high, default, and low queues. Plugins which introduce custom queues should advise users to either reconfigure the default worker, or run a dedicated worker specifying the necessary queues. For example:
+!!! 警告 "配置 RQ 工作进程"
+    默认情况下，NetBox 的 RQ 工作进程仅服务于高、默认和低队列。引入自定义队列的插件应该建议用户重新配置默认工作进程，或者运行一个专用工作进程，指定所需的队列。例如：
     
     ```
     python manage.py rqworker my_plugin.foo my_plugin.bar

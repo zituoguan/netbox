@@ -1,36 +1,36 @@
-# Console Server Ports
+# 控制台服务器端口
 
-A console server is a device which provides remote access to the local consoles of connected devices. They are typically used to provide remote out-of-band access to network devices, and generally connect to [console ports](./consoleport.md).
+控制台服务器是一种设备，提供远程访问连接设备的本地控制台。它们通常用于提供网络设备的远程离线访问，并通常连接到[控制台端口](./consoleport.md)。
 
-!!! tip
-    Like most device components, console server ports are instantiated automatically from [console server port templates](./consoleserverporttemplate.md) assigned to the selected device type when a device is created.
+!!! 提示
+    像大多数设备组件一样，当设备创建时，控制台服务器端口会从分配给选定设备类型的[控制台服务器端口模板](./consoleserverporttemplate.md)自动实例化。
 
-## Fields
+## 字段
 
-### Device
+### 设备
 
-The device to which this console server port belongs.
+这个控制台服务器端口所属的设备。
 
-### Module
+### 模块
 
-The installed module within the assigned device to which this console server port belongs (optional).
+控制台服务器端口所属的安装在指定设备内的模块（可选）。
 
-### Name
+### 名称
 
-The name of the console server port. Must be unique to the parent device.
+控制台服务器端口的名称。必须对父设备是唯一的。
 
-### Label
+### 标签
 
-An alternative physical label identifying the console server port.
+用于识别控制台服务器端口的替代物理标签。
 
-### Type
+### 类型
 
-The type of console server port.
+控制台服务器端口的类型。
 
-### Speed
+### 速度
 
-Operating speed, in bits per second (bps).
+操作速度，以比特每秒（bps）计。
 
-### Mark Connected
+### 标记为已连接
 
-If selected, this component will be treated as if a cable has been connected.
+如果选中，这个组件将被视为已连接电缆。

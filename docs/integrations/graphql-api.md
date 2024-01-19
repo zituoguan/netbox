@@ -1,10 +1,10 @@
-# GraphQL API Overview
+# GraphQL API 概述
 
-NetBox provides a read-only [GraphQL](https://graphql.org/) API to complement its REST API. This API is powered by the [Graphene](https://graphene-python.org/) library and [Graphene-Django](https://docs.graphene-python.org/projects/django/en/latest/).
+NetBox提供了一个只读的[GraphQL](https://graphql.org/) API，以补充其REST API。该API由[Graphene](https://graphene-python.org/)库和[Graphene-Django](https://docs.graphene-python.org/projects/django/en/latest/)驱动。
 
-## Queries
+## 查询
 
-GraphQL enables the client to specify an arbitrary nested list of fields to include in the response. All queries are made to the root `/graphql` API endpoint. For example, to return the circuit ID and provider name of each circuit with an active status, you can issue a request such as the following:
+GraphQL允许客户端指定要包含在响应中的任意嵌套字段列表。所有查询都发送到根目录的`/graphql` API端点。例如，要返回每个具有活动状态的电路的电路ID和供应商名称，可以发出如下请求：
 
 ```
 curl -H "Authorization: Token $TOKEN" \
@@ -14,7 +14,7 @@ http://netbox/graphql/ \
 --data '{"query": "query {circuit_list(status:\"active\") {cid provider {name}}}"}'
 ```
 
-The response will include the requested data formatted as JSON:
+响应将包括请求的数据，以JSON格式呈现：
 
 ```json
 {
@@ -37,26 +37,26 @@ The response will include the requested data formatted as JSON:
 }
 ```
 
-!!! note
-    It's recommended to pass the return data through a JSON parser such as `jq` for better readability.
+!!! 注意
+    建议将返回的数据通过JSON解析器（如`jq`）进行更好的可读性处理。
 
-NetBox provides both a singular and plural query field for each object type:
+NetBox为每种对象类型提供了单数和复数查询字段：
 
-* `$OBJECT`: Returns a single object. Must specify the object's unique ID as `(id: 123)`.
-* `$OBJECT_list`: Returns a list of objects, optionally filtered by given parameters.
+* `$OBJECT`：返回单个对象。必须指定对象的唯一ID，如`(id: 123)`。
+* `$OBJECT_list`：返回对象列表，可以选择使用给定的参数进行筛选。
 
-For example, query `device(id:123)` to fetch a specific device (identified by its unique ID), and query `device_list` (with an optional set of filters) to fetch all devices.
+例如，使用查询`device(id:123)`来获取特定设备（通过其唯一ID标识），使用查询`device_list`（带有可选的筛选条件）来获取所有设备。
 
-For more detail on constructing GraphQL queries, see the [Graphene documentation](https://docs.graphene-python.org/en/latest/) as well as the [GraphQL queries documentation](https://graphql.org/learn/queries/).
+有关构建GraphQL查询的详细信息，请参阅[Graphene文档](https://docs.graphene-python.org/en/latest/)以及[GraphQL查询文档](https://graphql.org/learn/queries/)。
 
-## Filtering
+## 筛选
 
-The GraphQL API employs the same filtering logic as the UI and REST API. Filters can be specified as key-value pairs within parentheses immediately following the query name. For example, the following will return only sites within the North Carolina region with a status of active:
+GraphQL API使用与UI和REST API相同的筛选逻辑。筛选可以在紧随查询名称后的括号内指定为键值对。例如，以下内容将仅返回状态为活动的North Carolina地区的站点：
 
 ```
 {"query": "query {site_list(region:\"north-carolina\", status:\"active\") {name}}"}
 ```
-In addition, filtering can be done on list of related objects as shown in the following query:
+此外，可以在相关对象列表上进行筛选，如下面的查询所示：
 
 ```
 {
@@ -70,9 +70,9 @@ In addition, filtering can be done on list of related objects as shown in the fo
 }
 ```
 
-## Multiple Return Types
+## 多个返回类型
 
-Certain queries can return multiple types of objects, for example cable terminations can return circuit terminations, console ports and many others.  These can be queried using [inline fragments](https://graphql.org/learn/schema/#union-types) as shown below:
+某些查询可以返回多种类型的对象，例如电缆端子可以返回电路端子、控制台端口和许多其他对象。可以使用[内联片段](https://graphql.org/learn/schema/#union-types)进行查询，如下所示：
 
 ```
 {
@@ -96,16 +96,16 @@ Certain queries can return multiple types of objects, for example cable terminat
 }
 
 ```
-The field "class_type" is an easy way to distinguish what type of object it is when viewing the returned data, or when filtering.  It contains the class name, for example "CircuitTermination" or "ConsoleServerPort".
+字段“class_type”是在查看返回的数据或进行筛选时区分对象类型的简便方法。它包含类名，例如“CircuitTermination”或“ConsoleServerPort”。
 
-## Authentication
+## 认证
 
-NetBox's GraphQL API uses the same API authentication tokens as its REST API. Authentication tokens are included with requests by attaching an `Authorization` HTTP header in the following form:
+NetBox的GraphQL API使用与其REST API相同的API身份验证令牌。通过在请求中附加`Authorization` HTTP标头，将身份验证令牌附加到请求中，格式如下：
 
 ```
 Authorization: Token $TOKEN
 ```
 
-## Disabling the GraphQL API
+## 禁用GraphQL API
 
-If not needed, the GraphQL API can be disabled by setting the [`GRAPHQL_ENABLED`](../configuration/miscellaneous.md#graphql_enabled) configuration parameter to False and restarting NetBox.
+如果不需要，可以通过将[`GRAPHQL_ENABLED`](../configuration/miscellaneous.md#graphql_enabled)配置参数设置为False并重新启动NetBox来禁用GraphQL API。

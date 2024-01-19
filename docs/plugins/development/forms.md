@@ -1,25 +1,25 @@
-# Forms
+# 表单
 
-## Form Classes
+## 表单类
 
-NetBox provides several base form classes for use by plugins.
+NetBox 为插件提供了几个基础表单类供使用。
 
-| Form Class                 | Purpose                              |
-|----------------------------|--------------------------------------|
-| `NetBoxModelForm`          | Create/edit individual objects       |
-| `NetBoxModelImportForm`    | Bulk import objects from CSV data    |
-| `NetBoxModelBulkEditForm`  | Edit multiple objects simultaneously |
-| `NetBoxModelFilterSetForm` | Filter objects within a list view   |
+| 表单类                 | 用途                                |
+|-----------------------|-------------------------------------|
+| `NetBoxModelForm`      | 创建/编辑单个对象                   |
+| `NetBoxModelImportForm`| 从 CSV 数据批量导入对象              |
+| `NetBoxModelBulkEditForm`| 同时编辑多个对象                   |
+| `NetBoxModelFilterSetForm`| 在列表视图中过滤对象              |
 
 ### `NetBoxModelForm`
 
-This is the base form for creating and editing NetBox models. It extends Django's ModelForm to add support for tags and custom fields.
+这是创建和编辑 NetBox 模型的基本表单。它扩展了 Django 的 ModelForm，以添加对标签和自定义字段的支持。
 
-| Attribute   | Description                                                 |
-|-------------|-------------------------------------------------------------|
-| `fieldsets` | A tuple of two-tuples defining the form's layout (optional) |
+| 属性       | 描述                               |
+|------------|------------------------------------|
+| `fieldsets`| 一个定义表单布局的元组的两元组（可选）|
 
-**Example**
+**示例**
 
 ```python
 from dcim.models import Site
@@ -43,13 +43,13 @@ class MyModelForm(NetBoxModelForm):
 ```
 
 !!! tip "Comment fields"
-    If your form has a `comments` field, there's no need to list it; this will always appear last on the page.
+    如果您的表单具有 `comments` 字段，无需列出它；这将始终显示在页面的最后。
 
 ### `NetBoxModelImportForm`
 
-This form facilitates the bulk import of new objects from CSV, JSON, or YAML data. As with model forms, you'll need to declare a `Meta` subclass specifying the associated `model` and `fields`. NetBox also provides several form fields suitable for import various types of CSV data, listed below.
+此表单便于从 CSV、JSON 或 YAML 数据中批量导入新对象。与模型表单一样，您需要声明一个指定关联的 `model` 和 `fields` 的 `Meta` 子类。NetBox 还提供了适用于导入各种类型的 CSV 数据的几个表单字段，下面列出了这些字段。
 
-**Example**
+**示例**
 
 ```python
 from dcim.models import Site
@@ -72,15 +72,15 @@ class MyModelImportForm(NetBoxModelImportForm):
 
 ### `NetBoxModelBulkEditForm`
 
-This form facilitates editing multiple objects in bulk. Unlike a model form, this form does not have a child `Meta` class, and must explicitly define each field. All fields in a bulk edit form are generally declared with `required=False`.
+此表单便于批量编辑多个对象。与模型表单不同，此表单没有子 `Meta` 类，并且必须显式定义每个字段。批量编辑表单中的所有字段通常使用 `required=False` 声明。
 
-| Attribute         | Description                                                                                 |
-|-------------------|---------------------------------------------------------------------------------------------|
-| `model`           | The model of object being edited                                                            |
-| `fieldsets`       | A tuple of two-tuples defining the form's layout (optional)                                 |
-| `nullable_fields` | A tuple of fields which can be nullified (set to empty) using the bulk edit form (optional) |
+| 属性             | 描述                                                    |
+|-------------------|--------------------------------------------------------|
+| `model`           | 正在编辑的对象的模型                                      |
+| `fieldsets`       | 一个定义表单布局的元组的两元组（可选）                 |
+| `nullable_fields` | 一个字段的元组，可以使用批量编辑表单将其置为空（可选）  |
 
-**Example**
+**示例**
 
 ```python
 from django import forms
@@ -113,16 +113,18 @@ class MyModelEditForm(NetBoxModelImportForm):
 
 ### `NetBoxModelFilterSetForm`
 
-This form class is used to render a form expressly for filtering a list of objects. Its fields should correspond to filters defined on the model's filter set.
+此表单类用于渲染专门用于过滤对象列表的表单。它的字段应与模型的过滤器集上定义的过滤器对应。
 
-| Attribute         | Description                                                 |
-|-------------------|-------------------------------------------------------------|
-| `model`           | The model of object being edited                            |
-| `fieldsets`       | A tuple of two-tuples defining the form's layout (optional) |
+| 属性             | 描述                                         |
+|-------------------|---------------------------------------------|
+| `model`           | 正在编辑的对象的模型                           |
+| `fieldsets`       | 一个定义表单布局的元组的两元组（可选）      |
 
-**Example**
+**示例**
 
-```python
+```
+
+python
 from dcim.models import Site
 from netbox.forms import NetBoxModelFilterSetForm
 from utilities.forms import DynamicModelMultipleChoiceField, MultipleChoiceField
@@ -141,9 +143,9 @@ class MyModelFilterForm(NetBoxModelFilterSetForm):
     model = MyModel
 ```
 
-## General Purpose Fields
+## 通用字段
 
-In addition to the [form fields provided by Django](https://docs.djangoproject.com/en/stable/ref/forms/fields/), NetBox provides several field classes for use within forms to handle specific types of data. These can be imported from `utilities.forms.fields` and are documented below.
+除了[Django 提供的表单字段](https://docs.djangoproject.com/en/stable/ref/forms/fields/)外，NetBox 还提供了几个字段类，用于在表单中处理特定类型的数据。这些可以从 `utilities.forms.fields` 中导入，下面对其进行了说明。
 
 ::: utilities.forms.fields.ColorField
     options:
@@ -165,7 +167,7 @@ In addition to the [form fields provided by Django](https://docs.djangoproject.c
     options:
       members: false
 
-## Dynamic Object Fields
+## 动态对象字段
 
 ::: utilities.forms.fields.DynamicModelChoiceField
     options:
@@ -175,7 +177,7 @@ In addition to the [form fields provided by Django](https://docs.djangoproject.c
     options:
       members: false
 
-## Content Type Fields
+## 内容类型字段
 
 ::: utilities.forms.fields.ContentTypeChoiceField
     options:
@@ -185,7 +187,7 @@ In addition to the [form fields provided by Django](https://docs.djangoproject.c
     options:
       members: false
 
-## CSV Import Fields
+## CSV 导入字段
 
 ::: utilities.forms.fields.CSVChoiceField
     options:

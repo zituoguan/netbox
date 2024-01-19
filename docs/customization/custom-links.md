@@ -1,65 +1,65 @@
-# Custom Links
+# 自定义链接
 
-Custom links allow users to display arbitrary hyperlinks to external content within NetBox object views. These are helpful for cross-referencing related records in systems outside NetBox. For example, you might create a custom link on the device view which links to the current device in a Network Monitoring System (NMS).
+自定义链接允许用户在NetBox对象视图中显示任意的外部内容的超链接。这对于在NetBox之外的系统中交叉引用相关记录非常有用。例如，您可以在设备视图上创建一个自定义链接，该链接链接到网络监控系统（NMS）中的当前设备。
 
-Custom links are created by navigating to Customization > Custom Links. Each link is associated with a particular NetBox object type (site, device, prefix, etc.) and will be displayed on relevant views. Each link has display text and a URL, and data from the NetBox item being viewed can be included in the link using [Jinja2 template code](https://jinja2docs.readthedocs.io/en/stable/) through the variable `object`, and custom fields through `object.cf`.
+自定义链接是通过导航到Customization > Custom Links来创建的。每个链接与特定的NetBox对象类型（站点、设备、前缀等）关联，并将显示在相关视图上。每个链接都有显示文本和URL，可以使用[Jinja2模板代码](https://jinja2docs.readthedocs.io/en/stable/)通过变量`object`和自定义字段`object.cf`在链接中包含来自正在查看的NetBox项目的数据。
 
-For example, you might define a link like this:
+例如，您可以定义如下链接：
 
-* Text: `View NMS`
-* URL: `https://nms.example.com/nodes/?name={{ object.name }}`
+* 文本：`查看NMS`
+* URL：`https://nms.example.com/nodes/?name={{ object.name }}`
 
-When viewing a device named Router4, this link would render as:
+查看名为Router4的设备时，此链接将呈现为：
 
 ```no-highlight
-<a href="https://nms.example.com/nodes/?name=Router4">View NMS</a>
+<a href="https://nms.example.com/nodes/?name=Router4">查看NMS</a>
 ```
 
-Custom links appear as buttons in the top right corner of the page. Numeric weighting can be used to influence the ordering of links, and each link can be enabled or disabled individually.
+自定义链接显示为页面右上角的按钮。可以使用数字权重来影响链接的排序，并且每个链接可以单独启用或禁用。
 
-!!! warning
-    Custom links rely on user-created code to generate arbitrary HTML output, which may be dangerous. Only grant permission to create or modify custom links to trusted users.
+!!! 警告
+    自定义链接依赖于用户创建的代码来生成任意的HTML输出，这可能是危险的。只授予受信任的用户创建或修改自定义链接的权限。
 
-## Context Data
+## 上下文数据
 
-The following context data is available within the template when rendering a custom link's text or URL.
+在渲染自定义链接的文本或URL时，可以在模板内使用以下上下文数据。
 
-| Variable  | Description                                                                                                       |
-|-----------|-------------------------------------------------------------------------------------------------------------------|
-| `object`  | The NetBox object being displayed                                                                                 |
-| `debug`   | A boolean indicating whether debugging is enabled                                                                 |
-| `request` | The current WSGI request                                                                                          |
-| `user`    | The current user (if authenticated)                                                                               |
-| `perms`   | The [permissions](https://docs.djangoproject.com/en/stable/topics/auth/default/#permissions) assigned to the user |
+| 变量     | 描述                                                                                         |
+|----------|----------------------------------------------------------------------------------------------|
+| `object` | 正在显示的NetBox对象                                                                           |
+| `debug`  | 一个布尔值，指示是否启用了调试                                                                |
+| `request`| 当前的WSGI请求                                                                               |
+| `user`   | 当前用户（如果已验证）                                                                        |
+| `perms`  | 分配给用户的[权限](https://docs.djangoproject.com/en/stable/topics/auth/default/#permissions) |
 
-While most of the context variables listed above will have consistent attributes, the object will be an instance of the specific object being viewed when the link is rendered. Different models have different fields and properties, so you may need to some research to determine the attributes available for use within your template for a specific object type.
+虽然上面列出的大多数上下文变量将具有一致的属性，但当链接呈现时，对象将是一个特定对象类型的实例。不同的模型具有不同的字段和属性，因此您可能需要一些研究来确定特定对象类型的模板内可用于使用的属性。
 
-Checking the REST API representation of an object is generally a convenient way to determine what attributes are available. You can also reference the NetBox source code directly for a comprehensive list.
+通常，检查对象的REST API表示是确定可用属性的方便方法。您还可以直接参考NetBox源代码以获取全面的属性列表。
 
-## Conditional Rendering
+## 条件渲染
 
-Only links which render with non-empty text are included on the page. You can employ conditional Jinja2 logic to control the conditions under which a link gets rendered.
+只有渲染为非空文本的链接才会包含在页面上。您可以使用条件的Jinja2逻辑来控制渲染链接的条件。
 
-For example, if you only want to display a link for active devices, you could set the link text to
+例如，如果您只想为活动设备显示一个链接，您可以将链接文本设置为
 
 ```jinja2
-{% if object.status == 'active' %}View NMS{% endif %}
+{% if object.status == 'active' %}查看NMS{% endif %}
 ```
 
-The link will not appear when viewing a device with any status other than "active."
+只有查看状态不为"active"的设备时，链接才不会显示。
 
-As another example, if you wanted to show only devices belonging to a certain manufacturer, you could do something like this:
+再举一个例子，如果您希望仅显示属于特定制造商的设备，可以执行以下操作：
 
 ```jinja2
-{% if object.device_type.manufacturer.name == 'Cisco' %}View NMS{% endif %}
+{% if object.device_type.manufacturer.name == 'Cisco' %}查看NMS{% endif %}
 ```
 
-The link will only appear when viewing a device with a manufacturer name of "Cisco."
+只有查看制造商名称为"Cisco"的设备时，链接才会显示。
 
-## Link Groups
+## 链接组
 
-Group names can be specified to organize links into groups. Links with the same group name will render as a dropdown menu beneath a single button bearing the name of the group.
+可以指定组名称以将链接组织成组。具有相同组名的链接将呈现为单个按钮下的下拉菜单，按钮上带有组的名称。
 
-## Table Columns
+## 表列
 
-Custom links can also be included in object tables by selecting the desired links from the table configuration form. When displayed, each link will render as a hyperlink for its corresponding object. When exported (e.g. as CSV data), each link render only its URL.
+自定义链接也可以包括在对象表中，方法是从表格配置表单中选择所需的链接。当显示时，每个链接将呈现为相应对象的超链接。当导出（例如作为CSV数据）时，每个链接只会呈现其URL。

@@ -1,23 +1,23 @@
-# VLAN Groups
+# VLAN组
 
-VLAN groups can be used to organize [VLANs](./vlan.md) within NetBox. Each VLAN group can be scoped to a particular [region](../dcim/region.md), [site group](../dcim/sitegroup.md), [site](../dcim/sitegroup.md), [location](../dcim/location.md), [rack](../dcim/rack.md), [cluster group](../virtualization/clustergroup.md), or [cluster](../virtualization/cluster.md). Member VLANs will be available for assignment to devices and/or virtual machines within the specified scope.
+VLAN组可用于组织NetBox中的[VLAN](./vlan.md)。每个VLAN组可以范围到特定的[区域](../dcim/region.md)、[站点组](../dcim/sitegroup.md)、[站点](../dcim/sitegroup.md)、[位置](../dcim/location.md)、[机架](../dcim/rack.md)、[集群组](../virtualization/clustergroup.md)或[集群](../virtualization/cluster.md)。成员VLAN将可用于分配给指定范围内的设备和/或虚拟机。
 
-Groups can also be used to enforce uniqueness: Each VLAN within a group must have a unique ID and name. VLANs which are not assigned to a group may have overlapping names and IDs (including VLANs which belong to a common site). For example, two VLANs with ID 123 may be created, but they cannot both be assigned to the same group.
+组还可以用于强制唯一性：组中的每个VLAN必须具有唯一的ID和名称。未分配给组的VLAN可以具有重叠的名称和ID（包括属于共同站点的VLAN）。例如，可以创建两个具有ID 123的VLAN，但它们不能都分配给同一个组。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的URL友好标识符。（此值可用于过滤。）
 
-### Minimum & Maximum VLAN IDs
+### 最小和最大VLAN ID
 
-A minimum and maximum child VLAN ID must be set for each group. (These default to 1 and 4094 respectively.) VLANs created within a group must have a VID that falls between these values (inclusive).
+必须为每个组设置一个最小和最大的子VLAN ID。（这些默认分别为1和4094。）在组内创建的VLAN必须具有落在这些值之间的VID（包括在内）。
 
-### Scope
+### 范围
 
-The domain covered by a VLAN group, defined as one of the supported object types. This conveys the context in which a VLAN group applies.
+VLAN组覆盖的域，定义为受支持的对象类型之一。这传达了VLAN组适用的上下文。
