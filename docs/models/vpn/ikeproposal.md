@@ -1,39 +1,39 @@
-# IKE Proposals
+# IKE提议
 
-An [Internet Key Exhcnage (IKE)](https://en.wikipedia.org/wiki/Internet_Key_Exchange) proposal defines a set of parameters used to establish a secure bidirectional connection across an untrusted medium, such as the Internet. IKE proposals defined in NetBox can be referenced by [IKE policies](./ikepolicy.md), which are in turn employed by [IPSec profiles](./ipsecprofile.md).
+[IKE（Internet Key Exchange）](https://en.wikipedia.org/wiki/Internet_Key_Exchange)提议定义了用于在不受信任的介质（如互联网）上建立安全的双向连接的一组参数。NetBox中定义的IKE提议可以被[IKE策略](./ikepolicy.md)引用，而这些策略则被[IKE配置文件](./ipsecprofile.md)使用。
 
-!!! note
-    Some platforms refer to IKE proposals as [ISAKMP](https://en.wikipedia.org/wiki/Internet_Security_Association_and_Key_Management_Protocol), which is a framework for authentication and key exchange which employs IKE.
+!!! 注意
+    一些平台将IKE提议称为[ISAKMP](https://en.wikipedia.org/wiki/Internet_Security_Association_and_Key_Management_Protocol)，这是一种用于认证和密钥交换的框架，它使用了IKE。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The unique user-assigned name for the proposal.
+提议的唯一用户分配的名称。
 
-### Authentication Method
+### 认证方法
 
-The strategy employed for authenticating the IKE peer. Available options are listed below.
+用于对IKE对等体进行身份验证的策略。下面列出了可用的选项。
 
-| Name           |
-|----------------|
-| Pre-shared key |
-| Certificate    |
-| RSA signature  |
-| DSA signature  |
+| 名称               |
+|------------------|
+| 预共享密钥         |
+| 证书               |
+| RSA签名            |
+| DSA签名            |
 
-### Encryption Algorithm
+### 加密算法
 
-The protocol employed for data encryption. Options include DES, 3DES, and various flavors of AES.
+用于数据加密的协议。选项包括DES、3DES和各种AES变种。
 
-### Authentication Algorithm
+### 认证算法
 
-The mechanism employed to ensure data integrity. Options include MD5 and SHA HMAC implementations. Specifying an authentication algorithm is optional, as some encryption algorithms (e.g. AES-GCM) provide authentication natively.
+用于确保数据完整性的机制。选项包括MD5和SHA HMAC实现。指定认证算法是可选的，因为某些加密算法（例如AES-GCM）在本地提供了认证。
 
-### Group
+### 组
 
-The [Diffie-Hellman group](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange) supported by the proposal. Group IDs are [managed by IANA](https://www.iana.org/assignments/ikev2-parameters/ikev2-parameters.xhtml#ikev2-parameters-8).
+提议支持的[Diffie-Hellman组](https://en.wikipedia.org/wiki/Diffie%E2%80%93Hellman_key_exchange)。组ID由[IANA](https://www.iana.org/assignments/ikev2-parameters/ikev2-parameters.xhtml#ikev2-parameters-8)管理。
 
-### SA Lifetime
+### SA寿命
 
-The maximum lifetime for the IKE security association (SA), in seconds.
+IKE安全关联（SA）的最大寿命，以秒为单位。

@@ -1,29 +1,29 @@
-# Configuration Templates
+# 配置模板
 
-Configuration templates can be used to render [device](../dcim/device.md) configurations from [context data](../../features/context-data.md). Templates are written in the [Jinja2 language](https://jinja.palletsprojects.com/) and can be associated with devices roles, platforms, and/or individual devices.
+配置模板可以用于根据[上下文数据](../../features/context-data.md)来生成[设备](../dcim/device.md)配置。模板使用[Jinja2语言](https://jinja.palletsprojects.com/)编写，可以与设备角色、平台和/或个别设备关联。
 
-Context data is made available to [devices](../dcim/device.md) and/or [virtual machines](../virtualization/virtualmachine.md) based on their relationships to other objects in NetBox. For example, context data can be associated only with devices assigned to a particular site, or only to virtual machines in a certain cluster.
+上下文数据基于设备和/或虚拟机与NetBox中其他对象的关系而提供。例如，上下文数据可以仅与分配给特定站点的设备关联，或仅与某个集群中的虚拟机关联。
 
-See the [configuration rendering documentation](../../features/configuration-rendering.md) for more information.
+有关更多信息，请参阅[配置渲染文档](../../features/configuration-rendering.md)。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好名称。
 
-### Weight
+### 权重
 
-A numeric value which influences the order in which context data is merged. Contexts with a lower weight are merged before those with a higher weight.
+一个影响上下文数据合并顺序的数值。权重较低的上下文在权重较高的上下文之前合并。
 
-### Data File
+### 数据文件
 
-Template code may optionally be sourced from a remote [data file](../core/datafile.md), which is synchronized from a remote data source. When designating a data file, there is no need to specify template code: It will be populated automatically from the data file.
+模板代码可以选择从远程[数据文件](../core/datafile.md)中获取，该文件是从远程数据源同步的。在指定数据文件时，无需指定模板代码：它将自动从数据文件填充。
 
-### Template Code
+### 模板代码
 
-Jinja2 template code, if being defined locally rather than replicated from a data file.
+Jinja2模板代码，如果不是从数据文件复制而来，则在本地定义。
 
-### Environment Parameters
+### 环境参数
 
-A dictionary of any additional parameters to pass when instantiating the [Jinja2 environment](https://jinja.palletsprojects.com/en/3.1.x/api/#jinja2.Environment). Jinja2 supports various optional parameters which can be used to modify its default behavior.
+一个字典，其中包含在实例化[Jinja2环境](https://jinja.palletsprojects.com/en/3.1.x/api/#jinja2.Environment)时传递的任何附加参数。Jinja2支持各种可选参数，可以用于修改其默认行为。

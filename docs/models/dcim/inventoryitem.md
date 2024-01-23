@@ -1,46 +1,46 @@
-# Inventory Items
+# 库存项
 
-Inventory items represent hardware components installed within a device, such as a power supply or CPU or line card. They are intended to be used primarily for inventory purposes.
+库存项代表安装在设备内的硬件组件，例如电源供应、CPU 或线卡。它们主要用于库存管理。
 
-Inventory items are hierarchical in nature, such that any individual item may be designated as the parent for other items. For example, an inventory item might be created to represent a line card which houses several SFP optics, each of which exists as a child item within the device. An inventory item may also be associated with a specific component within the same device. For example, you may wish to associate a transceiver with an interface.
+库存项具有分层结构，因此可以将任何单个项指定为其他项的父项。例如，可以创建一个库存项来表示一个线卡，该线卡装有多个 SFP 光模块，其中每个光模块都作为设备内的子项存在。库存项还可以与同一设备内的特定组件关联。例如，您可能希望将一个光模块与一个接口关联。
 
-!!! tip
-    Like most device components, inventory items can be instantiated automatically from [templates](./inventoryitemtemplate.md) assigned to the selected device type when a device is created.
+!!! 提示
+    与大多数设备组件一样，库存项可以根据分配给所选设备类型的[模板](./inventoryitemtemplate.md)在创建设备时自动实例化。
 
-## Fields
+## 字段
 
-### Device
+### 设备
 
-The device in which the inventory item is installed.
+安装库存项的设备。
 
-### Parent
+### 父项
 
-The parent inventory item to which this item is assigned (optional).
+分配给此项的父项，这是可选的。
 
-### Name
+### 名称
 
-The inventory item's name. If the inventory item is assigned to a parent item, its name must be unique among its siblings (all items belonging to the same parent item).
+库存项的名称。如果将库存项分配给父项，则其名称必须在其同级项中是唯一的（所有属于同一父项的项）。
 
-### Label
+### 标签
 
-An alternative physical label identifying the inventory item.
+用于标识库存项的替代物理标签。
 
-### Role
+### 角色
 
-The functional [role](./inventoryitemrole.md) assigned to this inventory item.
+分配给此库存项的功能[角色](./inventoryitemrole.md)。
 
-### Manufacturer
+### 制造商
 
-The [manufacturer](./manufacturer.md) that produced the item.
+生产该项的[制造商](./manufacturer.md)。
 
-### Part ID
+### 部件编号
 
-The part identification or model number assigned by the manufacturer.
+由制造商分配的部件标识或型号编号。
 
-### Serial Number
+### 序列号
 
-The serial number assigned by the manufacturer.
+制造商分配的序列号。
 
-### Asset Tag
+### 资产标签
 
-A unique, locally-administered label used to identify hardware resources.
+用于标识硬件资源的唯一的本地管理标签。

@@ -1,8 +1,8 @@
-# Navigation
+# 导航
 
-## Menus
+## 菜单
 
-A plugin can register its own submenu as part of NetBox's navigation menu. This is done by defining a variable named `menu` in `navigation.py`, pointing to an instance of the `PluginMenu` class. Each menu must define a label and grouped menu items (discussed below), and may optionally specify an icon. An example is shown below.
+插件可以在NetBox的导航菜单中注册自己的子菜单。这可以通过在`navigation.py`中定义一个名为`menu`的变量，指向`PluginMenu`类的一个实例来完成。每个菜单必须定义一个标签和分组的菜单项（下面讨论），并可以选择指定一个图标。示例如下。
 
 ```python title="navigation.py"
 from netbox.plugins import PluginMenu
@@ -17,36 +17,36 @@ menu = PluginMenu(
 )
 ```
 
-Note that each group is a two-tuple containing a label and an iterable of menu items. The group's label serves as the section header within the submenu. A group label is required even if you have only one group of items.
+请注意，每个组都是一个包含标签和菜单项迭代器的两元组。组的标签用作子菜单中的部分标题。即使只有一个组的项目，也需要一个组标签。
 
-!!! tip
-    The path to the menu class can be modified by setting `menu` in the PluginConfig instance.
+!!! 提示
+    菜单类的路径可以通过在PluginConfig实例中设置`menu`来修改。
 
-A `PluginMenu` has the following attributes:
+`PluginMenu`具有以下属性：
 
-| Attribute    | Required | Description                                       |
-|--------------|----------|---------------------------------------------------|
-| `label`      | Yes      | The text displayed as the menu heading            |
-| `groups`     | Yes      | An iterable of named groups containing menu items |
-| `icon_class` | -        | The CSS name of the icon to use for the heading   |
+| 属性         | 必需     | 描述                                  |
+|--------------|----------|--------------------------------------|
+| `label`      | 是       | 菜单标题显示的文本                  |
+| `groups`     | 是       | 包含菜单项的具名分组的可迭代对象    |
+| `icon_class` | -        | 用于标题的图标的CSS名称              |
 
-!!! tip
-    Supported icons can be found at [Material Design Icons](https://materialdesignicons.com/)
+!!! 提示
+    支持的图标可以在[Material Design Icons](https://materialdesignicons.com/)上找到。
 
-### The Default Menu
+### 默认菜单
 
-If your plugin has only a small number of menu items, it may be desirable to use NetBox's shared "Plugins" menu rather than creating your own. To do this, simply declare `menu_items` as a list of `PluginMenuItems` in `navigation.py`. The listed items will appear under a heading bearing the name of your plugin in the "Plugins" submenu.
+如果您的插件只有少量菜单项，可能希望使用NetBox的共享“插件”菜单，而不是创建自己的菜单。要实现这一点，只需在`navigation.py`中声明`menu_items`为`PluginMenuItems`列表。列出的项目将出现在“插件”子菜单中以您插件的名称为标题的部分下。
 
 ```python title="navigation.py"
 menu_items = (item1, item2, item3)
 ```
 
-!!! tip
-    The path to the menu items list can be modified by setting `menu_items` in the PluginConfig instance.
+!!! 提示
+    菜单项列表的路径可以通过在PluginConfig实例中设置`menu_items`来修改。
 
-## Menu Items
+## 菜单项
 
-Each menu item represents a link and (optionally) a set of buttons comprising one entry in NetBox's navigation menu. Menu items are defined as PluginMenuItem instances. An example is shown below.
+每个菜单项表示一个链接和（可选）一组按钮，构成了NetBox导航菜单中的一个条目。菜单项被定义为PluginMenuItem实例。示例如下。
 
 ```python title="navigation.py"
 from netbox.plugins import PluginMenuButton, PluginMenuItem
@@ -62,33 +62,33 @@ item1 = PluginMenuItem(
 )
 ```
 
-A `PluginMenuItem` has the following attributes:
+`PluginMenuItem`具有以下属性：
 
-| Attribute     | Required | Description                                                                                              |
-|---------------|----------|----------------------------------------------------------------------------------------------------------|
-| `link`        | Yes      | Name of the URL path to which this menu item links                                                       |
-| `link_text`   | Yes      | The text presented to the user                                                                           |
-| `permissions` | -        | A list of permissions required to display this link                                                      |
-| `staff_only`  | -        | Display only for users who have `is_staff` set to true (any specified permissions will also be required) |
-| `buttons`     | -        | An iterable of PluginMenuButton instances to include                                                     |
+| 属性         | 必需     | 描述                                                              |
+|--------------|----------|------------------------------------------------------------------|
+| `link`      | 是       | 链接到此菜单项的URL路径的名称。                                   |
+| `link_text`   | 是       | 呈现给用户的文本。                                               |
+| `permissions` | -        | 显示此链接所需的权限列表。                                      |
+| `staff_only`  | -        | 仅显示`is_staff`设置为True的用户（还需要指定的权限）             |
+| `buttons`     | -        | 包含在内的PluginMenuButton实例的可迭代对象，用于包括在内 |
 
-!!! info "The `staff_only` attribute was introduced in NetBox v3.6.1."
+!!! info "staff_only"属性在NetBox v3.6.1中引入。
 
-## Menu Buttons
+## 菜单按钮
 
-Each menu item can include a set of buttons. These can be handy for providing shortcuts related to the menu item. For instance, most items in NetBox's navigation menu include buttons to create and import new objects.
+每个菜单项都可以包括一组按钮。这对于提供与菜单项相关的快捷方式非常有用。例如，NetBox的导航菜单中的大多数项目都包括用于创建和导入新对象的按钮。
 
-A `PluginMenuButton` has the following attributes:
+`PluginMenuButton`具有以下属性：
 
-| Attribute     | Required | Description                                                        |
-|---------------|----------|--------------------------------------------------------------------|
-| `link`        | Yes      | Name of the URL path to which this button links                    |
-| `title`       | Yes      | The tooltip text (displayed when the mouse hovers over the button) |
-| `icon_class`  | Yes      | Button icon CSS class                                              |
-| `color`       | -        | One of the choices provided by `ButtonColorChoices`                |
-| `permissions` | -        | A list of permissions required to display this button              |
+| 属性         | 必需     | 描述                                        |
+|--------------|----------|--------------------------------------------|
+| `link`      | 是       | 此按钮链接到的URL路径的名称。                |
+| `title`       | 是       | 提示文本（当鼠标悬停在按钮上时显示）。     |
+| `icon_class`  | 是       | 按钮图标的CSS类。                            |
+| `color`       | -        | `ButtonColorChoices`提供的选择之一。          |
+| `permissions` | -        | 显示此按钮所需的权限列表。                  |
 
-Any buttons associated within a menu item will be shown only if the user has permission to view the link, regardless of what permissions are set on the buttons.
+在菜单项中关联的任何按钮将仅在用户有权查看链接时显示，而不管按钮上设置了哪些权限。
 
-!!! tip
-    Supported icons can be found at [Material Design Icons](https://materialdesignicons.com/)
+!!! 提示
+    支持的图标可以在[Material Design Icons](https://materialdesignicons.com/)上找到。

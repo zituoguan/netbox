@@ -1,25 +1,25 @@
-# Tags
+# 标签
 
-Tags are user-defined labels which can be applied to a variety of objects within NetBox. They can be used to establish dimensions of organization beyond the relationships built into NetBox. For example, you might create a tag to identify a particular ownership or condition across several types of objects.
+标签是用户定义的标签，可以应用于NetBox中的各种对象。它们可以用于建立超出NetBox内置关系的组织维度。例如，您可以创建一个标签，以标识跨多种对象的特定所有权或条件。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly label for the tag.
+标签的唯一人类友好标签。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value will be used for filtering.) This is automatically generated from the tag's name, but can be altered as needed.
+唯一的URL友好标识符。（此值将用于过滤。）这是从标签的名称自动生成的，但可以根据需要进行更改。
 
-### Color
+### 颜色
 
-The color to use when displaying the tag in the NetBox UI.
+在NetBox UI中显示标签时要使用的颜色。
 
-### Object Types
+### 对象类型
 
-!!! info "This feature was introduced in NetBox v3.6."
+!!! info "此功能已在NetBox v3.6中引入。"
 
-The assignment of a tag may be limited to a prescribed set of objects. For example, it may be desirable to limit the application of a specific tag to only devices and virtual machines.
+可以将标签的分配限制为一组规定的对象。例如，可以希望将特定标签的应用限制为仅适用于设备和虚拟机。
 
-If no object types are specified, the tag will be assignable to any type of object.
+如果未指定任何对象类型，标签将可分配给任何类型的对象。

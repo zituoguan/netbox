@@ -1,43 +1,43 @@
-# Prefixes
+# 前缀
 
-A prefix is an IPv4 or IPv6 network and mask expressed in CIDR notation (e.g. 192.0.2.0/24). A prefix entails only the "network portion" of an IP address: All bits in the address not covered by the mask must be zero. (In other words, a prefix cannot be a specific IP address.) Prefixes are automatically organized by their parent [aggregate](./aggregate.md) and assigned [VRF](./vrf.md).
+前缀是以CIDR表示法表示的IPv4或IPv6网络和掩码（例如，192.0.2.0/24）。前缀仅涉及IP地址的“网络部分”：地址中没有被掩码覆盖的所有位必须为零。（换句话说，前缀不能是特定的IP地址。）前缀将根据其父[聚合](./aggregate.md)自动组织，并分配给[VRF](./vrf.md)。
 
-## Fields
+## 字段
 
-### Prefix
+### 前缀
 
-The IPv4 or IPv6 network this prefix represents.
+此前缀代表的IPv4或IPv6网络。
 
-### Status
+### 状态
 
-The prefix's operational status. Note that the status of a prefix does _not_ have any impact on its member [IP addresses](./ipaddress.md), which may have their statuses defined independently. The "container" status indicates that the prefix exists merely as a container for organizing child prefixes.
+前缀的操作状态。请注意，前缀的状态不会影响其成员[IP地址](./ipaddress.md)，这些地址可以独立定义其状态。"容器"状态表示前缀仅作为组织子前缀的容器存在。
 
 !!! tip
-    Additional statuses may be defined by setting `Prefix.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
+    通过设置`Prefix.status`在[`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices)配置参数下，可以定义其他状态。
 
 ### VRF
 
-The [Virtual Routing and Forwarding](./vrf.md) instance in which this prefix exists.
+此前缀存在的[虚拟路由和转发](./vrf.md)实例。
 
 !!! note
-    VRF assignment is optional. Prefixes with no VRF assigned are considered to exist in the "global" table.
+    VRF分配是可选的。未分配VRF的前缀被认为存在于“全局”表中。
 
-### Role
+### 角色
 
-The user-defined functional [role](./role.md) assigned to the prefix.
+分配给前缀的用户定义功能[角色](./role.md)。
 
-### Is a Pool
+### 是否是池
 
-Designates whether the prefix should be treated as a pool. If selected, the first and last IP addresses within the prefix (normally reserved as the network and broadcast addresses, respectively) will be considered usable. This option is ideal for documenting NAT pools.
+指定前缀是否应视为池。如果选中，则前缀内的第一个和最后一个IP地址（通常作为网络和广播地址保留）将被视为可用。此选项非常适用于文档化NAT池。
 
-### Mark Utilized
+### 标记为已利用
 
-If selected, this prefix will report 100% utilization regardless of how many child objects have been defined within it.
+如果选中，此前缀将报告100%利用率，而不管在其中定义了多少个子对象。
 
-### Site
+### 站点
 
-The [site](../dcim/site.md) to which this prefix is assigned (optional).
+分配给此前缀的[站点](../dcim/site.md)（可选）。
 
 ### VLAN
 
-The [VLAN](./vlan.md) to which this prefix is assigned (optional). This mapping is helpful for associating IP space with layer two domains. A VLAN may have multiple prefixes assigned to it.
+分配给此前缀的[VLAN](./vlan.md)（可选）。此映射有助于将IP空间与第二层域相关联。一个VLAN可以分配多个前缀。

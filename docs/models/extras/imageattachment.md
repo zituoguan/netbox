@@ -1,13 +1,13 @@
-# Image Attachments
+# 图像附件
 
-Certain objects in NetBox support the attachment of uploaded images. These will be saved to the NetBox server and made available whenever the object is viewed.
+NetBox中的某些对象支持附加已上传的图像。这些图像将保存到NetBox服务器，并在每次查看对象时都可用。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The name of the image being attached. If not defined, this will be inferred from the name of the uploaded file.
+要附加的图像的名称。如果未定义，将从上传的文件名中推断出名称。
 
-### Image
+### 图像
 
-The image file to upload. Note that the uploaded file **must** be a supported image type, or validation will fail.
+要上传的图像文件。请注意，上传的文件**必须**是受支持的图像类型，否则将无法通过验证。

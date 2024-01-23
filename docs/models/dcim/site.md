@@ -1,51 +1,51 @@
-# Sites
+# 站点
 
-How you choose to employ sites when modeling your network may vary depending on the nature of your organization, but generally a site will equate to a building or campus. For example, a chain of banks might create a site to represent each of its branches, a site for its corporate headquarters, and two additional sites for its presence in two colocation facilities.
+您在建模网络时如何使用站点可能会因您的组织性质而异，但通常一个站点将等同于一个建筑物或校园。例如，一家银行连锁公司可能会创建一个站点来代表其每个分支机构，为其总部创建一个站点，并为其在两个网络数据中心设施中的存在创建另外两个站点。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The site's unique name.
+站点的唯一名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的URL友好标识符。（可以用于过滤）
 
-### Status
+### 状态
 
-The site's operational status.
+站点的运营状态。
 
-!!! tip
-    Additional statuses may be defined by setting `Site.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
+!!! 提示
+    通过在[`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices)配置参数下设置`Site.status`，可以定义其他状态。
 
-### Region
+### 区域
 
-The parent [region](./region.md) to which the site belongs, if any.
+站点所属的父[区域](./region.md)，如果有的话。
 
-### Facility
+### 设施
 
-Data center or facility designation for identifying the site.
+用于识别站点的数据中心或设施指定。
 
-### ASNs
+### AS号
 
-Each site can have multiple [AS numbers](../ipam/asn.md) assigned to it.
+每个站点可以分配多个[AS号](../ipam/asn.md)。
 
-### Time Zone
+### 时区
 
-The site's local time zone. (Time zones are provided by the [zoneinfo](https://docs.python.org/3/library/zoneinfo.html) library.)
+站点的本地时区。（时区由[zoneinfo](https://docs.python.org/3/library/zoneinfo.html)库提供。）
 
-### Physical Address
+### 物理地址
 
-The site's physical address, used for mapping.
+站点的物理地址，用于地图。
 
-### Shipping Address
+### 发货地址
 
-The address to use for deliveries destined for the site.
+用于寄往站点的交付的地址。
 
-!!! tip
-    You can also designate [points of contact](../../features/contacts.md) for each site to provide additional contact details.
+!!! 提示
+    您还可以为每个站点指定[联系点](../../features/contacts.md)以提供额外的联系方式。
 
-### Latitude & Longitude
+### 纬度和经度
 
-GPS coordinates of the site for geolocation.
+站点的GPS坐标，用于地理定位。

@@ -1,17 +1,17 @@
-# Wireless LAN Groups
+# 无线局域网组
 
-Wireless LAN groups can be used to organize and classify [wireless LANs](./wirelesslan.md). These groups are hierarchical: groups can be nested within parent groups. However, each wireless LAN may be assigned only to one group.
+无线局域网组可用于组织和分类[无线局域网](./wirelesslan.md)。这些组是分层的：组可以嵌套在父组中。但是，每个无线局域网只能分配给一个组。
 
-## Fields
+## 字段
 
-### Parent
+### 父级
 
-The parent wireless LAN group (if any).
+父无线局域网组（如果有）。
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的URL友好标识符。（此值可用于筛选。）

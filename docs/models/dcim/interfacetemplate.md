@@ -1,3 +1,3 @@
-# Interface Templates
+# 接口模板
 
-A template for a network interface that will be created on all instantiations of the parent device type. See the [interface](./interface.md) documentation for more detail.
+这是一个用于在所有实例化的父设备类型上创建网络接口的模板。有关详细信息，请参阅[接口](./interface.md)文档。

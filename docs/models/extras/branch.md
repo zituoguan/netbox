@@ -1,13 +1,13 @@
-# Branches
+# 分支
 
-A branch is a collection of related [staged changes](./stagedchange.md) that have been prepared for merging into the active database. A branch can be merged by executing its `commit()` method. Deleting a branch will delete all its related changes.
+分支是一组相关的[暂存更改](./stagedchange.md)，已准备好合并到活动数据库中。可以通过执行其 `commit()` 方法来合并分支。删除分支将删除所有相关的更改。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The branch's name.
+分支的名称。
 
-### User
+### 用户
 
-The user to which the branch belongs (optional).
+分支所属的用户（可选）。

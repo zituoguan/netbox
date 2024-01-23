@@ -1,13 +1,13 @@
-# Virtual Disks
+# 虚拟磁盘
 
-A virtual disk is used to model discrete virtual hard disks assigned to [virtual machines](./virtualmachine.md).
+虚拟磁盘用于模拟分配给[虚拟机](./virtualmachine.md)的离散虚拟硬盘。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A human-friendly name that is unique to the assigned virtual machine.
+对分配给虚拟机的虚拟磁盘的人类友好名称，必须唯一。
 
-### Size
+### 大小
 
-The allocated disk size, in gigabytes.
+分配的磁盘大小，以千兆字节为单位。

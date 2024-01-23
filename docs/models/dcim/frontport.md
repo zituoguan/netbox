@@ -1,43 +1,43 @@
-# Front Ports
+# 前置端口
 
-Front ports are pass-through ports which represent physical cable connections that comprise part of a longer path. For example, the ports on the front face of a UTP patch panel would be modeled in NetBox as front ports. Each port is assigned a physical type, and must be mapped to a specific [rear port](./rearport.md) on the same device. A single rear port may be mapped to multiple front ports, using numeric positions to annotate the specific alignment of each.
+前置端口是代表物理电缆连接中的一部分，构成较长路径的通过端口。例如，前面板上的端口在NetBox中被建模为前置端口。每个端口都分配了一个物理类型，并必须映射到同一设备的特定[后置端口](./rearport.md)。单个后置端口可以映射到多个前置端口，使用数字位置来注释每个端口的具体对齐方式。
 
-!!! tip
-    Like most device components, front ports are instantiated automatically from [front port templates](./frontporttemplate.md) assigned to the selected device type when a device is created.
+!!! 提示
+    与大多数设备组件一样，前置端口是从分配给所选设备类型的[前置端口模板](./frontporttemplate.md)自动实例化的。
 
-## Fields
+## 字段
 
-### Device
+### 设备
 
-The device to which this port belongs.
+此端口所属的设备。
 
-### Module
+### 模块
 
-The installed module within the assigned device to which this port belongs (optional).
+分配给所选设备的已安装模块，该模块包含此端口（可选）。
 
-### Name
+### 名称
 
-The port's name. Must be unique to the parent device.
+端口的名称。必须在父设备内唯一。
 
-### Label
+### 标签
 
-An alternative physical label identifying the port.
+用于标识端口的替代物理标签。
 
-### Type
+### 类型
 
-The port's termination type.
+端口的终端类型。
 
-### Rear Ports
+### 后置端口
 
-The rear port and position to which this front port maps.
+此前置端口映射到的后置端口和位置。
 
-!!! tip
-    When creating multiple front ports using a patterned name (e.g. `Port [1-12]`), you may select the equivalent number of rear port-position mappings from the list.
+!!! 提示
+    当使用模式名称（例如`Port [1-12]`）创建多个前置端口时，您可以从列表中选择等数量的后置端口位置映射。
 
-### Color
+### 颜色
 
-The port's color (optional).
+端口的颜色（可选）。
 
-### Mark Connected
+### 标记为已连接
 
-If selected, this component will be treated as if a cable has been connected.
+如果选择，将视为已连接电缆连接了此组件。
