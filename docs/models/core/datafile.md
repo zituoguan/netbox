@@ -1,25 +1,25 @@
-# Data Files
+# 数据文件
 
-A data file object is the representation in NetBox's database of some file belonging to a remote [data source](./datasource.md). Data files are synchronized automatically, and cannot be modified locally (although they can be deleted).
+数据文件对象是NetBox数据库中某个属于远程[数据源](./datasource.md)的文件的表示。数据文件会自动同步，不能在本地修改（尽管可以删除它们）。
 
-## Fields
+## 字段
 
-### Source
+### 来源
 
-The [data source](./datasource.md) to which this file belongs.
+此文件所属的[数据源](./datasource.md)。
 
-### Path
+### 路径
 
-The path to the file, relative to its source's URL. For example, a file at `/opt/config-data/routing/bgp/peer.yaml` with a source URL of `file:///opt/config-data/` would have its path set to `routing/bgp/peer.yaml`.
+文件相对于其源URL的路径。例如，一个位于`/opt/config-data/routing/bgp/peer.yaml`且源URL为`file:///opt/config-data/`的文件，其路径设置为`routing/bgp/peer.yaml`。
 
-### Last Updated
+### 最后更新
 
-The date and time at which the file most recently updated from its source. Note that this attribute is updated only when the file's contents have been modified. Re-synchronizing the data source will not update this timestamp if the upstream file's data has not changed.
+文件从其源最近更新的日期和时间。注意，只有在文件内容被修改时，这个属性才会更新。如果上游文件的数据没有变化，重新同步数据源不会更新这个时间戳。
 
-### Size
+### 大小
 
-The file's size, in bytes.
+文件的大小，以字节为单位。
 
-### Hash
+### 哈希
 
-A [SHA256 hash](https://en.wikipedia.org/wiki/SHA-2) of the file's data. This can be compared to a hash taken from the original file to determine whether any changes have been made.
+文件数据的[SHA256哈希](https://en.wikipedia.org/wiki/SHA-2)。可以将此哈希与原始文件的哈希进行比较，以确定是否已进行任何更改。

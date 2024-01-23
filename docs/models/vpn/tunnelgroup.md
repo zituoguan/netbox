@@ -1,13 +1,13 @@
-# Tunnel Group
+# 隧道组
 
-[Tunnels](./tunnel.md) can be arranged into administrative groups for organization. For example, you might crete a group to manage all peer-to-peer tunnels inside a mesh network. The assignment of a tunnel to a group is optional.
+[隧道](./tunnel.md)可以根据组织的需要进行排列，以便进行管理。例如，您可以创建一个组来管理网状网络中的所有点对点隧道。将隧道分配到组是可选的。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的URL友好标识符。（可以用于筛选）

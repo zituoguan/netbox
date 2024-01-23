@@ -1,56 +1,56 @@
-# Custom Links
+# 自定义链接
 
-Users can add custom links to object views in NetBox to reference external resources. For example, you might create a custom link for devices pointing to a monitoring system. See the [custom links documentation](../../customization/custom-links.md) for more information.
+用户可以在NetBox中为对象视图添加自定义链接，以引用外部资源。例如，您可以为指向监控系统的设备创建自定义链接。有关更多信息，请参阅[自定义链接文档](../../customization/custom-links.md)。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The name of the custom link. This is used primarily for administrative purposes only, although custom links of the same weight are ordered alphabetically by name when being rendered in the UI.
+自定义链接的名称。这主要用于管理目的，尽管在渲染UI时，具有相同权重的自定义链接将按名称按字母顺序排序。
 
-### Content Type
+### 内容类型
 
-The type of NetBox object to which this custom link applies.
+此自定义链接适用于的NetBox对象类型。
 
-### Weight
+### 权重
 
-A numeric weight used to override alphabetic ordering of links by name. Custom fields with a lower weight will be listed before those with a higher weight. (Note that weight applies within the context of a custom link group, if defined.)
+用于覆盖按名称对链接按字母顺序排序的数值权重。具有较低权重的自定义链接将在具有较高权重的链接之前列出。（请注意，如果定义了自定义链接组，权重适用于自定义链接组的上下文内。）
 
-### Group Name
+### 组名
 
-If this custom link should be grouped with others, specify the name of the group here. Grouped custom links will be listed in a dropdown menu attached to a single button bearing the group name.
+如果此自定义链接应与其他链接分组，请在此处指定组的名称。分组的自定义链接将列在与组名相关的单个按钮附加的下拉菜单中。
 
-### Button Class
+### 按钮类
 
-The color of the UI button.
+UI按钮的颜色。
 
-### Enabled
+### 启用
 
-If not selected, the custom link will not be rendered. This can be useful for temporarily disabling a custom link.
+如果未选择，将不会渲染自定义链接。这可以用于临时禁用自定义链接。
 
-### New Window
+### 新窗口
 
-If selected, this will force the link to open in a new browser tab or window.
+如果选择，将强制链接在新的浏览器标签页或窗口中打开。
 
-### Link Text
+### 链接文本
 
-Jinja2 template code for rendering the button text. (Note that this does not _need_ to contain any template variables.) See below for available context data.
+用于渲染按钮文本的Jinja2模板代码。（请注意，这不需要包含任何模板变量。）有关可用上下文数据，请参见下文。
 
 !!! note
-    Custom links which render an empty text value will not be displayed in the UI. This can be used to toggle the inclusion of a link based on object attributes.
+    渲染为空文本值的自定义链接将不会显示在UI中。这可以用于根据对象属性切换链接的包含。
 
-### Link URL
+### 链接URL
 
-Jinja2 template code for rendering the hyperlink. See below for available context data.
+用于渲染超链接的Jinja2模板代码。有关可用上下文数据，请参见下文。
 
-## Context Data
+## 上下文数据
 
-The following context variables are available in to the text and link templates.
+以下上下文变量可用于文本和链接模板。
 
-| Variable  | Description                                                                 |
-|-----------|-----------------------------------------------------------------------------|
-| `object`  | The NetBox object being displayed                                           |
-| `debug`   | A boolean indicating whether debugging is enabled                           |
-| `request` | The current WSGI request                                                    |
-| `user`    | The current user (if authenticated)                                         |
-| `perms`   | The [permissions](../../administration/permissions.md) assigned to the user |
+| 变量     | 描述                                              |
+|-----------|---------------------------------------------------|
+| `object`  | 正在显示的NetBox对象                              |
+| `debug`   | 一个布尔值，指示是否启用了调试                   |
+| `request` | 当前的WSGI请求                                    |
+| `user`    | 当前用户（如果已经认证）                          |
+| `perms`   | 分配给用户的[权限](../../administration/permissions.md) |

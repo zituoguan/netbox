@@ -1,22 +1,22 @@
-# Virtual Chassis
+# 虚拟底座
 
-A virtual chassis represents a set of devices which share a common control plane. A common example of this is a stack of switches which are connected and configured to operate as a single managed device. Each device in the virtual chassis is referred to as a VC member, and assigned a position and (optionally) a priority. VC member devices commonly reside within the same rack, though this is not a requirement.
+虚拟底座表示一组共享公共控制平面的设备。这的一个常见示例是一堆连接并配置为作为单个托管设备运行的交换机。虚拟底座中的每个设备都称为VC成员，并分配一个位置和（可选）优先级。VC成员设备通常位于同一个机架中，但这并不是必需的。
 
-One of the member devices may be designated as the VC master: This device will typically be assigned a name, services, virtual interfaces, and other attributes related to managing the VC.  If a VC master is defined, interfaces from all VC members are displayed when navigating to its device interfaces view. This does not include management-only interfaces belonging to other members.
+其中一个成员设备可以被指定为VC主设备：该设备通常会被分配一个名称、服务、虚拟接口和其他与管理VC相关的属性。如果定义了VC主设备，则在导航到其设备接口视图时，将显示所有VC成员的接口。这不包括属于其他成员的仅用于管理的接口。
 
-!!! note
-    It's important to recognize the distinction between a virtual chassis and a chassis-based device. A virtual chassis is **not** suitable for modeling a chassis-based switch with removable line cards (such as the Juniper EX9208), as its line cards are _not_ physically autonomous devices. Instead, use [modules](./module.md) for these.
+!!! 注意
+    重要的是要认识到虚拟底座和基于机箱的设备之间的区别。虚拟底座**不适用于**建模具有可更换线卡的机箱式交换机（例如Juniper EX9208），因为其线卡**不是**物理独立的设备。而是使用[模块](./module.md)来表示这些设备。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The virtual chassis' name.
+虚拟底座的名称。
 
-### Domain
+### 域
 
-The domain assigned for VC member devices.
+分配给VC成员设备的域。
 
-### Master
+### 主设备
 
-The member device which has been designated as the chassis master (optional).
+已被指定为底座主设备的成员设备（可选）。

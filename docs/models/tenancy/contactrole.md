@@ -1,13 +1,13 @@
-# Contact Roles
+# 联系人角色
 
-[Contacts](./contact.md) can be organized by functional roles, which are fully customizable by the user. For example, you might create roles for administrative, operational, or emergency contacts.
+[联系人](./contact.md)可以按功能角色进行组织，用户可以完全自定义这些角色。例如，您可以为管理、运维或紧急联系人创建角色。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+独特的人类友好名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+独特的URL友好标识符。（这个值可以用于过滤。）

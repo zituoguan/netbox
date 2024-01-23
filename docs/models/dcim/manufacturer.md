@@ -1,13 +1,13 @@
-# Manufacturers
+# 制造商
 
-A manufacturer represents the "make" of a device; e.g. Cisco or Dell. Each [device type](./devicetype.md) must be assigned to a manufacturer. ([Inventory items](./inventoryitem.md) and [platforms](./platform.md) may also be associated with manufacturers.)
+制造商代表设备的“制造商”，例如 Cisco 或 Dell。每个[设备类型](./devicetype.md)必须分配给一个制造商。([库存项目](./inventoryitem.md)和[平台](./platform.md)也可以与制造商关联。)
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的 URL 友好标识符。（此值可用于筛选。）

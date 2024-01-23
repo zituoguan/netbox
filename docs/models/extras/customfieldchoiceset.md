@@ -1,29 +1,29 @@
-# Custom Field Choice Sets
+# 自定义字段选择集
 
-!!! info "This feature was introduced in NetBox v3.6."
+!!! info "此功能已在NetBox v3.6中引入。"
 
-Single- and multi-selection [custom fields](../../customization/custom-fields.md) must define a set of valid choices from which the user may choose when defining the field value. These choices are defined as sets that may be reused among multiple custom fields.
+单选和多选[自定义字段](../../customization/custom-fields.md)必须定义一组有效的选择，用户在定义字段值时可以从中选择。这些选择被定义为可以在多个自定义字段之间重复使用的集合。
 
-A choice set must define a base choice set and/or a set of arbitrary extra choices.
+选择集必须定义基本选择集和/或一组任意的额外选择。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The human-friendly name of the choice set.
+选择集的人类友好名称。
 
-### Base Choices
+### 基本选择
 
-The set of pre-defined choices to include. Available sets are listed below. This is an optional setting.
+要包括的预定义选择集。下面列出了可用的集合。这是一个可选设置。
 
-* IATA airport codes
-* ISO 3166 - Two-letter country codes
-* UN/LOCODE - Five-character location identifiers
+* IATA机场代码
+* ISO 3166 - 两位字母国家代码
+* UN/LOCODE - 五字符位置标识符
 
-### Extra Choices
+### 额外选择
 
-A set of custom choices that will be appended to the base choice set (if any).
+将追加到基本选择集（如果有）的一组自定义选择。
 
-### Order Alphabetically
+### 按字母顺序排序
 
-If enabled, the choices list will be automatically ordered alphabetically. If disabled, choices will appear in the order in which they were defined.
+如果启用，选择列表将自动按字母顺序排序。如果禁用，选择将按定义的顺序显示。

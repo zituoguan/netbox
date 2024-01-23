@@ -1,31 +1,31 @@
-# Configuration Contexts
+# 配置上下文
 
-Context data is made available to [devices](../dcim/device.md) and/or [virtual machines](../virtualization/virtualmachine.md) based on their relationships to other objects in NetBox. For example, context data can be associated only with devices assigned to a particular site, or only to virtual machines in a certain cluster.
+上下文数据根据设备和/或虚拟机与 NetBox 中其他对象的关系而提供。例如，上下文数据可以仅与分配给特定站点的设备相关联，或仅与特定集群中的虚拟机相关联。
 
-See the [context data documentation](../../features/context-data.md) for more information.
+有关更多信息，请参阅[上下文数据文档](../../features/context-data.md)。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好名称。
 
-### Weight
+### 权重
 
-A numeric value which influences the order in which context data is merged. Contexts with a lower weight are merged before those with a higher weight.
+影响上下文数据合并顺序的数字值。权重较低的上下文将在权重较高的上下文之前合并。
 
-### Data
+### 数据
 
-The context data expressed in JSON format.
+以 JSON 格式表示的上下文数据。
 
-### Data File
+### 数据文件
 
-Config context data may optionally be sourced from a remote [data file](../core/datafile.md), which is synchronized from a remote data source. When designating a data file, there is no need to specify local data for the config context: It will be populated automatically from the data file.
+配置上下文数据可以选择从远程[数据文件](../core/datafile.md)中获取，该文件是从远程数据源同步的。在指定数据文件时，无需为配置上下文指定本地数据：它将自动从数据文件中填充。
 
-### Is Active
+### 是否活动
 
-If not selected, this config context will be excluded from rendering. This can be convenient to temporarily disable a config context.
+如果未选择，则将排除此配置上下文的呈现。这可以方便地临时禁用配置上下文。
 
-### Object Assignment
+### 对象分配
 
-Each configuration context may be assigned with any number of objects of the supported types. If no related objects are selected, it will be considered a "global" config context and apply to all devices and virtual machines.
+每个配置上下文可以分配给任何数量的支持类型的对象。如果未选择相关对象，它将被视为“全局”配置上下文，并应用于所有设备和虚拟机。

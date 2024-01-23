@@ -1,29 +1,29 @@
-# Providers
+# 提供商
 
-A provider is any entity which provides some form of connectivity of among sites or organizations within a site. While this obviously includes carriers which offer Internet and private transit service, it might also include Internet exchange (IX) points and even organizations with whom you peer directly. Each [circuit](./circuit.md) within NetBox must be assigned a provider and a circuit ID which is unique to that provider.
+提供商是指在站点之间或站点内部组织之间提供某种形式连接的任何实体。这显然包括提供互联网和私有传输服务的运营商，也可能包括互联网交换（IX）点，甚至是您直接对等互联的组织。NetBox中的每个[电路](./circuit.md)必须分配一个提供商和一个对该提供商来说唯一的电路ID。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+一个独特的、人类友好的名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+一个独特的、URL友好的标识符。（此值可用于过滤。）
 
 ### ASNs
 
-The [AS numbers](../ipam/asn.md) assigned to this provider (optional).
+分配给此提供商的[AS号码](../ipam/asn.md)（可选）。
 
-### Portal URL
+### 门户网站URL
 
-The URL for the provider's customer service portal.
+提供商客户服务门户的URL。
 
-### NOC Contact
+### NOC联系方式
 
-Contact details for the provider's network operations center (NOC).
+提供商网络运营中心（NOC）的联系方式。
 
-### Admin Contact
+### 行政联系方式
 
-Administrative contact details for the provider.
+提供商的行政联系方式。

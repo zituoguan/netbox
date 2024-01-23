@@ -1,12 +1,12 @@
-# Extending Models
+# 扩展模型
 
-Below is a list of tasks to consider when adding a new field to a core model.
+以下是在核心模型中添加新字段时需要考虑的任务列表。
 
-## 1. Add the field to the model class
+## 1. 在模型类中添加字段
 
-Add the field to the model, taking care to address any of the following conditions.
+在模型中添加字段，并注意处理以下条件。
 
-* When adding a GenericForeignKey field, also add an index under `Meta` for its two concrete fields. For example:
+* 当添加GenericForeignKey字段时，还要在`Meta`下为其两个具体字段添加索引。例如：
 
     ```python
     class Meta:
@@ -15,23 +15,23 @@ Add the field to the model, taking care to address any of the following conditio
         )
     ```
 
-## 2. Generate and run database migrations
+## 2. 生成并运行数据库迁移
 
-[Django migrations](https://docs.djangoproject.com/en/stable/topics/migrations/) are used to express changes to the database schema. In most cases, Django can generate these automatically, however very complex changes may require manual intervention. Always remember to specify a short but descriptive name when generating a new migration.
+[Django迁移](https://docs.djangoproject.com/en/stable/topics/migrations/)用于表示对数据库模式的更改。在大多数情况下，Django可以自动生成这些迁移，但非常复杂的更改可能需要手动干预。始终记住在生成新迁移时指定一个简短但描述性的名称。
 
 ```
 ./manage.py makemigrations <app> -n <name> --no-header
 ./manage.py migrate
 ```
 
-Where possible, try to merge related changes into a single migration. For example, if three new fields are being added to different models within an app, these can be expressed in a single migration. You can merge a newly generated migration with an existing one by combining their `operations` lists.
+在可能的情况下，尝试将相关更改合并到单个迁移中。例如，如果要在应用程序内的不同模型中添加三个新字段，可以在单个迁移中表示这些更改。可以通过合并它们的`operations`列表来将新生成的迁移与现有迁移合并。
 
-!!! warning "Do not alter existing migrations"
-    Migrations can only be merged within a release. Once a new release has been published, its migrations cannot be altered (other than for the purpose of correcting a bug).
+!!! warning "不要更改现有迁移"
+    迁移只能在发布版本内合并。一旦发布了新版本，就不能更改其迁移（除非是为了纠正错误）。
 
-## 3. Add validation logic to `clean()`
+## 3. 在`clean()`中添加验证逻辑
 
-If the new field introduces additional validation requirements (beyond what's included with the field itself), implement them in the model's `clean()` method. Remember to call the model's original method using `super()` before or after your custom validation as appropriate:
+如果新字段引入了额外的验证要求（超出字段本身包含的内容），请在模型的`clean()`方法中实现它们。在适当的时候，记得在你的自定义验证之前或之后使用`super()`调用模型的原始方法：
 
 ```
 class Foo(models.Model):
@@ -39,56 +39,56 @@ class Foo(models.Model):
     def clean(self):
         super().clean()
 
-        # Custom validation goes here
+        # 自定义验证放在这里
         if self.bar is None:
             raise ValidationError()
 ```
 
-## 4. Update relevant querysets
+## 4. 更新相关的查询集
 
-If you're adding a relational field (e.g. `ForeignKey`) and intend to include the data when retrieving a list of objects, be sure to include the field using `prefetch_related()` as appropriate. This will optimize the view and avoid extraneous database queries.
+如果要添加关系字段（例如`ForeignKey`）并且打算在检索对象列表时包括数据，请确保适当使用`prefetch_related()`包含字段。这将优化视图并避免不必要的数据库查询。
 
-## 5. Update API serializer
+## 5. 更新API序列化器
 
-Extend the model's API serializer in `<app>.api.serializers` to include the new field. In most cases, it will not be necessary to also extend the nested serializer, which produces a minimal representation of the model.
+扩展模型的API序列化器，在`<app>.api.serializers`中包含新字段。在大多数情况下，不需要扩展嵌套序列化器，因为它产生模型的最小表示。
 
-## 6. Add fields to forms
+## 6. 添加字段到表单
 
-Extend any forms to include the new field(s) as appropriate. These are found under the `forms/` directory within each app. Common forms include:
+根据需要扩展任何表单以包括新字段。这些表单位于每个应用程序的`forms/`目录下。常见的表单包括：
 
-* **Credit/edit** - Manipulating a single object
-* **Bulk edit** - Performing a change on many objects at once
-* **CSV import** - The form used when bulk importing objects in CSV format
-* **Filter** - Displays the options available for filtering a list of objects (both UI and API)
+* **创建/编辑** - 操作单个对象
+* **批量编辑** - 一次对多个对象执行更改
+* **CSV导入** - 用于以CSV格式批量导入对象的表单
+* **筛选器** - 显示用于筛选对象列表的选项（UI和API都包括）
 
-## 7. Extend object filter set
+## 7. 扩展对象过滤器集
 
-If the new field should be filterable, add it to the `FilterSet` for the model. If the field should be searchable, remember to query it in the FilterSet's `search()` method.
+如果新字段应该可筛选，请将其添加到模型的`FilterSet`中。如果字段应该可搜索，请记住在FilterSet的`search()`方法中查询它。
 
-## 8. Add column to object table
+## 8. 添加列到对象表格
 
-If the new field will be included in the object list view, add a column to the model's table. For simple fields, adding the field name to `Meta.fields` will be sufficient. More complex fields may require declaring a custom column. Also add the field name to `default_columns` if the column should be present in the table by default.
+如果新字段将包含在对象列表视图中，请向模型的表格添加列。对于简单字段，将字段名称添加到`Meta.fields`将足够。更复杂的字段可能需要声明自定义列。还将字段名称添加到`default_columns`，如果该列应默认存在于表格中。
 
-## 9. Update the SearchIndex
+## 9. 更新SearchIndex
 
-Where applicable, add the new field to the model's SearchIndex for inclusion in global search.
+在适用的情况下，将新字段添加到模型的SearchIndex中，以包含在全局搜索中。
 
-## 10. Update the UI templates
+## 10. 更新UI模板
 
-Edit the object's view template to display the new field. There may also be a custom add/edit form template that needs to be updated.
+编辑对象的视图模板以显示新字段。还可能存在需要更新的自定义添加/编辑表单模板。
 
-## 11. Create/extend test cases
+## 11. 创建/扩展测试用例
 
-Create or extend the relevant test cases to verify that the new field and any accompanying validation logic perform as expected. This is especially important for relational fields. NetBox incorporates various test suites, including:
+创建或扩展相关的测试用例，以验证新字段和任何相关的验证逻辑是否按预期工作。对于关系字段，这尤其重要。NetBox包含各种测试套件，包括：
 
-* API serializer/view tests
-* Filter tests
-* Form tests
-* Model tests
-* View tests
+* API序列化器/视图测试
+* 筛选测试
+* 表单测试
+* 模型测试
+* 视图测试
 
-Be diligent to ensure all the relevant test suites are adapted or extended as necessary to test any new functionality.
+要保持谨慎，确保适当地适应或扩展所有相关的测试套件，以测试任何新功能。
 
-## 12. Update the model's documentation
+## 12. 更新模型文档
 
-Each model has a dedicated page in the documentation, at `models/<app>/<model>.md`. Update this file to include any relevant information about the new field.
+每个模型都有一个专门的文档页面，位于`models/<app>/<model>.md`。更新此文件以包括有关新字段的任何相关信息。

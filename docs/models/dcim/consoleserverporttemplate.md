@@ -1,3 +1,3 @@
-# Console Server Port Templates
+# 控制台服务器端口模板
 
-A template for a console server port that will be created on all instantiations of the parent device type. See the [console server port](./consoleserverport.md) documentation for more detail.
+这是一个控制台服务器端口的模板，将在父设备类型的所有实例化中创建。有关更多详细信息，请参阅[控制台服务器端口](./consoleserverport.md)文档。

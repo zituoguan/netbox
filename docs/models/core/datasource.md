@@ -1,49 +1,49 @@
-# Data Sources
+# 数据源
 
-A data source represents some external repository of data which NetBox can consume, such as a git repository. Files within the data source are synchronized to NetBox by saving them in the database as [data file](./datafile.md) objects.
+数据源代表NetBox可以使用的一些外部数据存储，如git仓库。数据源中的文件通过将它们作为[数据文件](./datafile.md)对象保存在数据库中来同步到NetBox。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The data source's human-friendly name.
+数据源的人类友好名称。
 
-### Type
+### 类型
 
-The type of data source. Supported options include:
+数据源的类型。支持的选项包括：
 
-* Local directory
-* git repository
-* Amazon S3 bucket
+* 本地目录
+* git仓库
+* 亚马逊S3桶
 
 ### URL
 
-The URL identifying the remote source. Some examples are included below.
+标识远程源的URL。下面列出了一些示例。
 
-| Type      | Example URL                                        |
+| 类型      | 示例 URL                                        |
 |-----------|----------------------------------------------------|
-| Local     | file:///path/to/my/data/                           |
+| 本地     | file:///path/to/my/data/                           |
 | git       | https://github.com/my-organization/my-repo         |
-| Amazon S3 | https://s3.us-east-2.amazonaws.com/my-bucket-name/ |
+| 亚马逊 S3 | https://s3.us-east-2.amazonaws.com/my-bucket-name/ |
 
-### Status
+### 状态
 
-The source's current synchronization status. Note that this cannot be set manually: It is updated automatically when the source is synchronized.
+源的当前同步状态。注意，这不能手动设置：它会在源同步时自动更新。
 
-### Enabled
+### 启用
 
-If false, synchronization will be disabled.
+如果为假，将禁用同步。
 
-### Ignore Rules
+### 忽略规则
 
-A set of rules (one per line) identifying filenames to ignore during synchronization. Some examples are provided below. See Python's [`fnmatch()` documentation](https://docs.python.org/3/library/fnmatch.html) for a complete reference.
+一组规则（每行一个），用于在同步过程中识别要忽略的文件名。下面提供了一些示例。请参阅Python的[`fnmatch()`文档](https://docs.python.org/3/library/fnmatch.html)以获取完整参考。
 
-| Rule           | Description                              |
+| 规则           | 描述                              |
 |----------------|------------------------------------------|
-| `README`       | Ignore any files named `README`          |
-| `*.txt`        | Ignore any files with a `.txt` extension |
-| `data???.json` | Ignore e.g. `data123.json`               |
+| `README`       | 忽略任何名为`README`的文件          |
+| `*.txt`        | 忽略任何带有`.txt`扩展名的文件 |
+| `data???.json` | 忽略例如`data123.json`的文件               |
 
-### Last Synced
+### 最后同步
 
-The date and time at which the source was most recently synchronized successfully.
+源最近一次成功同步的日期和时间。

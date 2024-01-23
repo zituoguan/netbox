@@ -1,33 +1,33 @@
-# Export Templates
+# 导出模板
 
-Export templates are used to render arbitrary data from a set of NetBox objects. For example, you might want to automatically generate a network monitoring service configuration from a list of device objects. See the [export templates documentation](../../customization/export-templates.md) for more information.
+导出模板用于从一组NetBox对象中呈现任意数据。例如，您可能希望从设备对象列表自动生成网络监控服务配置。有关更多信息，请参阅[导出模板文档](../../customization/export-templates.md)。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The name of the export template. This will appear in the "export" dropdown list in the NetBox UI.
+导出模板的名称。这将显示在NetBox UI中的“导出”下拉列表中。
 
-### Content Type
+### 内容类型
 
-The type of NetBox object to which the export template applies.
+导出模板适用的NetBox对象类型。
 
-### Data File
+### 数据文件
 
-Template code may optionally be sourced from a remote [data file](../core/datafile.md), which is synchronized from a remote data source. When designating a data file, there is no need to specify local content for the template: It will be populated automatically from the data file.
+模板代码可以选择从远程[数据文件](../core/datafile.md)中获取，该文件是从远程数据源同步的。在指定数据文件时，无需指定模板的本地内容：它将自动从数据文件填充。
 
-### Template Code
+### 模板代码
 
-Jinja2 template code for rendering the exported data.
+用于呈现导出数据的Jinja2模板代码。
 
-### MIME Type
+### MIME类型
 
-The MIME type to indicate in the response when rendering the export template (optional). Defaults to `text/plain`.
+在呈现导出模板时在响应中指示的MIME类型（可选）。默认为`text/plain`。
 
-### File Extension
+### 文件扩展名
 
-The file extension to append to the file name in the response (optional).
+在响应中附加到文件名的文件扩展名（可选）。
 
-### As Attachment
+### 作为附件
 
-If selected, the rendered content will be returned as a file attachment, rather than displayed directly in-browser (where supported).
+如果选择，呈现的内容将作为文件附件返回，而不是直接在支持的浏览器中显示。

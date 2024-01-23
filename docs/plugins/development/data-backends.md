@@ -1,6 +1,6 @@
-# Data Backends
+# 数据后端
 
-[Data sources](../../models/core/datasource.md) can be defined to reference data which exists on systems of record outside NetBox, such as a git repository or Amazon S3 bucket. Plugins can register their own backend classes to introduce support for additional resource types. This is done by subclassing NetBox's `DataBackend` class.
+[数据源](../../models/core/datasource.md) 可以定义为引用存在于 NetBox 之外的记录系统上的数据，例如 git 存储库或 Amazon S3 存储桶。插件可以注册自己的后端类来支持额外的资源类型。这可以通过继承 NetBox 的 `DataBackend` 类来完成。
 
 ```python title="data_backends.py"
 from netbox.data_backends import DataBackend
@@ -11,13 +11,13 @@ class MyDataBackend(DataBackend):
     ...
 ```
 
-To register one or more data backends with NetBox, define a list named `backends` at the end of this file:
+要在 NetBox 中注册一个或多个数据后端，请在此文件的末尾定义一个名为 `backends` 的列表：
 
 ```python title="data_backends.py"
 backends = [MyDataBackend]
 ```
 
-!!! tip
-    The path to the list of search indexes can be modified by setting `data_backends` in the PluginConfig instance.
+!!! 提示
+    可以通过在 PluginConfig 实例中设置 `data_backends` 来修改搜索索引列表的路径。
 
 ::: core.data_backends.DataBackend

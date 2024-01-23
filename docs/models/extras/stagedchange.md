@@ -1,26 +1,26 @@
-# Staged Changes
+# 暂存更改
 
-A staged change represents the creation of a new object or the modification or deletion of an existing object to be performed at some future point. Each change must be assigned to a [branch](./branch.md).
+暂存更改表示将在将来某个时间点执行的新对象的创建或对现有对象的修改或删除。每个更改必须分配给一个[分支](./branch.md)。
 
-Changes can be applied individually via the `apply()` method, however it is recommended to apply changes in bulk using the parent branch's `commit()` method.
+可以通过`apply()`方法逐个应用更改，但建议使用父分支的`commit()`方法批量应用更改。
 
-## Fields
+## 字段
 
 !!! warning
-    Staged changes are not typically created or manipulated directly, but rather effected through the use of the [`checkout()`](../../plugins/development/staged-changes.md) context manager.
+    通常不会直接创建或直接操作暂存更改，而是通过使用[`checkout()`](../../plugins/development/staged-changes.md)上下文管理器来实现。
 
-### Branch
+### 分支
 
-The [branch](./branch.md) to which this change belongs.
+此更改所属的[分支](./branch.md)。
 
-### Action
+### 操作
 
-The type of action this change represents: `create`, `update`, or `delete`.
+此更改表示的操作类型：`create`、`update`或`delete`。
 
-### Object
+### 对象
 
-A generic foreign key referencing the existing object to which this change applies.
+通用外键，引用此更改适用于的现有对象。
 
-### Data
+### 数据
 
-JSON representation of the changes being made to the object (not applicable for deletions).
+正在对对象进行的更改的JSON表示（不适用于删除）。

@@ -1,144 +1,144 @@
-# Interfaces
+# 接口
 
-Interfaces in NetBox represent network interfaces used to exchange data with connected devices. On modern networks, these are most commonly Ethernet, but other types are supported as well. IP addresses and VLANs can be assigned to interfaces.
+NetBox中的接口表示用于与连接设备交换数据的网络接口。在现代网络中，这些接口最常见的是以太网，但也支持其他类型。可以为接口分配IP地址和VLAN。
 
 !!! tip
-    Like most device components, interfaces are instantiated automatically from [interface templates](./interfacetemplate.md) assigned to the selected device type when a device is created.
+    与大多数设备组件一样，接口是从分配给创建设备的所选设备类型的[接口模板](./interfacetemplate.md)自动实例化的。
 
 !!! note
-    Although both devices and virtual machines both can have interfaces assigned, a separate model is used for each. Thus, device interfaces have some properties that are not present on virtual machine interfaces and vice versa.
+    尽管设备和虚拟机都可以分配接口，但每个都使用不同的模型。因此，设备接口具有一些虚拟机接口上不存在的属性，反之亦然。
 
-## Fields
+## 字段
 
-### Device
+### 设备
 
-The device to which this interface belongs.
+此接口所属的设备。
 
-### Module
+### 模块
 
-The installed module within the assigned device to which this interface belongs (optional).
+分配给此接口的设备内已安装的模块（可选）。
 
-### Name
+### 名称
 
-The name of the interface, as reported by the device's operating system. Must be unique to the parent device.
+接口的名称，由设备的操作系统报告。必须在父设备中是唯一的。
 
-### Label
+### 标签
 
-An alternative physical label identifying the interface.
+标识接口的替代物理标签。
 
-### Type
+### 类型
 
-The type of interface. Interfaces may be physical or virtual in nature, but only physical interfaces may be connected via cables.
+接口的类型。接口可以是物理或虚拟的，但只有物理接口可以通过电缆连接。
 
 !!! note
-    The interface type refers to the physical termination or port on the device. Interfaces which employ a removable optic or similar transceiver should be defined to represent the type of transceiver in use, irrespective of the physical termination to that transceiver.
+    接口类型是指设备上的物理终结或端口。使用可拆卸光模块或类似的收发器时，接口应定义为表示使用的收发器的类型，而不考虑该收发器的物理终止。
 
-### Speed
+### 速度
 
-The operating speed, in kilobits per second (kbps).
+以千比特每秒（kbps）表示的操作速度。
 
-### Duplex
+### 双工
 
-The operation duplex (full, half, or auto).
+操作双工（全双工、半双工或自动）。
 
 ### VRF
 
-The [virtual routing and forwarding](../ipam/vrf.md) instance to which this interface is assigned.
+分配给此接口的虚拟路由和转发实例（VRF）。
 
-### MAC Address
+### MAC地址
 
-The 48-bit MAC address (for Ethernet interfaces).
+48位MAC地址（以太网接口）。
 
 ### WWN
 
-The 64-bit world-wide name (for Fibre Channel interfaces).
+64位全球唯一名称（用于光纤通道接口）。
 
 ### MTU
 
-The interface's configured maximum transmissible unit (MTU).
+接口的配置最大传输单元（MTU）。
 
-### Transmit Power
+### 发送功率
 
-The interface's configured output power, in dBm (for optical interfaces).
+接口的配置输出功率，以dBm为单位（用于光接口）。
 
-### Enabled
+### 启用
 
-If not selected, this interface will be treated as disabled/inoperative.
+如果未选中，将将此接口视为已禁用/无效。
 
-### Management Only
+### 仅管理
 
-Designates the interface as handling management traffic only (e.g. for out-of-band management connections).
+将接口标记为仅处理管理流量（例如，用于带外管理连接）。
 
-### Mark Connected
+### 标记为已连接
 
-If selected, this component will be treated as if a cable has been connected.
+如果选中，将将此组件视为已连接电缆。
 
-### Parent Interface
+### 父接口
 
-Virtual interfaces can be bound to a physical parent interface. This is helpful for modeling virtual interfaces which employ encapsulation on a physical interface, such as an 802.1Q VLAN-tagged subinterface.
+可以将虚拟接口绑定到物理父接口。这有助于对虚拟接口进行建模，这些接口在物理接口上使用封装，例如802.1Q VLAN标记的子接口。
 
 !!! note
-    An interface with one or more child interfaces assigned cannot be deleted until all its child interfaces have been deleted or reassigned.
+    具有一个或多个分配的子接口的接口无法删除，直到删除或重新分配了所有其子接口。
 
-### Bridged Interface
+### 桥接接口
 
-Interfaces can be bridged to other interfaces on a device in two manners: symmetric or grouped.
+接口可以以两种方式与设备上的其他接口进行桥接：对称或分组。
 
-* **Symmetric:** For example, eth0 is bridged to eth1, and eth1 is bridged to eth0. This effects a point-to-point bridge between the two interfaces, which NetBox will follow when tracing cable paths.
-* **Grouped:** Multiple interfaces are each bridged to a common virtual bridge interface, effecting a multiaccess bridged segment. NetBox cannot follow these relationships when tracing cable paths, because no forwarding information is available.
+* **对称：**例如，eth0与eth1相互桥接，eth1与eth0相互桥接。这会在两个接口之间创建一个点对点桥接，NetBox将在跟踪电缆路径时遵循这个桥接。
+* **分组：**多个接口都与一个共同的虚拟桥接接口桥接，创建一个多接入桥接段。NetBox不能在跟踪电缆路径时跟踪这些关系，因为没有可用的转发信息。
 
-### LAG Interface
+### LAG接口
 
-Physical interfaces may be arranged into link aggregation groups (LAGs, also known as "trunks") and associated with a parent LAG (virtual) interface. LAG interfaces can be recursively nested to model bonding of trunk groups. Like all virtual interfaces, LAG interfaces cannot be connected physically.
+可以将物理接口组织成链接聚合组（LAG，也称为“干线”）并与父LAG（虚拟）接口相关联。LAG接口可以递归嵌套，以模拟干线组的绑定。与所有虚拟接口一样，LAG接口不能在物理上连接。
 
-### PoE Mode
+### PoE模式
 
-The power over Ethernet (PoE) mode for this interface. (This field must be left empty for interfaces which do not support PoE.) Choices include:
+适用于此接口的PoE（供电以太网）模式。 （不支持PoE的接口必须将此字段保留为空。）选项包括：
 
-* Powered device (PD)
-* Power-supplying equipment (PSE)
+* Powered device（PD）
+* Power-supplying equipment（PSE）
 
-### PoE Type
+### PoE类型
 
-The classification of PoE transmission supported, for PoE-enabled interfaces. This can be one of the listed IEEE 802.3 standards, or a passive setting (24 or 48 volts across two or four pairs).
+支持的PoE传输分类，适用于支持PoE的接口。这可以是列出的IEEE 802.3标准之一，也可以是被动设置（两对或四对的24或48伏特）。
 
-### 802.1Q Mode
+### 802.1Q模式
 
-For switched Ethernet interfaces, this identifies the 802.1Q encapsulation strategy in effect. Options include:
+对于交换以太网接口，这标识了生效的802.1Q封装策略。选项包括：
 
-* **Access:** All traffic is assigned to a single VLAN, with no tagging.
-* **Tagged:** One untagged "native" VLAN is allowed, as well as any number of tagged VLANs.
-* **Tagged (all):** Implies that all VLANs are carried by the interface. One untagged VLAN may be designated.
+* **访问：**将所有流量分配给单个VLAN，不带标记。
+* **已标记：**允许一个未标记的“本地”VLAN，以及任意数量的已标记的VLAN。
+* **已标记（全部）：**意味着所有VLAN都由接口传输。可以指定一个未标记的VLAN。
 
-This field must be left blank for routed interfaces which do employ 802.1Q encapsulation.
+对于不使用802.1Q封装的路由接口，必须将此字段保留为空。
 
-### Untagged VLAN
+### 未标记VLAN
 
-The "native" (untagged) VLAN for the interface. Valid only when one of the above 802.1Q mode is selected.
+接口的“本地”（未标记）VLAN。仅在上述802.1Q模式之一被选中时有效。
 
-### Tagged VLANs
+### 已标记VLAN
 
-The tagged VLANs which are configured to be carried by this interface. Valid only for the "tagged" 802.1Q mode above.
+已配置为由此接口传输的已标记VLAN。仅适用于上述的“已标记”802.1Q模式。
 
-### Wireless Role
+### 无线角色
 
-Indicates the configured role for wireless interfaces (access point or station).
+指示无线接口（访问点或站点）的配置角色。
 
-### Wireless Channel
+### 无线信道
 
-The configured channel for wireless interfaces.
+无线接口的配置信道。
 
 !!! tip
-    Selecting one of the pre-defined wireless channels will automatically populate the channel frequency and width upon saving the interface.
+    选择预定义的无线信道之一将在保存接口时自动填充信道频率和宽度。
 
-### Channel Frequency
+### 信道频率
 
-The configured operation frequency of a wireless interface, in MHz. This is typically inferred by the configured channel above, but may be set manually e.g. to identify a licensed channel not available for general use.
+无线接口的配置操作频率，以MHz为单位。通常情况下，这是由上述配置的信道推断出来的，但可以手动设置，例如，以识别不适用于一般使用的已许可频道。
 
-### Channel Width
+### 信道宽度
 
-The configured channel width of a wireless interface, in MHz. This is typically inferred by the configured channel above, but may be set manually e.g. to identify a licensed channel not available for general use.
+无线接口的配置信道宽度，以MHz为单位。通常情况下，这是由上述配置的信道推断出来的，但可以手动设置，例如，以识别不适用于一般使用的已许可频道。
 
-### Wireless LANs
+### 无线局域网
 
-The [wireless LANs](../wireless/wirelesslan.md) for which this interface carries traffic. (Valid for wireless interfaces only.)
+此接口传输流量的[无线局域网](../wireless/wirelesslan.md)（仅适用于无线接口）。

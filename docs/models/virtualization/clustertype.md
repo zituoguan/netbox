@@ -1,13 +1,13 @@
-# Cluster Types
+# 集群类型
 
-A cluster type represents a technology or mechanism by which a [cluster](./cluster.md) is formed. For example, you might create a cluster type named "VMware vSphere" for a locally hosted cluster or "DigitalOcean NYC3" for one hosted by a cloud provider.
+集群类型表示形成[集群](./cluster.md)的技术或机制。例如，您可以为本地托管的集群创建一个名为“VMware vSphere”的集群类型，或为由云提供商托管的集群创建一个名为“DigitalOcean NYC3”的集群类型。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的 URL 友好标识符。（此值可用于筛选。）

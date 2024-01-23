@@ -1,21 +1,21 @@
-# ASN Ranges
+# ASN范围
 
-Ranges can be defined to group [AS numbers](./asn.md) numerically and to facilitate their automatic provisioning. Each range must be assigned to a [RIR](./rir.md).
+可以定义范围以按数字对[AS号码](./asn.md)进行分组，并促进其自动配置。每个范围必须分配给一个[RIR](./rir.md)。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name for the range.
+范围的唯一人类友好名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的URL友好标识符。（此值可用于过滤。）
 
 ### RIR
 
-The [Regional Internet Registry](./rir.md) or similar authority responsible for the allocation of AS numbers within this range.
+负责在此范围内分配AS号码的[区域互联网注册管理机构](./rir.md)或类似机构。
 
-### Start & End
+### 起始和结束
 
-The starting and ending numeric boundaries of the range (inclusive).
+范围的起始和结束数值边界（包括在内）。

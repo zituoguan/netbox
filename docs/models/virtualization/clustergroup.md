@@ -1,13 +1,13 @@
-# Cluster Groups
+# 集群组
 
-Cluster groups may be created for the purpose of organizing [clusters](./cluster.md). The arrangement of clusters into groups is optional.
+集群组可以用于组织[集群](./cluster.md)。将集群组织成组是可选的。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的 URL 友好标识符。（此值可用于筛选。）

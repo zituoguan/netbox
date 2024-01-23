@@ -1,10 +1,10 @@
-# Filters & Filter Sets
+# 过滤器和过滤器集
 
-Filter sets define the mechanisms available for filtering or searching through a set of objects in NetBox. For instance, sites can be filtered by their parent region or group, status, facility ID, and so on. The same filter set is used consistently for a model whether the request is made via the UI, REST API, or GraphQL API. NetBox employs the [django-filters2](https://django-tables2.readthedocs.io/en/latest/) library to define filter sets.
+过滤器集定义了在 NetBox 中过滤或搜索一组对象的可用机制。例如，可以通过其父区域或组、状态、设施 ID 等来过滤站点。无论是通过 UI、REST API 还是 GraphQL API 进行请求，都将一致使用相同的模型来定义过滤器集。NetBox 使用 [django-filters2](https://django-tables2.readthedocs.io/en/latest/) 库来定义过滤器集。
 
-## FilterSet Classes
+## 过滤器集类
 
-To support additional functionality standard to NetBox models, such as tag assignment and custom field support, the `NetBoxModelFilterSet` class is available for use by plugins. This should be used as the base filter set class for plugin models which inherit from `NetBoxModel`. Within this class, individual filters can be declared as directed by the `django-filters` documentation. An example is provided below.
+为了支持 NetBox 模型标准的附加功能，例如标签分配和自定义字段支持，可以使用 `NetBoxModelFilterSet` 类供插件使用。这应该用作从 `NetBoxModel` 继承的插件模型的基础过滤器集类。在此类中，可以根据 `django-filters` 文档的指导声明单独的过滤器。下面提供了一个示例。
 
 ```python
 # filtersets.py
@@ -27,9 +27,9 @@ class MyFilterSet(NetBoxModelFilterSet):
         fields = ('some', 'other', 'fields')
 ```
 
-### Declaring Filter Sets
+### 声明过滤器集
 
-To utilize a filter set in a subclass of one of NetBox's generic views (such as `ObjectListView` or `BulkEditView`), define the `filterset` attribute on the view class:
+要在 NetBox 的通用视图子类中使用过滤器集（例如 `ObjectListView` 或 `BulkEditView`），请在视图类上定义 `filterset` 属性：
 
 ```python
 # views.py
@@ -42,7 +42,7 @@ class MyModelListView(ObjectListView):
     filterset = MyModelFilterSet
 ```
 
-To enable a filter set on a  REST API endpoint, set the `filterset_class` attribute on the API view:
+要在 REST API 端点上启用过滤器集，请在 API 视图上设置 `filterset_class` 属性：
 
 ```python
 # api/views.py
@@ -55,11 +55,11 @@ class MyModelViewSet(...):
     filterset_class = filtersets.MyModelFilterSet
 ```
 
-## Filter Classes
+## 过滤器类
 
 ### TagFilter
 
-The `TagFilter` class is available for all models which support tag assignment (those which inherit from `NetBoxModel` or `TagsMixin`). This filter subclasses django-filter's `ModelMultipleChoiceFilter` to work with NetBox's `TaggedItem` class.
+`TagFilter` 类适用于支持标签分配的所有模型（那些从 `NetBoxModel` 或 `TagsMixin` 继承的模型）。此过滤器子类 django-filter 的 `ModelMultipleChoiceFilter` 以与 NetBox 的 `TaggedItem` 类一起使用。
 
 ```python
 from django_filters import FilterSet

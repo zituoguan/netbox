@@ -1,18 +1,18 @@
-# Dashboard Widgets
+# 仪表板小部件
 
-Each NetBox user can customize his or her personal dashboard by adding and removing widgets and by manipulating the size and position of each. Plugins can register their own dashboard widgets to complement those already available natively.
+每个 NetBox 用户都可以通过添加和删除小部件以及操作每个小部件的大小和位置来自定义自己的个人仪表板。插件可以注册自己的仪表板小部件，以补充已经本地可用的小部件。
 
-## The DashboardWidget Class
+## DashboardWidget 类
 
-All dashboard widgets must inherit from NetBox's `DashboardWidget` base class. Subclasses must provide a `render()` method, and may override the base class' default characteristics.
+所有仪表板小部件都必须继承自 NetBox 的 `DashboardWidget` 基类。子类必须提供一个 `render()` 方法，并可以重写基类的默认特性。
 
-Widgets which require configuration by a user must also include a `ConfigForm` child class which inherits from `WidgetConfigForm`. This form is used to render the user configuration options for the widget.
+需要用户配置的小部件还必须包括一个子类 `ConfigForm`，该子类继承自 `WidgetConfigForm`。此表单用于呈现小部件的用户配置选项。
 
 ::: extras.dashboard.widgets.DashboardWidget
 
-## Widget Registration
+## 小部件注册
 
-To register a dashboard widget for use in NetBox, import the `register_widget()` decorator and use it to wrap each `DashboardWidget` subclass:
+要注册一个用于在 NetBox 中使用的仪表板小部件，请导入 `register_widget()` 装饰器并使用它来包装每个 `DashboardWidget` 子类：
 
 ```python
 from extras.dashboard.widgets import DashboardWidget, register_widget
@@ -26,7 +26,7 @@ class MyWidget2(DashboardWidget):
     ...
 ```
 
-## Example
+## 示例
 
 ```python
 from django import forms

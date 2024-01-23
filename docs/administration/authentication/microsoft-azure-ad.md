@@ -1,51 +1,51 @@
 # Microsoft Azure AD
 
-This guide explains how to configure single sign-on (SSO) support for NetBox using [Microsoft Azure Active Directory (AD)](https://azure.microsoft.com/en-us/services/active-directory/) as an authentication backend.
+本指南解释了如何使用[Microsoft Azure Active Directory (AD)](https://azure.microsoft.com/en-us/services/active-directory/)作为身份验证后端，配置NetBox的单一登录（SSO）支持。
 
-## Azure AD Configuration
+## Azure AD 配置
 
-### 1. Create a test user (optional)
+### 1. 创建测试用户（可选）
 
-Create a new user in AD to be used for testing. You can skip this step if you already have a suitable account created.
+在AD中创建一个新用户，用于测试。如果您已经创建了适合的帐户，可以跳过此步骤。
 
-### 2. Create an app registration
+### 2. 创建应用注册
 
-Under the Azure Active Directory dashboard, navigate to **Add > App registration**.
+在Azure Active Directory仪表板中，导航到**添加 > 应用注册**。
 
-![Add an app registration](../../media/authentication/azure_ad_add_app_registration.png)
+![添加应用注册](../../media/authentication/azure_ad_add_app_registration.png)
 
-Enter a name for the registration (e.g. "NetBox") and ensure that the "single tenant" option is selected.
+输入注册的名称（例如"NetBox"），并确保选择了"单租户"选项。
 
-Under "Redirect URI", select "Web" for the platform and enter the path to your NetBox installation, ending with `/oauth/complete/azuread-oauth2/`. Note that this URI **must** begin with `https://` unless you are referencing localhost (for development purposes).
+在"重定向 URI"下，选择平台为"Web"，并输入指向您的NetBox安装的路径，以`/oauth/complete/azuread-oauth2/`结尾。请注意，此URI**必须**以`https://`开头，除非您引用本地主机（仅用于开发目的）。
 
-![App registration parameters](../../media/authentication/azure_ad_app_registration.png)
+![应用注册参数](../../media/authentication/azure_ad_app_registration.png)
 
-Once finished, make note of the application (client) ID; this will be used when configuring NetBox.
+完成后，记下应用程序（客户端）ID；在配置NetBox时将使用它。
 
-![Completed app registration](../../media/authentication/azure_ad_app_registration_created.png)
+![完成的应用注册](../../media/authentication/azure_ad_app_registration_created.png)
 
-!!! tip "Multitenant authentication"
-    NetBox also supports multitenant authentication via Azure AD, however it requires a different backend and an additional configuration parameter. Please see the [`python-social-auth` documentation](https://python-social-auth.readthedocs.io/en/latest/backends/azuread.html#tenant-support) for details concerning multitenant authentication.
+!!! 提示 "多租户身份验证"
+    NetBox还支持通过Azure AD进行多租户身份验证，但是需要不同的后端和额外的配置参数。请参阅[`python-social-auth`文档](https://python-social-auth.readthedocs.io/en/latest/backends/azuread.html#tenant-support)以获取有关多租户身份验证的详细信息。
 
-### 3. Create a secret
+### 3. 创建密钥
 
-When viewing the newly-created app registration, click the "Add a certificate or secret" link under "Client credentials". Under the "Client secrets" tab, click the "New client secret" button.
+在查看新创建的应用注册时，点击"客户端凭据"下的"添加证书或密钥"链接。在"客户端密钥"选项卡下，点击"新的客户端密钥"按钮。
 
-![Add a client secret](../../media/authentication/azure_ad_add_client_secret.png)
+![添加客户端密钥](../../media/authentication/azure_ad_add_client_secret.png)
 
-You can optionally specify a description and select a lifetime for the secret.
+您可以选择指定描述并选择密钥的生存期，但这是可选的。
 
-![Client secret parameters](../../media/authentication/azure_ad_client_secret.png)
+![客户端密钥参数](../../media/authentication/azure_ad_client_secret.png)
 
-Once finished, make note of the secret value (not the secret ID); this will be used when configuring NetBox.
+完成后，记下密钥值（而不是密钥ID）；在配置NetBox时将使用它。
 
-![Client secret parameters](../../media/authentication/azure_ad_client_secret_created.png)
+![客户端密钥参数](../../media/authentication/azure_ad_client_secret_created.png)
 
-## NetBox Configuration
+## NetBox 配置
 
-### 1. Enter configuration parameters
+### 1. 输入配置参数
 
-Enter the following configuration parameters in `configuration.py`, substituting your own values:
+在`configuration.py`中输入以下配置参数，替换为您自己的值：
 
 ```python
 REMOTE_AUTH_BACKEND = 'social_core.backends.azuread.AzureADOAuth2'
@@ -53,36 +53,36 @@ SOCIAL_AUTH_AZUREAD_OAUTH2_KEY = '{APPLICATION_ID}'
 SOCIAL_AUTH_AZUREAD_OAUTH2_SECRET = '{SECRET_VALUE}'
 ```
 
-### 2. Restart NetBox
+### 2. 重启NetBox
 
-Restart the NetBox services so that the new configuration takes effect. This is typically done with the command below:
+重新启动NetBox服务，以使新配置生效。通常可以使用以下命令来执行此操作：
 
 ```no-highlight
 sudo systemctl restart netbox
 ```
 
-## Testing
+## 测试
 
-Log out of NetBox if already authenticated, and click the "Log In" button at top right. You should see the normal login form as well as an option to authenticate using Azure AD. Click that link.
+如果已经通过身份验证登录了NetBox，请退出，并单击右上角的"登录"按钮。您应该看到正常的登录表单，以及使用Azure AD进行身份验证的选项。单击该链接。
 
-![NetBox Azure AD login form](../../media/authentication/netbox_azure_ad_login.png)
+![NetBox Azure AD登录表单](../../media/authentication/netbox_azure_ad_login.png)
 
-You should be redirected to Microsoft's authentication portal. Enter the username/email and password of your test account to continue. You may also be prompted to grant this application access to your account.
+您将被重定向到Microsoft的身份验证门户。输入测试帐户的用户名/电子邮件和密码以继续。您可能还需要批准此应用程序访问您的帐户。
 
-![NetBox Azure AD login form](../../media/authentication/azure_ad_login_portal.png)
+![Azure AD登录门户](../../media/authentication/azure_ad_login_portal.png)
 
-If successful, you will be redirected back to the NetBox UI, and will be logged in as the AD user. You can verify this by navigating to your profile (using the button at top right).
+如果成功，您将被重定向回NetBox界面，并以AD用户身份登录。您可以通过导航到您的个人资料（使用右上角的按钮）来验证这一点。
 
-This user account has been replicated locally to NetBox, and can now be assigned groups and permissions within the NetBox admin UI.
+此用户帐户已在NetBox本地复制，并且现在可以在NetBox管理UI中分配组和权限。
 
-## Troubleshooting
+## 故障排除
 
-### Redirect URI does not Match
+### 重定向URI不匹配
 
-Azure requires that the authenticating client request a redirect URI that matches what you've configured for the app in step two. This URI **must** begin with `https://` (unless using `localhost` for the domain).
+Azure要求认证的客户端请求一个与您在第二步中为应用程序配置的内容相匹配的重定向URI。这个URI**必须**以`https://`开头（除非您在开发过程中引用`localhost`）。
 
-If Azure complains that the requested URI starts with `http://` (not HTTPS), it's likely that your HTTP server is misconfigured or sitting behind a load balancer, so NetBox is not aware that HTTPS is being use. To force the use of an HTTPS redirect URI, set `SOCIAL_AUTH_REDIRECT_IS_HTTPS = True` in `configuration.py` per the [python-social-auth docs](https://python-social-auth.readthedocs.io/en/latest/configuration/settings.html#processing-redirects-and-urlopen).
+如果Azure抱怨所请求的URI以`http://`（而不是HTTPS）开头，那么很可能是您的HTTP服务器配置错误或者位于负载均衡器后面，因此NetBox不知道正在使用HTTPS。要强制使用HTTPS重定向URI，可以在`configuration.py`中设置`SOCIAL_AUTH_REDIRECT_IS_HTTPS = True`，根据[python-social-auth文档](https://python-social-auth.readthedocs.io/en/latest/configuration/settings.html#processing-redirects-and-urlopen)。
 
-### Not Logged in After Authenticating
+### 验证成功后未登录
 
-If you are redirected to the NetBox UI after authenticating successfully, but are _not_ logged in, double-check the configured backend and app registration. The instructions in this guide pertain only to the `azuread.AzureADOAuth2` backend using a single-tenant app registration.
+如果在成功验证后被重定向到NetBox界面，但未登录，请仔细检查配置的后端和应用程序注册。本指南中的说明仅适用于使用单租户应用注册的`azuread.AzureADOAuth2`后端。

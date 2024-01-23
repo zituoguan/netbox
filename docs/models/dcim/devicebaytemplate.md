@@ -1,3 +1,3 @@
-# Device Bay Templates
+# 设备插槽模板
 
-A template for a device bay that will be created on all instantiations of the parent device type. See the [device bay](./devicebay.md) documentation for more detail.
+这是一个设备插槽的模板，将在父设备类型的所有实例化中创建。有关更多详细信息，请参阅[设备插槽](./devicebay.md)文档。

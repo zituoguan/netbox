@@ -1,19 +1,19 @@
-# Tenant Groups
+# 租户组
 
-[Tenants](./tenant.md) can be organized by custom groups. For instance, you might create one group called "Customers" and one called "Departments." The assignment of a tenant to a group is optional.
+[租户](./tenant.md)可以按自定义组进行组织。例如，您可以创建一个名为“客户”的组和一个名为“部门”的组。将租户分配给组是可选的。
 
-Tenant groups may be nested recursively to achieve a multi-level hierarchy. For example, you might have a group called "Customers" containing subgroups of individual tenants grouped by product or account team.
+租户组可以递归嵌套以实现多级层次结构。例如，您可以有一个名为“客户”的组，其中包含按产品或客户团队分组的个别租户的子组。
 
-## Fields
+## 字段
 
-### Parent
+### 父级
 
-The parent tenant group (if any).
+父租户组（如果有的话）。
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人类友好的名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的URL友好标识符。（这个值可以用于过滤。）

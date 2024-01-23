@@ -1,23 +1,23 @@
-# Services
+# 服务
 
-A service represents a layer seven application available on a device or virtual machine. For example, a service might be created in NetBox to represent an HTTP server running on TCP/8000. Each service may optionally be further bound to one or more specific interfaces assigned to the selected device or virtual machine.
+服务代表设备或虚拟机上可用的第七层应用程序。例如，可以在NetBox中创建一个服务来表示运行在TCP/8000上的HTTP服务器。每个服务可以选择进一步绑定到分配给选定设备或虚拟机的一个或多个特定接口。
 
-To aid in the efficient creation of services, users may opt to first create a [service template](./servicetemplate.md) from which service definitions can be quickly replicated.
+为了帮助高效创建服务，用户可以选择首先创建一个[服务模板](./servicetemplate.md)，从中可以快速复制服务定义。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A service or protocol name.
+服务或协议名称。
 
-### Protocol
+### 协议
 
-The wire protocol on which the service runs. Choices include UDP, TCP, and SCTP.
+服务运行的传输协议。选项包括UDP、TCP和SCTP。
 
-### Ports
+### 端口
 
-One or more numeric ports to which the service is bound. Multiple ports can be expressed using commas and/or hyphens. For example, `80,8001-8003` specifies ports 80, 8001, 8002, and 8003.
+服务绑定到的一个或多个数字端口。可以使用逗号和/或连字符表示多个端口。例如，`80,8001-8003`指定了端口80、8001、8002和8003。
 
-### IP Addresses
+### IP 地址
 
-The [IP address(es)](./ipaddress.md) to which this service is bound. If no IP addresses are bound, the service is assumed to be reachable via any assigned IP address.
+此服务绑定到的[IP地址](./ipaddress.md)。如果没有绑定IP地址，那么假定可以通过任何分配的IP地址访问服务。

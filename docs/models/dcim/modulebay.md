@@ -1,27 +1,27 @@
-# Module Bays
+# 模块插槽
 
-Module bays represent a space or slot within a device in which a field-replaceable [module](./module.md) may be installed. A common example is that of a chassis-based switch such as the Cisco Nexus 9000 or Juniper EX9200. Modules in turn hold additional components that become available to the parent device.
+模块插槽代表设备内的一个空间或插槽，可以在其中安装可更换的[模块](./module.md)。一个常见的示例是基于机箱的交换机，例如思科Nexus 9000或Juniper EX9200。模块反过来包含了成为父设备可用的其他组件。
 
 !!! note
-    If you need to model child devices rather than modules, use a [device bay](./devicebay.md) instead.
+    如果您需要建模子设备而不是模块，请改用[设备插槽](./devicebay.md)。
 
 !!! tip
-    Like most device components, module bays are instantiated automatically from [module bay templates](./modulebaytemplate.md) assigned to the selected device type when a device is created.
+    与大多数设备组件一样，模块插槽是从分配给创建设备时所选设备类型的[模块插槽模板](./modulebaytemplate.md)自动实例化的。
 
-## Fields
+## 字段
 
-### Device
+### 设备
 
-The device to which this module bay belongs.
+该模块插槽所属的设备。
 
-### Name
+### 名称
 
-The module bay's name. Must be unique to the parent device.
+模块插槽的名称。必须在父设备中是唯一的。
 
-### Label
+### 标签
 
-An alternative physical label identifying the module bay.
+用于标识模块插槽的替代物理标签。
 
-### Position
+### 位置
 
-The numeric position in which this module bay is situated. For example, this would be the number assigned to a slot within a chassis-based switch.
+此模块插槽所处的数字位置。例如，这将是分配给机箱式交换机中的插槽的编号。

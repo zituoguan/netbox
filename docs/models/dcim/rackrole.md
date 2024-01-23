@@ -1,17 +1,17 @@
-# Rack Roles
+# 机架角色
 
-Each rack can optionally be assigned a user-defined functional role. For example, you might designate a rack for compute or storage resources, or to house colocated customer devices.
+每个机架可以选择性地分配一个用户定义的功能角色。例如，您可以指定一个机架用于计算或存储资源，或用于容纳合作客户设备。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-A unique human-friendly name.
+唯一的人性化名称。
 
 ### Slug
 
-A unique URL-friendly identifier. (This value can be used for filtering.)
+唯一的URL友好标识符。（此值可用于筛选。）
 
-### Color
+### 颜色
 
-The color used when displaying the role in the NetBox UI.
+在NetBox用户界面中显示角色时使用的颜色。

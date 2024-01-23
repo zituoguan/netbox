@@ -1,3 +1,3 @@
-# Power Port Templates
+# 电源端口模板
 
-A template for a power port that will be created on all instantiations of the parent device type. See the [power port](./powerport.md) documentation for more detail.
+这是一个电源端口的模板，将在实例化父设备类型的所有设备上创建。有关详细信息，请参阅[电源端口](./powerport.md)文档。

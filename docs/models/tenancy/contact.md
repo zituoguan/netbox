@@ -1,33 +1,33 @@
-# Contacts
+# 联系人
 
-A contact represents an individual or group that has been associated with an object in NetBox for administrative reasons. For example, you might assign one or more operational contacts to each site.
+联系人在NetBox中代表一个个人或团队，出于管理目的与对象关联。例如，您可以为每个站点分配一个或多个运营联系人。
 
-## Fields
+## 字段
 
-### Group
+### 组
 
-The [contact group](./contactgroup.md) to which this contact is assigned (if any).
+分配给此联系人的[联系人组](./contactgroup.md)（如果有）。联系人组有助于更有效地对联系人进行分类和管理。
 
-### Name
+### 姓名
 
-The name of the contact. This may be an individual or a team/department. (This is the only required contact detail; all others are optional.)
+联系人的姓名，可以是个人的姓名或团队/部门的名称。这是唯一一个必填的联系信息；其他信息都是可选的。
 
-### Title
+### 职称
 
-The contact's title or role.
+联系人的职称或角色，提供有关其职位或角色的附加信息。
 
-### Phone
+### 电话
 
-The contact's phone number. (Note that NetBox does _not_ enforce a particular numbering format.)
+联系人的电话号码。请注意，NetBox不强制执行特定的号码格式。
 
-### Email
+### 电子邮件
 
-The contact's email address.
+联系人的电子邮件地址。
 
-### Address
+### 地址
 
-The contact's physical or mailing address.
+联系人的物理或邮寄地址。
 
-### Link
+### 链接
 
-A URL to reach the contact via some other means.
+通过其他方式联系联系人的URL，例如网站或内部目录。

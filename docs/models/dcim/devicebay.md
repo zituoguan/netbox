@@ -1,25 +1,25 @@
-# Device Bays
+# 设备插槽
 
-Device bays represent a space or slot within a parent device in which a child device may be installed. For example, a 2U parent chassis might house four individual blade servers. The chassis would appear in the rack elevation as a 2U device with four device bays, and each server within it would be defined as a 0U device installed in one of the device bays. Child devices do not appear within rack elevations or count as consuming rack units.
+设备插槽代表父设备内的一个空间或插槽，可以在其中安装子设备。例如，一个2U的父机箱可能容纳四台独立的刀片服务器。机箱将作为一个2U设备出现在机架立面图中，并带有四个设备插槽，每台服务器作为一个0U设备安装在其中一个设备插槽中。子设备不会出现在机架立面图中，也不计入占用的机架单位。
 
-Child devices are first-class Devices in their own right: That is, they are fully independent managed entities which don't share any control plane with the parent.  Just like normal devices, child devices have their own platform (OS), role, tags, and components.  LAG interfaces may not group interfaces belonging to different child devices.
+子设备本身是独立管理的一流设备：也就是说，它们完全独立，不与父设备共享任何控制平面。就像普通设备一样，子设备有自己的平台（操作系统）、角色、标签和组件。LAG接口不能组合属于不同子设备的接口。
 
-!!! note
-    Device bays are **not** suitable for modeling line cards (such as those commonly found in chassis-based routers and switches), as these components depend on the control plane of the parent device to operate. Instead, these should be modeled as [modules](./module.md) installed within [module bays](./modulebay.md).
+!!! 注意
+    设备插槽**不适合**用于模拟线卡（如机箱式路由器和交换机中常见的那些），因为这些组件依赖于父设备的控制平面才能运行。相反，这些应该作为安装在[模块插槽](./modulebay.md)内的[模块](./module.md)进行建模。
 
-!!! tip
-    Like most device components, device bays are instantiated automatically from [device bay templates](./devicebaytemplate.md) assigned to the selected device type when a device is created.
+!!! 提示
+    像大多数设备组件一样，当设备创建时，设备插槽会从分配给选定设备类型的[设备插槽模板](./devicebaytemplate.md)自动实例化。
 
-## Fields
+## 字段
 
-### Device
+### 设备
 
-The device to which this device bay belongs.
+这个设备插槽所属的设备。
 
-### Name
+### 名称
 
-The device bay's name. Must be unique to the parent device.
+设备插槽的名称。必须对父设备是唯一的。
 
-### Label
+### 标签
 
-An alternative physical label identifying the device bay.
+用于识别设备插槽的替代物理标签。

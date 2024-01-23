@@ -1,35 +1,35 @@
-# FHRP Group
+# FHRP组
 
-A first-hop redundancy protocol (FHRP) enables multiple physical interfaces to present a virtual [IP address](./ipaddress.md) (VIP) in a redundant manner. Examples of such protocols include:
+第一跳冗余协议（FHRP）使多个物理接口以冗余的方式呈现虚拟[IP地址](./ipaddress.md)（VIP）。此类协议的示例包括：
 
-* [Hot Standby Router Protocol](https://en.wikipedia.org/wiki/Hot_Standby_Router_Protocol) (HSRP)
-* [Virtual Router Redundancy Protocol](https://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol) (VRRP)
-* [Common Address Redundancy Protocol](https://en.wikipedia.org/wiki/Common_Address_Redundancy_Protocol) (CARP)
-* [Gateway Load Balancing Protocol](https://en.wikipedia.org/wiki/Gateway_Load_Balancing_Protocol) (GLBP)
+* [热备份路由器协议](https://en.wikipedia.org/wiki/Hot_Standby_Router_Protocol)（HSRP）
+* [虚拟路由器冗余协议](https://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol)（VRRP）
+* [通用地址冗余协议](https://en.wikipedia.org/wiki/Common_Address_Redundancy_Protocol)（CARP）
+* [网关负载均衡协议](https://en.wikipedia.org/wiki/Gateway_Load_Balancing_Protocol)（GLBP）
 
-When creating a new FHRP group, the user may optionally create a VIP as well. This IP address will be automatically assigned to the new group. (Virtual IP addresses can also be assigned after the group has been created.)
+在创建新的FHRP组时，用户可以选择创建一个VIP。此IP地址将自动分配给新组。（虚拟IP地址也可以在创建组后分配。）
 
-## Fields
+## 字段
 
-### Protocol
+### 协议
 
-The wire protocol employed by cooperating servers to maintain the virtual [IP address(es)](./ipaddress.md) for the group.
+协作服务器用于维护组的虚拟[IP地址（S）](./ipaddress.md)的传输协议。
 
-### Group ID
+### 组ID
 
-The group's numeric identifier.
+组的数字标识符。
 
-### Name
+### 名称
 
-An optional name for the FHRP group.
+FHRP组的可选名称。
 
-### Authentication Type
+### 认证类型
 
-The type of authentication employed by group nodes, if any.
+组节点使用的认证类型，如果有的话。
 
-### Authentication Key
+### 认证密钥
 
-The shared key used for group authentication, if any.
+组认证使用的共享密钥，如果有的话。
 
-!!! warning
-    The authentication key value is stored in plaintext in NetBox's database. Do not utilize this field if you require encryption at rest for shared keys.
+!!! 警告
+    认证密钥值以明文存储在NetBox的数据库中。如果您需要对共享密钥进行静态加密，请不要使用此字段。

@@ -1,112 +1,112 @@
-# Devices
+# 设备
 
-Every piece of hardware which is installed within a site or rack exists in NetBox as a device. Devices are measured in rack units (U) and can be half depth or full depth. A device may have a height of 0U: These devices do not consume vertical rack space and cannot be assigned to a particular rack unit. A common example of a 0U device is a vertically-mounted PDU.
+NetBox中的每个安装在站点或机架内的硬件都以设备的形式存在。设备以机架单位（U）计量，可以是半深或全深。设备的高度可以是0U：这些设备不占用垂直机架空间，也不能分配到特定的机架单位。一个常见的0U设备示例是垂直安装的PDU（电源分配单元）。
 
-When assigning a multi-U device to a rack, it is considered to be mounted in the lowest-numbered rack unit which it occupies. For example, a 3U device which occupies U8 through U10 is said to be mounted in U8. This logic applies to racks with both ascending and descending unit numbering.
+当将多U设备分配到机架时，它被认为是安装在它占据的最低编号机架单位中。例如，占据U8至U10的3U设备被认为是安装在U8。这个逻辑适用于具有升序和降序单位编号的机架。
 
-A device is said to be full-depth if its installation on one rack face prevents the installation of any other device on the opposite face within the same rack unit(s). This could be either because the device is physically too deep to allow a device behind it, or because the installation of an opposing device would impede airflow.
+如果设备的安装在一个机架面上阻止了在相同机架单位的另一面安装任何其他设备，则该设备被认为是全深的。这可能是因为设备物理上太深以至于不允许后面安装设备，或者因为安装对面设备会妨碍气流。
 
-Each device must be instantiated from a pre-created device type, and its default components (console ports, power ports, interfaces, etc.) will be created automatically. (The device type associated with a device may be changed after its creation, however its components will not be updated retroactively.)
+每个设备都必须从预先创建的设备类型实例化，其默认组件（控制台端口、电源端口、接口等）将自动创建。（设备关联的设备类型可以在创建后更改，但其组件不会被追溯更新。）
 
-Device names must be unique within a site, unless the device has been assigned to a tenant. Devices may also be unnamed.
+设备名称在站点内必须唯一，除非该设备已分配给租户。设备也可以不命名。
 
-When a device has one or more interfaces with IP addresses assigned, a primary IP for the device can be designated, for both IPv4 and IPv6.
+当设备具有一个或多个分配了IP地址的接口时，可以为设备指定一个主要IP，适用于IPv4和IPv6。
 
-## Fields
+## 字段
 
-### Name
+### 名称
 
-The device's configured name. This field is optional; devices can be unnamed. However, if set, the name must be unique to the assigned site and tenant.
+设备配置的名称。此字段是可选的；设备可以不命名。然而，如果设置，名称必须对分配的站点和租户是唯一的。
 
-### Device Role
+### 设备角色
 
-The functional [role](./devicerole.md) assigned to this device.
+分配给此设备的功能性[角色](./devicerole.md)。
 
-### Device Type
+### 设备类型
 
-The hardware [device type](./devicetype.md) which defines the device's make & model. Upon creating, all templated components assigned to the device type will be replicated on the new device.
+定义设备制造和型号的硬件[设备类型](./devicetype.md)。创建时，分配给设备类型的所有模板化组件将在新设备上复制。
 
-### Airflow
+### 气流
 
-The direction in which air circulates through the device chassis for cooling.
+设备机箱中用于冷却的空气循环方向。
 
-### Serial Number
+### 序列号
 
-The unique physical serial number assigned to this device by its manufacturer.
+设备制造商分配给此设备的唯一物理序列号。
 
-### Asset Tag
+### 资产标签
 
-A unique, locally-administered label used to identify hardware resources.
+用于识别硬件资源的独特、本地管理的标签。
 
-### Site
+### 站点
 
-The [site](./site.md) in which this device is located.
+设备所在的[站点](./site.md)。
 
-### Location
+### 位置
 
-A specific [location](./location.md) where this device resides within the assigned site (optional).
+设备在分配站点内的特定[位置](./location.md)（可选）。
 
-### Rack
+### 机架
 
-The [rack](./rack.md) within which this device is installed (optional).
+安装此设备的[机架](./rack.md)（可选）。
 
-### Rack Face
+### 机架面
 
-If installed in a rack, this field denotes the primary face on which the device is mounted.
+如果安装在机架上，此字段表示设备安装的主要面。
 
-### Position
+### 位置
 
-If installed in a rack, this field indicates the base rack unit in which the device is mounted.
+如果安装在机架上，此字段表示设备安装的基础机架单位。
 
-!!! tip
-    Devices with a height of more than one rack unit should be set to the lowest-numbered rack unit that they occupy.
+!!! 提示
+    超过一个机架单位高度的设备应设置为它们占据的最低编号机架单位。
 
-### Latitude & Longitude
+### 纬度 & 经度
 
-GPS coordinates of the device for geolocation.
+设备的GPS坐标，用于地理定位。
 
-### Status
+### 状态
 
-The device's operational status.
+设备的运行状态。
 
-!!! tip
-    Additional statuses may be defined by setting `Device.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
+!!! 提示
+    可以通过设置`Device.status`在[`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices)配置参数下定义额外的状态。
 
-### Platform
+### 平台
 
-A device may be associated with a particular [platform](./platform.md) to indicate its operating system. Note that only platforms assigned to the associated manufacturer (or to no manufacturer) will be available for selection.
+设备可以与特定的[平台](./platform.md)相关联，以指示其操作系统。请注意，只有分配给关联制造商（或没有制造商）的平台才可供选择。
 
-### Configuration Template
+### 配置模板
 
-The [configuration template](../extras/configtemplate.md) from which the configuration for this device can be rendered. If set, this will override any config template referenced by the device's role or platform.
+用于渲染此设备配置的[配置模板](../extras/configtemplate.md)。如果设置，将覆盖设备角色或平台引用的任何配置模板。
 
-### Primary IPv4 & IPv6 Addresses
+### 主要IPv4 & IPv6地址
 
-Each device may designate one primary IPv4 address and/or one primary IPv6 address for management purposes.
+每个设备可以指定一个主IPv4地址和/或一个主IPv6地址，用于管理目的。
 
-!!! tip
-    NetBox will prefer IPv6 addresses over IPv4 addresses by default. This can be changed by setting the `PREFER_IPV4` configuration parameter.
+!!! 提示
+    NetBox默认优先考虑IPv6地址。这可以通过设置`PREFER_IPV4`配置参数来更改。
 
-### Out-of-band (OOB) IP Address
+### 离线（OOB）IP地址
 
-Each device may designate its out-of-band IP address. Out-of-band IPs are typically used to access network infrastructure via a physically separate management network.
+每个设备可以指定其离线IP地址。离线IP通常用于通过物理独立的管理网络访问网络基础设施。
 
-### Cluster
+### 集群
 
-If this device will serve as a host for a virtualization [cluster](../virtualization/cluster.md), it can be assigned here. (Host devices can also be assigned by editing the cluster.)
+如果此设备将作为虚拟化[集群](../virtualization/cluster.md)的主机，可以在此处分配。（主机设备也可以通过编辑集群来分配。）
 
-### Virtual Chassis
+### 虚拟机架
 
-The [virtual chassis](./virtualchassis.md) of which this device is a member, if any.
+此设备所属的[虚拟机架](./virtualchassis.md)（如果有的话）。
 
-### VC Position
+### VC位置
 
-If assigned to a [virtual chassis](./virtualchassis.md), this field indicates the device's member position.
+如果分配给[虚拟机架](./virtualchassis.md)，此字段表示设备的成员位置。
 
-### VC Priority
+### VC优先级
 
-If assigned to a [virtual chassis](./virtualchassis.md), this field indicates the device's priority for master election.
+如果分配给[虚拟机架](./virtualchassis.md)，此字段表示设备在主选举中的优先级。
 
-### Local Config Context Data
+### 本地配置上下文数据
 
-Any unique [context data](../../features/context-data.md) to be associated with the device.
+与设备关联的任何独特[上下文数据](../../features/context-data.md)。
