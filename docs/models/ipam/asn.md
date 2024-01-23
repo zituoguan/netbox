@@ -1,19 +1,19 @@
 # ASNs
 
-自治系统号（ASN）是用于BGP协议的数值标识符，用于识别特定前缀是从哪个[自治系统](https://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29)发起并通过的。NetBox支持32位和64位ASN。
+An Autonomous System Number (ASN) is a numeric identifier used in the BGP protocol to identify which [autonomous system](https://en.wikipedia.org/wiki/Autonomous_system_%28Internet%29) a particular prefix is originating and transiting through. NetBox support both 32- and 64- ASNs.
 
-ASN在NetBox内必须是全局唯一的，并可以从[定义的范围](./asnrange.md)分配。每个ASN可以分配给多个[站点](../dcim/site.md)。
+ASNs must be globally unique within NetBox, and may be allocated from within a [defined range](./asnrange.md). Each ASN may be assigned to multiple [sites](../dcim/site.md).
 
-## 字段
+## Fields
 
-### AS号码
+### AS Number
 
-32位或64位的AS号码。
+The 32- or 64-bit AS number.
 
 ### RIR
 
-负责分配此特定ASN的[区域互联网注册管理机构](./rir.md)或类似机构。
+The [Regional Internet Registry](./rir.md) or similar authority responsible for the allocation of this particular ASN.
 
-### 站点
+### Sites
 
-分配给此ASN的[站点](../dcim/site.md)。
+The [site(s)](../dcim/site.md) to which this ASN is assigned.

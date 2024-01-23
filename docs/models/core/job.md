@@ -1,54 +1,54 @@
-# 作业
+# Jobs
 
-作业模型用于安排和记录[后台任务](../../features/background-jobs.md)的执行。
+The Job model is used to schedule and record the execution of [background tasks](../../features/background-jobs.md).
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-与作业相关联的NetBox对象的名称或其他标识符。
+The name or other identifier of the NetBox object with which the job is associated.
 
-## 对象类型
+## Object Type
 
-与此作业相关联的对象（模型）类型。
+The type of object (model) associated with this job.
 
-### 创建时间
+### Created
 
-作业本身创建的日期和时间。
+The date and time at which the job itself was created.
 
-### 计划时间
+### Scheduled
 
-作业计划执行的日期和时间（如果在创建时没有提交立即执行）。
+The date and time at which the job is/was scheduled to execute (if not submitted for immediate execution at the time of creation).
 
-### 间隔
+### Interval
 
-计划作业应重新执行的间隔时间（以分钟为单位）。
+The interval (in minutes) at which a scheduled job should re-execute.
 
-### 完成时间
+### Completed
 
-作业完成的日期和时间（如果已完成）。
+The date and time at which the job completed (if complete).
 
-### 用户
+### User
 
-创建作业的用户。
+The user who created the job.
 
-### 状态
+### Status
 
-作业的当前状态。可能的值包括：
+The job's current status. Potential values include:
 
-| 值 | 描述 |
+| Value | Description |
 |-------|-------------|
-| 待处理 | 等待RQ工作进程执行 |
-| 已计划 | 安排在将来的日期/时间 |
-| 运行中 | 当前正在执行 |
-| 已完成 | 成功完成 |
-| 失败 | 作业未成功完成 |
-| 出错 | 执行过程中遇到意外错误 |
+| Pending | Awaiting execution by an RQ worker process |
+| Scheduled | Scheduled for a future date/time |
+| Running | Currently executing |
+| Completed | Successfully completed |
+| Failed | The job did not complete successfully |
+| Errored | An unexpected error was encountered during execution |
 
-### 数据
+### Data
 
-与作业执行相关的任何数据，例如日志输出。
+Any data associated with the execution of the job, such as log output.
 
-### 作业ID
+### Job ID
 
-作业的UUID，用于在队列中唯一识别。
+The job's UUID, used for unique identification within a queue.

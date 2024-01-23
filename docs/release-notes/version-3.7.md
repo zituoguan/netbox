@@ -1,130 +1,143 @@
-NetBox v3.7.0 是2023年12月29日发布的版本，它引入了一系列新功能、增强和修复了一些问题。以下是该版本的一些重要变化和功能：
+# NetBox v3.7
 
-### 主要变更
+## v3.7.1 (FUTURE)
 
-- Webhook模型中已删除以下字段：`content_types`、`type_create`、`type_update`、`type_delete`、`type_job_start`、`type_job_end`、`enabled` 和 `conditions`。现在，Webhooks通过[事件规则](../features/event-rules.md)与事件相关联。在升级时，现有的Webhooks将自动为其创建新的事件规则。
-- 自定义字段模型上的 `ui_visibility` 字段已被替换为两个新字段：`ui_visible` 和 `ui_editable`。在升级过程中，这些新字段的值将自动从原始字段映射。
-- 用于查询模型特征的 `FeatureQuery` 类已被移除，它已被NetBox的ContentType（`core.models.ContentType`）代理模型上的新 `with_feature()` 管理方法替代。
-- 内部的 ConfigRevision 模型已从 `extras` 移动到 `core`。在升级过程中将保留配置历史记录。
-- [L2VPN](../models/vpn/l2vpn.md) 和 [L2VPNTermination](../models/vpn/l2vpntermination.md) 模型已从 `ipam` 应用程序移动到新的 `vpn` 应用程序。但请注意，相关的API端点也已经移动到 `/api/vpn/`。
-- `CustomFieldsMixin`、`SavedFiltersMixin` 和 `TagsMixin` 类已从 `extras.forms.mixins` 模块移动到 `netbox.forms.mixins`。
-- `netbox.models.features.WebhooksMixin` 类已重命名为 `EventRulesMixin`。
+---
 
-### 新功能
+## v3.7.0 (2023-12-29)
 
-#### VPN隧道
+### Breaking Changes
 
-- 引入了多个新模型，以启用[VPN隧道管理](../features/vpn-tunnels.md)。用户现在可以定义具有两个或多个终结点的隧道，以表示点对点或枢纽和辐射拓扑。每个终结点都与设备或虚拟机上的虚拟接口连接。此外，用户可以定义IKE和IPSec提案和策略，这些可以应用于隧道，以记录加密和身份验证策略。
+* The following fields have been removed from the Webhook model: `content_types`, `type_create`, `type_update`, `type_delete`, `type_job_start`, `type_job_end`, `enabled`, and `conditions`. Webhooks are now tied to events via [event rules](../features/event-rules.md). New event rules will be created for any existing webhooks automatically upon upgrade.
+* The `ui_visibility` field on the [custom field model](../models/extras/customfield.md) has been replaced with two new fields: `ui_visible` and `ui_editable`. These new fields will have their values mapped from the original field automatically upon upgrade.
+* The `FeatureQuery` class used internally for querying content types by model feature has been removed. It has been replaced by the new `with_feature()` manager method on NetBox's proxy model for ContentType (`core.models.ContentType`).
+* The internal ConfigRevision model has moved from `extras` to `core`. Configuration history will be retained throughout the upgrade process.
+* The [L2VPN](../models/vpn/l2vpn.md) and [L2VPNTermination](../models/vpn/l2vpntermination.md) models have moved from the `ipam` app to the new `vpn` app. All object data will be retained, however please note that the relevant API endpoints have likewise moved to `/api/vpn/`.
+* The `CustomFieldsMixin`, `SavedFiltersMixin`, and `TagsMixin` classes have moved from the `extras.forms.mixins` module to `netbox.forms.mixins`.
+* The `netbox.models.features.WebhooksMixin` class has been renamed to `EventRulesMixin`.
 
-#### 事件规则
+### New Features
 
-- 此版本引入了[事件规则](../features/event-rules.md)，可以用于在NetBox中发生事件时自动发送Webhook或执行自定义脚本。例如，现在可以在创建具有特定状态或标签的新站点时自动运行自定义脚本。
+#### VPN Tunnels ([#9816](https://github.com/netbox-community/netbox/issues/9816))
 
-事件规则取代了之前内置在Webhook模型中的功能。在升级时，现有的Webhooks将自动为其创建新的事件规则。
+Several new models have been introduced to enable [VPN tunnel management](../features/vpn-tunnels.md). Users can now define tunnels with two or more terminations to represent peer-to-peer or hub-and-spoke topologies. Each termination is made to a virtual interface on a device or virtual machine. Additionally, users can define IKE and IPSec proposals and policies, which can be applied to tunnels to document encryption and authentication strategies.
 
-#### 虚拟机磁盘
+#### Event Rules ([#14132](https://github.com/netbox-community/netbox/issues/14132))
 
-- 引入了新的 [VirtualDisk](../models/virtualization/virtualdisk.md) 模型，以启用对虚拟机的离散虚拟磁盘分配进行跟踪。VirtualMachine 模型上的 `size` 字段已保留，并将自动填充所有分配的虚拟磁盘的累积大小。选择不使用新模型的用户可以像之前版本一样独立使用VirtualMachine的 `size` 属性。
+This release introduces [event rules](../features/event-rules.md), which can be used to send webhooks or execute custom scripts automatically in response to events that occur in NetBox. For example, it's now possible to run a custom script whenever a new site is created with a particular status or tag.
 
-#### 对象保护规则
+Event rules replace and extend functionality that was previously built into the webhook model. New event rules will be created for any existing webhooks automatically upon upgrade.
 
-- 引入了新的 [`PROTECTION_RULES`](../configuration/data-validation.md#protection_rules) 配置参数。与[自定义验证规则](../customization/custom-validation.md)类似，保护规则用于防止删除不符合指定标准的对象。这使管理员可以防止例如删除具有“活动”状态的站点。
+#### Virtual Machine Disks ([#8356](https://github.com/netbox-community/netbox/issues/8356))
 
-#### 改进的自定义字段可见性控制
+A new [VirtualDisk](../models/virtualization/virtualdisk.md) model has been introduced to enable tracking the assignment of discrete virtual disks to virtual machines. The `size` field has been retained on the VirtualMachine model, and will be populated automatically with the aggregate size of all assigned virtual disks. (Users who opt to eschew the new model may continue using the VirtualMachine `size` attribute independently as in previous releases.)
 
-- 自定义字段模型上的 `ui_visibility` 字段已被两个新字段 `ui_visible` 和 `ui_editable` 替代，它们分别控制在查看和编辑对象时如何以及是否显示自定义字段。将这两个功能分离为独立字段允许更多控制每个自定义字段如何呈现给用户。在升级过程中，这些字段的值将从原始字段的值自动设置。
+#### Object Protection Rules ([#10244](https://github.com/netbox-community/netbox/issues/10244))
 
-#### 改进的全局搜索结果
+A new [`PROTECTION_RULES`](../configuration/data-validation.md#protection_rules) configuration parameter has been introduced. Similar to how [custom validation rules](../customization/custom-validation.md) can be used to enforce certain values for object attributes, protection rules guard against the deletion of objects which do not meet specified criteria. This enables an administrator to prevent, for example, the deletion of a site which has a status of "active."
 
-- 全局搜索结果现在包括关于每个对象的其他上下文信息，例如描述、状态和/或相关对象。要显示的属性集因对象类型而异，并通过在对象的 [SearchIndex类](../plugins/development/search.md#netbox.search.SearchIndex) 下设置 `display_attrs` 来定义。
+#### Improved Custom Field Visibility Controls ([#13299](https://github.com/netbox-community/netbox/issues/13299))
 
-#### 插件的表格列注册
+The `ui_visible` field on [the custom field model](../models/extras/customfield.md) has been superseded by two new fields, `ui_visible` and `ui_editable`, which control how and whether a custom field is displayed when view and editing an object, respectively. Separating these two functions into discrete fields allows more control over how each custom field is presented to users. The values of these fields will be appropriately set automatically during the upgrade process from the value of the original field.
 
-- 插件现在可以为核心NetBox表格注册自己的自定义列。例如，插件可以使用新的 `register_table_column()` 实用程序函数在 SiteTable 上注册新列，用户可以选择显示该列。
+#### Improved Global Search Results ([#14134](https://github.com/netbox-community/netbox/issues/14134))
 
-#### 插件的数据后端注册
+Global search results now include additional context about each object, such as a description, status, and/or related objects. The set of attributes to be displayed is specific to each object type, and is defined by setting `display_attrs` under the object's [SearchIndex class](../plugins/development/search.md#netbox.search.SearchIndex).
 
-- 插件现在可以为[同步数据源](../features/synchronized-data.md)注册自己的数据后端。这使插件可以引入除了本地提供的git、S3和本地路径后端之外的新后端。
+#### Table Column Registration for Plugins ([#14173](https://github.com/netbox-community/netbox/issues/14173))
 
-### 增强
+Plugins can now [register their own custom columns](../plugins/development/tables.md#extending-core-tables) for inclusion on core NetBox tables. For example, a plugin can register a new column on SiteTable using the new `register_table_column()` utility function, and it will become available for users to select for display.
 
-- 避免删除已分配子接口的接口，以避免孤立的接口。
-- 为电路类型添加了一个 `color` 字段。
-- 允许在计算机柜利用率时排除设备类型。
-- 在Job模型上添加了一个 `error` 字段，用于记录与其执行相关的任何错误。
-- 引入了一个机制，用于从通用对象类型列表中排除模型。
-- 在通过Web UI删除对象之前，显示任何要删除的相关对象。
-- 任何与Tenant相关的模型现在都会自动包括在租户视图下的相关对象列表中。
-- 为虚拟机添加了 `/render-config` REST API端点。
-- 全局搜索
+#### Data Backend Registration for Plugins ([#13381](https://github.com/netbox-community/netbox/issues/13381))
 
-结果中以值排序具有等效权重的对象，以提高可读性。
-- 通过新的 `CHANGELOG_SKIP_EMPTY_CHANGES` 配置参数避免记录空的变更日志条目。
-- 启用联系人分配的自定义字段。
-- 增加了自定义字段最小值和最大值数值验证器的最大值。
-- 为Webhook添加了 `description` 字段。
-- 引入了 `job_start` 和 `job_end` 信号，以允许自动化插件操作。
+Plugins can now [register their own data backends](../plugins/development/data-backends.md) for use with [synchronized data sources](../features/synchronized-data.md). This enables plugins to introduce new backends in addition to the git, S3, and local path backends provided natively.
 
-### 修复的问题
+### Enhancements
 
-- 修复了全局搜索结果属性的超链接。
-- 修复了在对象编辑表单中显示隐藏自定义字段的问题。
-- 放宽了IKE和IPSec提案上的加密/身份验证算法要求。
-- 修复了更改事件规则的操作类型的问题。
+* [#12135](https://github.com/netbox-community/netbox/issues/12135) - Avoid orphaned interfaces by preventing the deletion of interfaces which have children assigned
+* [#12216](https://github.com/netbox-community/netbox/issues/12216) - Add a `color` field for circuit types
+* [#13230](https://github.com/netbox-community/netbox/issues/13230) - Allow device types to be excluded from consideration when calculating a rack's utilization
+* [#13334](https://github.com/netbox-community/netbox/issues/13334) - Add an `error` field to the Job model to record any errors associated with its execution
+* [#13427](https://github.com/netbox-community/netbox/issues/13427) - Introduce a mechanism for excluding models from general-purpose lists of object types
+* [#13690](https://github.com/netbox-community/netbox/issues/13690) - Display any dependent objects to be deleted prior to deleting an object via the web UI
+* [#13794](https://github.com/netbox-community/netbox/issues/13794) - Any models with a relationship to Tenant are now included automatically in the list of related objects under the tenant view
+* [#13808](https://github.com/netbox-community/netbox/issues/13808) - Add a `/render-config` REST API endpoint for virtual machines
+* [#14035](https://github.com/netbox-community/netbox/issues/14035) - Order objects of equivalent weight by value in global search results to improve readability
+* [#14147](https://github.com/netbox-community/netbox/issues/14147) - Avoid recording empty changelog entries via the new `CHANGELOG_SKIP_EMPTY_CHANGES` config parameter
+* [#14156](https://github.com/netbox-community/netbox/issues/14156) - Enable custom fields for contact assignments
+* [#14240](https://github.com/netbox-community/netbox/issues/14240) - Increase maximum values for custom field minimum & maximum numeric validators
+* [#14361](https://github.com/netbox-community/netbox/issues/14361) - Add a `description` field for webhooks
+* [#14365](https://github.com/netbox-community/netbox/issues/14365) - Introduce `job_start` and `job_end` signals to allow automated plugin actions
+* [#14434](https://github.com/netbox-community/netbox/issues/14434) - Add model-specific termination object filters for cables (e.g. `interface_id` and `consoleport_id`)
+* [#14436](https://github.com/netbox-community/netbox/issues/14436) - Add PostgreSQL indexes for all GenericForeignKey fields
+* [#14579](https://github.com/netbox-community/netbox/issues/14579) - Allow users to specify a preferred language for UI translations
 
-### 其他变更
+### Translations
 
-- 优化了在 `ActionsMixin` 下声明视图操作的格式（保留了向后兼容性）。
-- 只有在启用Sentry报告时才需要安装 `sentry-sdk` Python库。
-- 将插件资源从 `extras` 应用程序移动到 `netbox`（保留了向后兼容性）。
-- 使用代理ContentType管理器上的新的 `with_feature()` 方法替代 `FeatureQuery`。
-- 将L2VPN模型从 `ipam` 应用程序移动到新的 `vpn` 应用程序。
-- 将ConfigRevision模型从 `extras` 应用程序移动到 `core`。
-- 将Form特性混合类从 `extras` 应用程序移动到 `netbox`。
-- 将 `extras.webhooks_worker.process_webhook()` 移动到 `extras.webhooks.send_webhook()`（保留了向后兼容性）。
-- 从StagedChange中移除更改日志功能。
-- 删除了过时的 `clearcache` 管理命令。
-- 默认情况下强制执行非VRF前缀和IP地址的唯一性（`ENFORCE_GLOBAL_UNIQUE` 现在默认为true）。
+* [#14075](https://github.com/netbox-community/netbox/issues/14075) - Add Spanish translation
+* [#14096](https://github.com/netbox-community/netbox/issues/14096) - Add French translation
+* [#14145](https://github.com/netbox-community/netbox/issues/14145) - Add Portuguese translation
+* [#14266](https://github.com/netbox-community/netbox/issues/14266) - Add Russian translation
 
-### REST API变更
+### Bug Fixes
 
-- 引入了以下端点：
-  - `/api/extras/event-rules/`
-  - `/api/virtualization/virtual-disks/`
-  - `/api/vpn/ike-policies/`
-  - `/api/vpn/ike-proposals/`
-  - `/api/vpn/ipsec-policies/`
-  - `/api/vpn/ipsec-profiles/`
-  - `/api/vpn/ipsec-proposals/`
-  - `/api/vpn/tunnels/`
-  - `/api/vpn/tunnel-terminations/`
-- 移动了以下端点：
-  - `/api/ipam/l2vpns/` -> `/api/vpn/l2vpns/`
-  - `/api/ipam/l2vpn-terminations/` -> `/api/vpn/l2vpn-terminations/`
-- circuits.CircuitType
-  - 添加了可选的 `color` 选择字段
-- core.Job
-  - 添加了只读的 `error` 字符字段
-- extras.Webhook
-  - 移除了以下字段（这些字段已经移动到新的 `EventRule` 模型）：
-    - `content_types`
-    - `type_create`
-    - `type_update`
-    - `type_delete`
-    - `type_job_start`
-    - `type_job_end`
-    - `enabled`
-    - `conditions`
-  - 添加了可选的 `description` 字段
-- dcim.DeviceType
-  - 添加了 `exclude_from_utilization` 布尔字段
-- extras.CustomField
-  - 移除了 `ui_visibility` 字段
-  - 添加了 `ui_visible` 和 `ui_editable` 选择字段
-- tenancy.ContactAssignment
-  - 增加了对自定义字段的支持
-- virtualization.VirtualDisk
-  - 添加了只读的 `virtual_disk_count` 整数字段
-- virtualization.VirtualMachine
-  - 添加了 `/render-config` 端点
-  
+* [#14432](https://github.com/netbox-community/netbox/issues/14432) - Fix hyperlinks for global search result attributes
+* [#14472](https://github.com/netbox-community/netbox/issues/14472) - Fix display of hidden custom fields in object edit forms
+* [#14499](https://github.com/netbox-community/netbox/issues/14499) - Relax requirements for encryption/auth algorithms on IKE & IPSec proposals
+* [#14550](https://github.com/netbox-community/netbox/issues/14550) - Fix changing action type of existing event rule
+
+### Other Changes
+
+* [#13550](https://github.com/netbox-community/netbox/issues/13550) - Optimize the format for declaring view actions under `ActionsMixin` (backward compatibility has been retained)
+* [#13645](https://github.com/netbox-community/netbox/issues/13645) - Installation of the `sentry-sdk` Python library is now required only if Sentry reporting is enabled
+* [#14036](https://github.com/netbox-community/netbox/issues/14036) - Move plugin resources from the `extras` app into `netbox` (backward compatibility has been retained)
+* [#14153](https://github.com/netbox-community/netbox/issues/14153) - Replace `FeatureQuery` with new `with_feature()` method on proxy ContentType manager
+* [#14311](https://github.com/netbox-community/netbox/issues/14311) - Move the L2VPN models from the `ipam` app to the new `vpn` app
+* [#14312](https://github.com/netbox-community/netbox/issues/14312) - Move the ConfigRevision model from the `extras` app to `core`
+* [#14326](https://github.com/netbox-community/netbox/issues/14326) - Form feature mixin classes have been moved from the `extras` app to `netbox`
+* [#14395](https://github.com/netbox-community/netbox/issues/14395) - Move `extras.webhooks_worker.process_webhook()` to `extras.webhooks.send_webhook()` (backward compatibility has been retained)
+* [#14424](https://github.com/netbox-community/netbox/issues/14424) - Remove change logging functionality from StagedChange
+* [#14458](https://github.com/netbox-community/netbox/issues/14458) - Remove the obsolete `clearcache` management command
+* [#14536](https://github.com/netbox-community/netbox/issues/14536) - Enforce uniqueness by default for non-VRF prefixes & IP addresses (`ENFORCE_GLOBAL_UNIQUE` now defaults to true)
+
+### REST API Changes
+
+* Introduced the following endpoints:
+    * `/api/extras/event-rules/`
+    * `/api/virtualization/virtual-disks/`
+    * `/api/vpn/ike-policies/`
+    * `/api/vpn/ike-proposals/`
+    * `/api/vpn/ipsec-policies/`
+    * `/api/vpn/ipsec-profiles/`
+    * `/api/vpn/ipsec-proposals/`
+    * `/api/vpn/tunnels/`
+    * `/api/vpn/tunnel-terminations/`
+* The following endpoints have been moved:
+    * `/api/ipam/l2vpns/` -> `/api/vpn/l2vpns/`
+    * `/api/ipam/l2vpn-terminations/` -> `/api/vpn/l2vpn-terminations/`
+* circuits.CircuitType
+    * Added the optional `color` choice field
+* core.Job
+    * Added the read-only `error` character field
+* extras.Webhook
+    * Removed the following fields (these have been moved to the new `EventRule` model):
+        * `content_types`
+        * `type_create`
+        * `type_update`
+        * `type_delete`
+        * `type_job_start`
+        * `type_job_end`
+        * `enabled`
+        * `conditions`
+    * Add the optional `description` field
+* dcim.DeviceType
+    * Added the `exclude_from_utilization` boolean field
+* extras.CustomField
+    * Removed the `ui_visibility` field
+    * Added the `ui_visible` and `ui_editable` choice fields
+* tenancy.ContactAssignment
+    * Added support for custom fields
+* virtualization.VirtualDisk
+    * Added the read-only `virtual_disk_count` integer field
+* virtualization.VirtualMachine
+    * Added the `/render-config` endpoint

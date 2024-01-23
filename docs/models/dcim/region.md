@@ -1,17 +1,17 @@
-# 区域
+# Regions
 
-[站点](./site.md)可以使用区域进行地理排列。根据您的用例，区域可以表示大陆、国家、城市、校园或其他地区。区域可以递归嵌套以构建层次结构。例如，您可以定义多个国家区域，然后在每个国家区域中定义几个州或城市区域，然后将站点分配给这些区域。
+[Sites](./site.md) can be arranged geographically using regions. A region might represent a continent, country, city, campus, or other area depending on your use case. Regions can be nested recursively to construct a hierarchy. For example, you might define several country regions, and within each of those several state or city regions to which sites are assigned.
 
-## 字段
+## Fields
 
-### 父级
+### Parent
 
-父区域，如果有的话。
+The parent region, if any.
 
-### 名称
+### Name
 
-区域的名称。如果分配了父区域，则必须对其进行唯一设置。
+The region's name. Must be unique to the parent region, if one is assigned.
 
 ### Slug
 
-唯一的URL友好标识符。（可以用于过滤）
+A unique URL-friendly identifier. (This value can be used for filtering.)

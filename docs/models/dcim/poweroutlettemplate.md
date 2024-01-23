@@ -1,3 +1,3 @@
-# 电源插座模板
+# Power Outlet Templates
 
-电源插座模板用于在创建父设备类型的所有实例时自动创建电源插座。有关详细信息，请参阅[电源插座](./poweroutlet.md)文档。
+A template for a power outlet that will be created on all instantiations of the parent device type. See the [power outlet](./poweroutlet.md) documentation for more detail.

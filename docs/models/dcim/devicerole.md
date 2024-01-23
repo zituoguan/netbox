@@ -1,25 +1,25 @@
-# 设备角色
+# Device Roles
 
-设备可以根据功能角色进行组织，这些角色由用户完全自定义。例如，您可能会为网络中的核心交换机、分布式交换机和接入交换机创建角色。
+Devices can be organized by functional roles, which are fully customizable by the user. For example, you might create roles for core switches, distribution switches, and access switches within your network.
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-一个独特的、人类友好的名称。
+A unique human-friendly name.
 
 ### Slug
 
-一个独特的、URL友好的标识符。（此值可用于过滤。）
+A unique URL-friendly identifier. (This value can be used for filtering.)
 
-### 颜色
+### Color
 
-在NetBox UI中显示角色时使用的颜色。
+The color used when displaying the role in the NetBox UI.
 
-### VM角色
+### VM Role
 
-如果选中，此角色可以分配给[虚拟机](../virtualization/virtualmachine.md)
+If selected, this role may be assigned to [virtual machines](../virtualization/virtualmachine.md)
 
-### 配置模板
+### Configuration Template
 
-分配给此角色的设备的默认[配置模板](../extras/configtemplate.md)。
+The default [configuration template](../extras/configtemplate.md) for devices assigned to this role.

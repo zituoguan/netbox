@@ -1,43 +1,43 @@
-# 后置端口
+# Rear Ports
 
-与[前置端口](./frontport.md)类似，后置端口是代表从一根电缆到下一根电缆的路径延续的通行端口。每个后置端口都定义了其物理类型和一定数量的位置：具有多个位置的后置端口可以映射到多个前置端口。这对于建模多个路径共享公共电缆的情况非常有用（例如，六个离散的双股光纤连接共享一个12股MPO电缆的情况）。
+Like [front ports](./frontport.md), rear ports are pass-through ports which represent the continuation of a path from one cable to the next. Each rear port is defined with its physical type and a number of positions: Rear ports with more than one position can be mapped to multiple front ports. This can be useful for modeling instances where multiple paths share a common cable (for example, six discrete two-strand fiber connections sharing a 12-strand MPO cable).
 
-!!! 注意
-    前置端口和后置端口不一定需要位于实际设备正面或后面。这个术语主要用于区分通行端口配对中的这两个组件。
+!!! note
+    Front and rear ports need not necessarily reside on the actual front or rear device face. This terminology is used primarily to distinguish between the two components in a pass-through port pairing.
 
-!!! 提示
-    与大多数设备组件一样，后置端口是从分配给所选设备类型的[后置端口模板](./rearporttemplate.md)在创建设备时自动生成的。
+!!! tip
+    Like most device components, rear ports are instantiated automatically from [rear port templates](./rearporttemplate.md) assigned to the selected device type when a device is created.
 
-## 字段
+## Fields
 
-### 设备
+### Device
 
-此端口所属的设备。
+The device to which this port belongs.
 
-### 模块
+### Module
 
-所分配设备内的已安装模块，此端口所属的设备（可选）。
+The installed module within the assigned device to which this port belongs (optional).
 
-### 名称
+### Name
 
-端口的名称。必须在父设备中是唯一的。
+The port's name. Must be unique to the parent device.
 
-### 标签
+### Label
 
-用于标识端口的替代物理标签。
+An alternative physical label identifying the port.
 
-### 类型
+### Type
 
-端口的终端类型。
+The port's termination type.
 
-### 颜色
+### Color
 
-端口的颜色（可选）。
+The port's color (optional).
 
-### 位置
+### Positions
 
-此后置端口可以映射到的[前置端口](./frontport.md)的数量。例如，MPO光纤终端盒可能具有一个单一的12股后置端口，映射到12个离散的前置端口，每个前置端口终止一个单独的光纤股。 （对于直接映射到单个前置端口的后置端口，将此设置为`1`。）
+The number of [front ports](./frontport.md) to which this rear port can be mapped. For example, an MPO fiber termination cassette might have a single 12-strand rear port mapped to 12 discrete front ports, each terminating a single fiber strand. (For rear ports which map directly to a single front port, set this to `1`.)
 
-### 标记为已连接
+### Mark Connected
 
-如果选择，将视为已连接电缆的此组件。
+If selected, this component will be treated as if a cable has been connected.

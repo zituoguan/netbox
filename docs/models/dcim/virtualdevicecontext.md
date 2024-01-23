@@ -1,33 +1,33 @@
-# 虚拟设备上下文
+# Virtual Device Context
 
-虚拟设备上下文（VDC）表示物理设备内的逻辑分区，可以将父设备的接口分配给该分区。每个VDC实际上提供了一个隔离的控制平面，但依赖于父设备的共享资源。VDC在某种程度上类似于虚拟机，它在各种组件之间实现了隔离，但没有提供完全虚拟化的环境。
+A virtual device context (VDC) represents a logical partition within a physical device, to which interfaces from the parent device can be allocated. Each VDC effectively provides an isolated control plane, but relies on shared resources of the parent device. A VDC is somewhat similar to a virtual machine in that it effects isolation between various components, but stops short of delivering a fully virtualized environment.
 
-在创建每个VDC时，必须将其分配给一个设备，之后属于该设备的接口可以分配给其一个或多个VDC。一个VDC可以分配任意数量的接口，而一个接口可以属于任意数量的VDC。
+Each VDC must be assigned to a device upon creation, after which interfaces belonging to that device can be assigned to one or more of its VDCs. A VDC can have any number of interfaces assigned to it, and an interface can belong to any number of VDCs.
 
-!!! info "不同厂商的术语"
-    网络供应商对这个概念使用不同的术语。Cisco使用术语VDC，而Juniper称之为“Virtual Routing Instance”，Fortinet则使用“Virtual Domain”，等等。虽然各供应商的独特实现可能存在一些细微差别，但对于每个供应商来说，一般概念都是相同的。
+!!! info "A VDC by Any Other Name"
+    Network vendors use differing names for this concept. Cisco uses the term VDC, whereas Juniper refers to it as a _Virtual Routing Instance_, and Fortinet uses _Virtual Domain_, for instance. While there may be some nuance among the vendors' unique implementations, the general concept remains the same for each.
 
-## 字段
+## Fields
 
-### 设备
+### Device
 
-该VDC所属的设备。
+The device to which this VDC belongs.
 
-### 名称
+### Name
 
-VDC的配置名称。必须在分配的设备中是唯一的。
+The VDC's configured name. Must be unique to the assigned device.
 
-### 状态
+### Status
 
-VDC的运行状态。
+The operational status of the VDC.
 
-### 标识符
+### Identifier
 
-VDC的供应商指定的唯一标识符（可选）。如果定义了标识符，必须在分配的设备中是唯一的。
+A vendor-prescribed unique identifier for the VDC (optional). Must be unique to the assigned device if defined.
 
-### 主要IPv4和IPv6地址
+### Primary IPv4 & IPv6 Addresses
 
-每个VDC可以为管理目的指定一个主要的IPv4地址和/或一个主要的IPv6地址。
+Each VDC may designate one primary IPv4 address and/or one primary IPv6 address for management purposes.
 
 !!! tip
-    NetBox默认情况下会优先使用IPv6地址而不是IPv4地址。可以通过设置`PREFER_IPV4`配置参数来更改这一点。
+    NetBox will prefer IPv6 addresses over IPv4 addresses by default. This can be changed by setting the `PREFER_IPV4` configuration parameter.

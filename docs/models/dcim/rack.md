@@ -1,86 +1,86 @@
-# 机架
+# Racks
 
-机架模型代表一个物理的双柱或四柱设备机架，可以在其中安装[设备](./device.md)。每个机架必须分配给一个[站点](./site.md)，并且可以选择分配给该站点中的一个[位置](./location.md)。机架还可以按用户定义的功能角色进行组织。每个位置内的机架的名称和设施 ID 必须是唯一的。
+The rack model represents a physical two- or four-post equipment rack in which [devices](./device.md) can be installed. Each rack must be assigned to a [site](./site.md), and may optionally be assigned to a [location](./location.md) within that site. Racks can also be organized by user-defined functional roles. The name and facility ID of each rack within a location must be unique.
 
-机架高度以*机架单元*（U）来衡量；机架通常在 42U 到 48U 之间，但 NetBox 允许您定义任意高度的机架。提供了一个切换按钮，用于指示机架单元是按升序（从下往上）还是按降序（从上往下）的顺序排列。
+Rack height is measured in *rack units* (U); racks are commonly between 42U and 48U tall, but NetBox allows you to define racks of arbitrary height. A toggle is provided to indicate whether rack units are in ascending (from the ground up) or descending order.
 
-每个机架都分配了一个名称和（可选的）单独的设施 ID。当您在一个您的组织不拥有的数据中心租用空间时，这非常有帮助：设施通常会为机架分配一个看似随机的 ID（例如，“M204.313”），而在内部，您只是简单地将其称为“R113”。每个机架还可以关联一个唯一的序列号和资产标签。
+Each rack is assigned a name and (optionally) a separate facility ID. This is helpful when leasing space in a data center your organization does not own: The facility will often assign a seemingly arbitrary ID to a rack (for example, "M204.313") whereas internally you refer to is simply as "R113." A unique serial number and asset tag may also be associated with each rack.
 
-## 字段
+## Fields
 
-### 站点
+### Site
 
-分配给机架的[站点](./site.md)。
+The [site](./site.md) to which the rack is assigned.
 
-### 位置
+### Location
 
-机架安装在站点内的[位置](./location.md)（可选）。
+The [location](./location.md) within a site where the rack has been installed (optional).
 
-### 名称
+### Name
 
-机架的名称或标识符。如果分配了位置，必须对机架的位置进行唯一设置。
+The rack's name or identifier. Must be unique to the rack's location, if assigned.
 
-### 状态
+### Status
 
-运营状态。
+Operational status.
 
 !!! tip
-    通过在[`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices)配置参数下设置 `Rack.status`，可以定义其他状态。
+    Additional statuses may be defined by setting `Rack.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
 
-### 角色
+### Role
 
-机架承担的功能[角色](./rackrole.md)。
+The functional [role](./rackrole.md) fulfilled by the rack.
 
-### 设施 ID
+### Facility ID
 
-机架的替代标识符，例如由设施运营商分配。这对于跟踪托管设施中的数据中心机架标识非常有帮助。
+An alternative identifier assigned to the rack e.g. by the facility operator. This is helpful for tracking datacenter rack designations in a colocation facility.
 
-### 序列号
+### Serial Number
 
-分配给此机架的唯一物理序列号。
+The unique physical serial number assigned to this rack.
 
-### 资产标签
+### Asset Tag
 
-用于标识硬件资源的唯一的本地管理标签。
+A unique, locally-administered label used to identify hardware resources.
 
-### 类型
+### Type
 
-机架可以被指定为以下类型之一：
+A rack can be designated as one of the following types:
 
-* 2 柱架
-* 4 柱架
-* 4 柱柜
-* 壁挂架
-* 壁挂柜
+* 2-post frame
+* 4-post frame
+* 4-post cabinet
+* Wall-mounted frame
+* Wall-mounted cabinet
 
-### 宽度
+### Width
 
-两个垂直导轨之间的规范距离。 （通常为 19 英寸，但还存在其他标准宽度。）
+The canonical distance between the two vertical rails on a face. (This is typically 19 inches, however other standard widths exist.)
 
-### 高度
+### Height
 
-机架的高度，以单元为单位衡量。
+The height of the rack, measured in units.
 
-### 起始单元
+### Starting Unit
 
-机架中数字最低的单元号。此值默认为 1，但在某些情况下可能更高。例如，您可能希望仅对共享物理机架内的某个单元范围进行建模（例如 U13 到 U24）。
+The number of the numerically lowest unit in the rack. This value defaults to one, but may be higher in certain situations. For example, you may want to model only a select range of units within a shared physical rack (e.g. U13 through U24).
 
-### 外部尺寸
+### Outer Dimensions
 
-可以跟踪机架的外部宽度和深度，以帮助进行平面图计算。这些测量必须以毫米或英寸指定。
+The external width and depth of the rack can be tracked to aid in floorplan calculations. These measurements must be designated in either millimeters or inches.
 
-### 安装深度
+### Mounting Depth
 
-机架可以容纳的已安装设备的最大深度，以毫米为单位。对于四柱架或柜子，这是前后垂直导轨之间的水平距离。（请注意，此测量不包括导轨和柜门之间的空间。）
+The maximum depth of a mounted device that the rack can accommodate, in millimeters. For four-post frames or cabinets, this is the horizontal distance between the front and rear vertical rails. (Note that this measurement does _not_ include space between the rails and the cabinet doors.)
 
-### 重量
+### Weight
 
-机架的数值重量，包括单位标识（例如 10 千克或 20 磅）。
+The numeric weight of the rack, including a unit designation (e.g. 10 kilograms or 20 pounds).
 
-### 最大重量
+### Maximum Weight
 
-所有已安装设备的最大总重量容量，包括机架本身。
+The maximum total weight capacity for all installed devices, inclusive of the rack itself.
 
-### 下降单元
+### Descending Units
 
-如果选择，机架的高度图将在顶部显示单位 1。 （大多数机架使用升序编号，其中单位 1 分配给底部位置。）
+If selected, the rack's elevation will display unit 1 at the top of the rack. (Most racks use ascending numbering, with unit 1 assigned to the bottommost position.)

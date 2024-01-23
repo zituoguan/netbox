@@ -1,3 +1,3 @@
-# 模块插槽模板
+# Module Bay Templates
 
-"模块插槽模板" 是用于在创建特定设备类型的新实例时自动创建模块插槽的模板。有关详细信息，请参阅 [模块插槽](./modulebay.md) 文档。
+A template for a module bay that will be created on all instantiations of the parent device type. See the [module bay](./modulebay.md) documentation for more detail.

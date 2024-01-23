@@ -1,53 +1,53 @@
-# 电路
+# Circuits
 
-电路代表物理的点对点数据连接，通常用于连接相隔较远的站点（例如，提供互联网连接）。
+A circuit represents a physical point-to-point data connection, typically used to interconnect sites across considerable distances (e.g. to deliver Internet connectivity).
 
-## 字段
+## Fields
 
-### 提供商
+### Provider
 
-此电路所属的[提供商](./provider.md)。
+The [provider](./provider.md) to which this circuit belongs.
 
-### 提供商账户
+### Provider Account
 
-电路可以选择性地分配给特定的[提供商账户](./provideraccount.md)。
+Circuits may optionally be assigned to a specific [provider account](./provideraccount.md).
 
-### 电路ID
+### Circuit ID
 
-此电路的标识符。这必须对分配的提供商是唯一的。（分配给不同提供商的电路可以有相同的电路ID。）
+An identifier for this circuit. This must be unique to the assigned provider. (Circuits assigned to different providers may have the same circuit ID.)
 
-### 电路类型
+### Circuit Type
 
-每个电路都由用户定义的[电路类型](./circuittype.md)分类。通常这是类似于“互联网接入”、“MPLS/VPN”等。
+Each circuit is classified by a user-defined [circuit type](./circuittype.md). Generally this is something like "Internet access," "MPLS/VPN," etc.
 
-### 状态
+### Status
 
-电路的运行状态。默认情况下，以下状态可用：
+The operational status of the circuit. By default, the following statuses are available:
 
-| 名称           |
+| Name           |
 |----------------|
-| 计划中        |
-| 配置中   |
-| 激活         |
-| 离线        |
-| 停用中 |
-| 已停用 |
+| Planned        |
+| Provisioning   |
+| Active         |
+| Offline        |
+| Deprovisioning |
+| Decommissioned |
 
-!!! 提示 “自定义电路状态”
-    可以通过设置 [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) 配置参数下的 `Circuit.status` 来定义附加的电路状态。
+!!! tip "Custom circuit statuses"
+    Additional circuit statuses may be defined by setting `Circuit.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
 
-### 描述
+### Description
 
-电路的简要描述。
+A brief description of the circuit.
 
-### 安装日期
+### Installation Date
 
-电路安装的日期。
+The date on which the circuit was installed.
 
-### 终止日期
+### Termination Date
 
-计划断开电路的日期。
+The date on which the circuit is scheduled to be disconnected.
 
-### 承诺速率
+### Commit Rate
 
-电路的承诺速率（吞吐量），以千比特每秒计。
+The committed rate (throughput) of the circuit, in kilobits per second.

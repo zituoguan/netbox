@@ -1,28 +1,28 @@
-# 应用程序注册表
+# Application Registry
 
-注册表是一个内存数据结构，存储各种应用程序范围的参数，例如启用的插件列表。它不向用户公开，也不打算由NetBox核心之外的任何代码修改。
+The registry is an in-memory data structure which houses various application-wide parameters, such as the list of enabled plugins. It is not exposed to the user and is not intended to be modified by any code outside of NetBox core.
 
-注册表基本上的行为类似于Python字典，有一个明显的异常，即一旦声明了存储（键），它就不能被删除或覆盖。但是，存储的值可以修改；例如，通过将值附加到列表中。存储值通常在应用程序初始化后不会更改。
+The registry behaves essentially like a Python dictionary, with the notable exception that once a store (key) has been declared, it cannot be deleted or overwritten. The value of a store can, however, be modified; e.g. by appending a value to a list. Store values generally do not change once the application has been initialized.
 
-可以通过从`extras.registry`导入`registry`来检查注册表。
+The registry can be inspected by importing `registry` from `extras.registry`.
 
-## 存储
+## Stores
 
 ### `counter_fields`
 
-一个将模型映射到与其关联的外键的字典，其中缓存的计数字段与之关联。
+A dictionary mapping of models to foreign keys with which cached counter fields are associated.
 
 ### `data_backends`
 
-一个将数据后端类型映射到其相应类的字典。这些用于与[远程数据源](../models/core/datasource.md)交互。
+A dictionary mapping data backend types to their respective classes. These are used to interact with [remote data sources](../models/core/datasource.md).
 
 ### `denormalized_fields`
 
-存储使用`netbox.denormalized.register()`进行的注册。对于每个模型，维护了一个相关模型和其字段映射的列表，以便进行自动更新。
+Stores registration made using `netbox.denormalized.register()`. For each model, a list of related models and their field mappings is maintained to facilitate automatic updates.
 
 ### `model_features`
 
-将特定功能（例如自定义字段）映射到支持它们的NetBox模型的字典，按应用程序排列。例如：
+A dictionary of particular features (e.g. custom fields) mapped to the NetBox models which support them, arranged by app. For example:
 
 ```python
 {
@@ -39,24 +39,24 @@
 }
 ```
 
-支持的模型功能在[功能矩阵](./models.md#features-matrix)中列出。
+Supported model features are listed in the [features matrix](./models.md#features-matrix).
 
 ### `models`
 
-此键列出了在NetBox中已注册但未指定为私有使用的所有模型。 （将`_netbox_private`设置为True的模型将其排除在此列表之外。）与`model_features`下的各个功能一样，模型是按应用程序标签组织的。
+This key lists all models which have been registered in NetBox which are not designated for private use. (Setting `_netbox_private` to True on a model excludes it from this list.) As with individual features under `model_features`, models are organized by app label.
 
 ### `plugins`
 
-此存储维护了所有已注册的插件项目，例如导航菜单、模板扩展等。
+This store maintains all registered items for plugins, such as navigation menus, template extensions, etc.
 
 ### `search`
 
-将每个模型（通过其应用程序和标签标识）映射到其搜索索引类，如果为其注册了搜索索引类。
+A dictionary mapping each model (identified by its app and label) to its search index class, if one has been registered for it.
 
 ### `tables`
 
-将表类映射到由插件使用`register_table_column()`实用函数注册的额外列列表。每个列被定义为名称和列实例的元组。
+A dictionary mapping table classes to lists of extra columns that have been registered by plugins using the `register_table_column()` utility function. Each column is defined as a tuple of name and column instance.
 
 ### `views`
 
-每个模型的已注册视图的分层映射。可以使用`register_model_view()`装饰器添加映射，并可以使用`get_model_urls()`从中生成URL路径。
+A hierarchical mapping of registered views for each model. Mappings are added using the `register_model_view()` decorator, and URLs paths can be generated from these using `get_model_urls()`.

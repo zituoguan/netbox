@@ -1,20 +1,20 @@
-# 电力配电盘
+# Power Panel
 
-电力配电盘代表NetBox中一个或多个[电力馈线](./powerfeed.md)传播电力的起始点。在数据中心环境中，一个电力配电盘通常为一组机架提供服务，每个机架都有一个单独的电力馈线延伸到每个机架，尽管情况并非总是如此。通常会有两套平行排列的电力面板和馈线，以为每个机架提供冗余电力。
+A power panel represents the origin point in NetBox for electrical power being disseminated by one or more [power feeds](./powerfeed.md). In a data center environment, one power panel often serves a group of racks, with an individual power feed extending to each rack, though this is not always the case. It is common to have two sets of panels and feeds arranged in parallel to provide redundant power to each rack.
 
-!!! 注意
-    NetBox不对将电力传送到电力配电盘的机制进行建模。电力配电盘定义了NetBox中电力分配层次结构的根级别。
+!!! note
+    NetBox does not model the mechanism by which power is delivered to a power panel. Power panels define the root level of the power distribution hierarchy in NetBox.
 
-## 字段
+## Fields
 
-### 站点
+### Site
 
-电力配电盘所在的[站点](./site.md)。
+The [site](./site.md) in which the power panel resides.
 
-### 位置
+### Location
 
-指定电力配电盘安装在分配的站点内的具体[位置](./location.md)。
+A specific [location](./location.md) within the assigned site where the power panel is installed.
 
-### 名称
+### Name
 
-电力配电盘的名称。必须在分配的站点内是唯一的。
+The power panel's name. Must be unique to the assigned site.

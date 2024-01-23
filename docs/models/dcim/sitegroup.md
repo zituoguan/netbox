@@ -1,17 +1,17 @@
-# 站点组
+# Site Groups
 
-与[区域](./region.md)类似，站点组可用于组织[站点](./site.md)。虽然区域旨在提供地理组织，但站点组可用于按角色或功能对站点进行分类。与区域一样，站点组可以嵌套以形成层次结构。属于子组的站点也被视为属于其所有父组的成员。
+Like [regions](./region.md), site groups can be used to organize [sites](./site.md). Whereas regions are intended to provide geographic organization, site groups can be used to classify sites by role or function. Also like regions, site groups can be nested to form a hierarchy. Sites which belong to a child group are also considered to be members of all its parent groups.
 
-## 字段
+## Fields
 
-### 父组
+### Parent
 
-父站点组，如果有的话。
+The parent site group, if any.
 
-### 名称
+### Name
 
-站点组的名称。必须对父组唯一，如果有的话。
+The site group's name. Must be unique to the parent group, if one is assigned.
 
 ### Slug
 
-唯一的URL友好标识符。（可以用于过滤）
+A unique URL-friendly identifier. (This value can be used for filtering.)

@@ -1,30 +1,30 @@
-# 插件开发
+# Plugins Development
 
-!!! tip "插件开发教程"
-    刚开始使用插件？请查看我们的[**NetBox插件开发教程**](https://github.com/netbox-community/netbox-plugin-tutorial)！这个详细的指南将逐步引导您从零开始创建一个完整的插件。它甚至包括一个[演示插件仓库](https://github.com/netbox-community/netbox-plugin-demo)，以确保您可以在任何时候加入。这将让您迅速掌握插件的开发！
+!!! tip "Plugins Development Tutorial"
+    Just getting started with plugins? Check out our [**NetBox Plugin Tutorial**](https://github.com/netbox-community/netbox-plugin-tutorial) on GitHub! This in-depth guide will walk you through the process of creating an entire plugin from scratch. It even includes a companion [demo plugin repo](https://github.com/netbox-community/netbox-plugin-demo) to ensure you can jump in at any step along the way. This will get you up and running with plugins in no time!
 
-通过使用插件，NetBox可以扩展以支持额外的数据模型和功能。插件本质上是一个独立的[Django应用程序](https://docs.djangoproject.com/en/stable/)，它与NetBox一起安装以提供自定义功能。在单个NetBox实例中可以安装多个插件，并且每个插件可以独立启用和配置。
+NetBox can be extended to support additional data models and functionality through the use of plugins. A plugin is essentially a self-contained [Django app](https://docs.djangoproject.com/en/stable/) which gets installed alongside NetBox to provide custom functionality. Multiple plugins can be installed in a single NetBox instance, and each plugin can be enabled and configured independently.
 
-!!! info "Django开发"
-    Django是NetBox构建的Python框架。由于Django本身有很好的文档，因此本文档仅涵盖与NetBox插件开发唯一相关的方面。
+!!! info "Django Development"
+    Django is the Python framework on which NetBox is built. As Django itself is very well-documented, this documentation covers only the aspects of plugin development which are unique to NetBox.
 
-插件可以实现多种功能，包括：
+Plugins can do a lot, including:
 
-* 创建Django模型以将数据存储在数据库中
-* 在Web用户界面中提供自己的“页面”（视图）
-* 注入模板内容和导航链接
-* 扩展NetBox的REST和GraphQL API
-* 加载额外的Django应用程序
-* 添加自定义请求/响应中间件
+* Create Django models to store data in the database
+* Provide their own "pages" (views) in the web user interface
+* Inject template content and navigation links
+* Extend NetBox's REST and GraphQL APIs
+* Load additional Django apps
+* Add custom request/response middleware
 
-但是，请注意，每个功能都是可选的。例如，如果您的插件仅添加了一个中间件或一个现有数据的API端点，那么不需要定义任何新模型。
+However, keep in mind that each piece of functionality is entirely optional. For example, if your plugin merely adds a piece of middleware or an API endpoint for existing data, there's no need to define any new models.
 
 !!! warning
-    尽管功能强大，但NetBox插件API在其范围内受到限制。插件API在这里完全讨论：NetBox代码库中未在此处记录的任何部分都不是支持的插件API的一部分，不应该被插件使用。NetBox内部元素随时都可能发生变化，而无需警告。强烈建议插件作者仅使用此处正式支持的组件以及由底层Django框架提供的组件来开发插件，以避免未来版本中的破坏性更改。
+    While very powerful, the NetBox plugins API is necessarily limited in its scope. The plugins API is discussed here in its entirety: Any part of the NetBox code base not documented here is _not_ part of the supported plugins API, and should not be employed by a plugin. Internal elements of NetBox are subject to change at any time and without warning. Plugin authors are **strongly** encouraged to develop plugins using only the officially supported components discussed here and those provided by the underlying Django framework to avoid breaking changes in future releases.
 
-## 插件结构
+## Plugin Structure
 
-尽管插件的具体结构基本上由其作者自行决定，但一个典型的NetBox插件可能如下所示：
+Although the specific structure of a plugin is largely left to the discretion of its authors, a typical NetBox plugin might look something like this:
 
 ```no-highlight
 project-name/
@@ -56,17 +56,17 @@ project-name/
   - setup.py
 ```
 
-顶级目录是项目根目录，可以具有您喜欢的任何名称。根目录中应该立即存在以下几个项目：
+The top level is the project root, which can have any name that you like. Immediately within the root should exist several items:
 
-* `setup.py` - 这是用于在Python环境中安装插件包的标准安装脚本。
-* `README.md` - 对插件的简要介绍，如何安装和配置它，何处寻求帮助以及任何其他相关信息。建议使用诸如Markdown之类的标记语言编写`README`文件，以便以人类友好的方式显示。
-* 插件源目录。这必须是有效的Python包名称，通常仅包含小写字母、数字和下划线。
+* `setup.py` - This is a standard installation script used to install the plugin package within the Python environment.
+* `README.md` - A brief introduction to your plugin, how to install and configure it, where to find help, and any other pertinent information. It is recommended to write `README` files using a markup language such as Markdown to enable human-friendly display.
+* The plugin source directory. This must be a valid Python package name, typically comprising only lowercase letters, numbers, and underscores.
 
-插件源目录包含实际Python代码和其他插件使用的资源。其结构由作者自行决定，但建议按照[ Django文档](https://docs.djangoproject.com/en/stable/intro/reusable-apps/)中概述的最佳实践进行。至少，此目录**必须**包含包含NetBox的`PluginConfig`类实例的`__init__.py`文件，如下所示。
+The plugin source directory contains all the actual Python code and other resources used by your plugin. Its structure is left to the author's discretion, however it is recommended to follow best practices as outlined in the [Django documentation](https://docs.djangoproject.com/en/stable/intro/reusable-apps/). At a minimum, this directory **must** contain an `__init__.py` file containing an instance of NetBox's `PluginConfig` class, discussed below.
 
 ## PluginConfig
 
-`PluginConfig`类是NetBox的`AppConfig`类的一个NetBox特定包装器。它用于在Python包中声明NetBox插件功能。每个插件应该提供其自己的子类，定义其名称、元数据以及默认和必需的配置参数。下面是一个示例：
+The `PluginConfig` class is a NetBox-specific wrapper around Django's built-in [`AppConfig`](https://docs.djangoproject.com/en/stable/ref/applications/) class. It is used to declare NetBox plugin functionality within a Python package. Each plugin should provide its own subclass, defining its name, metadata, and default and required configuration parameters. An example is below:
 
 ```python
 from netbox.plugins import PluginConfig
@@ -88,54 +88,54 @@ class FooBarConfig(PluginConfig):
 config = FooBarConfig
 ```
 
-NetBox会查找插件的`__init__.py`中的`config`变量以加载其配置。通常，这将设置为PluginConfig子类，但您可能希望根据环境变量或其他因素动态生成PluginConfig类。
+NetBox looks for the `config` variable within a plugin's `__init__.py` to load its configuration. Typically, this will be set to the PluginConfig subclass, but you may wish to dynamically generate a PluginConfig class based on environment variables or other factors.
 
-### PluginConfig属性
+### PluginConfig Attributes
 
-| 名称                  | 描述                                                                                                              |
+| Name                  | Description                                                                                                              |
 |-----------------------|--------------------------------------------------------------------------------------------------------------------------|
-| `name`                | 插件名称（与插件源目录相同）                                                                   |
-| `verbose_name`        | 插件的人类友好名称                                                                                       |
-| `version`             | 当前版本（鼓励使用[语义化版本](https://semver.org/)）                                               |
-| `description`         | 插件目的的简要描述                                                                                |
-| `author`              | 插件作者的名称                                                                                                  |
-| `author_email`        | 作者的公共电子邮件地址                                                                                            |
-| `base_url`            | 用于插件URL的基本路径（可选）。如果未指定，将使用项目的`name`。                        |
-| `required_settings`   | 用户必须定义的任何配置参数的列表                                              |
-| `default_settings`    | 包含配置参数及其默认值的字典                                                        |
-| `django_apps`         | 附加的Django应用程序的列表，以与插件一起加载                                           |
-| `min_version`         | 插件与之兼容的NetBox的最低版本                                                          |
-| `max_version`         | 插件与之兼容的NetBox的最高版本                                                          |
-| `middleware`          | 添加到NetBox内置中间件后面的中间件类的列表                                               |
-| `queues`              | 创建自定义后台任务队列的列表                                                                     |
-| `search_extensions`   | 搜索索引类列表的点路径（默认为`search.indexes`）                                        |
-| `data_backends`       | 数据源后端类列表的点路径（默认为`data_backends.backends`）                             |
-| `template_extensions` | 模板扩展类列表的点路径（默认为`template_content.template_extensions`）                    |
-| `menu_items`          | 插件提供的菜单项列表的点路径（默认为`navigation.menu_items`）                            |
-| `graphql_schema`      | 插件的GraphQL模式类的点路径，如果有的话（默认为`graphql.schema`）                             |
-| `user_preferences`    | 插件定义的用户首选项映射的点路径（默认为`preferences.preferences`）                           |
+| `name`                | Raw plugin name; same as the plugin's source directory                                                                   |
+| `verbose_name`        | Human-friendly name for the plugin                                                                                       |
+| `version`             | Current release ([semantic versioning](https://semver.org/) is encouraged)                                               |
+| `description`         | Brief description of the plugin's purpose                                                                                |
+| `author`              | Name of plugin's author                                                                                                  |
+| `author_email`        | Author's public email address                                                                                            |
+| `base_url`            | Base path to use for plugin URLs (optional). If not specified, the project's `name` will be used.                        |
+| `required_settings`   | A list of any configuration parameters that **must** be defined by the user                                              |
+| `default_settings`    | A dictionary of configuration parameters and their default values                                                        |
+| `django_apps`         | A list of additional Django apps to load alongside the plugin                                                            |
+| `min_version`         | Minimum version of NetBox with which the plugin is compatible                                                            |
+| `max_version`         | Maximum version of NetBox with which the plugin is compatible                                                            |
+| `middleware`          | A list of middleware classes to append after NetBox's build-in middleware                                                |
+| `queues`              | A list of custom background task queues to create                                                                        |
+| `search_extensions`   | The dotted path to the list of search index classes (default: `search.indexes`)                                          |
+| `data_backends`       | The dotted path to the list of data source backend classes (default: `data_backends.backends`)                           |
+| `template_extensions` | The dotted path to the list of template extension classes (default: `template_content.template_extensions`)              |
+| `menu_items`          | The dotted path to the list of menu items provided by the plugin (default: `navigation.menu_items`)                      |
+| `graphql_schema`      | The dotted path to the plugin's GraphQL schema class, if any (default: `graphql.schema`)                                 |
+| `user_preferences`    | The dotted path to the dictionary mapping of user preferences defined by the plugin (default: `preferences.preferences`) |
 
-所有必需的设置必须由用户配置。如果配置参数在`required_settings`和`default_settings`中都列出，则将忽略默认设置。
+All required settings must be configured by the user. If a configuration parameter is listed in both `required_settings` and `default_settings`, the default setting will be ignored.
 
-!!! tip "访问配置参数"
-    可以使用`get_plugin_config()`函数访问插件配置参数。例如：
+!!! tip "Accessing Config Parameters"
+    Plugin configuration parameters can be accessed using the `get_plugin_config()` function. For example:
     
     ```python
     from netbox.plugins import get_plugin_config
     get_plugin_config('my_plugin', 'verbose_name')
     ```
 
-#### 关于`django_apps`的重要说明
+#### Important Notes About `django_apps`
 
-加载附加的应用程序可能会引发更多的问题，而且可能会使在NetBox本身中识别问题变得更加困难。`django_apps`属性仅用于需要更深度的Django集成的高级用例。
+Loading additional apps may cause more harm than good and could make identifying problems within NetBox itself more difficult. The `django_apps` attribute is intended only for advanced use cases that require a deeper Django integration.
 
-从此列表中的应用程序将在定义的顺序之前插入插件的`PluginConfig`。将插件的`PluginConfig`模块添加到此列表会更改此行为，允许在插件之后加载应用程序。
+Apps from this list are inserted *before* the plugin's `PluginConfig` in the order defined. Adding the plugin's `PluginConfig` module to this list changes this behavior and allows for apps to be loaded *after* the plugin.
 
-任何附加的应用程序必须在与NetBox相同的Python环境中安装，否则在加载插件时将引发`ImproperlyConfigured`异常。
+Any additional apps must be installed within the same Python environment as NetBox or `ImproperlyConfigured` exceptions will be raised when loading the plugin.
 
-## 创建setup.py
+## Create setup.py
 
-`setup.py`是用于打包和安装插件的[设置脚本](https://docs.python.org/3.8/distutils/setupscript.html)。该脚本的主要功能是调用setuptools库的`setup()`函数，以创建Python分发包。我们可以传递许多关键字参数来控制包的创建，以及提供有关插件的元数据。下面是一个示例`setup.py`：
+`setup.py` is the [setup script](https://docs.python.org/3.8/distutils/setupscript.html) used to package and install our plugin once it's finished. The primary function of this script is to call the setuptools library's `setup()` function to create a Python distribution package. We can pass a number of keyword arguments to control the package creation as well as to provide metadata about the plugin. An example `setup.py` is below:
 
 ```python
 from setuptools import find_packages, setup
@@ -154,36 +154,36 @@ setup(
 )
 ```
 
-其中许多内容都不言自明，但有关更多信息，请参阅[setuptools文档](https://setuptools.readthedocs.io/en/latest/setuptools.html)。
+Many of these are self-explanatory, but for more information, see the [setuptools documentation](https://setuptools.readthedocs.io/en/latest/setuptools.html).
 
 !!! info
-    `zip_safe=False`是**必需的**，因为当前的插件版本由于上游python问题 [issue19699](https://bugs.python.org/issue19699) 不是zip安全的。  
+    `zip_safe=False` is **required** as the current plugin iteration is not zip safe due to upstream python issue [issue19699](https://bugs.python.org/issue19699)  
 
-## 创建虚拟环境
+## Create a Virtual Environment
 
-强烈建议为插件的开发创建Python [虚拟环境](https://docs.python.org/3/tutorial/venv.html)，而不是使用系统范围的包。这将使您完全控制所有依赖项的安装版本，并避免与系统包的冲突。此环境可以放在您喜欢的任何地方，但是它应该从版本控制中排除。 （一个常见的约定是将所有虚拟环境保存在用户的主目录中，例如`~/.virtualenvs/`。）
+It is strongly recommended to create a Python [virtual environment](https://docs.python.org/3/tutorial/venv.html) for the development of your plugin, as opposed to using system-wide packages. This will afford you complete control over the installed versions of all dependencies and avoid conflict with system packages. This environment can live wherever you'd like, however it should be excluded from revision control. (A popular convention is to keep all virtual environments in the user's home directory, e.g. `~/.virtualenvs/`.)
 
 ```shell
 python3 -m venv ~/.virtualenvs/my_plugin
 ```
 
-要使NetBox在此环境中可用，您可以创建一个指向其位置的路径文件。这将在激活时将NetBox添加到Python路径中。请确保调整下面的命令，以指定您实际的虚拟环境路径、Python版本和NetBox安装位置。
+You can make NetBox available within this environment by creating a path file pointing to its location. This will add NetBox to the Python path upon activation. (Be sure to adjust the command below to specify your actual virtual environment path, Python version, and NetBox installation.)
 
 ```shell
 echo /opt/netbox/netbox > $VENV/lib/python3.8/site-packages/netbox.pth
 ```
 
-## 开发安装
+## Development Installation
 
-为了简化开发，建议在这一点上使用setuptools的`develop`模式安装插件。这将在Python环境中创建指向插件开发目录的符号链接。从插件的根目录中使用`setup.py`调用`develop`参数（而不是`install`）：
+To ease development, it is recommended to go ahead and install the plugin at this point using setuptools' `develop` mode. This will create symbolic links within your Python environment to the plugin development directory. Call `setup.py` from the plugin's root directory with the `develop` argument (instead of `install`):
 
 ```no-highlight
 $ python setup.py develop
 ```
 
-## 配置NetBox
+## Configure NetBox
 
-要在NetBox中启用插件，请将其添加到`configuration.py`中的`PLUGINS`参数中：
+To enable the plugin in NetBox, add it to the `PLUGINS` parameter in `configuration.py`:
 
 ```python
 PLUGINS = [

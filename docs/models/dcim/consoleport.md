@@ -1,36 +1,36 @@
-# 控制台端口
+# Console Ports
 
-控制台端口提供了对设备物理控制台的连接。这些通常用于临时访问，由身处设备附近的人操作，或通过网络化的控制台服务器提供远程离线访问。
+A console port provides connectivity to the physical console of a device. These are typically used for temporary access by someone who is physically near the device, or for remote out-of-band access provided via a networked console server.
 
-!!! 提示
-    像大多数设备组件一样，当设备创建时，控制台端口会从分配给选定设备类型的[控制台端口模板](./consoleporttemplate.md)自动实例化。
+!!! tip
+    Like most device components, console ports are instantiated automatically from [console port templates](./consoleporttemplate.md) assigned to the selected device type when a device is created.
 
-## 字段
+## Fields
 
-### 设备
+### Device
 
-这个控制台端口所属的设备。
+The device to which this console port belongs.
 
-### 模块
+### Module
 
-控制台端口所属的安装在指定设备内的模块（可选）。
+The installed module within the assigned device to which this console port belongs (optional).
 
-### 名称
+### Name
 
-控制台端口的名称。必须对父设备是唯一的。
+The name of the console port. Must be unique to the parent device.
 
-### 标签
+### Label
 
-用于识别控制台端口的替代物理标签。
+An alternative physical label identifying the console port.
 
-### 类型
+### Type
 
-控制台端口的类型。
+The type of console port.
 
-### 速度
+### Speed
 
-操作速度，以比特每秒（bps）计。
+Operating speed, in bits per second (bps).
 
-### 标记为已连接
+### Mark Connected
 
-如果选中，这个组件将被视为已连接电缆。
+If selected, this component will be treated as if a cable has been connected.

@@ -1,109 +1,109 @@
-# 自定义字段
+# Custom Fields
 
-NetBox管理员可以通过在大多数对象类型上添加自定义字段来扩展NetBox内置的数据模型。有关更多信息，请参阅[自定义字段文档](../../customization/custom-fields.md)。
+NetBox administrators can extend NetBox's built-in data model by adding custom fields to most object types. See the [custom fields documentation](../../customization/custom-fields.md) for more information.
 
-## 字段
+## Fields
 
-### 模型
+### Model(s)
 
-选择适用于此自定义字段的NetBox对象类型或类型。
+Select the NetBox object type or types to which this custom field applies.
 
-### 名称
+### Name
 
-原始字段名称。这将在数据库和API中使用，并且应该仅由字母数字字符和下划线组成。（使用“标签”字段来指定自定义字段的人类友好名称。）
+The raw field name. This will be used in the database and API, and should consist only of alphanumeric characters and underscores. (Use the `label` field to designate a human-friendly name for the custom field.)
 
-### 标签
+### Label
 
-自定义字段的可选人类友好名称。如果未定义，将使用字段的“名称”属性。
+An optional human-friendly name for the custom field. If not defined, the field's `name` attribute will be used.
 
-### 组名
+### Group Name
 
-如果此自定义字段应与其他字段分组，请在此处指定组的名称。未定义组的自定义字段将仅按权重和名称排序。
+If this custom field should be grouped with others, specify the name of the group here. Custom fields with no group defined will be ordered only by weight and name.
 
-### 类型
+### Type
 
-此字段保存的数据类型。必须是以下之一：
+The type of data this field holds. This must be one of the following:
 
-| 类型               | 描述                             |
-|--------------------|----------------------------------|
-| 文本               | 自由格式文本（用于单行使用）     |
-| 长文本             | 任意长度的自由格式文本；支持Markdown渲染 |
-| 整数               | 整数（正数或负数）               |
-| 布尔值             | 真或假                           |
-| 日期               | ISO 8601格式的日期（YYYY-MM-DD） |
-| URL                | 这将在Web用户界面中显示为链接      |
-| JSON               | 以JSON格式存储的任意数据         |
-| 选择               | 预定义的几个自定义选择项中的一个   |
-| 多项选择           | 支持分配多个值的选择字段         |
-| 对象               | 定义为`object_type`所定义的NetBox对象的单个对象 |
-| 多个对象           | 一个或多个`object_type`所定义的NetBox对象 |
+| Type               | Description                                                        |
+|--------------------|--------------------------------------------------------------------|
+| Text               | Free-form text (intended for single-line use)                      |
+| Long text          | Free-form of any length; supports Markdown rendering               |
+| Integer            | A whole number (positive or negative)                              |
+| Boolean            | True or false                                                      |
+| Date               | A date in ISO 8601 format (YYYY-MM-DD)                             |
+| URL                | This will be presented as a link in the web UI                     |
+| JSON               | Arbitrary data stored in JSON format                               |
+| Selection          | A selection of one of several pre-defined custom choices           |
+| Multiple selection | A selection field which supports the assignment of multiple values |
+| Object             | A single NetBox object of the type defined by `object_type`        |
+| Multiple object    | One or more NetBox objects of the type defined by `object_type`    |
 
-### 对象类型
+### Object Type
 
-仅适用于对象和多对象字段。指定正在引用的NetBox对象的类型。
+For object and multiple-object fields only. Designates the type of NetBox object being referenced.
 
-### 权重
+### Weight
 
-用于覆盖按名称对字段按字母顺序排序的数值权重。具有较低权重的自定义字段将在具有较高权重的字段之前列出。（请注意，如果定义了自定义字段组，权重适用于自定义字段组的上下文内。）
+A numeric weight used to override alphabetic ordering of fields by name. Custom fields with a lower weight will be listed before those with a higher weight. (Note that weight applies within the context of a custom field group, if defined.)
 
-### 必填
+### Required
 
-如果选中，此自定义字段必须使用有效值填充，以使对象通过验证。
+If checked, this custom field must be populated with a valid value for the object to pass validation.
 
-### 描述
+### Description
 
-字段用途的简要描述（可选）。
+A brief description of the field's purpose (optional).
 
-### 过滤逻辑
+### Filter Logic
 
-定义如何根据自定义字段值对过滤器进行评估。
+Defines how filters are evaluated against custom field values.
 
-| 选项     | 描述                  |
-|----------|-----------------------|
-| 禁用     | 禁用过滤              |
-| 宽松匹配 | 匹配值的任何出现      |
-| 精确匹配 | 仅匹配完整字段值      |
+| Option   | Description                         |
+|----------|-------------------------------------|
+| Disabled | Filtering disabled                  |
+| Loose    | Match any occurrence of the value   |
+| Exact    | Match only the complete field value |
 
-### UI可见
+### UI Visible
 
-控制自定义字段是否在NetBox用户界面中显示。
+Controls whether the custom field is displayed for objects within the NetBox user interface.
 
-| 选项 | 描述                                                         |
-|--------|-------------------------------------------------------------|
-| 始终   | 在查看对象时始终显示该字段（默认）                         |
-| 如果设置 | 仅当定义了值时才显示该字段                                   |
-| 隐藏   | 在查看对象时不显示该字段                                     |
+| Option | Description                                                    |
+|--------|----------------------------------------------------------------|
+| Always | The field is always displayed when viewing an object (default) |
+| If set | The field is displayed only if a value has been defined        |
+| Hidden | The field is not displayed when viewing an object              |
 
-### UI可编辑
+### UI Editable
 
-控制在NetBox用户界面中对象上是否可以编辑自定义字段。
+Controls whether the custom field is editable on objects within the NetBox user interface.
 
-| 选项 | 描述                                                                                   |
-|--------|---------------------------------------------------------------------------------------|
-| 是     | 在编辑对象时可以更改字段的值（默认）                                                 |
-| 否     | 在编辑对象时，字段的值会显示，但不可更改                                           |
-| 隐藏   | 在编辑对象时不显示该字段                                                               |
+| Option | Description                                                                  |
+|--------|------------------------------------------------------------------------------|
+| Yes    | The field's value may be changed when editing an object (default)            |
+| No     | The field's value is displayed when editing an object but may not be altered |
+| Hidden | The field is not displayed when editing an object                            |
 
-### 默认值
+### Default
 
-在创建新对象时为自定义字段提供的默认值（可选）。此值必须表示为JSON。如果这是一个选择或多选字段，则必须是可用选择项之一。
+The default value to populate for the custom field when creating new objects (optional). This value must be expressed as JSON. If this is a choice or multi-choice field, this must be one of the available choices.
 
-### 选择集
+### Choice Set
 
-仅适用于选择和多选自定义字段，这是字段的有效选择集。
+For selection and multi-select custom fields only, this is the [set of choices](./customfieldchoiceset.md) which are valid for the field.
 
-### 可克隆
+### Cloneable
 
-如果启用，当克隆现有对象时，将自动预填充此字段的值。
+If enabled, values from this field will be automatically pre-populated when cloning existing objects.
 
-### 最小值
+### Minimum Value
 
-仅适用于数值自定义字段。最小有效值（可选）。
+For numeric custom fields only. The minimum valid value (optional).
 
-### 最大值
+### Maximum Value
 
-仅适用于数值自定义字段。最大有效值（可选）。
+For numeric custom fields only. The maximum valid value (optional).
 
-### 验证正则表达式
+### Validation Regex
 
-仅适用于基于字符串的自定义字段。用于验证字段值的正则表达式（可选）。
+For string-based custom fields only. A regular expression used to validate the field's value (optional).

@@ -1,17 +1,17 @@
-# 前缀/VLAN 角色
+# Prefix/VLAN Roles
 
-角色表示前缀或VLAN的功能。例如，您可以定义数据、语音和安全角色。通常，一个前缀将被分配与其关联的VLAN相同的功能角色（如果有的话）。
+A role indicates the function of a prefix or VLAN. For example, you might define Data, Voice, and Security roles. Generally, a prefix will be assigned the same functional role as the VLAN to which it is assigned (if any).
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-唯一的用户友好名称。
+A unique human-friendly name.
 
 ### Slug
 
-唯一的URL友好标识符。 （此值可用于过滤。）
+A unique URL-friendly identifier. (This value can be used for filtering.)
 
-### 权重
+### Weight
 
-用于影响角色排序的数字权重。权重较低的角色将在权重较高的角色之前列出。
+A numeric weight employed to influence the ordering of roles. Roles with a lower weight will be listed before those with higher weights.

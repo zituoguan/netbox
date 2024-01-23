@@ -1,26 +1,26 @@
-# 虚拟路由和转发（VRF）
+# Virtual Routing and Forwarding (VRF)
 
-NetBox中的VRF对象代表虚拟路由和转发（VRF）域。每个VRF本质上是一个独立的路由表。VRF通常用于在网络中将客户或组织相互隔离，或者用于路由重叠的地址空间（例如，多个10.0.0.0/8空间的实例）。每个VRF可以分配给特定的租户，以帮助通过客户或内部用户组织可用的IP空间。
+A VRF object in NetBox represents a Virtual Routing and Forwarding (VRF) domain. Each VRF is essentially an independent routing table. VRFs are commonly used to isolate customers or organizations from one another within a network, or to route overlapping address space (e.g. multiple instances of the 10.0.0.0/8 space). Each VRF may be assigned to a specific tenant to aid in organizing the available IP space by customer or internal user.
 
-每个[前缀](./prefix.md)、[IP范围](./iprange.md)和[IP地址](./ipaddress.md)都可以分配给一个（仅一个）VRF。如果您有一个存在于多个VRF中的前缀或IP地址，您需要为每个VRF在NetBox中创建一个单独的实例。未分配给VRF的任何此类对象都被认为属于“全局”表。
+Each [prefix](./prefix.md), [IP range](./iprange.md), and [IP address](./ipaddress.md) may be assigned to one (and only one) VRF. If you have a prefix or IP address which exists in multiple VRFs, you will need to create a separate instance of it in NetBox for each VRF. Any such object not assigned to a VRF is said to belong to the "global" table.
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-VRF实例的配置或管理名称。
+The configured or administrative name for the VRF instance.
 
-### 路由区别符
+### Route Distinguisher
 
-路由区别符用于将路由映射到设备的路由表中的VRF，例如用于MPLS/VPN。路由区别符的分配是可选的。如果定义了RD，则预计RD将采用[RFC 4364](https://tools.ietf.org/html/rfc4364#section-4.2)中规定的一种形式，但不严格强制执行其格式。
+A route distinguisher is used to map routes to VRFs within a device's routing table e.g. for MPLS/VPN. The assignment of a route distinguisher is optional. If defined, the RD is expected to take one of the forms prescribed in [RFC 4364](https://tools.ietf.org/html/rfc4364#section-4.2), however its formatting is not strictly enforced.
 
-### 强制唯一空间
+### Enforce Unique Space
 
-默认情况下，NetBox允许将重复的前缀分配给VRF。可以通过在VRF模型上设置“强制唯一”标志来切换此行为。
+By default, NetBox will permit duplicate prefixes to be assigned to a VRF. This behavior can be toggled by setting the "enforce unique" flag on the VRF model.
 
 !!! note
-    可以使用`ENFORCE_GLOBAL_UNIQUE`配置设置来切换对全局表（非VRF前缀）的唯一IP空间的执行。
+    Enforcement of unique IP space can be toggled for global table (non-VRF prefixes) using the `ENFORCE_GLOBAL_UNIQUE` configuration setting.
 
-### 导入和导出目标
+### Import & Export Targets
 
-每个VRF可以应用一个或多个导入和/或导出[路由目标](./routetarget.md)。路由目标用于控制在L3VPN中VRF之间交换路由（前缀）。
+Each VRF may have one or more import and/or export [route targets](./routetarget.md) applied to it. Route targets are used to control the exchange of routes (prefixes) among VRFs in L3VPNs.

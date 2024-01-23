@@ -1,42 +1,42 @@
 # Webhooks
 
-Webhook是一种用于将NetBox中发生的更改传达给某些外部系统的机制。例如，您可能希望在NetBox中更新设备的状态时通知监控系统。这可以通过在NetBox中为设备模型创建Webhook并标识Webhook接收器来完成。当NetBox检测到设备的更改时，将向指定的接收器发送包含更改详细信息和执行更改的人的HTTP请求。
+A webhook is a mechanism for conveying to some external system a change that took place in NetBox. For example, you may want to notify a monitoring system whenever the status of a device is updated in NetBox. This can be done by creating a webhook for the device model in NetBox and identifying the webhook receiver. When NetBox detects a change to a device, an HTTP request containing the details of the change and who made it be sent to the specified receiver.
 
-有关更多信息，请参阅[Webhook文档](../../integrations/webhooks.md)。
+See the [webhooks documentation](../../integrations/webhooks.md) for more information.
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-唯一的人类友好名称。
+A unique human-friendly name.
 
-### 内容类型
+### Content Types
 
-将触发Webhook的NetBox对象类型。
+The type(s) of object in NetBox that will trigger the webhook.
 
-### 启用
+### Enabled
 
-如果未选中，Webhook将处于非活动状态。
+If not selected, the webhook will be inactive.
 
-### 事件
+### Events
 
-将触发Webhook的事件。必须至少选择一种事件类型。
+The events which will trigger the webhook. At least one event type must be selected.
 
-| 名称        | 描述                             |
-|-------------|----------------------------------|
-| 创建        | 创建了一个新对象                 |
-| 更新        | 修改了现有对象                   |
-| 删除        | 删除了一个对象                   |
-| 作业开始    | 为一个对象启动了一个作业           |
-| 作业结束    | 为一个对象结束了一个作业           |
+| Name       | Description                          |
+|------------|--------------------------------------|
+| Creations  | A new object has been created        |
+| Updates    | An existing object has been modified |
+| Deletions  | An object has been deleted           |
+| Job starts | A job for an object starts           |
+| Job ends   | A job for an object terminates       |
 
 ### URL
 
-Webhook HTTP请求将发送到的URL。
+The URL to which the webhook HTTP request will be made.
 
-### HTTP方法
+### HTTP Method
 
-要发送的HTTP请求的类型。选项包括：
+The type of HTTP request to send. Options are:
 
 * `GET`
 * `POST`
@@ -44,47 +44,47 @@ Webhook HTTP请求将发送到的URL。
 * `PATCH`
 * `DELETE`
 
-### HTTP内容类型
+### HTTP Content Type
 
-在出站HTTP请求标头中指示的内容类型。参考[此列表](https://www.iana.org/assignments/media-types/media-types.xhtml)以获取已知类型。
+The content type to indicate in the outgoing HTTP request header. See [this list](https://www.iana.org/assignments/media-types/media-types.xhtml) of known types for reference.
 
-### 附加标头
+### Additional Headers
 
-要包括在出站HTTP请求中的任何附加标头。应以`名称: 值`的格式定义，每个标头占一行。此字段支持Jinja2模板。
+Any additional header to include with the outgoing HTTP request. These should be defined in the format `Name: Value`, with each header on a separate line. Jinja2 templating is supported for this field.
 
-### 主体模板
+### Body Template
 
-自定义请求主体的Jinja2模板（如果需要）。如果未定义，NetBox将使用Webhook上下文的原始转储来填充请求主体。
+Jinja2 template for a custom request body, if desired. If not defined, NetBox will populate the request body with a raw dump of the webhook context.
 
-### 密钥
+### Secret
 
-用于证明请求的真实性的秘密字符串（可选）。这将附加一个`X-Hook-Signature`标头到请求中，该标头由使用密钥作为密钥对请求主体进行的HMAC（SHA-512）十六进制摘要组成。
+A secret string used to prove authenticity of the request (optional). This will append a `X-Hook-Signature` header to the request, consisting of a HMAC (SHA-512) hex digest of the request body using the secret as the key.
 
-### 条件
+### Conditions
 
-对触发对象进行评估的一组[规定条件](../../reference/conditions.md)。如果对象定义了条件但未满足条件，则不会发送Webhook。未定义任何条件的Webhook将始终触发。
+A set of [prescribed conditions](../../reference/conditions.md) against which the triggering object will be evaluated. If the conditions are defined but not met by the object, the webhook will not be sent. A webhook that does not define any conditions will _always_ trigger.
 
-### SSL验证
+### SSL Verification
 
-控制在使用HTTPS时是否强制执行接收者的SSL证书验证。
+Controls whether validation of the receiver's SSL certificate is enforced when HTTPS is used.
 
 !!! warning
-    禁用此功能可能会将您的Webhook暴露给中间人攻击。
+    Disabling this can expose your webhooks to man-in-the-middle attacks.
 
-### CA文件路径
+### CA File Path
 
-在验证接收者的SSL证书时使用的特定证书颁发机构（CA）文件的文件路径（如果未使用系统默认值）。
+The file path to a particular certificate authority (CA) file to use when validating the receiver's SSL certificate (if not using the system defaults).
 
-## 上下文数据
+## Context Data
 
-以下上下文变量可用于文本和链接模板。
+The following context variables are available in to the text and link templates.
 
-| 变量        | 描述                                        |
-|-------------|---------------------------------------------|
-| `event`     | 事件类型（`create`、`update`或`delete`）    |
-| `timestamp` | 事件发生的时间                              |
-| `model`     | 受影响对象的类型                            |
-| `username`  | 与更改相关联的用户的名称                    |
-| `request_id`| 唯一请求ID                                  |
-| `data`      | 对象的完整序列化表示                        |
-| `snapshots` | 对象的更改前和更改后的快照                 |
+| Variable     | Description                                        |
+|--------------|----------------------------------------------------|
+| `event`      | The event type (`create`, `update`, or `delete`)   |
+| `timestamp`  | The time at which the event occured                |
+| `model`      | The type of object impacted                        |
+| `username`   | The name of the user associated with the change    |
+| `request_id` | The unique request ID                              |
+| `data`       | A complete serialized representation of the object |
+| `snapshots`  | Pre- and post-change snapshots of the object       |

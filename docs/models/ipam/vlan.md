@@ -1,28 +1,28 @@
 # VLANs
 
-虚拟局域网（VLAN）表示一个隔离的第二层域，由名称和数字ID（1-4094）标识，如[IEEE 802.1Q](https://en.wikipedia.org/wiki/IEEE_802.1Q)中定义。VLAN被安排到[VLAN组](./vlangroup.md)中以定义范围并强制唯一性。
+A Virtual LAN (VLAN) represents an isolated layer two domain, identified by a name and a numeric ID (1-4094) as defined in [IEEE 802.1Q](https://en.wikipedia.org/wiki/IEEE_802.1Q). VLANs are arranged into [VLAN groups](./vlangroup.md) to define scope and to enforce uniqueness.
 
-## 字段
+## Fields
 
 ### ID
 
-VLAN的12位数字ID，范围为1-4094（包括）。
+A 12-bit numeric ID for the VLAN, 1-4094 (inclusive).
 
-### 名称
+### Name
 
-配置的VLAN名称。
+The configured VLAN name.
 
-### 状态
+### Status
 
-VLAN的运行状态。
+The VLAN's operational status.
 
 !!! tip
-    可以通过在[`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices)配置参数下设置`VLAN.status`来定义其他状态。
+    Additional statuses may be defined by setting `VLAN.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
 
-### 角色
+### Role
 
-分配给VLAN的用户定义的功能[角色](./role.md)。
+The user-defined functional [role](./role.md) assigned to the VLAN.
 
-### VLAN组或站点
+### VLAN Group or Site
 
-VLAN分配到的[VLAN组](./vlangroup.md)或[站点](../dcim/site.md)。
+The [VLAN group](./vlangroup.md) or [site](../dcim/site.md) to which the VLAN is assigned.

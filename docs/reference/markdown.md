@@ -1,30 +1,30 @@
 ---
-隐藏：
-  - 目录
+hide:
+  - toc
 ---
 
 # Markdown
 
-NetBox支持对某些文本字段进行Markdown渲染。
+NetBox supports markdown rendering for certain text fields.
 
-## 语法
+## Syntax
 
-##### 目录  
-[标题](#标题)  
-[强调](#强调)  
-[列表](#列表)  
-[链接](#链接)  
-[图片](#图片)  
-[代码块](#代码)  
-[表格](#表格)  
-[块引用](#块引用)  
-[内联HTML](#HTML)  
-[水平分隔线](#分隔线)  
-[换行](#换行)  
+##### Table of Contents  
+[Headers](#headers)  
+[Emphasis](#emphasis)  
+[Lists](#lists)  
+[Links](#links)  
+[Images](#images)  
+[Code Blocks](#code)  
+[Tables](#tables)  
+[Blockquotes](#blockquotes)  
+[Inline HTML](#html)  
+[Horizontal Rule](#hr)  
+[Line Breaks](#lines)  
 
-<a name="标题"></a>
+<a name="headers"></a>
 
-## 标题
+## Headers
 
 ```no-highlight
 # H1
@@ -34,7 +34,7 @@ NetBox支持对某些文本字段进行Markdown渲染。
 ##### H5
 ###### H6
 
-或者，对于H1和H2，可以使用下划线样式：
+Alternatively, for H1 and H2, an underline-ish style:
 
 Alt-H1
 ======
@@ -50,304 +50,304 @@ Alt-H2
 ##### H5
 ###### H6
 
-<a name="强调"></a>
+<a name="emphasis"></a>
 
-## 强调
+## Emphasis
 
 ```no-highlight
-强调，即斜体，使用*星号*或_下划线_。
+Emphasis, aka italics, with *asterisks* or _underscores_.
 
-强烈的强调，即粗体，使用**星号**或__下划线__。
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
 
-使用**星号和_下划线_**进行组合强调。
+Combined emphasis with **asterisks and _underscores_**.
 
-删除线使用两个波浪号。~~划掉这个。~~
+Strikethrough uses two tildes. ~~Scratch this.~~
 ```
 
-强调，即斜体，使用*星号*或_下划线_。
+Emphasis, aka italics, with *asterisks* or _underscores_.
 
-强烈的强调，即粗体，使用**星号**或__下划线__。
+Strong emphasis, aka bold, with **asterisks** or __underscores__.
 
-使用**星号和_下划线_**进行组合强调。
+Combined emphasis with **asterisks and _underscores_**.
 
-删除线使用两个波浪号。~~划掉这个。~~
+Strikethrough uses two tildes. ~~Scratch this.~~
 
 
-<a name="列表"></a>
+<a name="lists"></a>
 
-## 列表
+## Lists
 
-（在此示例中，前导和尾随空格以点的形式显示：⋅）
+(In this example, leading and trailing spaces are shown with with dots: ⋅)
 
 ```no-highlight
-1. 第一个有序列表项
-2. 另一个项目
-⋅⋅* 无序子列表。 
-1. 实际数字无关紧要，只要是数字即可
-⋅⋅1. 有序子列表
-4. 另一个项目。
+1. First ordered list item
+2. Another item
+⋅⋅* Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+⋅⋅1. Ordered sub-list
+4. And another item.
 
-⋅⋅⋅您可以在列表项内部拥有正确缩进的段落。请注意上面的空白行和前导空格（至少一个，但是我们将在这里使用三个，以便将原始Markdown也对齐）。
+⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
 
-⋅⋅⋅要在不带段落的情况下换行，您需要使用两个尾随空格。⋅⋅
-⋅⋅⋅请注意，此行是分开的，但在同一个段落中。⋅⋅
-⋅⋅⋅（这与典型的GFM换行行为相反，后跟空格是不需要的。）
+⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
+⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
+⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
 
-* 无序列表可以使用星号
-- 或减号
-+ 或加号
+* Unordered list can use asterisks
+- Or minuses
++ Or pluses
 ```
 
-1. 第一个有序列表项
-2. 另一个项目
-  * 无序子列表。 
-1. 实际数字无关紧要，只要是数字即可
-  1. 有序子列表
-4. 另一个项目。
+1. First ordered list item
+2. Another item
+  * Unordered sub-list. 
+1. Actual numbers don't matter, just that it's a number
+  1. Ordered sub-list
+4. And another item.
 
-   您可以在列表项内部拥有正确缩进的段落。请注意上面的空白行和前导空格（至少一个，但是我们将在这里使用三个，以便将原始Markdown也对齐）。
+   You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
 
-   要在不带段落的情况下换行，您需要使用两个尾随空格。  
-   请注意，此行是分开的，但在同一个段落中。  
-   （这与典型的GFM换行行为相反，后跟空格是不需要的。）
+   To have a line break without a paragraph, you will need to use two trailing spaces.  
+   Note that this line is separate, but within the same paragraph.  
+   (This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
 
-* 无序列表可以使用星号
-- 或减号
-+ 或加号
+* Unordered list can use asterisks
+- Or minuses
++ Or pluses
 
-<a name="链接"></a>
+<a name="links"></a>
 
-## 链接
+## Links
 
-有两种创建链接的方式。
+There are two ways to create links.
 
 ```no-highlight
-[我是内联样式链接](https://www.google.com)
+[I'm an inline-style link](https://www.google.com)
 
-[我是内联样式链接带有标题](https://www.google.com "Google的主页")
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
-[我是引用样式链接][不区分大小写的参考文本]
+[I'm a reference-style link][Arbitrary case-insensitive reference text]
 
-[您可以使用数字定义引用样式链接][1]
+[You can use numbers for reference-style link definitions][1]
 
-或者留空并使用[链接文本本身]。
+Or leave it empty and use the [link text itself].
 
-URL和尖括号中的URL将自动转换为链接。 
-http://www.example.com 或 <http://www.example.com> 有时 
-example.com（但在Github上不会）。
+URLs and URLs in angle brackets will automatically get turned into links. 
+http://www.example.com or <http://www.example.com> and sometimes 
+example.com (but not on Github, for example).
 
-一些文本，以表明参考链接可以随后跟随。
+Some text to show that the reference links can follow later.
 
-[不区分大小写的参考文本]: https://www.mozilla.org
+[arbitrary case-insensitive reference text]: https://www.mozilla.org
 [1]: http://slashdot.org
-[链接文本本身]: http://www.reddit.com
+[link text itself]: http://www.reddit.com
 ```
 
-[我是内联样式链接](https://www.google.com)
+[I'm an inline-style link](https://www.google.com)
 
-[我是内联样式链接带有标题](https://www.google.com "Google的主页")
+[I'm an inline-style link with title](https://www.google.com "Google's Homepage")
 
-[我是引用样式链接][不区分大小写的参考文本]
+[I'm a reference-style link][Arbitrary case-insensitive reference text]
 
-[您可以使用数字定义引用样式链接][1]
+[You can use numbers for reference-style link definitions][1]
 
-或者留空并使用[链接文本本身]。
+Or leave it empty and use the [link text itself].
 
-URL和尖括号中的URL将自动转换为链接。 
-http://www.example.com 或 <http://www.example.com> 有时 
-example.com（但在Github上不会）。
+URLs and URLs in angle brackets will automatically get turned into links. 
+http://www.example.com or <http://www.example.com> and sometimes 
+example.com (but not on Github, for example).
 
-一些文本，以表明参考链接可以随后跟随。
+Some text to show that the reference links can follow later.
 
-[不区分大小写的参考文本]: https://www.mozilla.org
+[arbitrary case-insensitive reference text]: https://www.mozilla.org
 [1]: http://slashdot.org
-[链接文本本身]: http://www.reddit.com
+[link text itself]: http://www.reddit.com
 
-<a name="图片"></a>
+<a name="images"></a>
 
-## 图片
-
-```
-这是NetBox的标志（悬停以查看标题文本）：
-
-内联样式： 
-![alt文本](/media/misc/netbox_logo.png "标志标题文本1")
-
-引用样式： 
-![alt文本][标志]
-
-[标志]: /media/misc/netbox_logo.png "标志标题文本2"
-```
-
-这是NetBox的标志（悬停以查看标题文本）：
-
-内联样式： 
-![alt文本](../media/misc/netbox_logo.png "标志标题文本1")
-
-引用样式： 
-![alt文本][标志]
-
-以下是Markdown文档的中文翻译，保持了原始格式：
-
-[标志]: ../media/misc/netbox_logo.png "标志标题文本2"
-
-<a name="代码"></a>
-
-## 代码块
+## Images
 
 ```
-内联 `代码` 用 `反引号` 包围。
+Here's the NetBox logo (hover to see the title text):
+
+Inline-style: 
+![alt text](/media/misc/netbox_logo.png "Logo Title Text 1")
+
+Reference-style: 
+![alt text][logo]
+
+[logo]: /media/misc/netbox_logo.png "Logo Title Text 2"
 ```
 
-内联 `代码` 用 `反引号` 包围。
+Here's the NetBox logo (hover to see the title text):
 
-代码块由带有三个反引号 <code>```</code> 的行包围
+Inline-style: 
+![alt text](../media/misc/netbox_logo.png "Logo Title Text 1")
+
+Reference-style: 
+![alt text][logo]
+
+[logo]: ../media/misc/netbox_logo.png "Logo Title Text 2"
+
+<a name="code"></a>
+
+## Code blocks
+
+```
+Inline `code` has `back-ticks around` it.
+```
+
+Inline `code` has `back-ticks around` it.
+
+Blocks of code are fenced by lines with three back-ticks <code>```</code>
 
 ````
 ```
-var s = "代码块";
+var s = "Code block";
 alert(s);
 ```
 ````
 
 ```
-var s = "代码块";
+var s = "Code block";
 alert(s);
 ```
 
-<a name="表格"></a>
+<a name="tables"></a>
 
-## 表格
+## Tables
 
 ```no-highlight
-冒号可用于对齐列。
+Colons can be used to align columns.
 
-| 表格        | 很酷           | 吗  |
+| Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
-| 列 3       | 右对齐 | $1600 |
-| 列 2      | 居中      |   $12 |
-| 斑马条纹 | 看起来不错      |    $1 |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
-每个标题单元格之间必须至少有3个短划线。外部管道（|）是可选的，您不需要使原始Markdown对齐得很漂亮。您还可以使用内联Markdown。
+There must be at least 3 dashes separating each header cell.
+The outer pipes (|) are optional, and you don't need to make the 
+raw Markdown line up prettily. You can also use inline Markdown.
 
-Markdown | 简单 | 漂亮
+Markdown | Less | Pretty
 --- | --- | ---
-*仍然* | `渲染` | **很好**
+*Still* | `renders` | **nicely**
 1 | 2 | 3
 ```
 
-冒号可用于对齐列。
+Colons can be used to align columns.
 
-| 表格        | 很酷           | 吗  |
+| Tables        | Are           | Cool |
 | ------------- |:-------------:| -----:|
-| 列 3       | 右对齐 | $1600 |
-| 列 2      | 居中      |   $12 |
-| 斑马条纹 | 看起来不错      |    $1 |
+| col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 |
+| zebra stripes | are neat      |    $1 |
 
-每个标题单元格之间必须至少有3个短划线。外部管道（|）是可选的，您不需要使原始Markdown对齐得很漂亮。您还可以使用内联Markdown。
+There must be at least 3 dashes separating each header cell. The outer pipes (|) are optional, and you don't need to make the raw Markdown line up prettily. You can also use inline Markdown.
 
-Markdown | 简单 | 漂亮
+Markdown | Less | Pretty
 --- | --- | ---
-*仍然* | `渲染` | **很好**
+*Still* | `renders` | **nicely**
 1 | 2 | 3
 
-<a name="块引用"></a>
+<a name="blockquotes"></a>
 
-## 块引用
+## Blockquotes
 
 ```no-highlight
-> 块引用在电子邮件中非常方便，用于模拟回复文本。
-> 此行属于同一引用。
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
 
-引用中断。
+Quote break.
 
-> 这是一行非常长的行，当它换行时仍然会被正确引用。哦，您可以在块引用中 *插入* **Markdown**。
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
 ```
 
-> 块引用在电子邮件中非常方便，用于模拟回复文本。
-> 此行属于同一引用。
+> Blockquotes are very handy in email to emulate reply text.
+> This line is part of the same quote.
 
-引用中断。
+Quote break.
 
-> 这是一行非常长的行，当它换行时仍然会被正确引用。哦，您可以在块引用中 *插入* **Markdown**。
+> This is a very long line that will still be quoted properly when it wraps. Oh boy let's keep writing to make sure this is long enough to actually wrap for everyone. Oh, you can *put* **Markdown** into a blockquote. 
 
-<a name="HTML"></a>
+<a name="html"></a>
 
-## 内联HTML
+## Inline HTML
 
-您还可以在Markdown中使用原始HTML，它通常可以正常工作。
+You can also use raw HTML in your Markdown, and it'll mostly work pretty well. 
 
 ```no-highlight
 <dl>
-  <dt>定义列表</dt>
-  <dd>有时人们会使用它。</dd>
+  <dt>Definition list</dt>
+  <dd>Is something people use sometimes.</dd>
 
-  <dt>HTML中的Markdown</dt>
-  <dd>不太好用。使用HTML <em>标签</em>。</dd>
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
 ```
 
 <dl>
-  <dt>定义列表</dt>
-  <dd>有时人们会使用它。</dd>
+  <dt>Definition list</dt>
+  <dd>Is something people use sometimes.</dd>
 
-  <dt>HTML中的Markdown</dt>
-  <dd>不太好用。使用HTML <em>标签</em>。</dd>
+  <dt>Markdown in HTML</dt>
+  <dd>Does *not* work **very** well. Use HTML <em>tags</em>.</dd>
 </dl>
 
-<a name="分隔线"></a>
+<a name="hr"></a>
 
-## 水平分隔线
+## Horizontal Rule
 
 ```
-三个或更多...
+Three or more...
 
 ---
 
-破折号
+Hyphens
 
 ***
 
-星号
+Asterisks
 
 ___
 
-下划线
+Underscores
 ```
 
-三个或更多...
+Three or more...
 
 ---
 
-破折号
+Hyphens
 
 ***
 
-星号
+Asterisks
 
 ___
 
-下划线
+Underscores
 
-<a name="换行"></a>
+<a name="lines"></a>
 
-## 换行
+## Line Breaks
 
 
 ```
-这是我们要开始的一行。
+Here's a line for us to start with.
 
-这一行与上面的一行之间有两个换行符，因此它将成为一个*单独的段落*。
+This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
 
-这一行也开始了一个单独的段落，但是...
-这一行只有一个换行符分隔，因此它是*同一段落中的单独一行*。
+This line is also a separate paragraph, but...
+This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
 ```
 
-这是我们要开始的一行。
+Here's a line for us to start with.
 
-这一行与上面的一行之间有两个换行符，因此它将成为一个*单独的段落*。
+This line is separated from the one above by two newlines, so it will be a *separate paragraph*.
 
-这一行也开始了一个单独的段落，但是...  
-这一行只有一个换行符分隔，因此它是*同一段落中的单独一行*。
+This line is also begins a separate paragraph, but...  
+This line is only separated by a single newline, so it's a separate line in the *same paragraph*.
 
-基于[Markdown-Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet)由[adam-p](https://github.com/adam-p)授权使用[CC-BY](https://creativecommons.org/licenses/by/3.0/)。
+Based on [Markdown-Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) by [adam-p](https://github.com/adam-p) licensed under [CC-BY](https://creativecommons.org/licenses/by/3.0/)

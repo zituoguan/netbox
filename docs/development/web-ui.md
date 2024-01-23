@@ -1,99 +1,99 @@
-# Web UI开发
+# Web UI Development
 
-## 前端技术
+## Front End Technologies
 
-NetBox UI 基于以下语言和框架构建：
+The NetBox UI is built on languages and frameworks:
 
-### 样式和HTML元素
+### Styling & HTML Elements
 
 #### [Bootstrap](https://getbootstrap.com/) 5
 
-NetBox UI 的大部分由标准 Bootstrap 组件组成，根据需要添加一些样式修改和自定义组件。Bootstrap 使用 [Sass](https://sass-lang.com/)，NetBox 扩展了 Bootstrap 的核心 Sass 文件以进行主题和自定义。
+The majority of the NetBox UI is made up of stock Bootstrap components, with some styling modifications and custom components added on an as-needed basis. Bootstrap uses [Sass](https://sass-lang.com/), and NetBox extends Bootstrap's core Sass files for theming and customization.
 
-### 客户端脚本
+### Client-side Scripting
 
 #### [TypeScript](https://www.typescriptlang.org/)
 
-所有客户端脚本都从 TypeScript 转译为 JavaScript，并由 Django 提供服务。在开发中，TypeScript 是一种非常有效的工具，用于准确描述和检查代码，这导致错误大大减少，开发体验更好，代码更可预测和可读。
+All client-side scripting is transpiled from TypeScript to JavaScript and served by Django. In development, TypeScript is an _extremely_ effective tool for accurately describing and checking the code, which leads to significantly fewer bugs, a better development experience, and more predictable/readable code.
 
-作为 [捆绑](#捆绑) 过程的一部分，引入并捆绑了 Bootstrap 的 JavaScript 插件，与 NetBox 的前端代码一起使用。
+As part of the [bundling](#bundling) process, Bootstrap's JavaScript plugins are imported and bundled alongside NetBox's front-end code.
 
-!!! 危险 "NetBox不使用jQuery"
-    随着Bootstrap 5团队在Bootstrap 5中废弃了jQuery，NetBox也不再在前端代码中使用jQuery。
+!!! danger "NetBox is jQuery-free"
+    Following the Bootstrap team's deprecation of jQuery in Bootstrap 5, NetBox also no longer uses jQuery in front-end code.
 
-## 指南
+## Guidance
 
-NetBox通常遵循以下前端代码的准则：
+NetBox generally follows the following guidelines for front-end code:
 
-- 可以使用Bootstrap的实用类来解决临时问题或实现单一组件，只要类列表不超过4-5个类。如果元素需要超过5个实用类，应添加包含所需样式属性的自定义SCSS类。
-- 必须对自定义类进行注释，解释类的一般目的以及它在哪里使用。
-- 在可能的情况下重复使用SCSS变量。几乎不应硬编码CSS值。
-- 所有TypeScript函数必须至少具有基本的 [JSDoc](https://jsdoc.app/) 描述，说明函数的用途和用途。如果可能，通过 [`@param` JSDoc 块标签](https://jsdoc.app/tags-param.html) 文档化所有函数参数。
-- 在NetBox的 [依赖策略](style-guide.md#introducing-new-dependencies) 的基础上，应尽量避免引入新的前端依赖项，除非绝对必要。每个新的前端依赖项都会增加客户端必须加载的CSS/JavaScript文件大小，应尽量减小这一大小。如果不可避免地添加新的依赖项，请使用像 [Bundlephobia](https://bundlephobia.com/) 这样的工具，以确保使用最小的可能库。
-- 所有UI元素必须在所有常见屏幕尺寸上可用，包括移动设备。确保在尽可能多的屏幕尺寸和设备类型上测试新实现的解决方案（包括JavaScript）。
-- NetBox与Bootstrap的 [支持的浏览器和设备](https://getbootstrap.com/docs/5.1/getting-started/browsers-devices/) 列表保持一致。
+- Bootstrap utility classes may be used to solve one-off issues or to implement singular components, as long as the class list does not exceed 4-5 classes. If an element needs more than 5 utility classes, a custom SCSS class should be added that contains the required style properties.
+- Custom classes must be commented, explaining the general purpose of the class and where it is used.
+- Reuse SCSS variables whenever possible. CSS values should (almost) never be hard-coded.
+- All TypeScript functions must have, at a minimum, a basic [JSDoc](https://jsdoc.app/) description of what the function is for and where it is used. If possible, document all function arguments via [`@param` JSDoc block tags](https://jsdoc.app/tags-param.html).
+- Expanding on NetBox's [dependency policy](style-guide.md#introducing-new-dependencies), new front-end dependencies should be avoided unless absolutely necessary. Every new front-end dependency adds to the CSS/JavaScript file size that must be loaded by the client and this should be minimized as much as possible. If adding a new dependency is unavoidable, use a tool like [Bundlephobia](https://bundlephobia.com/) to ensure the smallest possible library is used.
+- All UI elements must be usable on all common screen sizes, including mobile devices. Be sure to test newly implemented solutions (JavaScript included) on as many screen sizes and device types as possible.
+- NetBox aligns with Bootstrap's [supported Browsers and Devices](https://getbootstrap.com/docs/5.1/getting-started/browsers-devices/) list.
 
-## UI开发
+## UI Development
 
-要为NetBox UI做出贡献，您需要查看主要的 [入门指南](getting-started.md)，以设置基本环境。
+To contribute to the NetBox UI, you'll need to review the main [Getting Started guide](getting-started.md) in order to set up your base environment.
 
-### 工具
+### Tools
 
-一旦您拥有可用的NetBox开发环境，您将需要安装一些工具来使用NetBox UI：
+Once you have a working NetBox development environment, you'll need to install a few more tools to work with the NetBox UI:
 
-- [NodeJS](https://nodejs.org/en/download/)（LTS版本应该足够）
-- [Yarn](https://yarnpkg.com/getting-started/install)（版本1）
+- [NodeJS](https://nodejs.org/en/download/) (the LTS release should suffice)
+- [Yarn](https://yarnpkg.com/getting-started/install) (version 1)
 
-在您的系统上安装Node和Yarn后，您需要安装所有NetBox UI依赖项：
+After Node and Yarn are installed on your system, you'll need to install all the NetBox UI dependencies:
 
 ```console
 $ cd netbox/project-static
 $ yarn
 ```
 
-!!! 警告 "检查工作目录"
-    您需要位于 `netbox/project-static` 目录中才能运行下面的 `yarn` 命令。
+!!! warning "Check Your Working Directory"
+    You need to be in the `netbox/project-static` directory to run the below `yarn` commands.
 
-### 捆绑
+### Bundling
 
-为了使TypeScript和Sass（SCSS）源文件能够被浏览器使用，它们必须首先进行转译（TypeScript → JavaScript，Sass → CSS）、捆绑和最小化。在更改TypeScript或Sass源文件后，运行 `yarn bundle`。
+In order for the TypeScript and Sass (SCSS) source files to be usable by a browser, they must first be transpiled (TypeScript → JavaScript, Sass → CSS), bundled, and minified. After making changes to TypeScript or Sass source files, run `yarn bundle`.
 
-`yarn bundle` 是以下子命令的包装器，可以单独运行其中任何一个：
+`yarn bundle` is a wrapper around the following subcommands, any of which can be run individually:
 
-| 命令               | 操作                                           |
+| Command               | Action                                          |
 | :-------------------- | :---------------------------------------------- |
-| `yarn bundle`         | 捆绑TypeScript和Sass（SCSS）源文件。 |
-| `yarn bundle:styles`  | 仅捆绑Sass（SCSS）源文件。           |
-| `yarn bundle:scripts` | 仅捆绑TypeScript源文件。            |
+| `yarn bundle`         | Bundle TypeScript and Sass (SCSS) source files. |
+| `yarn bundle:styles`  | Bundle Sass (SCSS) source files only.           |
+| `yarn bundle:scripts` | Bundle TypeScript source files only.            |
 
-所有输出文件将被写入 `netbox/project-static/dist`，当运行 `manage.py collectstatic` 时，Django 将获取它们。
+All output files will be written to `netbox/project-static/dist`, where Django will pick them up when `manage.py collectstatic` is run.
 
-!!! 信息 "记住重新运行 `manage.py collectstatic`"
-    如果您正在运行开发Web服务器 — `manage.py runserver` — 您需要运行 `manage.py collectstatic` 以查看您的更改。
+!!! info "Remember to re-run `manage.py collectstatic`"
+    If you're running the development web server — `manage.py runserver` — you'll need to run `manage.py collectstatic` to see your changes.
 
-### 代码检查、格式化和类型检查
+### Linting, Formatting & Type Checking
 
-在提交任何更改到TypeScript文件之前，以及在开发过程中定期运行 `yarn validate` 以捕获格式、代码质量或类型错误。
+Before committing any changes to TypeScript files, and periodically throughout the development process, you should run `yarn validate` to catch formatting, code quality, or type errors.
 
-!!! 提示 "IDE集成"
-    如果您使用的是IDE，强烈建议安装 [ESLint](https://eslint.org/docs/user-guide/integrations)、[TypeScript](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support) 和 [Prettier](https://prettier.io/docs/en/editors.html) 集成，如果可用的话。大多数IDE将在您开发时自动检查和/或纠正代码中的问题，这可以显着提高您作为贡献者的生产力。
+!!! tip "IDE Integrations"
+    If you're using an IDE, it is strongly recommended to install [ESLint](https://eslint.org/docs/user-guide/integrations), [TypeScript](https://github.com/Microsoft/TypeScript/wiki/TypeScript-Editor-Support), and [Prettier](https://prettier.io/docs/en/editors.html) integrations, if available. Most of them will automatically check and/or correct issues in the code as you develop, which can significantly increase your productivity as a contributor.
 
-`yarn validate` 是以下子命令的包装器，可以单独运行其中任何一个：
+`yarn validate` is a wrapper around the following subcommands, any of which can be run individually:
 
-| 命令               | 操作                                           |
+| Command                            | Action                                                           |
+| :--------------------------------- | :--------------------------------------------------------------- |
+| `yarn validate`                    | Run all validation.                                              |
+| `yarn validate:lint`               | Validate TypeScript code via [ESLint](https://eslint.org/) only. |
+| `yarn validate:types`              | Validate TypeScript code compilation only.                       |
+| `yarn validate:formatting`         | Validate code formatting of JavaScript & Sass/SCSS files.        |
+| `yarn validate:formatting:styles`  | Validate code formatting Sass/SCSS only.                         |
+| `yarn validate:formatting:scripts` | Validate code formatting TypeScript only.                        |
+
+You can also run the following commands to automatically fix formatting issues:
+
+| Command               | Action                                          |
 | :-------------------- | :---------------------------------------------- |
-| `yarn validate`                    | 运行所有验证。                                              |
-| `yarn validate:lint`               | 仅通过 [ESLint](https://eslint.org/) 验证 TypeScript 代码。 |
-| `yarn validate:types`              | 仅验证 TypeScript 代码编译。                       |
-| `yarn validate:formatting`         | 验证 JavaScript 和 Sass/SCSS 文件的代码格式。       |
-| `yarn validate:formatting:styles`  | 仅验证 Sass/SCSS 代码格式。                         |
-| `yarn validate:formatting:scripts` | 仅验证 TypeScript 代码格式。                      |
-
-您还可以运行以下命令来自动修复格式问题：
-
-| 命令               | 操作                                          |
-| :-------------------- | :---------------------------------------------- |
-| `yarn format`         | 格式化 TypeScript 和 Sass (SCSS) 源文件。 |
-| `yarn format:styles`  | 仅格式化 Sass (SCSS) 源文件。           |
-| `yarn format:scripts` | 仅格式化 TypeScript 源文件。            |
+| `yarn format`         | Format TypeScript and Sass (SCSS) source files. |
+| `yarn format:styles`  | Format Sass (SCSS) source files only.           |
+| `yarn format:scripts` | Format TypeScript source files only.            |
 

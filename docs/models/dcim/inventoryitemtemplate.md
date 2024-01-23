@@ -1,3 +1,3 @@
-# 库存项模板
+# Inventory Item Templates
 
-这是一个库存项的模板，当实例化新设备时，将自动创建该库存项。该对象的所有属性将被复制到新的库存项中，包括与父项和分配的组件（如果有的话）的关联。有关详细信息，请参阅[库存项](./inventoryitem.md)文档。
+A template for an inventory item that will be automatically created when instantiating a new device. All attributes of this object will be copied to the new inventory item, including the associations with a parent item and assigned component, if any. See the [inventory item](./inventoryitem.md) documentation for more detail.

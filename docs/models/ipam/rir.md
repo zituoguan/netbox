@@ -1,19 +1,19 @@
-# 区域互联网注册管理机构（RIRs）
+# Regional Internet Registries (RIRs)
 
-[区域互联网注册管理机构](https://en.wikipedia.org/wiki/Regional_Internet_registry)负责分配全球可路由的地址空间。五个RIR分别是ARIN、RIPE、APNIC、LACNIC和AFRINIC。但是，一些地址空间已经被保留供内部使用，例如RFC 1918和RFC 6598中定义的地址。NetBox将这些RFC视为一种RIR，即拥有某些地址空间的权威机构。还存在为特定地理区域提供服务的下层注册机构。
+[Regional Internet registries](https://en.wikipedia.org/wiki/Regional_Internet_registry) are responsible for the allocation of globally-routable address space. The five RIRs are ARIN, RIPE, APNIC, LACNIC, and AFRINIC. However, some address space has been set aside for internal use, such as defined in RFCs 1918 and 6598. NetBox considers these RFCs as a sort of RIR as well; that is, an authority which "owns" certain address space. There also exist lower-tier registries which serve particular geographic areas.
 
-用户可以创建任何他们喜欢的RIR，但是每个[聚合](./aggregate.md)必须分配给一个RIR。例如，假设您的组织已经被ARIN分配了104.131.0.0/16。它还在内部使用RFC 1918的地址。您首先会创建名为"ARIN"和"RFC 1918"的RIR，然后为这些顶级前缀创建一个聚合，将其分配给相应的RIR。
+Users can create whatever RIRs they like, but each [aggregate](./aggregate.md) must be assigned to one RIR. For example, suppose your organization has been allocated 104.131.0.0/16 by ARIN. It also makes use of RFC 1918 addressing internally. You would first create RIRs named "ARIN" and "RFC 1918," then create an aggregate for each of these top-level prefixes, assigning it to its respective RIR.
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-唯一的用户友好名称。
+A unique human-friendly name.
 
 ### Slug
 
-唯一的URL友好标识符。（此值可用于过滤。）
+A unique URL-friendly identifier. (This value can be used for filtering.)
 
-### 私有
+### Private
 
-将此RIR标记为仅适用于私有/本地IP空间的权威机构（例如RFC）。
+Designates this RIR as an authority for private/local IP space only (e.g. an RFC).

@@ -1,55 +1,55 @@
-# 电源馈线
+# Power Feed
 
-电源馈线表示从[电源面板](./powerpanel.md)向特定[设备](./device.md)（通常是电源分配单元PDU）分配电力。设备上的[电源端口](./powerport.md)（入口）可以通过电缆连接到电源馈线。电源馈线可以选择分配给机架，以便更轻松地跟踪机架之间的电力分配。
+A power feed represents the distribution of power from a [power panel](./powerpanel.md) to a particular [device](./device.md), typically a power distribution unit (PDU). The [power port](./powerport.md) (inlet) on a device can be connected via a cable to a power feed. A power feed may optionally be assigned to a rack to allow more easily tracking the distribution of power among racks.
 
-## 字段
+## Fields
 
-### 电源面板
+### Power Panel
 
-供应此馈线上游电源的[电源面板](./powerpanel.md)。
+The [power panel](./powerpanel.md) which supplies upstream power to this feed.
 
-### 机架
+### Rack
 
-此馈线提供电力的[机架](./rack.md)（可选）。
+The [rack](./rack.md) within which this feed delivers power (optional).
 
-### 名称
+### Name
 
-馈线的名称或其他标识符。必须在分配的电源面板中是唯一的。
+The feed's name or other identifier. Must be unique to the assigned power panel.
 
-### 状态
+### Status
 
-馈线的操作状态。
+The feed's operational status.
 
 !!! tip
-    可以通过在[`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices)配置参数下设置`PowerFeed.status`来定义其他状态。
+    Additional statuses may be defined by setting `PowerFeed.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
 
-### 类型
+### Type
 
-在冗余环境中，每个电源馈线可以被指定为提供主电源或冗余电源。在只有一个电源源的环境中，所有电源馈线都应被指定为主电源。
+In redundant environments, each power feed can be designated as providing either primary or redundant power. (In environment with only one power source, all power feeds should be designated as primary.)
 
-### 标记为已连接
+### Mark Connected
 
-如果选择，将视为已连接电源馈线。
+If selected, the power feed will be treated as if a cable has been connected.
 
-### 供电
+### Supply
 
-电流类型（交流或直流）。
+Electrical current type (AC or DC).
 
-### 电压
+### Voltage
 
-操作电路电压，以伏特为单位。
+Operating circuit voltage, in volts.
 
-### 电流
+### Amperage
 
-操作电路电流，以安培为单位。
+Operation circuit amperage, in amperes.
 
-### 相位
+### Phase
 
-指示电路是否提供单相或三相电源。
+Indicates whether the circuit provides single- or three-phase power.
 
-### 最大利用率
+### Max Utilization
 
-馈线的最大安全利用率，以总可用电力的百分比表示。（通常将其设置为约80％，以避免在电流突然大幅上升时触发断路器。）
+The maximum safe utilization of the feed, expressed as a percentage of the total available power. (Typically this will be set to around 80%, to avoid tripping a breaker during heaving spikes in current draw.)
 
 !!! info
-    当一个或多个电源馈线分配给机架并连接到消耗电力的设备时，会计算机架的电源利用率。
+    The power utilization of a rack is calculated when one or more power feeds are assigned to the rack and connected to devices that draw power.

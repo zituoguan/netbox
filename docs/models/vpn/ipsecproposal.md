@@ -1,31 +1,31 @@
-# IPSec提案
+# IPSec Proposal
 
-[IPSec](https://en.wikipedia.org/wiki/IPsec)提案定义了用于协商IPSec隧道安全关联的一组参数。NetBox中定义的IPSec提案可以被[IPSec策略](./ipsecpolicy.md)引用，而IPSec策略又被[IPSec配置文件](./ipsecprofile.md)使用。
+An [IPSec](https://en.wikipedia.org/wiki/IPsec) proposal defines a set of parameters used in negotiating security associations for IPSec tunnels. IPSec proposals defined in NetBox can be referenced by [IPSec policies](./ipsecpolicy.md), which are in turn employed by [IPSec profiles](./ipsecprofile.md).
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-提案的唯一用户分配名称。
+The unique user-assigned name for the proposal.
 
-### 加密算法
+### Encryption Algorithm
 
-用于数据加密的协议。选项包括DES、3DES和各种AES变种。
+The protocol employed for data encryption. Options include DES, 3DES, and various flavors of AES.
 
-!!! 注意
-    如果未指定加密算法，则必须指定身份验证算法。
+!!! note
+    If an encryption algorithm is not specified, an authentication algorithm must be specified.
 
-### 身份验证算法
+### Authentication Algorithm
 
-用于确保数据完整性的机制。选项包括MD5和SHA HMAC实现。
+The mechanism employed to ensure data integrity. Options include MD5 and SHA HMAC implementations.
 
-!!! 注意
-    如果未指定身份验证算法，则必须指定加密算法。
+!!! note
+    If an authentication algorithm is not specified, an encryption algorithm must be specified.
 
-### SA寿命（秒）
+### SA Lifetime (Seconds)
 
-安全关联（SA）可以处于活动状态的最长时间，以秒为单位。
+The maximum amount of time for which the security association (SA) may be active, in seconds.
 
-### SA寿命（数据）
+### SA Lifetime (Data)
 
-在安全关联（SA）必须重新构建之前可以传输的最大数据量，以千字节为单位。
+The maximum amount of data which can be transferred within the security association (SA) before it must be rebuilt, in kilobytes.

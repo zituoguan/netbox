@@ -1,3 +1,3 @@
-# 控制台端口模板
+# Console Port Templates
 
-这是一个控制台端口的模板，将在父设备类型的所有实例化中创建。有关更多详细信息，请参阅[控制台端口](./consoleport.md)文档。
+A template for a console port that will be created on all instantiations of the parent device type. See the [console port](./consoleport.md) documentation for more detail.

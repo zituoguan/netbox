@@ -1,21 +1,21 @@
-# IPSec配置文件
+# IPSec Profile
 
-[IPSec](https://en.wikipedia.org/wiki/IPsec)配置文件定义了用于建立IPSec隧道的[IKE策略](./ikepolicy.md)、[IPSec策略](./ipsecpolicy.md)和IPSec模式。
+An [IPSec](https://en.wikipedia.org/wiki/IPsec) profile defines an [IKE policy](./ikepolicy.md), [IPSec policy](./ipsecpolicy.md), and IPSec mode used for establishing an IPSec tunnel.
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-配置文件的唯一用户分配的名称。
+The unique user-assigned name for the profile.
 
-### 模式
+### Mode
 
-配置文件使用的IPSec模式：封装安全有效载荷（ESP）或身份验证头（AH）。
+The IPSec mode employed by the profile: Encapsulating Security Payload (ESP) or Authentication Header (AH).
 
-### IKE策略
+### IKE Policy
 
-与配置文件关联的[IKE策略](./ikepolicy.md)。
+The [IKE policy](./ikepolicy.md) associated with the profile.
 
-### IPSec策略
+### IPSec Policy
 
-与配置文件关联的[IPSec策略](./ipsecpolicy.md)。
+The [IPSec policy](./ipsecpolicy.md) associated with the profile.

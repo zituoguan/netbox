@@ -1,35 +1,35 @@
-# 对象权限
+# Object-Based Permissions
 
-NetBox使用一种新的基于对象的权限框架，取代了Django内置的权限模型。基于对象的权限使管理员能够授予用户或组在NetBox中对任意对象子集执行操作的权限，而不是对某种类型的所有对象。例如，可以授予用户仅查看特定地区站点或仅修改特定范围内数值ID的VLAN的权限。
+NetBox employs a new object-based permissions framework, which replaces Django's built-in permissions model. Object-based permissions enable an administrator to grant users or groups the ability to perform an action on arbitrary subsets of objects in NetBox, rather than all objects of a certain type. For example, it is possible to grant a user permission to view only sites within a particular region, or to modify only VLANs with a numeric ID within a certain range.
 
-NetBox中的权限表示多个组件共享的关系：
+A permission in NetBox represents a relationship shared by several components:
 
-- 对象类型 - NetBox中的一个或多个对象类型
-- 用户/组 - 一个或多个用户或用户组
-- 操作 - 可以在对象上执行的操作
-- 约束 - 用于限制授予的操作仅适用于特定对象子集的任意筛选器
+* Object type(s) - One or more types of object in NetBox
+* User(s)/Group(s) - One or more users or groups of users
+* Action(s) - The action(s) that can be performed on an object
+* Constraints - An arbitrary filter used to limit the granted action(s) to a specific subset of objects
 
-至少，权限分配必须指定一个对象类型、一个用户或组和一个操作。约束的规范是可选的：没有指定任何约束的权限将适用于所选模型的所有实例。
+At a minimum, a permission assignment must specify one object type, one user or group, and one action. The specification of constraints is optional: A permission without any constraints specified will apply to all instances of the selected model(s).
 
-## 操作
+## Actions
 
-在NetBox中，每种对象类型都可以允许四种核心操作，大致类似于CRUD约定（创建、读取、更新和删除）：
+There are four core actions that can be permitted for each type of object within NetBox, roughly analogous to the CRUD convention (create, read, update, and delete):
 
-- **查看** - 从数据库检索对象
-- **添加** - 创建新对象
-- **更改** - 修改现有对象
-- **删除** - 删除现有对象
+* **View** - Retrieve an object from the database
+* **Add** - Create a new object
+* **Change** - Modify an existing object
+* **Delete** - Delete an existing object
 
-除了这些操作，权限还可以授予可能由特定模型或插件需要的自定义操作。例如，脚本的`run`权限允许用户执行自定义脚本。这些可以在“附加操作”字段中指定。
+In addition to these, permissions can also grant custom actions that may be required by a specific model or plugin. For example, the `run` permission for scripts allows a user to execute custom scripts. These can be specified when granting a permission in the "additional actions" field.
 
-!!! 注意
-    在内部，权限授予的所有操作（包括内置和自定义操作）都存储为字符串，存储在名为`actions`的数组字段中。
+!!! note
+    Internally, all actions granted by a permission (both built-in and custom) are stored as strings in an array field named `actions`.
 
-## 约束
+## Constraints
 
-约束被表示为一个JSON对象或列表，表示[Django查询筛选器](https://docs.djangoproject.com/en/stable/ref/models/querysets/#field-lookups)。这与在使用Django ORM执行查询时传递给QuerySet `filter()`方法的语法相同。与查询筛选器一样，双下划线可以用于穿越相关对象或调用查找表达式。下面显示了一些示例查询及其相应的定义。
+Constraints are expressed as a JSON object or list representing a [Django query filter](https://docs.djangoproject.com/en/stable/ref/models/querysets/#field-lookups). This is the same syntax that you would pass to the QuerySet `filter()` method when performing a query using the Django ORM. As with query filters, double underscores can be used to traverse related objects or invoke lookup expressions. Some example queries and their corresponding definitions are shown below.
 
-在单个JSON对象中定义的所有属性都将应用逻辑AND。例如，假设为站点模型分配了具有以下约束的权限。
+All attributes defined within a single JSON object are applied with a logical AND. For example, suppose you assign a permission for the site model with the following constraints.
 
 ```json
 {
@@ -38,9 +38,9 @@ NetBox中的权限表示多个组件共享的关系：
 }
 ```
 
-该权限将仅授予具有“活动”状态**和**分配给“美洲”地区的站点的访问权限。
+The permission will grant access only to sites which have a status of "active" **and** which are assigned to the "Americas" region.
 
-要使用不同一组约束实现逻辑OR，请在列表中定义多个对象。例如，如果要将权限限制为具有ID介于100和199之间的VLAN _或_ 具有“保留”状态的VLAN，请执行以下操作：
+To achieve a logical OR with a different set of constraints, define multiple objects within a list. For example, if you want to constrain the permission to VLANs with an ID between 100 and 199 _or_ a status of "reserved," do the following:
 
 ```json
 [
@@ -54,11 +54,11 @@ NetBox中的权限表示多个组件共享的关系：
 ]
 ```
 
-此外，如果为对象类型分配了多个权限，则将使用逻辑“OR”操作合并它们的约束。
+Additionally, where multiple permissions have been assigned for an object type, their collective constraints will be merged using a logical "OR" operation.
 
-### 用户令牌
+### User Token
 
-在定义权限约束时，管理员可以使用特殊令牌`$user`来引用评估时的当前用户。这对于将用户限制在仅编辑自己的日志条目等情况下很有帮助。这样的约束可能定义为：
+When defining a permission constraint, administrators may use the special token `$user` to reference the current user at the time of evaluation. This can be helpful to restrict users to editing only their own journal entries, for example. Such a constraint might be defined as:
 
 ```json
 {
@@ -66,33 +66,33 @@ NetBox中的权限表示多个组件共享的关系：
 }
 ```
 
-`$user`令牌仅可用作约束值，或作为值列表中的项目。不能修改或扩展`$user`令牌以引用特定的用户属性。
+The `$user` token can be used only as a constraint value, or as an item within a list of values. It cannot be modified or extended to reference specific user attributes.
 
-### 默认权限
+### Default Permissions
 
-!!! info "此功能在NetBox v3.6中引入。"
+!!! info "This feature was introduced in NetBox v3.6."
 
-尽管权限通常分配给特定的组和/或用户，但也可以定义一组默认权限，适用于_所有_已认证的用户。这是使用[`DEFAULT_PERMISSIONS`](../configuration/security.md#default_permissions)配置参数完成的。请注意，不支持为特定用户或组静态配置权限。
+While permissions are typically assigned to specific groups and/or users, it is also possible to define a set of default permissions that are applied to _all_ authenticated users. This is done using the [`DEFAULT_PERMISSIONS`](../configuration/security.md#default_permissions) configuration parameter. Note that statically configuring permissions for specific users or groups is **not** supported.
 
-### 示例约束定义
+### Example Constraint Definitions
 
-| 约束 | 描述 |
+| Constraints | Description |
 | ----------- | ----------- |
-| `{"status": "active"}` | 状态为活动 |
-| `{"status__in": ["planned", "reserved"]}` | 状态为活动 **或** 保留 |
-| `{"status": "active", "role": "testing"}` | 状态为活动 **且** 角色为测试 |
-| `{"name__startswith": "Foo"}` | 名称以“Foo”开头（区分大小写） |
-| `{"name__iendswith": "bar"}` | 名称以“bar”结尾（不区分大小写） |
-| `{"vid__gte": 100, "vid__lt": 200}` | VLAN ID 大于等于100 **且** 小于200 |
-| `[{"vid__lt": 200}, {"status": "reserved"}]` | VLAN ID 小于200 **或** 状态为保留 |
+| `{"status": "active"}` | Status is active |
+| `{"status__in": ["planned", "reserved"]}` | Status is active **OR** reserved |
+| `{"status": "active", "role": "testing"}` | Status is active **AND** role is testing |
+| `{"name__startswith": "Foo"}` | Name starts with "Foo" (case-sensitive) |
+| `{"name__iendswith": "bar"}` | Name ends with "bar" (case-insensitive) |
+| `{"vid__gte": 100, "vid__lt": 200}` | VLAN ID is greater than or equal to 100 **AND** less than 200 |
+| `[{"vid__lt": 200}, {"status": "reserved"}]` | VLAN ID is less than 200 **OR** status is reserved |
 
-## 权限执行
+## Permissions Enforcement
 
-### 查看对象
+### Viewing Objects
 
-基于对象的权限通过过滤用户请求生成的数据库查询来工作，以限制返回的对象集。当接收到请求时，NetBox首先确定用户是否已经进行了身份验证并被授予执行所请求操作的权限。例如，如果请求的URL是`/dcim/devices/`，NetBox将检查`dcim.view_device`权限。如果用户尚未被分配此权限（无论是直接分配还是通过组分配），NetBox将返回403（禁止）的HTTP响应。
+Object-based permissions work by filtering the database query generated by a user's request to restrict the set of objects returned. When a request is received, NetBox first determines whether the user is authenticated and has been granted to perform the requested action. For example, if the requested URL is `/dcim/devices/`, NetBox will check for the `dcim.view_device` permission. If the user has not been assigned this permission (either directly or via a group assignment), NetBox will return a 403 (forbidden) HTTP response.
 
-如果授予了权限，NetBox将编译模型和操作的任何指定约束。例如，假设已向用户分配了两个权限，授予对设备模型的查看访问权限，并具有以下约束：
+If the permission _has_ been granted, NetBox will compile any specified constraints for the model and action. For example, suppose two permissions have been assigned to the user granting view access to the device model, with the following constraints:
 
 ```json
 [
@@ -101,7 +101,7 @@ NetBox中的权限表示多个组件共享的关系：
 ]
 ```
 
-这允许用户访问查看任何分配给站点名称为NYC1或NYC2的设备**或**具有“离线”状态且未分配租户的设备。这些约束等效于以下ORM查询：
+This grants the user access to view any device that is assigned to a site named NYC1 or NYC2, **or** which has a status of "offline" and has no tenant assigned. These constraints are equivalent to the following ORM query:
 
 ```no-highlight
 Site.objects.filter(
@@ -110,6 +110,6 @@ Site.objects.filter(
 )
 ```
 
-### 创建和修改对象
+### Creating and Modifying Objects
 
-当用户尝试在NetBox中创建或修改对象时，会采用相同类型的逻辑，但有所不同。一旦验证完成，NetBox会启动一个原子数据库事务以促进更改，并且对象会以正常方式创建或保存。接下来，在事务内部，NetBox会发出第二个查询，以检索新创建/更新的对象，过滤受限制的查询集合以使用对象的主键。如果此查询未能返回对象，NetBox知道新修订与权限强加的约束不匹配。然后会回滚事务，将数据库还原到更改之前的原始状态，并通知用户违规行为。
+The same sort of logic is in play when a user attempts to create or modify an object in NetBox, with a twist. Once validation has completed, NetBox starts an atomic database transaction to facilitate the change, and the object is created or saved normally. Next, still within the transaction, NetBox issues a second query to retrieve the newly created/updated object, filtering the restricted queryset with the object's primary key. If this query fails to return the object, NetBox knows that the new revision does not match the constraints imposed by the permission. The transaction is then rolled back, leaving the database in its original state prior to the change, and the user is informed of the violation.

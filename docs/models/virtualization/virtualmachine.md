@@ -1,53 +1,53 @@
-# 虚拟机
+# Virtual Machines
 
-虚拟机（VM）代表托管在[集群](./cluster.md)内的虚拟计算实例。每个虚拟机必须分配到一个[站点](../dcim/site.md)和/或集群，并可以选择分配给集群内的特定主机[设备](../dcim/device.md)。
+A virtual machine (VM) represents a virtual compute instance hosted within a [cluster](./cluster.md). Each VM must be assigned to a [site](../dcim/site.md) and/or cluster, and may optionally be assigned to a particular host [device](../dcim/device.md) within a cluster.
 
-虚拟机可以分配虚拟[接口](./vminterface.md)，但不支持任何物理组件。当虚拟机具有一个或多个分配了IP地址的接口时，可以为设备指定IPv4和IPv6的主要IP。
+Virtual machines may have virtual [interfaces](./vminterface.md) assigned to them, but do not support any physical component. When a VM has one or more interfaces with IP addresses assigned, a primary IP for the device can be designated, for both IPv4 and IPv6.
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-虚拟机的配置名称。必须对分配给的集群和租户唯一。
+The virtual machine's configured name. Must be unique to the assigned cluster and tenant.
 
-### 角色
+### Role
 
-分配给虚拟机的功能[角色](../dcim/devicerole.md)。
+The functional [role](../dcim/devicerole.md) assigned to the VM.
 
-### 状态
+### Status
 
-虚拟机的运行状态。
-
-!!! tip
-    通过在[`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices)配置参数下设置`VirtualMachine.status`，可以定义附加状态。
-
-### 站点和集群
-
-分配给虚拟机的[站点](../dcim/site.md)和/或[集群](./cluster.md)。
-
-### 设备
-
-分配给虚拟机的所在站点/集群内的物理主机[设备](../dcim/device.md)。
-
-### 平台
-
-虚拟机可以与特定[平台](../dcim/platform.md)关联，表示其操作系统。
-
-### 主要IPv4和IPv6地址
-
-每个虚拟机可以为管理目的指定一个主要的IPv4地址和/或一个主要的IPv6地址。
+The VM's operational status.
 
 !!! tip
-    NetBox默认情况下会优先使用IPv6地址而不是IPv4地址。可以通过设置`PREFER_IPV4`配置参数来更改这一点。
+    Additional statuses may be defined by setting `VirtualMachine.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
 
-### vCPU
+### Site & Cluster
 
-分配的虚拟CPU数。可以分配部分vCPU计数（例如1.5个vCPU）。
+The [site](../dcim/site.md) and/or [cluster](./cluster.md) to which the VM is assigned.
 
-### 内存
+### Device
 
-分配的运行内存量，以兆字节为单位。
+The physical host [device](../dcim/device.md) within the assigned site/cluster on which this VM resides.
 
-### 磁盘
+### Platform
 
-分配的磁盘存储量，以千兆字节为单位。
+A VM may be associated with a particular [platform](../dcim/platform.md) to indicate its operating system.
+
+### Primary IPv4 & IPv6 Addresses
+
+Each VM may designate one primary IPv4 address and/or one primary IPv6 address for management purposes.
+
+!!! tip
+    NetBox will prefer IPv6 addresses over IPv4 addresses by default. This can be changed by setting the `PREFER_IPV4` configuration parameter.
+
+### vCPUs
+
+The number of virtual CPUs provisioned. A VM may be allocated a partial vCPU count (e.g. 1.5 vCPU).
+
+### Memory
+
+The amount of running memory provisioned, in megabytes.
+
+### Disk
+
+The amount of disk storage provisioned, in gigabytes.

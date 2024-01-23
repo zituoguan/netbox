@@ -1,43 +1,43 @@
-# 电源端口
+# Power Ports
 
-电源端口是一种从某个外部源（例如上游的[电源插座](./poweroutlet.md)）获取电力的设备组件，并通常代表设备内部的电源。
+A power port is a device component which draws power from some external source (e.g. an upstream [power outlet](./poweroutlet.md)), and generally represents a power supply internal to a device.
 
-!!! 提示
-    与大多数设备组件一样，电源端口是从分配给所选设备类型的[电源端口模板](./powerporttemplate.md)在创建设备时自动生成的。
+!!! tip
+    Like most device components, power ports are instantiated automatically from [power port templates](./powerporttemplate.md) assigned to the selected device type when a device is created.
 
-## 字段
+## Fields
 
-### 设备
+### Device
 
-此电源端口所属的设备。
+The device to which this power port belongs.
 
-### 模块
+### Module
 
-分配给此电源端口所属的设备内已安装的模块（可选）。
+The installed module within the assigned device to which this power port belongs (optional).
 
-### 名称
+### Name
 
-电源端口的名称。必须在父设备内是唯一的。
+The name of the power port. Must be unique to the parent device.
 
-### 标签
+### Label
 
-用于标识电源端口的替代物理标签。
+An alternative physical label identifying the power port.
 
-### 类型
+### Type
 
-电源端口的类型。
+The type of power port.
 
-### 最大功耗
+### Maximum Draw
 
-此端口消耗的最大功率（瓦特）。
+The maximum amount of power this port consumes (in watts).
 
 !!! info
-    当在映射到插座并为下游设备供电的设备上创建电源端口时，最大和分配的功耗数值应该留空。利用率将通过对连接到下游的所有电源端口的功耗求和来计算。
+    When creating a power port on a device which is mapped to outlets and supplies power to downstream devices, the maximum and allocated draw numbers should be left blank. Utilization will be calculated by taking the sum of all power ports of devices connected downstream.
 
-### 分配的功耗
+### Allocated Draw
 
-此端口消耗的预算功率量（以瓦特为单位）。
+The budgeted amount of power this port consumes (in watts).
 
-### 标记已连接
+### Mark Connected
 
-如果选中，将视为已连接电缆的组件。
+If selected, this component will be treated as if a cable has been connected.

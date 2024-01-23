@@ -1,10 +1,10 @@
 # GraphQL API
 
-## 定义模式类
+## Defining the Schema Class
 
-插件可以通过注册自己的模式类来扩展 NetBox 的 GraphQL API。默认情况下，NetBox 将尝试从插件中导入 `graphql.schema`，如果存在的话。可以通过在 PluginConfig 实例上定义 `graphql_schema`，将其覆盖为所需 Python 类的点路径。该类必须是 `graphene.ObjectType` 的子类。
+A plugin can extend NetBox's GraphQL API by registering its own schema class. By default, NetBox will attempt to import `graphql.schema` from the plugin, if it exists. This path can be overridden by defining `graphql_schema` on the PluginConfig instance as the dotted path to the desired Python class. This class must be a subclass of `graphene.ObjectType`.
 
-### 示例
+### Example
 
 ```python
 # graphql.py
@@ -27,9 +27,9 @@ class MyQuery(graphene.ObjectType):
 schema = MyQuery
 ```
 
-## GraphQL 对象
+## GraphQL Objects
 
-NetBox 提供了两个用于插件的对象类型类。
+NetBox provides two object type classes for use by plugins.
 
 ::: netbox.graphql.types.BaseObjectType
     options:
@@ -39,9 +39,9 @@ NetBox 提供了两个用于插件的对象类型类。
     options:
       members: false
 
-## GraphQL 字段
+## GraphQL Fields
 
-NetBox 提供了两个用于插件的字段类。
+NetBox provides two field classes for use by plugins.
 
 ::: netbox.graphql.fields.ObjectField
     options:

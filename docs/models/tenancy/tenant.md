@@ -1,17 +1,17 @@
-# 租户
+# Tenants
 
-租户代表了为管理目的而使用的离散资源分组。通常，租户用于表示组织内的个别客户或部门。
+A tenant represents a discrete grouping of resources used for administrative purposes. Typically, tenants are used to represent individual customers or internal departments within an organization. 
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-人类友好的名称，对分配的组是唯一的。
+A human-friendly name, unique to the assigned group.
 
 ### Slug
 
-URL友好的标识符，对分配的组是唯一的。（这个值可以用于过滤。）
+A URL-friendly identifier, unique to the assigned group. (This value can be used for filtering.)
 
-### 组
+### Group
 
-此租户所属的[租户组](./tenantgroup.md)（如果有的话）。
+The [tenant group](./tenantgroup.md) to which this tenant belongs (if any).

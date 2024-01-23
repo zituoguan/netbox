@@ -1,18 +1,18 @@
-# L2VPN终止
+# L2VPN Termination
 
-L2VPN终止是将[L2VPN](./l2vpn.md)附加到[接口](../dcim/interface.md)或[VLAN](../ipam/vlan.md)的过程。请注意，以下类型的L2VPN只能分配两个终止点：
+A L2VPN termination is the attachment of an [L2VPN](./l2vpn.md) to an [interface](../dcim/interface.md) or [VLAN](../ipam/vlan.md). Note that the L2VPNs of the following types may have only two terminations assigned to them:
 
 * VPWS
 * EPL
 * EP-LAN
 * EP-TREE
 
-## 字段
+## Fields
 
 ### L2VPN
 
-[L2VPN](./l2vpn.md)实例。
+The [L2VPN](./l2vpn.md) instance.
 
-### VLAN或接口
+### VLAN or Interface
 
-附加到L2VPN的[VLAN](../ipam/vlan.md)、[设备接口](../dcim/interface.md)或[虚拟机接口](../virtualization/virtualmachine.md)。
+The [VLAN](../ipam/vlan.md), [device interface](../dcim/interface.md), or [virtual machine interface](../virtualization/virtualmachine.md) attached to the L2VPN.

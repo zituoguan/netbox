@@ -1,42 +1,42 @@
-# 模块
+# Modules
 
-模块是安装在设备内的可更换硬件组件，它包含自己的子组件。最常见的示例是基于机箱的路由器或交换机。
+A module is a field-replaceable hardware component installed within a device which houses its own child components. The most common example is a chassis-based router or switch.
 
-与设备类似，模块是从[模块类型](./moduletype.md)实例化的，与模块类型关联的任何组件都会在新模型上自动实例化。每个模块必须安装在[模块插槽](./modulebay.md)上的[设备](./device.md)内，每个模块插槽只能安装一个模块。
+Similar to devices, modules are instantiated from [module types](./moduletype.md), and any components associated with the module type are automatically instantiated on the new model. Each module must be installed within a [module bay](./modulebay.md) on a [device](./device.md), and each module bay may have only one module installed in it.
 
-## 字段
+## Fields
 
-### 设备
+### Device
 
-安装模块的父[设备](./device.md)。
+The parent [device](./device.md) into which the module is installed.
 
-### 模块插槽
+### Module Bay
 
-将模块安装到其中的[模块插槽](./modulebay.md)。
+The [module bay](./modulebay.md) into which the module is installed.
 
-### 模块类型
+### Module Type
 
-代表硬件的物理制造和型号的[模块类型](./moduletype.md)。默认情况下，创建新模块时，将从模块类型自动实例化模块组件。
+The [module type](./moduletype.md) which represents the physical make & model of hardware. By default, module components will be instantiated automatically from the module type when creating a new module.
 
-### 状态
+### Status
 
-模块的操作状态。
+The module's operational status.
 
 !!! tip
-    可通过在 [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) 配置参数下设置 `Module.status` 来定义其他状态。
+    Additional statuses may be defined by setting `Module.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
 
-### 序列号
+### Serial Number
 
-制造商分配给该模块的唯一物理序列号。
+The unique physical serial number assigned to this module by its manufacturer.
 
-### 资产标签
+### Asset Tag
 
-用于标识硬件资源的唯一的本地管理标签。
+A unique, locally-administered label used to identify hardware resources.
 
-### 复制组件
+### Replicate Components
 
-控制是否在创建新模块时自动添加模板模块类型组件。
+Controls whether templates module type components are automatically added when creating a new module.
 
-### 采用组件
+### Adopt Components
 
-控制是否将与将自动创建的组件具有相同名称的设备分配给新模块。
+Controls whether pre-existing components assigned to the device with the same names as components that would be created automatically will be assigned to the new module.

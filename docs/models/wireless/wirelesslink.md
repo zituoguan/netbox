@@ -1,42 +1,42 @@
-# 无线连接
+# Wireless Links
 
-无线连接表示正好两个无线接口之间的连接。与[无线局域网](./wirelesslan.md)不同，允许任意数量的客户端关联，无线连接用于建模点对点无线连接。
+A wireless link represents a connection between exactly two wireless interfaces. Unlike a [wireless LAN](./wirelesslan.md), which permit an arbitrary number of client associations, wireless links are used to model point-to-point wireless connections.
 
-## 字段
+## Fields
 
-### 接口
+### Interfaces
 
-选择两个接口：一个用于A端，另一个用于B端。（两者都必须是无线接口。）
+Select two interfaces: One for side A and one for side B. (Both must be wireless interfaces.)
 
-### 状态
+### Status
 
-连接的操作状态。选项包括：
+The operational status of the link. Options include:
 
-* 连接的
-* 计划的
-* 停用中
+* Connected
+* Planned
+* Decommissioning
 
 ### SSID
 
-无线连接的服务集标识符（SSID）（可选）。
+The service set identifier (SSID) for the wireless link (optional).
 
-### 认证类型
+### Authentication Type
 
-正在使用的无线认证类型。选项包括：
+The type of wireless authentication in use. Options include:
 
-* 开放
+* Open
 * WEP
-* WPA个人（PSK）
-* WPA企业
+* WPA Personal (PSK)
+* WPA Enterprise
 
-### 认证密码
+### Authentication Cipher
 
-用于应用无线认证的安全密码。选项包括：
+The security cipher used to apply wireless authentication. Options include:
 
-* 自动（自动）
+* Auto (automatic)
 * TKIP
 * AES
 
-### 预共享密钥
+### Pre-Shared Key
 
-配置在每个客户端上的安全密钥，以授予对受保护的无线局域网的访问权限。这仅适用于某些认证类型。
+The security key configured on each client to grant access to the secured wireless LAN. This applies only to certain authentication types.

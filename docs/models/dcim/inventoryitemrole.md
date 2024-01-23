@@ -1,17 +1,17 @@
-# 库存项角色
+# Inventory Item Roles
 
-库存项可以按功能角色进行组织，用户可以完全自定义这些角色。例如，您可以创建电源供应、风扇、接口光学元件等角色。
+Inventory items can be organized by functional roles, which are fully customizable by the user. For example, you might create roles for power supplies, fans, interface optics, etc.
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-唯一的、人性化的名称。
+A unique human-friendly name.
 
 ### Slug
 
-唯一的 URL 友好型标识符。（可用于过滤）
+A unique URL-friendly identifier. (This value can be used for filtering.)
 
-### 颜色
+### Color
 
-在 NetBox UI 中显示角色时使用的颜色。
+The color used when displaying the role in the NetBox UI.

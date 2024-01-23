@@ -1,3 +1,3 @@
-# 前置端口模板
+# Front Port Templates
 
-这是一个用于创建所有父设备类型实例的前置通行端口的模板。有关更多详细信息，请参阅[前置端口](./frontport.md)文档。
+A template for a front-facing pass-through port that will be created on all instantiations of the parent device type. See the [front port](./frontport.md) documentation for more detail.

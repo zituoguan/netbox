@@ -1,22 +1,22 @@
-# 表格
+# Tables
 
-NetBox使用[`django-tables2`](https://django-tables2.readthedocs.io/)库来渲染动态对象表格。这些表格显示对象列表，并可以根据各种参数进行排序和过滤。
+NetBox employs the [`django-tables2`](https://django-tables2.readthedocs.io/) library for rendering dynamic object tables. These tables display lists of objects, and can be sorted and filtered by various parameters.
 
 ## NetBoxTable
 
-为了提供比`django-tables2`中的默认`Table`类支持的功能更多的功能，NetBox提供了`NetBoxTable`类。这个自定义表格类支持以下功能：
+To provide additional functionality beyond what is supported by the stock `Table` class in `django-tables2`, NetBox provides the `NetBoxTable` class. This custom table class includes support for:
 
-* 用户可配置的列显示和排序
-* 自定义字段和自定义链接列
-* 相关对象的自动预取
+* User-configurable column display and ordering
+* Custom field & custom link columns
+* Automatic prefetching of related objects
 
-它还包括一些默认列：
+It also includes several default columns:
 
-* `pk` - 用于选择与每个表格行相关联的对象的复选框（如果适用）
-* `id` - 对象的数值数据库ID，作为指向对象视图的超链接（默认情况下隐藏）
-* `actions` - 一个下拉菜单，向用户呈现可用于对象的特定操作
+* `pk` - A checkbox for selecting the object associated with each table row (where applicable)
+* `id` - The object's numeric database ID, as a hyperlink to the object's view (hidden by default)
+* `actions` - A dropdown menu presenting object-specific actions available to the user
 
-### 示例
+### Example
 
 ```python
 # tables.py
@@ -36,20 +36,20 @@ class MyModelTable(NetBoxTable):
         default_columns = ('pk', 'name', ...)
 ```
 
-### 表格配置
+### Table Configuration
 
-NetBoxTable类具有动态配置功能，允许用户更改其列显示和排序首选项。要为特定请求配置表格，只需调用其`configure()`方法并传递当前的HTTPRequest对象。例如：
+The NetBoxTable class features dynamic configuration to allow users to change their column display and ordering preferences. To configure a table for a specific request, simply call its `configure()` method and pass the current HTTPRequest object. For example:
 
 ```python
 table = MyModelTable(data=MyModel.objects.all())
 table.configure(request)
 ```
 
-这将自动应用表格的任何用户特定首选项。（如果使用NetBox提供的通用视图，表格配置将自动处理。）
+This will automatically apply any user-specific preferences for the table. (If using a generic view provided by NetBox, table configuration is handled automatically.)
 
-## 列
+## Columns
 
-下面列出的表格列类可用于插件。这些类可以从`netbox.tables.columns`导入。
+The table column classes listed below are supported for use in plugins. These classes can be imported from `netbox.tables.columns`.
 
 ::: netbox.tables.BooleanColumn
     options:
@@ -88,11 +88,11 @@ table.configure(request)
       members:
         - __init__
 
-## 扩展核心表格
+## Extending Core Tables
 
-!!! info "此功能在NetBox v3.7中引入。"
+!!! info "This feature was introduced in NetBox v3.7."
 
-插件可以使用`register_table_column()`实用程序函数在核心表格上注册自己的自定义列。这允许插件附加额外的信息，例如与自己的模型的关系，到内置对象列表。
+Plugins can register their own custom columns on core tables using the `register_table_column()` utility function. This allows a plugin to attach additional information, such as relationships to its own models, to built-in object lists.
 
 ```python
 import django_tables2
@@ -109,6 +109,6 @@ mycol = django_tables2.Column(
 register_table_column(mycol, 'foo', SiteTable)
 ```
 
-通常，在定义自定义列时，您会想要定义一个访问器，以识别所需的模型字段或关系。有关创建自定义列的更多信息，请参阅[django-tables2文档](https://django-tables2.readthedocs.io/)。
+You'll typically want to define an accessor identifying the desired model field or relationship when defining a custom column. See the [django-tables2 documentation](https://django-tables2.readthedocs.io/) for more information on creating custom columns.
 
 ::: utilities.tables.register_table_column

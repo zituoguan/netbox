@@ -1,120 +1,120 @@
-# 发布检查清单
+# Release Checklist
 
-此文档描述了打包和发布新的NetBox版本的流程。有三种类型的发布：
+This documentation describes the process of packaging and publishing a new NetBox release. There are three types of release:
 
-* 主要版本发布（例如，从v2.11到v3.0）
-* 次要版本发布（例如，从v3.2到v3.3）
-* 补丁版本发布（例如，从v3.3.0到v3.3.1）
+* Major release (e.g. v2.11 to v3.0)
+* Minor release (e.g. v3.2 to v3.3)
+* Patch release (e.g. v3.3.0 to v3.3.1)
 
-尽管主要版本发布通常引入了一些对应用程序的非常重大的更改，但它们通常在发布打包的目的上与次要版本增量相同对待。
+While major releases generally introduce some very substantial change to the application, they are typically treated the same as minor version increments for the purpose of release packaging.
 
-## 次要版本发布
+## Minor Version Releases
 
-### 处理受限制的依赖项
+### Address Constrained Dependencies
 
-有时需要将依赖项限制到特定版本，例如，以解决较新版本中的错误或避免我们尚未适应的破坏性更改。 （另一个常见示例是限制上游的Django版本。）例如：
+Sometimes it becomes necessary to constrain dependencies to a particular version, e.g. to work around a bug in a newer release or to avoid a breaking change that we have yet to accommodate. (Another common example is to limit the upstream Django release.) For example:
 
 ```
 # https://github.com/encode/django-rest-framework/issues/6053
 djangorestframework==3.8.1
 ```
 
-这些版本约束被添加到`base_requirements.txt`，以确保在更新`requirements.txt`中的固定依赖项时不会安装更新的软件包（请参阅下面的[更新要求](#更新要求)部分）。在每个新的NetBox次要版本发布之前，应该尽可能解决所有这些对依赖包的约束。这可以防止随着时间的推移收集过时的约束。
+These version constraints are added to `base_requirements.txt` to ensure that newer packages are not installed when updating the pinned dependencies in `requirements.txt` (see the [Update Requirements](#update-requirements) section below). Before each new minor version of NetBox is released, all such constraints on dependent packages should be addressed if feasible. This guards against the collection of stale constraints over time.
 
-### 关闭发布里程碑
+### Close the Release Milestone
 
-在确保与之相关联的问题没有保留的情况下，在GitHub上关闭[发布里程碑](https://github.com/netbox-community/netbox/milestones)。
+Close the [release milestone](https://github.com/netbox-community/netbox/milestones) on GitHub after ensuring there are no remaining open issues associated with it.
 
-### 更新发布说明
+### Update the Release Notes
 
-检查新版本的发布说明链接是否在导航菜单中（在`mkdocs.yml`中定义），并确保已在`docs/index.md`中添加了所有主要新功能的摘要。
+Check that a link to the release notes for the new version is present in the navigation menu (defined in `mkdocs.yml`), and that a summary of all major new features has been added to `docs/index.md`.
 
-### 手动执行新安装
+### Manually Perform a New Install
 
-启动文档服务器，并导航到当前版本的安装文档：
+Start the documentation server and navigate to the current version of the installation docs:
 
 ```no-highlight
 mkdocs serve
 ```
 
-按照这些说明在临时环境中执行NetBox的新安装。此过程不得自动化：此步骤的目标是捕获文档中的任何错误或遗漏，并确保它针对每个发布保持最新。在继续发布之前，对文档进行任何必要的更改。
+Follow these instructions to perform a new installation of NetBox in a temporary environment. This process must not be automated: The goal of this step is to catch any errors or omissions in the documentation, and ensure that it is kept up-to-date for each release. Make any necessary changes to the documentation before proceeding with the release.
 
-### 合并发布分支
+### Merge the Release Branch
 
-提交拉取请求，将`feature`分支合并到`develop`分支，以准备发布。一旦合并完成，继续下面的补丁版本发布部分。
+Submit a pull request to merge the `feature` branch into the `develop` branch in preparation for its release. Once it has been merged, continue with the section for patch releases below.
 
-### 重建演示数据（发布后）
+### Rebuild Demo Data (After Release)
 
-在发布新的次要版本之后，生成与新版本兼容的新演示数据快照。请参阅[`netbox-demo-data`](https://github.com/netbox-community/netbox-demo-data)存储库中的说明。
+After the release of a new minor version, generate a new demo data snapshot compatible with the new release. See the [`netbox-demo-data`](https://github.com/netbox-community/netbox-demo-data) repository for instructions.
 
 ---
 
-## 补丁版本发布
+## Patch Releases
 
-### 通知netbox-docker项目有关的更改
+### Notify netbox-docker Project of Any Relevant Changes
 
-通知[`netbox-docker`](https://github.com/netbox-community/netbox-docker)的维护者（在**#netbox-docker**中），任何可能与其构建过程相关的更改，包括：
+Notify the [`netbox-docker`](https://github.com/netbox-community/netbox-docker) maintainers (in **#netbox-docker**) of any changes that may be relevant to their build process, including:
 
-* 对`upgrade.sh`的重大更改
-* 服务依赖项（PostgreSQL、Redis等）的最低版本的提高
-* 对参考安装的任何更改
+* Significant changes to `upgrade.sh`
+* Increases in minimum versions for service dependencies (PostgreSQL, Redis, etc.)
+* Any changes to the reference installation
 
-### 更新要求
+### Update Requirements
 
-在每次发布之前，将NetBox的每个Python依赖项更新到其最新稳定版本。这些依赖项在`requirements.txt`中定义，使用`pip`从`base_requirements.txt`中更新。要执行此操作，请执行以下步骤：
+Before each release, update each of NetBox's Python dependencies to its most recent stable version. These are defined in `requirements.txt`, which is updated from `base_requirements.txt` using `pip`. To do this:
 
-1. 升级环境中所有必需包的安装版本（`pip install -U -r base_requirements.txt`）。
-2. 运行所有测试，并检查UI和API是否按预期运行。
-3. 检查每个要求的发行说明，以查看是否有任何重大的破坏性或值得注意的更改。
-4. 根据需要更新`requirements.txt`中的软件包版本。
+1. Upgrade the installed version of all required packages in your environment (`pip install -U -r base_requirements.txt`).
+2. Run all tests and check that the UI and API function as expected.
+3. Review each requirement's release notes for any breaking or otherwise noteworthy changes.
+4. Update the package versions in `requirements.txt` as appropriate.
 
-在将依赖项升级到其最新版本会导致问题的情况下，应该在`base_requirements.txt`中将其限制为当前次要版本，并附带说明性注释，然后在下一个主要NetBox版本发布时重新审查（请参阅上面的[处理受限制的依赖项](#处理受限制的依赖项)部分）。
+In cases where upgrading a dependency to its most recent release is breaking, it should be constrained to its current minor version in `base_requirements.txt` with an explanatory comment and revisited for the next major NetBox release (see the [Address Constrained Dependencies](#address-constrained-dependencies) section above).
 
-### 重建设备类型定义模式
+### Rebuild the Device Type Definition Schema
 
-运行以下命令以更新设备类型定义验证模式：
+Run the following command to update the device type definition validation schema:
 
 ```nohighlight
 ./manage.py buildschema --write
 ```
 
-这将自动更新`contrib/generated_schema.json`中的模式文件。
+This will automatically update the schema file at `contrib/generated_schema.json`.
 
-### 更新版本和更改日志
+### Update Version and Changelog
 
-* 将`settings.py`中的`VERSION`常量更新为新的发布版本。
-* 在`.github/ISSUE_TEMPLATES/`下的功能请求和错误报告模板中更新示例版本号。
-* 用当前日期替换发布说明中的"FUTURE"占位符。
+* Update the `VERSION` constant in `settings.py` to the new release version.
+* Update the example version numbers in the feature request and bug report templates under `.github/ISSUE_TEMPLATES/`.
+* Replace the "FUTURE" placeholder in the release notes with the current date.
 
-提交这些更改到`develop`分支，并将其推送到上游。
+Commit these changes to the `develop` branch and push upstream.
 
-### 验证CI构建状态
+### Verify CI Build Status
 
-确保`develop`分支上的持续集成测试已成功完成。如果失败，请采取措施纠正失败，然后继续发布。
+Ensure that continuous integration testing on the `develop` branch is completing successfully. If it fails, take action to correct the failure before proceding with the release.
 
-### 提交拉取请求
+### Submit a Pull Request
 
-提交一个拉取请求，标题为**"发布 vX.Y.Z"**，以将`develop`分支合并到`master`分支。将记录的发布说明复制到拉取请求的正文中。
+Submit a pull request titled **"Release vX.Y.Z"** to merge the `develop` branch into `master`. Copy the documented release notes into the pull request's body.
 
-一旦PR的CI完成，合并它。这将在`master`分支中发布一个新版本。
+Once CI has completed on the PR, merge it. This effects a new release in the `master` branch.
 
-### 创建新发布
+### Create a New Release
 
-在GitHub上创建一个[新的发布](https://github.com/netbox-community/netbox/releases/new)，具有以下参数。
+Create a [new release](https://github.com/netbox-community/netbox/releases/new) on GitHub with the following parameters.
 
-* **标签：** 当前版本（例如`v3.3.1`）
-* **目标：** `master`
-* **标题：** 版本和日期（例如`v3.3.1 - 2022-08-25`）
-* **描述：** 从拉取请求正文复制
+* **Tag:** Current version (e.g. `v3.3.1`)
+* **Target:** `master`
+* **Title:** Version and date (e.g. `v3.3.1 - 2022-08-25`)
+* **Description:** Copy from the pull request body
 
-一旦创建，发布将可供用户安装。
+Once created, the release will become available for users to install.
 
-### 更新开发版本
+### Update the Development Version
 
-在`develop`分支上，将`settings.py`中的`VERSION`更新为下一个版本。例如，如果刚刚发布了v3.3.1，则设置为：
+On the `develop` branch, update `VERSION` in `settings.py` to point to the next release. For example, if you just released v3.3.1, set:
 
 ```
 VERSION = 'v3.3.2-dev'
 ```
 
-使用"PRVB"（代表_发布后版本提升_）的注释提交此更改，并将提交推送到上游。
+Commit this change with the comment "PRVB" (for _post-release version bump_) and push the commit upstream.

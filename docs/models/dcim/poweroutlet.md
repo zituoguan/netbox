@@ -1,42 +1,42 @@
-# 电源插座
+# Power Outlets
 
-电源插座代表电源分配单元（PDU）或其他供电设备上的插座，用于为从属设备供电。每个电源端口可以分配物理类型，并且可以与特定的馈线（在使用三相电源时）和/或特定的上游电源端口相关联。这种关联可用于模拟设备内电力的分配。
+Power outlets represent the outlets on a power distribution unit (PDU) or other device that supplies power to dependent devices. Each power port may be assigned a physical type, and may be associated with a specific feed leg (where three-phase power is used) and/or a specific upstream power port. This association can be used to model the distribution of power within a device.
 
-例如，想象一个PDU，它有一个电源端口，从三相馈线中提取电力，并有48个电源插座，分为三个16个插座的插座组。插座1-16将与端口的A相相关联，插座17-32和33-48将分别与端口的B相和C相相关联。
+For example, imagine a PDU with one power port which draws from a three-phase feed and 48 power outlets arranged into three banks of 16 outlets each. Outlets 1-16 would be associated with leg A on the port, and outlets 17-32 and 33-48 would be associated with legs B and C, respectively.
 
 !!! tip
-    与大多数设备组件一样，电源插座是从分配给创建设备时所选设备类型的[电源插座模板](./poweroutlettemplate.md)自动实例化的。
+    Like most device components, power outlets are instantiated automatically from [power outlet templates](./poweroutlettemplate.md) assigned to the selected device type when a device is created.
 
-## 字段
+## Fields
 
-### 设备
+### Device
 
-此电源插座所属的设备。
+The device to which this power outlet belongs.
 
-### 模块
+### Module
 
-已安装在分配设备内的模块，此电源插座属于该模块（可选）。
+The installed module within the assigned device to which this power outlet belongs (optional).
 
-### 名称
+### Name
 
-电源插座的名称。必须在父设备中是唯一的。
+The name of the power outlet. Must be unique to the parent device.
 
-### 标签
+### Label
 
-用于标识电源插座的替代物理标签。
+An alternative physical label identifying the power outlet.
 
-### 类型
+### Type
 
-电源插座的类型。
+The type of power outlet.
 
-### 电源端口
+### Power Port
 
-当建模从上游供应中重新分配电力的设备（例如电源分配单元PDU）时，应将每个电源插座映射到为其提供电力的设备上的相应[电源端口](./powerport.md)。例如，一个具有24个电源插座的PDU可能有两个电源端口，每个端口将电力分配给其12个插座。
+When modeling a device which redistributes power from an upstream supply, such as a power distribution unit (PDU), each power outlet should be mapped to the respective [power port](./powerport.md) on the device which supplies power. For example, a 24-outlet PDU may two power ports, each distributing power to 12 of its outlets.
 
-### 馈线相位
+### Feed Leg
 
-此字段用于指示插座绑定到三相电源电路的哪个相位。（对于单相应用程序，应将其留空。）
+This field is used to indicate to which leg of three-phase power circuit the outlet is bound. (This should be left blank for single-phase applications.)
 
-### 标记为已连接
+### Mark Connected
 
-如果选择，将视为已连接此组件。
+If selected, this component will be treated as if a cable has been connected.

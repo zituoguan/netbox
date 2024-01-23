@@ -1,3 +1,3 @@
-# 后置端口模板
+# Rear Port Templates
 
-用于在父设备类型的所有实例化上创建的后向通行端口的模板。有关详细信息，请参阅[后置端口](./rearport.md)文档。
+A template for a rear-facing pass-through port that will be created on all instantiations of the parent device type. See the [rear port](./rearport.md) documentation for more detail.

@@ -1,17 +1,17 @@
-# 提供商账户
+# Provider Accounts
 
-此模型可用于表示与提供商相关的个别账户。
+This model can be used to represent individual accounts associated with a provider.
 
-## 字段
+## Fields
 
-### 提供商
+### Provider
 
-账户所属的[提供商](./provider.md)。
+The [provider](./provider.md) the account belongs to.
 
-### 名称
+### Name
 
-对提供商来说是独一无二的、人类友好的名称。
+A human-friendly name, unique to the provider.
 
-### 账号
+### Account Number
 
-与您的组织所绑定的此提供商的行政账户标识符。
+The administrative account identifier tied to this provider for your organization.

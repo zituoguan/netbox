@@ -1,17 +1,17 @@
-# 联系人组
+# Contact Groups
 
-[联系人](./contact.md)可以组织成任意的组。这些组可以递归嵌套以方便管理。组内的每个联系人必须具有唯一的名称，但其他属性可以重复使用。
+[Contacts](./contact.md) can be organized into arbitrary groups. These groups can be recursively nested for convenience. Each contact within a group must have a unique name, but other attributes can be repeated.
 
-## 字段
+## Fields
 
-### 上级
+### Parent
 
-上级联系人组（如果有）。
+The parent contact group (if any).
 
-### 名称
+### Name
 
-一个唯一的用户友好名称。
+A unique human-friendly name.
 
 ### Slug
 
-一个唯一的URL友好标识符。（可以用于过滤）
+A unique URL-friendly identifier. (This value can be used for filtering.)

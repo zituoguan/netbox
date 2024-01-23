@@ -1,31 +1,31 @@
-# 条件
+# Conditions
 
-条件是NetBox用于评估一组数据是否符合规定条件的机制。它允许作者通过在一系列逻辑AND和OR语句的层次结构中声明任意数量的属性-值-操作元组来传达简单的逻辑。
+Conditions are NetBox's mechanism for evaluating whether a set data meets a prescribed set of conditions. It allows the author to convey simple logic by declaring an arbitrary number of attribute-value-operation tuples nested within a hierarchy of logical AND and OR statements.
 
-## 条件
+## Conditions
 
-条件表示为一个JSON对象，具有以下键：
+A condition is expressed as a JSON object with the following keys:
 
-| 键名  | 必需   | 默认值  | 描述             |
-|--------|--------|---------|-------------------|
-| attr   | 是     | -       | 正在评估的数据内的键的名称 |
-| value  | 是     | -       | 将与给定数据进行比较的参考值     |
-| op     | 否     | `eq`    | 要执行的逻辑操作             |
-| negate | 否     | False   | 是否反转条件的评估结果             |
+| Key name | Required | Default | Description |
+|----------|----------|---------|-------------|
+| attr     | Yes      | -       | Name of the key within the data being evaluated |
+| value    | Yes      | -       | The reference value to which the given data will be compared |
+| op       | No       | `eq`    | The logical operation to be performed |
+| negate   | No       | False   | Negate (invert) the result of the condition's evaluation |
 
-### 可用的操作
+### Available Operations
 
-* `eq`：等于
-* `gt`：大于
-* `gte`：大于或等于
-* `lt`：小于
-* `lte`：小于或等于
-* `in`：存在于值列表中
-* `contains`：包含指定的值
+* `eq`: Equals
+* `gt`: Greater than
+* `gte`: Greater than or equal to
+* `lt`: Less than
+* `lte`: Less than or equal to
+* `in`: Is present within a list of values
+* `contains`: Contains the specified value
 
-### 访问嵌套键
+### Accessing Nested Keys
 
-要访问嵌套的键，请使用点来表示到所需属性的路径。例如，假设以下数据：
+To access nested keys, use dots to denote the path to the desired attribute. For example, assume the following data:
 
 ```json
 {
@@ -37,7 +37,7 @@
 }
 ```
 
-以下条件将评估为true：
+The following condition will evaluate as true:
 
 ```json
 {
@@ -46,9 +46,9 @@
 }
 ```
 
-### 示例
+### Examples
 
-`name` 等于 "foo"：
+`name` equals "foo":
 
 ```json
 {
@@ -57,7 +57,7 @@
 }
 ```
 
-`name` 不等于 "foo"
+`name` does not equal "foo"
 
 ```json
 {
@@ -67,7 +67,7 @@
 }
 ```
 
-`asn` 大于 65000：
+`asn` is greater than 65000:
 
 ```json
 {
@@ -77,7 +77,7 @@
 }
 ```
 
-`status` 不是 "planned" 或 "staging"：
+`status` is not "planned" or "staging":
 
 ```json
 {
@@ -88,16 +88,16 @@
 }
 ```
 
-!!! 注意 "评估静态选择字段"
-    在评估静态选择字段时要特别注意，例如上面的 `status` 字段。这些字段通常呈现为一个字典，指定了字段的原始值 (`value`) 和人类友好的标签 (`label`)。请确保指定您要匹配的是这两者中的哪一个。
+!!! note "Evaluating static choice fields"
+    Pay close attention when evaluating static choice fields, such as the `status` field above. These fields typically render as a dictionary specifying both the field's raw value (`value`) and its human-friendly label (`label`). be sure to specify on which of these you want to match.
 
-## 条件集
+## Condition Sets
 
-多个条件可以组合成嵌套的集合，使用AND或OR逻辑。这是通过声明一个具有单个键 (`and` 或 `or`) 的JSON对象来完成的，该键包含一系列条件对象和/或子条件集。
+Multiple conditions can be combined into nested sets using AND or OR logic. This is done by declaring a JSON object with a single key (`and` or `or`) containing a list of condition objects and/or child condition sets.
 
-### 示例
+### Examples
 
-`status` 是 "active" 并且 `primary_ip4` 已定义，_或者_ 应用了 "exempt" 标签。
+`status` is "active" and `primary_ip4` is defined _or_ the "exempt" tag is applied.
 
 ```json
 {

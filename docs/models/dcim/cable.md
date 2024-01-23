@@ -1,42 +1,42 @@
-# 电缆
+# Cables
 
-NetBox中的所有设备组件连接都是使用电缆表示的。电缆代表两组端点（A和B）之间的直接物理连接，例如控制台端口与配线架端口，或者两个网络接口之间的连接。电缆可以连接到以下对象：
+All connections between device components in NetBox are represented using cables. A cable represents a direct physical connection between two sets of endpoints (A and B), such as a console port and a patch panel port, or between two network interfaces. Cables may be connected to the following objects:
 
-* 网络接口
-* 控制台端口
-* 控制台服务器端口
-* 通道端口（前端和后端）
-* 电路终端
-* 电源端口
-* 电源插座
-* 电源馈线
+* Network interfaces
+* Console ports
+* Console server ports
+* Pass-through ports (front and rear)
+* Circuit terminations
+* Power ports
+* Power outlets
+* Power feeds
 
-## 字段
+## Fields
 
-### 状态
+### Status
 
-电缆的运行状态。选项包括：
+The cable's operational status. Choices include:
 
-* 激活（默认）
-* 计划中
-* 退役中
+* Active (default)
+* Planned
+* Decommissioning
 
-### 类型
+### Type
 
-电缆的物理介质或分类。
+The cable's physical medium or classification.
 
-### 标签
+### Label
 
-用于识别电缆的任意标签。
+An arbitrary label used to identify the cable.
 
-### 颜色
+### Color
 
-电缆的颜色。
+The color of the cable.
 
-### 长度
+### Length
 
-电缆的数值长度，包括单位标识（例如100米或25英尺）。
+The numeric length of the cable, including a unit designation (e.g. 100 meters or 25 feet).
 
-## 追踪电缆
+## Tracing Cables
 
-可以通过点击“追踪”按钮从任何端点追踪电缆。（REST API端点也提供这项功能。）NetBox将从这个终端沿着连接的电缆路径跟踪到远端终端。如果电缆连接到一个通道端口，并且对等端口连接了另一条电缆，NetBox将继续跟踪电缆路径，直到遇到非通道或未连接的终端点。整个路径将显示给用户。
+A cable may be traced from any of its endpoints by clicking the "trace" button. (A REST API endpoint also provides this functionality.) NetBox will follow the path of connected cables from this termination across the directly connected cable to the far-end termination. If the cable connects to a pass-through port, and the peer port has another cable connected, NetBox will continue following the cable path until it encounters a non-pass-through or unconnected termination point. The entire path will be displayed to the user.

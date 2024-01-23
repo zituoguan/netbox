@@ -1,6 +1,6 @@
-# 搜索
+# Search
 
-插件可以定义和注册自己的模型来扩展NetBox的核心搜索功能。通常，插件将包含一个名为`search.py`的文件，其中包含其模型的所有搜索索引（请参阅下面的示例）。
+Plugins can define and register their own models to extend NetBox's core search functionality. Typically, a plugin will include a file named `search.py`, which holds all search indexes for its models (see the example below).
 
 ```python
 # search.py
@@ -17,15 +17,15 @@ class MyModelIndex(SearchIndex):
     display_attrs = ('site', 'device', 'status', 'description')
 ```
 
-`display_attrs` 中列出的字段不会被缓存用于搜索，但将在全局搜索结果中与对象一起显示。这有助于向用户传达有关对象的其他信息。
+Fields listed in `display_attrs` will not be cached for search, but will be displayed alongside the object when it appears in global search results. This is helpful for conveying to the user additional information about an object.
 
-要将一个或多个索引注册到NetBox，请在此文件末尾定义一个名为`indexes`的列表：
+To register one or more indexes with NetBox, define a list named `indexes` at the end of this file:
 
 ```python
 indexes = [MyModelIndex]
 ```
 
-!!! 提示
-    可以通过在PluginConfig实例中设置`search_indexes`来修改搜索索引列表的路径。
+!!! tip
+    The path to the list of search indexes can be modified by setting `search_indexes` in the PluginConfig instance.
 
 ::: netbox.search.SearchIndex

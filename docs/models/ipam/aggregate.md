@@ -1,6 +1,6 @@
-# 聚合
+# Aggregates
 
-IP寻址本质上是分层的。例如，IPv4层次结构的前几个级别如下：
+IP addressing is by nature hierarchical. The first few levels of the IPv4 hierarchy, for example, look like this:
 
 * 0.0.0.0/0
     * 0.0.0.0/1
@@ -10,33 +10,33 @@ IP寻址本质上是分层的。例如，IPv4层次结构的前几个级别如�
         * 128.0.0.0/2
         * 192.0.0.0/2
 
-该层次结构包括33个IP寻址层次，从/0一直到单独的/32地址（IPv6的/128远远不止）。当然，大多数组织只关心总IP空间的相对较小的部分，因此不需要跟踪这些最高层次。
+This hierarchy comprises 33 tiers of addressing, from /0 all the way down to individual /32 address (and much, much further to /128 for IPv6). Of course, most organizations are concerned with only relatively small portions of the total IP space, so tracking the uppermost of these tiers isn't necessary.
 
-NetBox允许我们通过定义_聚合_来指定我们感兴趣的IP空间部分。通常，聚合将对应于由区域权威机构授予的全球可路由的公共IP空间分配，或私有（内部可路由）的指定。常见的私有指定包括：
+NetBox allows us to specify the portions of IP space that are interesting to us by defining _aggregates_. Typically, an aggregate will correspond to either an allocation of public (globally routable) IP space granted by a regional authority, or a private (internally-routable) designation. Common private designations include:
 
 * 10.0.0.0/8 (RFC 1918)
 * 100.64.0.0/10 (RFC 6598)
 * 172.16.0.0/12 (RFC 1918)
 * 192.168.0.0/16 (RFC 1918)
-* fd00::/8内的一个或多个/48（IPv6唯一本地寻址）
+* One or more /48s within fd00::/8 (IPv6 unique local addressing)
 
-每个聚合分配给一个[RIR](./rir.md)。对于“公共”聚合，这将是实际授权您的组织在公共互联网上使用指定的IP空间的现实世界权威机构。对于“私人”聚合，这将是一个法定机构，如RFC 1918。每个聚合还可以注明分配或部署地址空间的日期（如果适用）。
+Each aggregate is assigned to a [RIR](./rir.md). For "public" aggregates, this will be the real-world authority which has granted your organization permission to use the specified IP space on the public Internet. For "private" aggregates, this will be a statutory authority, such as RFC 1918. Each aggregate can also annotate that date on which it was allocated, where applicable.
 
-在NetBox中，前缀会自动排列在其父聚合下。通常，您只会为您的组织实际管理的前缀和IP地址创建聚合：无需为仅在Internet电路上使用的由提供商分配的空间定义聚合，例如。
+Prefixes are automatically arranged beneath their parent aggregates in NetBox. Typically, you'll want to create aggregates only for the prefixes and IP addresses that your organization actually manages: There is no need to define aggregates for provider-assigned space which is only used on Internet circuits, for example.
 
-!!! 注意
-    因为聚合代表全球IP空间的段，它们不能相互重叠：它们只能并排存在。例如，您不能同时定义10.0.0.0/8和10.16.0.0/16作为聚合，因为它们重叠。在这个示例中，10.16.0.0/16将被创建为一个容器前缀，并自动分组到10.0.0.0/8聚合下。请记住，聚合的目的是建立IP寻址层次结构的根。
+!!! note
+    Because aggregates represent segments of the global IP space, they cannot overlap with one another: They can only exist side-by-side. For instance, you cannot define both 10.0.0.0/8 and 10.16.0.0/16 as aggregates, because they overlap. 10.16.0.0/16 in this example would be created as a container prefix and automatically grouped under the 10.0.0.0/8 aggregate. Remember, the purpose of aggregates is to establish the root of your IP addressing hierarchy.
 
-## 字段
+## Fields
 
-### 前缀
+### Prefix
 
-此聚合代表的IPv4或IPv6网络。
+The IPv4 or IPv6 network this aggregate represents.
 
 ### RIR
 
-管理来自全球池的此地址空间分配的[区域互联网注册管理机构](./rir.md)或类似机构。
+The [Regional Internet Registry](./rir.md) or similar authority which governs allocations of this address space from the global pool.
 
-### 添加日期
+### Date Added
 
-分配或部署地址空间的日期。
+The date on which the address space was allocated or deployed.

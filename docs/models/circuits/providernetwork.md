@@ -1,17 +1,17 @@
-# 提供商网络
+# Provider Networks
 
-此模型可用于表示提供商网络的边界，其细节对NetBox用户来说未知或不重要。例如，它可能代表提供商的区域MPLS网络，多个电路为此提供连接性。
+This model can be used to represent the boundary of a provider network, the details of which are unknown or unimportant to the NetBox user. For example, it might represent a provider's regional MPLS network to which multiple circuits provide connectivity.
 
-## 字段
+## Fields
 
-### 提供商
+### Provider
 
-负责运营此网络的[提供商](./provider.md)。
+The [provider](./provider.md) responsible for the operation of this network.
 
-### 名称
+### Name
 
-对提供商来说是独一无二的、人类友好的名称。
+A human-friendly name, unique to the provider.
 
-### 服务ID
+### Service ID
 
-用作替代参考的任意标识符，用于描述所提供的连接性或服务类型。
+An arbitrary identifier used as an alternate reference for the type of connectivity or service being delivered.

@@ -1,42 +1,42 @@
-# 保存的过滤器
+# Saved Filters
 
-在NetBox中对对象列表进行过滤时，用户可以保存应用的过滤器以供将来使用。这对于涉及多个离散过滤器的复杂过滤策略非常方便。例如，您可能希望找到特定区域内所有计划中的设备，并且这些设备具有特定的平台。一旦将所需的过滤器应用于对象列表，只需创建一个具有名称和可选描述的保存的过滤器。然后，这个过滤器可以直接用于未来的查询，通过UI和REST API都可以使用。
+When filtering lists of objects in NetBox, users can save applied filters for future use. This is handy for complex filter strategies involving multiple discrete filters. For example, you might want to find all planned devices within a region that have a specific platform. Once you've applied the desired filters to the object list, simply create a saved filter with name and optional description. This filter can then be applied directly for future queries via both the UI and REST API.
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-过滤器的人类友好名称。
+The filter's human-friendly name.
 
 ### Slug
 
-在应用过程中将引用此过滤器的唯一标识符（例如`?filter=my-slug`）。
+The unique identifier by which this filter will be referenced during application (e.g. `?filter=my-slug`).
 
-### 用户
+### User
 
-拥有此过滤器的用户。通过UI创建保存的过滤器时，当前用户将自动分配，不能更改。
+The user to which this filter belongs. The current user will be assigned automatically when creating saved filters via the UI, and cannot be changed.
 
-### 权重
+### Weight
 
-用于覆盖按名称对过滤器按字母顺序排序的数值权重。具有较低权重的保存过滤器将在具有较高权重的过滤器之前列出。
+A numeric weight used to override alphabetic ordering of filters by name. Saved filters with a lower weight will be listed before those with a higher weight.
 
-### 启用
+### Enabled
 
-确定此过滤器是否可用。禁用的过滤器不会出现在UI中的选项中，但它们将包含在API结果中。
+Determines whether this filter can be used. Disabled filters will not appear as options in the UI, however they will be included in API results.
 
-### 共享
+### Shared
 
-确定此过滤器是否供所有用户或仅供其所有者使用。请注意，禁用此字段**不会**隐藏过滤器，使其对其他用户不可见；它只是在UI对象列表视图的可用过滤器列表中排除。
+Determines whether this filter is intended for use by all users or only its owner. Note that disabling this field does **not** hide the filter from other users; it is merely excluded from the list of available filters in UI object list views.
 
-### 参数
+### Parameters
 
-在过滤器处于活动状态时要应用的查询参数。必须将它们指定为JSON数据。例如，URL查询字符串
+The query parameters to apply when the filter is active. These must be specified as JSON data. For example, the URL query string
 
 ```
 ?status=active&region_id=51&tag=alpha&tag=bravo
 ```
 
-在JSON中表示为
+is represented in JSON as
 
 ```json
 {

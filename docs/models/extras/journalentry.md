@@ -1,16 +1,16 @@
-# 日志条目
+# Journal Entries
 
-NetBox中的大多数对象都支持日志记录。这是用户记录指示对NetBox中的资源进行的更改或工作的时间记录的能力。例如，数据中心技术员在更换故障电源供应时可能会为设备添加一条日志条目。
+Most objects in NetBox support journaling. This is the ability of users to record chronological notes indicating changes to or work performed on resources in NetBox. For example, a data center technician might add a journal entry for a device when swapping out a failed power supply.
 
-## 字段
+## Fields
 
-### 种类
+### Kind
 
-日志条目类型的一般分类（信息，成功，警告或危险）。
+A general classification for the entry type (info, success, warning, or danger.)
 
 !!! tip
-    可以通过在[`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices)配置参数下设置`JournalEntry.kind`来定义其他种类。
+    Additional kinds may be defined by setting `JournalEntry.kind` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
 
-### 评论
+### Comments
 
-日志条目的正文。支持[Markdown](../../reference/markdown.md)渲染。
+The body of the journal entry. [Markdown](../../reference/markdown.md) rendering is supported.

@@ -1,18 +1,18 @@
-# 电路类型
+# Circuit Types
 
-[电路](./circuit.md)按功能类型分类。这些类型是完全可自定义的，通常用于传达通过电路提供的服务类型。例如，您可以为以下内容定义电路类型：
+[Circuits](./circuit.md) are classified by functional type. These types are completely customizable, and are typically used to convey the type of service being delivered over a circuit. For example, you might define circuit types for:
 
-* 互联网传输
-* 离线连接
-* 对等互联
-* 私有回程
+* Internet transit
+* Out-of-band connectivity
+* Peering
+* Private backhaul
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-一个独特的、人类友好的名称。
+A unique human-friendly name.
 
 ### Slug
 
-一个独特的、URL友好的标识符。（此值可用于过滤。）
+A unique URL-friendly identifier. (This value can be used for filtering.)

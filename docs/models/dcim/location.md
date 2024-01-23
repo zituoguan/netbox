@@ -1,28 +1,28 @@
-# 位置
+# Locations
 
-[机架](./rack.md)和[设备](./device.md)可以根据[站点](./site.md)内的位置进行分组。位置可以表示楼层、房间、笼子或类似的组织单位。位置可以嵌套以形成层次结构。例如，您可以在站点内有楼层，楼层内有房间。
+[Racks](./rack.md) and [devices](./device.md) can be grouped by location within a [site](./site.md). A location may represent a floor, room, cage, or similar organizational unit. Locations can be nested to form a hierarchy. For example, you may have floors within a site, and rooms within a floor.
 
-## 字段
+## Fields
 
-### 站点
+### Site
 
-此位置所属的父[站点](./site.md)。
+The parent [site](./site.md) to which this location belongs.
 
-### 父级
+### Parent
 
-此位置是哪个位置的子级（可选）。
+The parent location of which this location is a child (optional).
 
-### 名称
+### Name
 
-唯一的人类友好名称。
+A unique human-friendly name.
 
-### 别名
+### Slug
 
-唯一的 URL 友好标识符。（此值可用于筛选。）
+A unique URL-friendly identifier. (This value can be used for filtering.)
 
-### 状态
+### Status
 
-位置的运营状态。
+The location's operational status.
 
 !!! tip
-    通过设置 `Location.status` 在 [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) 配置参数下，可以定义其他状态。
+    Additional statuses may be defined by setting `Location.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.

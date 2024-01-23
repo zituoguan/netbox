@@ -1,28 +1,28 @@
-# 集群
+# Clusters
 
-集群是物理资源的逻辑分组，用于其中运行[虚拟机](./virtualmachine.md)。物理[设备](../dcim/device.md)可以与集群关联为主机。这允许用户跟踪特定虚拟机可能驻留在哪台主机上。
+A cluster is a logical grouping of physical resources within which [virtual machines](./virtualmachine.md) run. Physical [devices](../dcim/device.md) may be associated with clusters as hosts. This allows users to track on which host(s) a particular virtual machine may reside.
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-集群的人类友好名称。必须在分配的组和站点内唯一。
+A human-friendly name for the cluster. Must be unique within the assigned group and site.
 
-### 类型
+### Type
 
-分配给该集群的[集群类型](./clustertype.md)。
+The [cluster type](./clustertype.md) assigned for this cluster.
 
-### 组
+### Group
 
-该集群所属的[集群组](./clustergroup.md)。
+The [cluster group](./clustergroup.md) to which this cluster belongs.
 
-### 状态
+### Status
 
-集群的运行状态。
+The cluster's operational status.
 
 !!! tip
-    可以通过设置 [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) 配置参数下的 `Cluster.status` 来定义附加的状态。
+    Additional statuses may be defined by setting `Cluster.status` under the [`FIELD_CHOICES`](../../configuration/data-validation.md#field_choices) configuration parameter.
 
-### 站点
+### Site
 
-集群关联的[站点](../dcim/site.md)。
+The [site](../dcim/site.md) with which the cluster is associated.

@@ -1,19 +1,19 @@
-# FHRP组分配
+# FHRP Group Assignments
 
-成员设备和VM接口可以分配到[FHRP组](./fhrpgroup.md)中，以指示它们参与维护共同的虚拟IP地址（VIP）。例如，三个接口，每个属于不同的路由器，可以分配给同一个FHRP组，以提供共享的VIP。这些分配通常会接收不同的优先级。
+Member device and VM interfaces can be assigned to [FHRP groups](./fhrpgroup.md) to indicate their participation in maintaining a common virtual IP address (VIP). For instance, three interfaces, each belonging to a different router, may each be assigned to the same FHRP group to serve a shared VIP. Each of these assignments would typically receive a different priority.
 
-接口是在接口详细视图下分配到FHRP组的。
+Interfaces are assigned to FHRP groups under the interface detail view.
 
-## 字段
+## Fields
 
-### 组
+### Group
 
-要分配的[FHRP组](./fhrpgroup.md)。
+The [FHRP group](./fhrpgroup.md) being assigned.
 
-### 接口
+### Interface
 
-要分配组的设备或VM接口。
+The device or VM interface to which the group is being assigned.
 
-### 优先级
+### Priority
 
-一个介于0和255之间的值，表示接口被选举为组中的主/主节点的优先级。
+A value between 0 and 255 indicating the interface's priority for being elected as the master/primary node in the group.

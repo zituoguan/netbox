@@ -1,58 +1,58 @@
-## 接口
+## Interfaces
 
-[虚拟机](./virtualmachine.md)接口的行为与设备[接口](../dcim/interface.md)类似：它们可以分配给VRF，可以具有IP地址、VLAN和服务，等等。但是，由于它们的虚拟性质，它们缺少与物理属性相关的属性。例如，虚拟机接口没有物理类型，并且无法连接电缆。
+[Virtual machine](./virtualmachine.md) interfaces behave similarly to device [interfaces](../dcim/interface.md): They can be assigned to VRFs, may have IP addresses, VLANs, and services attached to them, and so on. However, given their virtual nature, they lack properties pertaining to physical attributes. For example, VM interfaces do not have a physical type and cannot have cables attached to them.
 
-## 字段
+## Fields
 
-### 虚拟机
+### Virtual Machine
 
-分配给此接口的[虚拟机](./virtualmachine.md)。
+The [virtual machine](./virtualmachine.md) to which this interface is assigned.
 
-### 名称
+### Name
 
-接口的名称。必须对分配给的虚拟机唯一。
+The interface's name. Must be unique to the assigned VM.
 
-### 父接口
+### Parent Interface
 
-标识子接口的父接口（例如，用于使用封装）。
+Identifies the parent interface of a subinterface (e.g. used to employ encapsulation).
 
 !!! note
-    一个分配了一个或多个子接口的接口不能被删除，直到所有的子接口都被删除或重新分配。
+    An interface with one or more child interfaces assigned cannot be deleted until all its child interfaces have been deleted or reassigned.
 
-### 桥接接口
+### Bridged Interface
 
-与此接口桥接的同一虚拟机上的接口。
+An interface on the same VM with which this interface is bridged.
 
-### 启用
+### Enabled
 
-如果未选中，将将此接口视为禁用/未运行。
+If not selected, this interface will be treated as disabled/inoperative.
 
-### MAC地址
+### MAC Address
 
-48位MAC地址（用于以太网接口）。
+The 48-bit MAC address (for Ethernet interfaces).
 
 ### MTU
 
-接口的配置最大传输单元（MTU）。
+The interface's configured maximum transmissible unit (MTU).
 
-### 802.1Q模式
+### 802.1Q Mode
 
-对于交换以太网接口，这标识了生效的802.1Q封装策略。选项包括：
+For switched Ethernet interfaces, this identifies the 802.1Q encapsulation strategy in effect. Options include:
 
-* **访问：** 所有流量都分配给单个VLAN，没有标记。
-* **已标记：** 允许一个未标记的“本地”VLAN，以及任意数量的已标记的VLAN。
-* **已标记（所有）：** 暗示所有VLAN都由接口承载。可以指定一个未标记的VLAN。
+* **Access:** All traffic is assigned to a single VLAN, with no tagging.
+* **Tagged:** One untagged "native" VLAN is allowed, as well as any number of tagged VLANs.
+* **Tagged (all):** Implies that all VLANs are carried by the interface. One untagged VLAN may be designated.
 
-对于不使用802.1Q封装的路由接口，必须将此字段留空。
+This field must be left blank for routed interfaces which do employ 802.1Q encapsulation.
 
-### 未标记VLAN
+### Untagged VLAN
 
-接口的“本地”（未标记）VLAN。仅在选择上述802.1Q模式之一时有效。
+The "native" (untagged) VLAN for the interface. Valid only when one of the above 802.1Q mode is selected.
 
-### 标记的VLAN
+### Tagged VLANs
 
-已配置为由此接口承载的已标记的VLAN。仅适用于上述“标记”的802.1Q模式。 
+The tagged VLANs which are configured to be carried by this interface. Valid only for the "tagged" 802.1Q mode above.
 
 ### VRF
 
-分配给此接口的[虚拟路由和转发](../ipam/vrf.md)实例。
+The [virtual routing and forwarding](../ipam/vrf.md) instance to which this interface is assigned.

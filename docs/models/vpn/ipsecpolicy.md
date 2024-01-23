@@ -1,17 +1,17 @@
-# IPSec策略
+# IPSec Policy
 
-[IPSec](https://en.wikipedia.org/wiki/IPsec)策略定义了在形成IPSec隧道时要使用的一组[提议](./ikeproposal.md)。还可以选择性地定义完美前向保密性（PFS）组。这些策略被[IPSec配置文件](./ipsecprofile.md)引用。
+An [IPSec](https://en.wikipedia.org/wiki/IPsec) policy defines a set of [proposals](./ikeproposal.md) to be used in the formation of IPSec tunnels. A perfect forward secrecy (PFS) group may optionally also be defined. These policies are referenced by [IPSec profiles](./ipsecprofile.md).
 
-## 字段
+## Fields
 
-### 名称
+### Name
 
-策略的唯一用户分配的名称。
+The unique user-assigned name for the policy.
 
-### 提议
+### Proposals
 
-策略支持使用的一个或多个[IPSec提议](./ipsecproposal.md)。
+One or more [IPSec proposals](./ipsecproposal.md) supported for use by this policy.
 
-### PFS组
+### PFS Group
 
-策略支持的[完美前向保密性（PFS）](https://en.wikipedia.org/wiki/Forward_secrecy)组（可选）。
+The [perfect forward secrecy (PFS)](https://en.wikipedia.org/wiki/Forward_secrecy) group supported by this policy (optional).

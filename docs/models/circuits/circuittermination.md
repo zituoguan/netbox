@@ -1,46 +1,46 @@
-# 电路终端
+# Circuit Terminations
 
-每个电路最多可以有两个终端，分别标为A和Z。在任一终端，电路可以连接到站点、设备接口（通过电缆）或提供商网络。
+Each circuit may have up to two terminations, designated A and Z. At either termination, a circuit may connect to a site, device interface (via a cable), or to a provider network.
 
-遵循NetBox紧密模拟现实世界的理念，电路只能连接到物理接口。例如，电路不能终止于LAG接口，因为它们是虚拟的。在这种情况下，每个LAG成员接口都关联一个单独的物理电路，每个都需要被单独模拟。
+In adherence with NetBox's philosophy of closely modeling the real world, a circuit may be connected only to a physical interface. For example, circuits may not terminate to LAG interfaces, which are virtual in nature. In such cases, a separate physical circuit is associated with each LAG member interface and each needs to be modeled discretely.
 
-!!! 注意
-    NetBox中的电路代表一个物理链接，并且不能有超过两个端点。当模拟多点拓扑时，拓扑的每一段必须定义为一个独立的电路，其中一端终止在提供商的基础设施内。提供商网络模型非常适合表示这些网络。
+!!! note
+    A circuit in NetBox represents a physical link, and cannot have more than two endpoints. When modeling a multi-point topology, each leg of the topology must be defined as a discrete circuit, with one end terminating within the provider's infrastructure. The provider network model is ideal for representing these networks.
 
-## 字段
+## Fields
 
-### 电路
+### Circuit
 
-此终端所属的[电路](./circuit.md)。
+The [circuit](./circuit.md) to which this termination belongs.
 
-### 终端侧
+### Termination Side
 
-指定终端是构成电路的A端还是Z端。
+Designates the termination as forming either the A or Z end of the circuit.
 
-### 标记为已连接
+### Mark Connected
 
-如果选中，即使在NetBox中没有连接电缆，电路终端也会被视为“已连接”。
+If selected, the circuit termination will be considered "connected" even if no cable has been connected to it in NetBox.
 
-### 站点
+### Site
 
-与此电路终端关联的[站点](../dcim/site.md)。创建后，可以在电路终端和设备接口（或类似组件）之间连接电缆。
+The [site](../dcim/site.md) with which this circuit termination is associated. Once created, a cable can be connected between the circuit termination and a device interface (or similar component).
 
-### 提供商网络
+### Provider Network
 
-不连接到NetBox所模拟站点的电路可以终止于[提供商网络](./providernetwork.md)，代表由[提供商](./provider.md)运营的未知网络。
+Circuits which do not connect to a site modeled by NetBox can instead be terminated to a [provider network](./providernetwork.md) representing an unknown network operated by a [provider](./provider.md).
 
-### 端口速率
+### Port Speed
 
-终端接口的运行速度，以千比特每秒计。当实际终止的接口没有在NetBox中被模拟时，这对于记录电路的速度很有用。
+The operating speed of the terminated interface, in kilobits per second. This is useful for documenting the speed of a circuit when the actual interface to which it terminates is not being modeled in NetBox.
 
-### 上行速率
+### Upstream Speed
 
-终止接口的上行速度（以千比特每秒计），如果与下行速度不同（例如，常见的DOCSIS电缆调制解调器场景）。
+The upstream speed of the terminated interface (in kilobits per second), if different from the downstream speed (a common scenario with e.g. DOCSIS cable modems).
 
-### 交叉连接ID
+### Cross-connect ID
 
-在数据中心环境中，电路通常通过本地交叉连接交付。虽然在NetBox中模拟交叉连接本身可能不合适，但记录其ID以供参考是个好主意。
+In a data center environment, circuits are often delivered via a local cross-connect. While it may not be appropriate to model the cross-connect itself in NetBox, it's a good idea to record its ID for reference where applicable.
 
-### 配线架和端口
+### Patch Panel & Port(s)
 
-类似于交叉连接ID，这个字段可用于跟踪可能超出NetBox所模拟范围的物理连接细节。
+Similar to the cross-connect ID, this field can be used to track physical connection details which may be outside the scope of what is being modeled in NetBox.

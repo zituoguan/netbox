@@ -1,54 +1,54 @@
-# 设备类型
+# Device Types
 
-设备类型代表现实世界中存在的特定品牌和型号的硬件。设备类型定义了设备的物理属性（机架高度和深度）以及其各个组件（控制台、电源、网络接口等）。
+A device type represents a particular make and model of hardware that exists in the real world. Device types define the physical attributes of a device (rack height and depth) and its individual components (console, power, network interfaces, and so on).
 
-设备类型被实例化为安装在站点和/或设备机架中的设备。例如，您可以定义一个设备类型，代表具有48个以太网接口的Juniper EX4300-48T网络交换机。然后，您可以创建多个该类型的实例，命名为"switch1"、"switch2"等。每个设备将在创建时自动继承其设备类型的组件（如接口）。但是，对设备类型所做的更改**不会**自动应用于该设备类型的实例。
+Device types are instantiated as devices installed within sites and/or equipment racks. For example, you might define a device type to represent a Juniper EX4300-48T network switch with 48 Ethernet interfaces. You can then create multiple _instances_ of this type named "switch1," "switch2," and so on. Each device will automatically inherit the components (such as interfaces) of its device type at the time of creation. However, changes made to a device type will **not** apply to instances of that device type retroactively.
 
-!!! 注意
-    这种父子关系**不适用于**建模基于机箱的设备，其中子成员共享共同的控制平面。相反，线卡和类似的非自治硬件应该被建模为设备内的模块或库存项目。
+!!! note
+    This parent/child relationship is **not** suitable for modeling chassis-based devices, wherein child members share a common control plane. Instead, line cards and similarly non-autonomous hardware should be modeled as modules or inventory items within a device.
 
-## 字段
+## Fields
 
-### 制造商
+### Manufacturer
 
-生产此类型设备的[制造商](./manufacturer.md)。
+The [manufacturer](./manufacturer.md) which produces this type of device.
 
-### 型号
+### Model
 
-制造商为此设备类型分配的型号编号。必须对制造商唯一。
+The model number assigned to this device type by its manufacturer. Must be unique to the manufacturer.
 
 ### Slug
 
-型号标识符的唯一的URL友好表示形式。（此值可用于过滤。）
+A unique URL-friendly representation of the model identifier. (This value can be used for filtering.)
 
-### 默认平台
+### Default Platform
 
-如果定义了，从此类型实例化的设备将自动继承所选平台。（此分配可以在创建设备后更改。）
+If defined, devices instantiated from this type will automatically inherit the selected platform. (This assignment can be changed after the device has been created.)
 
-### 零件编号
+### Part Number
 
-用于唯一标识设备类型的替代零件编号。
+An alternative part number to uniquely identify the device type.
 
-### 高度
+### Height
 
-设备在机架单元中的物理高度。（对于不适用于机架安装的设备类型，此值应为`0`。）
+The height of the physical device in rack units. (For device types that are not rack-mountable, this should be `0`.)
 
-### 是否全深度
+### Is Full Depth
 
-如果选中，将认为此设备类型占据机架的前后两面，而不管分配到哪一面。
+If selected, this device type is considered to occupy both the front and rear faces of a rack, regardless of which face it is assigned.
 
-### 父/子状态
+### Parent/Child Status
 
-指示这是父类型（能够容纳子设备）、子类型（必须安装在设备插槽内）或两者都不是。
+Indicates whether this is a parent type (capable of housing child devices), a child type (which must be installed within a device bay), or neither.
 
-### 风流
+### Airflow
 
-设备机箱内的风流默认流动方向。可以为实例化的设备配置不同（例如，因为有不同的风扇模块）。
+The default direction in which airflow circulates within the device chassis. This may be configured differently for instantiated devices (e.g. because of different fan modules).
 
-### 重量
+### Weight
 
-设备的数字重量，包括单位（例如，10千克或20磅）。
+The numeric weight of the device, including a unit designation (e.g. 10 kilograms or 20 pounds).
 
-### 前面和后面的图像
+### Front & Rear Images
 
-用户可以上传设备正面和背面的插图。如果存在，这些图像将用于在[机架](./rack.md)高程图中呈现设备。
+Users can upload illustrations of the device's front and rear panels. If present, these will be used to render the device in [rack](./rack.md) elevation diagrams.

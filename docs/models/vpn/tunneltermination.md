@@ -1,30 +1,30 @@
-# 隧道终止
+# Tunnel Terminations
 
-隧道终止连接设备或虚拟机接口到[隧道](./tunnel.md)。必须在添加任何终止之前创建隧道。
+A tunnel termination connects a device or virtual machine interface to a [tunnel](./tunnel.md). The tunnel must be created before any terminations may be added.
 
-## 字段
+## Fields
 
-### 隧道
+### Tunnel
 
-这个终止所连接的[隧道](./tunnel.md)。
+The [tunnel](./tunnel.md) to which this termination is made.
 
-### 角色
+### Role
 
-附加接口的功能角色。以下选项可用：
+The functional role of the attached interface. The following options are available:
 
-| 名称 | 描述 |
-|------|-------|
-| Peer | 点对点或网状拓扑中的端点 |
-| Hub  | 星型拓扑中的中心点   |
-| Spoke | 星型拓扑中的边缘点 |
+| Name  | Description                                      |
+|-------|--------------------------------------------------|
+| Peer  | An endpoint in a point-to-point or mesh topology |
+| Hub   | A central point in a hub-and-spoke topology      |
+| Spoke | An edge point in a hub-and-spoke topology        |
 
-!!! 注意
-    一个隧道可以附加多个中心终止。
+!!! note
+    Multiple hub terminations may be attached to a tunnel.
 
-### 终止
+### Termination
 
-终止到隧道的设备或虚拟机接口。
+The device or virtual machine interface terminated to the tunnel.
 
-### 外部IP
+### Outside IP
 
-与此终止相关联的公共或底层IP地址。这是同行方将隧道流量路由到的IP地址。
+The public or underlay IP address with which this termination is associated. This is the IP to which peers will route tunneled traffic.
