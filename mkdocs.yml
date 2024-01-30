@@ -286,6 +286,7 @@ nav:
         - 用户首选项: 'development/user-preferences.md'
         - Web 界面: 'development/web-ui.md'
         - 国际化: 'development/internationalization.md'
+        - 翻译: 'development/translations.md'
         - 发布检查列表: 'development/release-checklist.md'
         - git Cheat Sheet: 'development/git-cheat-sheet.md'
     - 发布说明:

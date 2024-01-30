@@ -4,7 +4,7 @@
 
 NetBox 是建模和记录现代网络的领先解决方案。通过将传统的 IP 地址管理（IPAM）和数据中心基础设施管理（DCIM）学科与强大的 API 和扩展相结合，NetBox 提供了理想的“真相源”，支持网络自动化。继续阅读，了解为什么全球数千家组织将 NetBox 置于其基础设施的核心。
 
-[![NetBox UI](./media/screenshots/netbox-ui.png)](./media/screenshots/netbox-ui.png)
+[![NetBox UI](./media/screenshots/home-light.png)](./media/screenshots/home-light.png)
 
 ## :material-server-network: 专为网络而建
 

@@ -287,10 +287,10 @@ IPv4或IPv6地址，不带掩码。返回一个`netaddr.IPAddress`对象。
 
 ## 运行自定义脚本
 
-!!! 注意
-    要运行自定义脚本，用户必须通过`Extras > Script`、`Extras > ScriptModule`和`Core > ManagedFile`对象的权限分配。他们还必须分配`extras.run_script`权限。这可以通过在Script对象上分配用户（或组）权限，并在管理UI中指定`run`操作来实现，如下所示。
+!!! note
+    要运行自定义脚本，用户必须被分配`Extras > Script`、`Extras > Script Module`和`Core > Managed File`对象的权限。还必须分配`extras.run_script`权限。这可以通过在脚本对象上分配用户（或组）权限，并在"权限"中指定"运行"操作来实现，如下所示。
 
-    ![将“run”操作添加到权限](../media/admin_ui_run_permission.png)
+![将运行操作添加到权限](../media/run_permission.png)
 
 ### 通过Web UI
 

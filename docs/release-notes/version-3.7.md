@@ -1,130 +1,163 @@
-NetBox v3.7.0 是2023年12月29日发布的版本，它引入了一系列新功能、增强和修复了一些问题。以下是该版本的一些重要变化和功能：
+# NetBox v3.7
 
-### 主要变更
+## v3.7.1 (2024-01-17)
 
-- Webhook模型中已删除以下字段：`content_types`、`type_create`、`type_update`、`type_delete`、`type_job_start`、`type_job_end`、`enabled` 和 `conditions`。现在，Webhooks通过[事件规则](../features/event-rules.md)与事件相关联。在升级时，现有的Webhooks将自动为其创建新的事件规则。
-- 自定义字段模型上的 `ui_visibility` 字段已被替换为两个新字段：`ui_visible` 和 `ui_editable`。在升级过程中，这些新字段的值将自动从原始字段映射。
-- 用于查询模型特征的 `FeatureQuery` 类已被移除，它已被NetBox的ContentType（`core.models.ContentType`）代理模型上的新 `with_feature()` 管理方法替代。
-- 内部的 ConfigRevision 模型已从 `extras` 移动到 `core`。在升级过程中将保留配置历史记录。
-- [L2VPN](../models/vpn/l2vpn.md) 和 [L2VPNTermination](../models/vpn/l2vpntermination.md) 模型已从 `ipam` 应用程序移动到新的 `vpn` 应用程序。但请注意，相关的API端点也已经移动到 `/api/vpn/`。
-- `CustomFieldsMixin`、`SavedFiltersMixin` 和 `TagsMixin` 类已从 `extras.forms.mixins` 模块移动到 `netbox.forms.mixins`。
-- `netbox.models.features.WebhooksMixin` 类已重命名为 `EventRulesMixin`。
+### Bug Fixes
 
-### 新功能
+* [#13844](https://github.com/netbox-community/netbox/issues/13844) - 在前缀表单下过滤VLAN时使用`available_at_site`过滤器
+* [#14663](https://github.com/netbox-community/netbox/issues/14663) - 修复在将初始终止设置为VM接口时创建隧道
+* [#14706](https://github.com/netbox-community/netbox/issues/14706) - 放宽隧道终止到IP地址的一对一映射
+* [#14709](https://github.com/netbox-community/netbox/issues/14709) - 修复隧道终止类型选择名称中的拼写错误
+* [#14749](https://github.com/netbox-community/netbox/issues/14749) - 从DeviceBay上删除错误的翻译包装器`installed_device`
+* [#14778](https://github.com/netbox-community/netbox/issues/14778) - 自定义字段API序列化程序应接受所有可选字段的null值
+* [#14791](https://github.com/netbox-community/netbox/issues/14791) - 在父前缀中搜索时隐藏可用前缀
+* [#14793](https://github.com/netbox-community/netbox/issues/14793) - 添加丢失的Diffie-Hellman group 15
+* [#14816](https://github.com/netbox-community/netbox/issues/14816) - 确保默认联系人分配排序一致
+* [#14817](https://github.com/netbox-community/netbox/issues/14817) - 放宽大量导入时IKE和IPSec模型的必填字段
+* [#14827](https://github.com/netbox-community/netbox/issues/14827) - 确保响应事件时处理所有匹配的事件规则
 
-#### VPN隧道
+---
 
-- 引入了多个新模型，以启用[VPN隧道管理](../features/vpn-tunnels.md)。用户现在可以定义具有两个或多个终结点的隧道，以表示点对点或枢纽和辐射拓扑。每个终结点都与设备或虚拟机上的虚拟接口连接。此外，用户可以定义IKE和IPSec提案和策略，这些可以应用于隧道，以记录加密和身份验证策略。
+## v3.7.0 (2023-12-29)
 
-#### 事件规则
+### Breaking Changes
 
-- 此版本引入了[事件规则](../features/event-rules.md)，可以用于在NetBox中发生事件时自动发送Webhook或执行自定义脚本。例如，现在可以在创建具有特定状态或标签的新站点时自动运行自定义脚本。
+* Webhook模型中已删除以下字段：`content_types`、`type_create`、`type_update`、`type_delete`、`type_job_start`、`type_job_end`、`enabled`和`conditions`。现在，Webhook通过[event rules](../features/event-rules.md)与事件关联。在升级时，任何现有的Webhook将自动创建新的事件规则。
+* [自定义字段模型](../models/extras/customfield.md)上的`ui_visibility`字段已被替换为两个新字段：`ui_visible`和`ui_editable`。在升级时，这两个新字段的值将自动从原始字段映射过来。
+* 用于通过模型功能查询内容类型的内部ConfigRevision模型已被删除。它已由NetBox的ContentType (`core.models.ContentType`)代理模型上的新`with_feature()`管理器方法替换。
+* 内部的ConfigRevision模型已从`extras`移动到`core`。在升级过程中将保留配置历史记录。
+* [L2VPN](../models/vpn/l2vpn.md)和[L2VPNTermination](../models/vpn/l2vpntermination.md)模型已从`ipam`应用移动到新的`vpn`应用。所有对象数据将保留，但请注意，相关的API端点也已移动到`/api/vpn/`。
+* `CustomFieldsMixin`、`SavedFiltersMixin`和`TagsMixin`类已从`extras.forms.mixins`模块移动到`netbox.forms.mixins`。
+* `netbox.models.features.WebhooksMixin`类已重命名为`EventRulesMixin`。
 
-事件规则取代了之前内置在Webhook模型中的功能。在升级时，现有的Webhooks将自动为其创建新的事件规则。
+### New Features
 
-#### 虚拟机磁盘
+#### VPN Tunnels ([#9816](https://github.com/netbox-community/netbox/issues/9816))
 
-- 引入了新的 [VirtualDisk](../models/virtualization/virtualdisk.md) 模型，以启用对虚拟机的离散虚拟磁盘分配进行跟踪。VirtualMachine 模型上的 `size` 字段已保留，并将自动填充所有分配的虚拟磁盘的累积大小。选择不使用新模型的用户可以像之前版本一样独立使用VirtualMachine的 `size` 属性。
+引入了几个新模型，以支持[VPN隧道管理](../features/vpn-tunnels.md)。用户现在可以定义具有两个或多个终止的隧道，以表示点对点或集线式拓扑。每个终止都是对设备或虚拟机上的虚拟接口的终止。此外，用户可以定义IKE和IPSec提议和策略，这些可以应用于隧道以记录加密和身份验证策略。
 
-#### 对象保护规则
+#### Event Rules ([#14132](https://github.com/netbox-community/netbox/issues/14132))
 
-- 引入了新的 [`PROTECTION_RULES`](../configuration/data-validation.md#protection_rules) 配置参数。与[自定义验证规则](../customization/custom-validation.md)类似，保护规则用于防止删除不符合指定标准的对象。这使管理员可以防止例如删除具有“活动”状态的站点。
+此版本引入了[event规则](../features/event-rules.md)，可以用于在NetBox中发生的事件自动发送Webhook或执行自定义脚本。例如，现在可以在创建具有特定状态或标签的新站点时自动运行自定义脚本。
 
-#### 改进的自定义字段可见性控制
+事件规则替代并扩展了以前内置到Webhook模型中的功能。在升级时，任何现有的Webhook将自动创建新的事件规则。
 
-- 自定义字段模型上的 `ui_visibility` 字段已被两个新字段 `ui_visible` 和 `ui_editable` 替代，它们分别控制在查看和编辑对象时如何以及是否显示自定义字段。将这两个功能分离为独立字段允许更多控制每个自定义字段如何呈现给用户。在升级过程中，这些字段的值将从原始字段的值自动设置。
+#### Virtual Machine Disks ([#8356](https://github.com/netbox-community/netbox/issues/8356))
 
-#### 改进的全局搜索结果
+引入了新的[VirtualDisk](../models/virtualization/virtualdisk.md)模型，以支持将离散的虚拟磁盘分配给虚拟机。VirtualMachine模型上保留了`size`字段，并将自动填充所有分配的虚拟磁盘的累积大小。选择不使用新模型的用户可以像以前的版本一样独立使用VirtualMachine `size`属性。
 
-- 全局搜索结果现在包括关于每个对象的其他上下文信息，例如描述、状态和/或相关对象。要显示的属性集因对象类型而异，并通过在对象的 [SearchIndex类](../plugins/development/search.md#netbox.search.SearchIndex) 下设置 `display_attrs` 来定义。
+#### Object Protection Rules ([#10244](https://github.com/netbox-community/netbox/issues/10244))
 
-#### 插件的表格列注册
+引入了新的[`PROTECTION_RULES`](../configuration/data-validation.md#protection_rules)配置参数。与[自定义验证规则](../customization/custom-validation.md)可以用于强制执行某些对象属性值的方式类似，保护规则可防止删除不符合指定条件的对象。这使管理员可以防止删除具有"active"状态的站点等对象。
 
-- 插件现在可以为核心NetBox表格注册自己的自定义列。例如，插件可以使用新的 `register_table_column()` 实用程序函数在 SiteTable 上注册新列，用户可以选择显示该列。
+#### 改进的自定义字段可见性控制 ([#13299](https://github.com/netbox-community/netbox/issues/13299))
 
-#### 插件的数据后端注册
+[自定义字段模型](../models/extras/customfield.md)上的`ui_visible`字段已被两个新字段`ui_visible`和`ui_editable`所取代，它们分别控制查看和编辑
 
-- 插件现在可以为[同步数据源](../features/synchronized-data.md)注册自己的数据后端。这使插件可以引入除了本地提供的git、S3和本地路径后端之外的新后端。
+对象时自定义字段的显示方式和是否显示。将这两个功能分成独立的字段允许更多地控制每个自定义字段如何呈现给用户。这些字段的值将在升级过程中自动根据原始字段的值设置。
 
-### 增强
+#### 改进的全局搜索结果 ([#14134](https://github.com/netbox-community/netbox/issues/14134))
 
-- 避免删除已分配子接口的接口，以避免孤立的接口。
-- 为电路类型添加了一个 `color` 字段。
-- 允许在计算机柜利用率时排除设备类型。
-- 在Job模型上添加了一个 `error` 字段，用于记录与其执行相关的任何错误。
-- 引入了一个机制，用于从通用对象类型列表中排除模型。
-- 在通过Web UI删除对象之前，显示任何要删除的相关对象。
-- 任何与Tenant相关的模型现在都会自动包括在租户视图下的相关对象列表中。
-- 为虚拟机添加了 `/render-config` REST API端点。
-- 全局搜索
+全局搜索结果现在包括有关每个对象的其他上下文，例如描述、状态和/或相关对象。要显示的属性集特定于每个对象类型，并通过在对象的[SearchIndex类](../plugins/development/search.md#netbox.search.SearchIndex)下设置`display_attrs`来定义。
 
-结果中以值排序具有等效权重的对象，以提高可读性。
-- 通过新的 `CHANGELOG_SKIP_EMPTY_CHANGES` 配置参数避免记录空的变更日志条目。
-- 启用联系人分配的自定义字段。
-- 增加了自定义字段最小值和最大值数值验证器的最大值。
-- 为Webhook添加了 `description` 字段。
-- 引入了 `job_start` 和 `job_end` 信号，以允许自动化插件操作。
+#### 为插件注册表格列 ([#14173](https://github.com/netbox-community/netbox/issues/14173))
 
-### 修复的问题
+插件现在可以为核心NetBox表格[注册自己的自定义列](../plugins/development/tables.md#extending-core-tables)。例如，插件可以使用新的`register_table_column()`实用程序函数在SiteTable上注册一个新列，并且用户可以选择显示该列。
 
-- 修复了全局搜索结果属性的超链接。
-- 修复了在对象编辑表单中显示隐藏自定义字段的问题。
-- 放宽了IKE和IPSec提案上的加密/身份验证算法要求。
-- 修复了更改事件规则的操作类型的问题。
+#### 为插件注册数据后端 ([#13381](https://github.com/netbox-community/netbox/issues/13381))
 
-### 其他变更
+插件现在可以[注册自己的数据后端](../plugins/development/data-backends.md)以用于[同步数据源](../features/synchronized-data.md)。这使得插件可以在提供的git、S3和本地路径后端之外引入新的后端。
 
-- 优化了在 `ActionsMixin` 下声明视图操作的格式（保留了向后兼容性）。
-- 只有在启用Sentry报告时才需要安装 `sentry-sdk` Python库。
-- 将插件资源从 `extras` 应用程序移动到 `netbox`（保留了向后兼容性）。
-- 使用代理ContentType管理器上的新的 `with_feature()` 方法替代 `FeatureQuery`。
-- 将L2VPN模型从 `ipam` 应用程序移动到新的 `vpn` 应用程序。
-- 将ConfigRevision模型从 `extras` 应用程序移动到 `core`。
-- 将Form特性混合类从 `extras` 应用程序移动到 `netbox`。
-- 将 `extras.webhooks_worker.process_webhook()` 移动到 `extras.webhooks.send_webhook()`（保留了向后兼容性）。
-- 从StagedChange中移除更改日志功能。
-- 删除了过时的 `clearcache` 管理命令。
-- 默认情况下强制执行非VRF前缀和IP地址的唯一性（`ENFORCE_GLOBAL_UNIQUE` 现在默认为true）。
+### Enhancements
 
-### REST API变更
+* [#12135](https://github.com/netbox-community/netbox/issues/12135) - 防止删除具有子项分配的接口以避免孤立的接口
+* [#12216](https://github.com/netbox-community/netbox/issues/12216) - 为电路类型添加`color`字段
+* [#13230](https://github.com/netbox-community/netbox/issues/13230) - 允许在计算机柜的利用率时排除设备类型
+* [#13334](https://github.com/netbox-community/netbox/issues/13334) - 在Job模型上添加`error`字段以记录与其执行相关的任何错误
+* [#13427](https://github.com/netbox-community/netbox/issues/13427) - 引入一种机制，可以用来排除不符合指定条件的对象的删除，类似于[自定义验证规则](../customization/custom-validation.md)
+* [#13690](https://github.com/netbox-community/netbox/issues/13690) - 在通过Web UI删除对象之前显示要删除的任何相关对象
+* [#13794](https://github.com/netbox-community/netbox/issues/13794) - 任何与Tenant有关系的模型现在都自动包含在租户视图下的相关对象列表中
+* [#13808](https://github.com/netbox-community/netbox/issues/13808) - 为虚拟机添加`/render-config` REST API端点
+* [#14035](https://github.com/netbox-community/netbox/issues/14035) - 在全局搜索结果中按值对等权重对对象排序以提高可读性
+* [#14147](https://github.com/netbox-community/netbox/issues/14147) - 通过新的`CHANGELOG_SKIP_EMPTY_CHANGES`配置参数避免记录空的更改日志条目
+* [#14156](https://github.com/netbox-community/netbox/issues/14156) - 为联系人分配启用自定义字段
+* [#14240](https://github.com/netbox-community/netbox/issues/14240) - 增加自定义字段最小和最大数字验证器的最大值
+* [#14361](https://github.com/netbox-community/netbox/issues/14361) - 为Webhook添加`description`字段
+* [#14365](https://github.com/netbox-community/netbox/issues/14365) - 引入`job_start`和`job_end`信号以允许自动化插件操作
+* [#14434](https://github.com/netbox-community/netbox/issues/14434) - 为电缆添加特定于模型的终止对象过滤器（例如`interface_id`和`consoleport_id`）
+* [#14436](https://github.com/netbox-community/netbox/issues/14436) - 为所有GenericForeignKey字段添加PostgreSQL索引
+* [#14579](https://github.com/netbox-community/netbox/issues/14579) - 允许用户指定UI翻译的首
 
-- 引入了以下端点：
-  - `/api/extras/event-rules/`
-  - `/api/virtualization/virtual-disks/`
-  - `/api/vpn/ike-policies/`
-  - `/api/vpn/ike-proposals/`
-  - `/api/vpn/ipsec-policies/`
-  - `/api/vpn/ipsec-profiles/`
-  - `/api/vpn/ipsec-proposals/`
-  - `/api/vpn/tunnels/`
-  - `/api/vpn/tunnel-terminations/`
-- 移动了以下端点：
-  - `/api/ipam/l2vpns/` -> `/api/vpn/l2vpns/`
-  - `/api/ipam/l2vpn-terminations/` -> `/api/vpn/l2vpn-terminations/`
-- circuits.CircuitType
-  - 添加了可选的 `color` 选择字段
-- core.Job
-  - 添加了只读的 `error` 字符字段
-- extras.Webhook
-  - 移除了以下字段（这些字段已经移动到新的 `EventRule` 模型）：
-    - `content_types`
-    - `type_create`
-    - `type_update`
-    - `type_delete`
-    - `type_job_start`
-    - `type_job_end`
-    - `enabled`
-    - `conditions`
-  - 添加了可选的 `description` 字段
-- dcim.DeviceType
-  - 添加了 `exclude_from_utilization` 布尔字段
-- extras.CustomField
-  - 移除了 `ui_visibility` 字段
-  - 添加了 `ui_visible` 和 `ui_editable` 选择字段
-- tenancy.ContactAssignment
-  - 增加了对自定义字段的支持
-- virtualization.VirtualDisk
-  - 添加了只读的 `virtual_disk_count` 整数字段
-- virtualization.VirtualMachine
-  - 添加了 `/render-config` 端点
-  
+选语言
+
+### Translations
+
+* [#14075](https://github.com/netbox-community/netbox/issues/14075) - 添加西班牙语翻译
+* [#14096](https://github.com/netbox-community/netbox/issues/14096) - 添加法语翻译
+* [#14145](https://github.com/netbox-community/netbox/issues/14145) - 添加葡萄牙语翻译
+* [#14266](https://github.com/netbox-community/netbox/issues/14266) - 添加俄语翻译
+
+### Bug Fixes
+
+* [#14432](https://github.com/netbox-community/netbox/issues/14432) - 修复全局搜索结果属性的超链接
+* [#14472](https://github.com/netbox-community/netbox/issues/14472) - 修复对象编辑表单中隐藏自定义字段的显示
+* [#14499](https://github.com/netbox-community/netbox/issues/14499) - 放宽IKE和IPSec提议上的加密/身份验证算法要求
+* [#14550](https://github.com/netbox-community/netbox/issues/14550) - 修复更改现有事件规则的操作类型
+
+### Other Changes
+
+* [#13550](https://github.com/netbox-community/netbox/issues/13550) - 优化`ActionsMixin`下声明视图操作的格式（保留向后兼容性）
+* [#13645](https://github.com/netbox-community/netbox/issues/13645) - 仅在启用Sentry报告时才需要安装`sentry-sdk` Python库
+* [#14036](https://github.com/netbox-community/netbox/issues/14036) - 将插件资源从`extras`应用移动到`netbox`（保留向后兼容性）
+* [#14153](https://github.com/netbox-community/netbox/issues/14153) - 使用代理ContentType管理器上的新`with_feature()`方法替换`FeatureQuery`
+* [#14311](https://github.com/netbox-community/netbox/issues/14311) - 将L2VPN模型从`ipam`应用移动到新的`vpn`应用
+* [#14312](https://github.com/netbox-community/netbox/issues/14312) - 将ConfigRevision模型从`extras`应用移动到`core`
+* [#14326](https://github.com/netbox-community/netbox/issues/14326) - 将自定义字段特性混合类从`extras`应用移动到`netbox`
+* [#14395](https://github.com/netbox-community/netbox/issues/14395) - 将`extras.webhooks_worker.process_webhook()`移动到`extras.webhooks.send_webhook()`（保留向后兼容性）
+* [#14424](https://github.com/netbox-community/netbox/issues/14424) - 从StagedChange中删除更改日志记录功能
+* [#14458](https://github.com/netbox-community/netbox/issues/14458) - 删除过时的`clearcache`管理命令
+* [#14536](https://github.com/netbox-community/netbox/issues/14536) - 默认情况下强制对非VRF前缀和IP地址执行唯一性检查（`ENFORCE_GLOBAL_UNIQUE`现在默认为true）
+
+### REST API Changes
+
+* 引入了以下端点：
+    * `/api/extras/event-rules/`
+    * `/api/virtualization/virtual-disks/`
+    * `/api/vpn/ike-policies/`
+    * `/api/vpn/ike-proposals/`
+    * `/api/vpn/ipsec-policies/`
+    * `/api/vpn/ipsec-profiles/`
+    * `/api/vpn/ipsec-proposals/`
+    * `/api/vpn/tunnels/`
+    * `/api/vpn/tunnel-terminations/`
+* 以下端点已移动：
+    * `/api/ipam/l2vpns/` -> `/api/vpn/l2vpns/`
+    * `/api/ipam/l2vpn-terminations/` -> `/api/vpn/l2vpn-terminations/`
+* circuits.CircuitType
+    * 添加了可选的`color`选择字段
+* core.Job
+    * 添加了只读的`error`字符字段
+* extras.Webhook
+    * 删除了以下字段（已移动到新的`EventRule`模型）：
+        * `content_types`
+        * `type_create`
+        * `type_update`
+        * `type_delete`
+        * `type_job_start`
+        * `type_job_end`
+        * `enabled`
+        * `conditions`
+    * 添加了可选
+
+的`description`字段
+* dcim.DeviceType
+    * 添加了`exclude_from_utilization`布尔字段
+* extras.CustomField
+    * 删除了`ui_visibility`字段
+    * 添加了`ui_visible`和`ui_editable`选择字段
+* tenancy.ContactAssignment
+    * 添加了对自定义字段的支持
+* virtualization.VirtualDisk
+    * 添加了只读的`virtual_disk_count`整数字段
+* virtualization.VirtualMachine
+    * 添加了`/render-config`端点

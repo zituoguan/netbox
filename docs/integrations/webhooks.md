@@ -106,6 +106,6 @@ Content-Type: application/x-www-form-urlencoded
 ------------
 ```
 
-请注意，`webhook_receiver`实际上不会对接收到的信息执行任何操作：它只会打印请求标头和正文以供检查。
+请注意，`webhook_receiver` 实际上不会对接收到的信息执行任何操作：它只会打印请求的标头和正文以供检查。如果您没有看到任何输出，请检查 `rqworker` 进程是否正在运行，并且 webhook 事件是否被放入队列中。
 
-现在，当NetBox触发并处理Webhook时，您应该在Webhook接收程序正在侦听的终端中看到其标头和内容。如果没有，请检查`rqworker`进程是否正在运行以及Webhook事件是否被放入队列（在NetBox管理UI中可见）。
+Webhook的结果可以在NetBox管理界面的"Background Tasks"部分找到。您可以查看任何已完成或失败的运行，以及失败webhook的错误日志。

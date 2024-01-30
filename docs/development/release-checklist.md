@@ -78,29 +78,41 @@ mkdocs serve
 ./manage.py buildschema --write
 ```
 
-这将自动更新`contrib/generated_schema.json`中的模式文件。
+这将自动更新位于 `contrib/generated_schema.json` 的模式文件。
+
+### 更新和编译翻译
+
+登录到 [Transifex](https://app.transifex.com/netbox-community/netbox/dashboard/) 下载更新的字符串映射。为每种语言下载资源文件（可移植对象，或 `.po` 文件），并将它们保存到 `netbox/translations/$lang/LC_MESSAGES/django.po`，覆盖当前的文件（确保点击 **Download for use** 链接）。
+
+![Transifex下载](../media/development/transifex_download.png)
+
+一旦所有语言的资源文件都被更新，使用 `compilemessages` 管理命令来编译机器对象（`.mo`）文件：
+
+```nohighlight
+./manage.py compilemessages
+```
 
 ### 更新版本和更改日志
 
-* 将`settings.py`中的`VERSION`常量更新为新的发布版本。
-* 在`.github/ISSUE_TEMPLATES/`下的功能请求和错误报告模板中更新示例版本号。
-* 用当前日期替换发布说明中的"FUTURE"占位符。
+* 在 `settings.py` 中更新 `VERSION` 常量为新的发布版本。
+* 在 `.github/ISSUE_TEMPLATES/` 下更新特性请求和错误报告模板中的示例版本号。
+* 在发布说明中用当前日期替换 "FUTURE" 占位符。
 
-提交这些更改到`develop`分支，并将其推送到上游。
+将这些更改提交到 `develop` 分支并推送到上游。
 
-### 验证CI构建状态
+### 验证 CI 构建状态
 
-确保`develop`分支上的持续集成测试已成功完成。如果失败，请采取措施纠正失败，然后继续发布。
+确保 `develop` 分支上的持续集成测试成功完成。如果失败，请采取措施纠正失败，然后再继续发布流程。
 
 ### 提交拉取请求
 
-提交一个拉取请求，标题为**"发布 vX.Y.Z"**，以将`develop`分支合并到`master`分支。将记录的发布说明复制到拉取请求的正文中。
+提交一个拉取请求，标题为 **"Release vX.Y.Z"**，将 `develop` 分支合并到 `master` 分支。将记录的发布说明复制到拉取请求的正文中。
 
-一旦PR的CI完成，合并它。这将在`master`分支中发布一个新版本。
+一旦 CI 完成了 PR，就可以合并它。这将在 `master` 分支上创建一个新的发布。
 
-### 创建新发布
+### 创建新的发布
 
-在GitHub上创建一个[新的发布](https://github.com/netbox-community/netbox/releases/new)，具有以下参数。
+在 GitHub 上创建一个[新的发布](https://github.com/netbox-community/netbox/releases/new)，使用以下参数。
 
 * **标签：** 当前版本（例如`v3.3.1`）
 * **目标：** `master`

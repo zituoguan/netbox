@@ -132,9 +132,9 @@ report_order = (DeviceIPsReport, DeviceConnectionsReport)
 ## 运行报告
 
 !!! note
-    要运行报告，用户必须通过对 `Extras > 报告`、`Extras > 报告模块` 和 `Core > 管理文件` 对象进行权限分配。还必须为用户（或用户组）分配 `extras.run_report` 权限。通过在管理界面中为报告对象分配权限并指定 `运行` 操作来实现这一点，如下图所示。
+    要运行报告，用户必须被分配`Extras > Report`、`Extras > Report Module`和`Core > Managed File`对象的权限。还必须分配`extras.run_report`权限。这可以通过在报告对象上分配用户（或组）权限，并在"权限"中指定"运行"操作来实现，如下所示。
 
-    ![将运行操作添加到权限](../media/admin_ui_run_permission.png)
+![将运行操作添加到权限](../media/run_permission.png)
 
 ### 通过Web界面
 
