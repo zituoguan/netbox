@@ -48,13 +48,13 @@ class ReminderWidget(DashboardWidget):
         return self.config.get('content')
 ```
 
-## Initialization
+## 初始化
 
-To register the widget, it becomes essential to import the widget module. The recommended approach is to accomplish this within the `ready` method situated in your `PluginConfig`:
+要注册小部件，导入小部件模块变得非常必要。推荐的做法是在`PluginConfig`中的`ready`方法里完成这个操作：
 
 ```python
 class FooBarConfig(PluginConfig):
     def ready(self):
         super().ready()
-        from . import widgets  # point this to the above widget module you created
+        from . import widgets  # 将此指向你创建的上述小部件模块
 ```

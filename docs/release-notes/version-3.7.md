@@ -4,32 +4,32 @@
 
 ### Enhancements
 
-* [#13729](https://github.com/netbox-community/netbox/issues/13729) - Omit sensitive data source parameters from change log data
-* [#14645](https://github.com/netbox-community/netbox/issues/14645) - Limit the number of assigned IP addresses displayed under interfaces list
+* [#13729](https://github.com/netbox-community/netbox/issues/13729) - 从更改日志数据中省略敏感数据源参数
+* [#14645](https://github.com/netbox-community/netbox/issues/14645) - 限制在接口列表下显示的已分配IP地址的数量
 
 ### Bug Fixes
 
-* [#14500](https://github.com/netbox-community/netbox/issues/14500) - Optimize calculation of available child prefixes & ranges when viewing a prefix
-* [#14511](https://github.com/netbox-community/netbox/issues/14511) - Fix GraphQL support for interfaces connected to provider networks
-* [#14572](https://github.com/netbox-community/netbox/issues/14572) - Correct the number of jobs listed for individual report & script modules
-* [#14703](https://github.com/netbox-community/netbox/issues/14703) - Revert to the default layout when encountering a misconfigured dashboard
-* [#14755](https://github.com/netbox-community/netbox/issues/14755) - Fix validation of choice values & labels when creating a custom field choice set via the REST API
-* [#14838](https://github.com/netbox-community/netbox/issues/14838) - Avoid corrupting JSON data when changing the action type while editing an event rule
-* [#14839](https://github.com/netbox-community/netbox/issues/14839) - Fix form validation error when attempting to terminate a tunnel to a virtual machine interface
-* [#14840](https://github.com/netbox-community/netbox/issues/14840) - Fix `NoReverseMatch` exception when rendering a custom field which references a user
-* [#14847](https://github.com/netbox-community/netbox/issues/14847) - IKE policy mode may be set inly when IKEv1 is selected
-* [#14851](https://github.com/netbox-community/netbox/issues/14851) - Automatically remove any associated bookmarks when deleting a user
-* [#14879](https://github.com/netbox-community/netbox/issues/14879) - Include custom fields in REST API representation of data sources
-* [#14885](https://github.com/netbox-community/netbox/issues/14885) - Add missing "group" field to VPN tunnel creation form
-* [#14892](https://github.com/netbox-community/netbox/issues/14892) - Fix exception when running report/script via command line due to missing username
-* [#14920](https://github.com/netbox-community/netbox/issues/14920) - Include button to display available status choices when bulk importing virtual device contexts
-* [#14945](https://github.com/netbox-community/netbox/issues/14945) - Fix "select all" button for device type components
-* [#14947](https://github.com/netbox-community/netbox/issues/14947) - Ensure that application & removal of tags is always recorded in an object's change log
-* [#14962](https://github.com/netbox-community/netbox/issues/14962) - Fix config context rendering for VMs assigned directly to a site (rather than via a cluster)
-* [#14999](https://github.com/netbox-community/netbox/issues/14999) - Fix "create & add another" link for interface FHRP group assignment
-* [#15015](https://github.com/netbox-community/netbox/issues/15015) - Pre-populate assigned tenant when allocating next available IP address under prefix view
-* [#15020](https://github.com/netbox-community/netbox/issues/15020) - Automatically update all VMs when changing a cluster's assigned site
-* [#15025](https://github.com/netbox-community/netbox/issues/15025) - The `can_add()` template filter should accept a model (not an instance)
+* [#14500](https://github.com/netbox-community/netbox/issues/14500) - 在查看前缀时优化可用子前缀和范围的计算
+* [#14511](https://github.com/netbox-community/netbox/issues/14511) - 修复连接到提供商网络的接口的GraphQL支持
+* [#14572](https://github.com/netbox-community/netbox/issues/14572) - 更正个别报告和脚本模块列出的作业数量
+* [#14703](https://github.com/netbox-community/netbox/issues/14703) - 在遇到配置错误的仪表板时恢复到默认布局
+* [#14755](https://github.com/netbox-community/netbox/issues/14755) - 通过REST API创建自定义字段选择集时修复选择值和标签的验证
+* [#14838](https://github.com/netbox-community/netbox/issues/14838) - 在编辑事件规则时更改操作类型时避免损坏JSON数据
+* [#14839](https://github.com/netbox-community/netbox/issues/14839) - 尝试终止到虚拟机接口的隧道时修复表单验证错误
+* [#14840](https://github.com/netbox-community/netbox/issues/14840) - 修复在渲染引用用户的自定义字段时的`NoReverseMatch`异常
+* [#14847](https://github.com/netbox-community/netbox/issues/14847) - 仅在选择IKEv1时可以设置IKE策略模式
+* [#14851](https://github.com/netbox-community/netbox/issues/14851) - 删除用户时自动移除任何相关的书签
+* [#14879](https://github.com/netbox-community/netbox/issues/14879) - 在REST API数据源表示中包括自定义字段
+* [#14885](https://github.com/netbox-community/netbox/issues/14885) - 在VPN隧道创建表单中添加缺失的"组"字段
+* [#14892](https://github.com/netbox-community/netbox/issues/14892) - 由于缺少用户名，在命令行运行报告/脚本时修复异常
+* [#14920](https://github.com/netbox-community/netbox/issues/14920) - 在批量导入虚拟设备上下文时包含显示可用状态选择的按钮
+* [#14945](https://github.com/netbox-community/netbox/issues/14945) - 修复设备类型组件的"全选"按钮
+* [#14947](https://github.com/netbox-community/netbox/issues/14947) - 确保总是在对象的更改日志中记录标签的应用和移除
+* [#14962](https://github.com/netbox-community/netbox/issues/14962) - 修复直接分配给站点（而不是通过集群）的VM的配置上下文渲染
+* [#14999](https://github.com/netbox-community/netbox/issues/14999) - 为接口FHRP组分配修复"创建并添加另一个"链接
+* [#15015](https://github.com/netbox-community/netbox/issues/15015) - 在前缀视图下分配下一个可用IP地址时预填充分配的租户
+* [#15020](https://github.com/netbox-community/netbox/issues/15020) - 更改集群的分配站点时自动更新所有VM
+* [#15025](https://github.com/netbox-community/netbox/issues/15025) - `can_add()`模板过滤器应接受模型（而不是实例）
 
 ---
 
