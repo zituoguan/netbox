@@ -58,3 +58,5 @@ systemctl status netbox.service
     如果NetBox服务启动失败，请使用命令`journalctl -eu netbox`检查可能指示问题的日志消息。
 
 一旦验证了WSGI工作者正在运行，就可以继续进行HTTP服务器设置。
+!!! 注意
+    在gunicorn当前稳定版本（v21.2.0）中存在一个bug，其中工作进程的自动重启在高负载下可能会导致502错误。（更多细节见[gunicorn bug #3038](https://github.com/benoitc/gunicorn/issues/3038)。）遇到此问题的用户可以选择降级到一个早期的、未受影响的gunicorn版本（`pip install gunicorn==20.1.0`）。然而，请注意，这个早期版本并不官方支持Python 3.11。

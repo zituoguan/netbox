@@ -10,6 +10,9 @@ NetBox在处理日期和时间时使用的时区。除非有特定需要使用�
 
 您可以定义日期和时间的自定义格式。有关编写格式字符串的详细说明，请参阅[Django文档](https://docs.djangoproject.com/en/stable/ref/templates/builtins/#date)。下面列出了默认格式。
 
+!!! note
+    These system defaults will be overridden by a user's selected language/locale when [localization](./system.md#enable_localization) is enabled.
+
 ```python
 DATE_FORMAT = 'N j, Y'               # June 26, 2016
 SHORT_DATE_FORMAT = 'Y-m-d'          # 2016-06-26

@@ -20,4 +20,4 @@ backends = [MyDataBackend]
 !!! 提示
     可以通过在 PluginConfig 实例中设置 `data_backends` 来修改搜索索引列表的路径。
 
-::: core.data_backends.DataBackend
+::: netbox.data_backends.DataBackend
